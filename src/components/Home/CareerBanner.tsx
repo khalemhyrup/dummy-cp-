@@ -22,7 +22,7 @@ export const CareerBanner: React.FC<CareerBannerProps> = ({ onCareerClick }) => 
             </h2>
 
             <p className="text-slate-900 text-sm sm:text-base font-medium leading-relaxed">
-              Join Indonesia\'s premier IT systems integrator. We are looking for passionate cloud architects, cybersecurity engineers, AI developers, and business strategists to empower enterprise growth.
+              Join Indonesia's premier IT systems integrator. We are looking for passionate cloud architects, cybersecurity engineers, AI developers, and business strategists to empower enterprise growth.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-bold text-slate-900">

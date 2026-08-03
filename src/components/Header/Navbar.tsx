@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = (itemId: string, hasDropdown: boolean) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
