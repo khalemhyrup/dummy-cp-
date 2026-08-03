@@ -42,7 +42,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-20">
           
           {/* Logo Area */}
-          <a href="#" className="flex items-center gap-3 group focus:outline-none">
+          <a
+            href="#"
+            onClick={(ev) => {
+              ev.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center gap-3 group focus:outline-none"
+          >
             <div className="relative flex items-center">
               {/* Enterprise IT Generic Dummy Logo */}
               <div className="flex flex-col">
@@ -191,6 +198,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => {
                   if (item.hasDropdown) {
                     setActiveDropdown(activeDropdown === item.id ? null : item.id);
+                  } else if (item.id === 'home' || item.label === 'Home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setActiveDropdown(null);
+                    setMobileMenuOpen(false);
                   } else {
                     onMenuItemClick(item.label);
                     setMobileMenuOpen(false);
