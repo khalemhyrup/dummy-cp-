@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PT Dummy Technology Tbk | Enterprise IT Solutions & System Integrator</title>
+  <meta name="description" content="PT Dummy Technology Tbk (IDX: DUMM) is Indonesia's leading IT systems integrator." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN (Synchronous for zero flash of unstyled content) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+              950: '#451a03',
+            }
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(-6px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Local React & ReactDOM -->
+  <script src="/react.min.js"></script>
+  <script src="/react-dom.min.js"></script>
+
+  <style>
+    /* Global Reset & SVG Sizing Safety Rules */
+    *, ::before, ::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; }
+    body { margin: 0; padding: 0; background-color: #ffffff; color: #0f172a; }
+    
+    /* Strict SVG bounds so icons NEVER explode in size */
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      max-width: 24px;
+      max-height: 24px;
+      flex-shrink: 0;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d97706; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased font-sans">
+
+  <div id="root"></div>
+
+  <script>
+    if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
+      document.getElementById('root').innerHTML = '<div style="padding:40px;text-align:center;color:red;">React failed to load. Please refresh.</div>';
+    } else {
+      const e = React.createElement;
+      const { useState, useEffect, useRef } = React;
+
+      // Icon Helpers with explicit width/height constraints
+      const ChevronDown = ({ className }) => e('svg', {
+        className: className || 'w-4 h-4',
+        width: '16',
+        height: '16',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '16px', height: '16px', maxWidth: '16px', maxHeight: '16px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M19 9l-7 7-7-7' })
+      );
+
+      const ChevronRight = ({ className }) => e('svg', {
+        className: className || 'w-4 h-4',
+        width: '16',
+        height: '16',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '14px', height: '14px', maxWidth: '14px', maxHeight: '14px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M9 5l7 7-7 7' })
+      );
+
+      const SearchIcon = ({ className }) => e('svg', {
+        className: className || 'w-5 h-5',
+        width: '20',
+        height: '20',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '20px', height: '20px', maxWidth: '20px', maxHeight: '20px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' })
+      );
+
+      const MenuIcon = ({ className }) => e('svg', {
+        className: className || 'w-6 h-6',
+        width: '24',
+        height: '24',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '24px', height: '24px', maxWidth: '24px', maxHeight: '24px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M4 6h16M4 12h16M4 18h16' })
+      );
+
+      const CloseIcon = ({ className }) => e('svg', {
+        className: className || 'w-6 h-6',
+        width: '24',
+        height: '24',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '24px', height: '24px', maxWidth: '24px', maxHeight: '24px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M6 18L18 6M6 6l12 12' })
+      );
+
+      const ArrowRightIcon = ({ className }) => e('svg', {
+        className: className || 'w-4 h-4',
+        width: '16',
+        height: '16',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '16px', height: '16px', maxWidth: '16px', maxHeight: '16px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M14 5l7 7m0 0l-7 7m7-7H3' })
+      );
+
+      const AwardIcon = ({ className }) => e('svg', {
+        className: className || 'w-4 h-4',
+        width: '16',
+        height: '16',
+        fill: 'none',
+        stroke: 'currentColor',
+        viewBox: '0 0 24 24',
+        style: { width: '16px', height: '16px', maxWidth: '16px', maxHeight: '16px' }
+      },
+        e('path', { strokeLinecap: 'round', strokeLinejoin: 'round', strokeWidth: '2', d: 'M12 15l-2 5l-4-3l-4 3l2-5l-4-4h5l2-5l2 5h5l-4 4z' })
+      );
+
+      // Clean 4 Menu Navbar structure: Home, About, Product & Service (IT Support, EO), Information
+      const navigationData = [
+        { id: 'home', label: 'Home', href: '#', hasDropdown: false },
+        {
+          id: 'about',
+          label: 'About',
+          href: '#about',
+          hasDropdown: true,
+          megaMenuType: 'columns',
+          columns: [
+            {
+              title: 'PROFILE',
+              items: [
+                { id: 'about-us', title: 'About Us' },
+                { id: 'milestones', title: 'Company Milestones' },
+                { id: 'values', title: 'Core Values (We CARE)' },
+              ],
+            },
+            {
+              title: 'MANAGEMENT',
+              items: [
+                { id: 'org-structure', title: 'Organization Structure' },
+                { id: 'leadership', title: 'Board & Leadership' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'product-service',
+          label: 'Product & Service',
+          href: '#product-service',
+          hasDropdown: true,
+          megaMenuType: 'vertical',
+          items: [
+            { id: 'it-support', title: 'IT Support' },
+            { id: 'eo', title: 'EO (Event Organizer)' },
+          ],
+        },
+        {
+          id: 'information',
+          label: 'Information',
+          href: '#information',
+          hasDropdown: true,
+          megaMenuType: 'vertical',
+          items: [
+            { id: 'news', title: 'News & Updates' },
+            { id: 'activities', title: 'Company Activities' },
+            { id: 'csr', title: 'Corporate Social Responsibility (CSR)' },
+            { id: 'announcements', title: 'Official Announcements' },
+          ],
+        },
+      ];
+
+      const heroSlides = [
+        {
+          title: "Dummy Technology has received prestigious awards at Global Partner Connect 2026",
+          subtitle: "Recognized as Top Strategic IT System Integrator & Managed Services Provider",
+          badge: "EXCELLENCE AWARD 2026",
+          image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Enterprise IT Support & Infrastructure Services",
+          subtitle: "24/7 Monitoring, Managed Maintenance & Cyber Defense Solutions",
+          badge: "IT SERVICES",
+          image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          title: "Professional EO (Event Organizer) & Tech Solutions",
+          subtitle: "End-to-end Corporate Conferences, Digital Summits & Tech Exhibition Management",
+          badge: "EO & EVENT SOLUTIONS",
+          image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"
+        }
+      ];
+
+      const newsArticles = [
+        {
+          id: 1,
+          title: 'Dummy Technology Bags Prestigious Awards at Global Partner Connect 2026',
+          category: 'News',
+          date: '28 July 2026',
+          image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80',
+          summary: 'PT Dummy Technology Tbk won multiple strategic partner awards in IT support and event management.',
+          content: 'PT Dummy Technology Tbk has been honored with key partner awards at Global Partner Connect 2026.'
+        },
+        {
+          id: 2,
+          title: 'Executive Tech Forum 2026: Hybrid Infrastructure & EO Event Highlights',
+          category: 'Activities',
+          date: '15 July 2026',
+          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80',
+          summary: 'Industry leaders gathered to discuss IT support SLA and event organizer best practices.',
+          content: 'Dummy Technology hosted its signature executive forum inviting over 100 CIOs and event managers.'
+        },
+        {
+          id: 3,
+          title: 'CSR Education Program: Empowering Tech Talent Across Schools',
+          category: 'CSR',
+          date: '02 June 2026',
+          image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80',
+          summary: 'As part of our commitment, Dummy Technology donated digital lab kits and IT modules.',
+          content: 'Dummy Technology launched a nationwide digital literacy initiative for vocational students.'
+        },
+        {
+          id: 4,
+          title: 'Press Release: PT Dummy Technology Tbk Reports Q1 Financial Growth',
+          category: 'Press Release',
+          date: '18 May 2026',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+          summary: 'Driven by surging demand for IT support and EO services, revenue expanded 14.8% YoY.',
+          content: 'PT Dummy Technology Tbk (IDX: DUMM) released its Q1 financial highlights.'
+        }
+      ];
+
+      const partnerLogos = [
+        { name: 'IBM', category: 'Cloud & AI Partner' },
+        { name: 'Cisco Systems', category: 'Networking & Security' },
+        { name: 'Microsoft', category: 'Enterprise Applications' },
+        { name: 'F5 Networks', category: 'App Security' },
+        { name: 'Huawei', category: 'Infrastructure Solutions' },
+        { name: 'Oracle', category: 'Database Systems' },
+        { name: 'VMware', category: 'Virtualization' },
+        { name: 'Palo Alto', category: 'Cybersecurity' }
+      ];
+
+      const companyValues = [
+        { key: 'C', title: 'Customer First', tagline: 'Delivering value and building long-term trust.' },
+        { key: 'A', title: 'Accountability', tagline: 'Taking ownership of commitments and SLA results.' },
+        { key: 'R', title: 'Respect', tagline: 'Fostering diversity, teamwork, and human potential.' },
+        { key: 'E', title: 'Excellence', tagline: 'Striving for innovation and operational mastery.' }
+      ];
+
+      function App() {
+        const [activeDropdown, setActiveDropdown] = useState(null);
+        const [currentSlide, setCurrentSlide] = useState(0);
+        const [currentLang, setCurrentLang] = useState('EN');
+        const [isSearchOpen, setIsSearchOpen] = useState(false);
+        const [searchQuery, setSearchQuery] = useState('');
+        const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+        const [modalData, setModalData] = useState({ isOpen: false, title: '', content: '' });
+
+        const timeoutRef = useRef(null);
+
+        useEffect(() => {
+          const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+          }, 6000);
+          return () => clearInterval(timer);
+        }, []);
+
+        const handleMouseEnter = (id, hasDropdown) => {
+          if (timeoutRef.current) clearTimeout(timeoutRef.current);
+          if (hasDropdown) setActiveDropdown(id);
+        };
+
+        const handleMouseLeave = () => {
+          timeoutRef.current = setTimeout(() => {
+            setActiveDropdown(null);
+          }, 200);
+        };
+
+        const openModal = (title, content) => {
+          setModalData({
+            isOpen: true,
+            title: title,
+            content: content || `Overview and documentation for ${title} from PT Dummy Technology Tbk.`
+          });
+        };
+
+        const activeNavObj = navigationData.find((item) => item.id === activeDropdown);
+
+        return e('div', { className: 'min-h-screen flex flex-col bg-white' },
+          
+          // Persistent Header Navbar
+          e('header', { className: 'sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' },
+            e('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+              e('div', { className: 'flex items-center justify-between h-20' },
+                
+                // Logo
+                e('a', { href: '#', className: 'flex items-center gap-3' },
+                  e('div', { className: 'flex flex-col' },
+                    e('span', { className: 'font-extrabold text-xl sm:text-2xl tracking-tighter text-slate-900' }, 'DUMMY'),
+                    e('span', { className: 'text-[10px] font-bold tracking-[0.25em] text-amber-600 uppercase -mt-1' }, 'TECHNOLOGY GROUP')
+                  ),
+                  e('div', { className: 'ml-2 pl-2 border-l-2 border-amber-500 hidden sm:block' },
+                    e('span', { className: 'text-[10px] text-gray-500 uppercase tracking-widest font-semibold block leading-tight' }, 'ENTERPRISE IT'),
+                    e('span', { className: 'text-[9px] text-gray-400 font-medium block leading-tight' }, 'SOLUTIONS')
+                  )
+                ),
+
+                // Desktop Navigation (Home, About, Product & Service, Information)
+                e('nav', { className: 'hidden lg:flex items-center space-x-6', onMouseLeave: handleMouseLeave },
+                  navigationData.map((item) => {
+                    const isActive = activeDropdown === item.id;
+                    return e('div', { key: item.id, className: 'relative py-7', onMouseEnter: () => handleMouseEnter(item.id, item.hasDropdown) },
+                      e('button', {
+                        onClick: () => {
+                          if (item.hasDropdown) setActiveDropdown(isActive ? null : item.id);
+                          else openModal(item.label);
+                        },
+                        className: `flex items-center gap-1.5 text-sm font-semibold transition-colors py-1.5 px-3 rounded-md ${isActive ? 'text-amber-600 bg-amber-50/60' : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'}`
+                      },
+                        e('span', null, item.label),
+                        item.hasDropdown ? e(ChevronDown, { className: `w-4 h-4 transition-transform ${isActive ? 'rotate-180 text-amber-600' : 'text-gray-400'}` }) : null
+                      )
+                    );
+                  })
+                ),
+
+                // Language & Search
+                e('div', { className: 'flex items-center space-x-3' },
+                  e('div', { className: 'flex items-center bg-gray-100 rounded-full p-1 border border-gray-200' },
+                    e('button', { onClick: () => setCurrentLang('ID'), className: `px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'ID' ? 'bg-white text-red-600 shadow-xs' : 'text-gray-500'}` }, '🇮🇩 ID'),
+                    e('button', { onClick: () => setCurrentLang('EN'), className: `px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'EN' ? 'bg-white text-blue-700 shadow-xs' : 'text-gray-500'}` }, '🇬🇧 EN')
+                  ),
+                  e('button', { onClick: () => setIsSearchOpen(true), className: 'p-2 rounded-full text-gray-600 hover:text-amber-600 hover:bg-amber-50 transition-colors' },
+                    e(SearchIcon, { className: 'w-5 h-5' })
+                  ),
+                  e('button', { onClick: () => setMobileMenuOpen(!mobileMenuOpen), className: 'lg:hidden p-2 text-gray-700' },
+                    mobileMenuOpen ? e(CloseIcon, { className: 'w-6 h-6' }) : e(MenuIcon, { className: 'w-6 h-6' })
+                  )
+                )
+
+              )
+            ),
+
+            // Mega Menu Dropdown Panel
+            activeNavObj && activeNavObj.hasDropdown ? e('div', {
+              onMouseEnter: () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); },
+              onMouseLeave: handleMouseLeave,
+              className: 'absolute top-full left-0 right-0 w-full z-50 animate-fadeIn'
+            },
+              e('div', { className: 'max-w-7xl mx-auto px-6 relative' },
+                e('div', { className: 'bg-white shadow-2xl rounded-b-xl border-t-2 border-amber-500 p-6 text-gray-800 text-sm relative' },
+                  e('div', { className: 'absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-8 border-b-amber-500' }),
+
+                  activeNavObj.megaMenuType === 'columns' && activeNavObj.columns ? e('div', { className: 'grid gap-8 grid-cols-1 md:grid-cols-2 max-w-2xl' },
+                    activeNavObj.columns.map((col, cIdx) => e('div', { key: cIdx, className: 'space-y-3' },
+                      col.title ? e('div', { className: 'border-b border-gray-200 pb-1.5' },
+                        e('h4', { className: 'font-bold text-xs tracking-wider uppercase text-slate-900' }, col.title)
+                      ) : null,
+                      e('ul', { className: 'space-y-2' },
+                        col.items.map((sub) => e('li', { key: sub.id },
+                          e('button', { onClick: () => openModal(sub.title), className: 'group flex items-center gap-1.5 text-left text-gray-700 hover:text-amber-600 transition-colors w-full' },
+                            e(ChevronRight, { className: 'w-3.5 h-3.5 text-gray-400 group-hover:text-amber-600 transition-transform' }),
+                            e('span', { className: 'text-xs font-semibold group-hover:underline' }, sub.title)
+                          )
+                        ))
+                      )
+                    ))
+                  ) : null,
+
+                  activeNavObj.megaMenuType === 'vertical' && activeNavObj.items ? e('div', { className: 'max-w-md bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden' },
+                    e('ul', { className: 'divide-y divide-gray-100' },
+                      activeNavObj.items.map((sub) => e('li', { key: sub.id },
+                        e('button', {
+                          onClick: () => openModal(sub.title, `Product & Service Details: ${sub.title}. PT Dummy Technology Tbk provides complete professional setup, maintenance, SLAs, and technical management.`),
+                          className: 'w-full text-left py-3.5 px-5 text-sm font-bold text-slate-800 hover:text-amber-600 hover:bg-amber-50/60 transition-colors flex items-center justify-between group'
+                        },
+                          e('div', { className: 'flex items-center gap-2' },
+                            e(ChevronRight, { className: 'w-4 h-4 text-amber-500 group-hover:translate-x-1 transition-transform' }),
+                            e('span', null, sub.title)
+                          ),
+                          e('span', { className: 'text-[11px] font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded' }, 'Explore')
+                        )
+                      ))
+                    )
+                  ) : null
+                )
+              )
+            ) : null
+          ),
+
+          // Hero Banner Carousel
+          e('section', { className: 'relative w-full min-h-[500px] bg-slate-950 text-white overflow-hidden flex items-center' },
+            e('div', { className: 'absolute inset-0 bg-cover bg-center transition-all duration-1000', style: { backgroundImage: `url(${heroSlides[currentSlide].image})` } },
+              e('div', { className: 'absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/40' })
+            ),
+            e('div', { className: 'relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-6' },
+              e('div', { className: 'inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40' },
+                e(AwardIcon, { className: 'w-4 h-4 text-amber-400' }),
+                e('span', { className: 'text-xs font-bold text-amber-300 tracking-widest' }, heroSlides[currentSlide].badge)
+              ),
+              e('h1', { className: 'text-3xl sm:text-5xl font-extrabold max-w-3xl leading-tight' }, heroSlides[currentSlide].title),
+              e('p', { className: 'text-slate-300 text-lg max-w-2xl' }, heroSlides[currentSlide].subtitle),
+              e('div', { className: 'pt-4 flex gap-4' },
+                e('button', { className: 'bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-3.5 rounded-lg flex items-center gap-2 shadow-lg' },
+                  e('span', null, 'Explore Services'),
+                  e(ArrowRightIcon, { className: 'w-4 h-4' })
+                )
+              )
+            ),
+            e('div', { className: 'absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2' },
+              heroSlides.map((_, idx) => e('button', {
+                key: idx,
+                onClick: () => setCurrentSlide(idx),
+                className: `h-2.5 rounded-full transition-all ${idx === currentSlide ? 'w-8 bg-amber-500' : 'w-2.5 bg-slate-600'}`
+              }))
+            )
+          ),
+
+          // Newest Updates Section
+          e('section', { className: 'py-20 bg-slate-50 border-b border-gray-200' },
+            e('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' },
+              e('div', { className: 'flex flex-col md:flex-row items-start md:items-end justify-between mb-12' },
+                e('div', null,
+                  e('span', { className: 'text-amber-600 font-bold text-xs tracking-widest uppercase' }, 'LATEST ANNOUNCEMENTS'),
+                  e('h2', { className: 'text-3xl font-extrabold text-slate-900 mt-1' }, 'Newest Updates')
+                )
+              ),
+              e('div', { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8' },
+                newsArticles.map((art) => e('div', { key: art.id, className: 'bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group flex flex-col' },
+                  e('img', { src: art.image, className: 'h-44 w-full object-cover group-hover:scale-105 transition-transform' }),
+                  e('div', { className: 'p-6 flex-1 flex flex-col justify-between' },
+                    e('div', null,
+                      e('span', { className: 'text-[11px] font-bold text-amber-600 uppercase' }, `${art.category} • ${art.date}`),
+                      e('h3', { className: 'font-bold text-slate-900 text-base leading-snug mt-1 group-hover:text-amber-600 transition-colors line-clamp-2' }, art.title),
+                      e('p', { className: 'text-xs text-slate-600 mt-2 line-clamp-3' }, art.summary)
+                    ),
+                    e('button', {
+                      onClick: () => openModal(art.title, art.content),
+                      className: 'mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-amber-600 flex items-center justify-between w-full'
+                    },
+                      e('span', null, 'Read Full Story'),
+                      e(ArrowRightIcon, { className: 'w-4 h-4' })
+                    )
+                  )
+                ))
+              )
+            )
+          ),
+
+          // Strategic Alliances
+          e('section', { className: 'py-20 bg-white' },
+            e('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center' },
+              e('span', { className: 'text-amber-600 font-bold text-xs tracking-widest uppercase' }, 'GLOBAL TECHNOLOGY PARTNERS'),
+              e('h2', { className: 'text-3xl font-extrabold text-slate-900 mt-1 mb-12' }, 'Strategic Alliances'),
+              e('div', { className: 'grid grid-cols-2 sm:grid-cols-4 gap-6' },
+                partnerLogos.map((p, idx) => e('div', { key: idx, className: 'p-6 rounded-xl border border-gray-100 bg-slate-50 hover:bg-white hover:shadow-lg transition-all text-center' },
+                  e('span', { className: 'font-extrabold text-slate-800 text-lg block' }, p.name),
+                  e('span', { className: 'text-xs text-slate-500' }, p.category)
+                ))
+              )
+            )
+          ),
+
+          // We CARE Values
+          e('section', { className: 'py-20 bg-slate-900 text-white' },
+            e('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center' },
+              e('span', { className: 'text-amber-400 font-bold text-xs tracking-widest uppercase' }, 'CORPORATE CULTURE'),
+              e('h2', { className: 'text-3xl font-extrabold mt-1 mb-12' }, 'We CARE Values'),
+              e('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-6' },
+                companyValues.map((v) => e('div', { key: v.key, className: 'p-6 bg-slate-800 rounded-2xl border border-slate-700 text-left' },
+                  e('span', { className: 'text-4xl font-black text-amber-400 block mb-2' }, v.key),
+                  e('h3', { className: 'font-bold text-lg text-white' }, v.title),
+                  e('p', { className: 'text-xs text-slate-400 mt-1' }, v.tagline)
+                ))
+              )
+            )
+          ),
+
+          // Persistent Footer
+          e('footer', { className: 'bg-slate-950 text-slate-300 border-t border-slate-800 mt-auto' },
+            e('div', { className: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16' },
+              e('div', { className: 'grid grid-cols-1 md:grid-cols-3 gap-12 text-xs' },
+                e('div', null,
+                  e('h3', { className: 'font-bold text-amber-400 uppercase tracking-widest mb-4' }, 'Sitemap & Navigation'),
+                  e('div', { className: 'grid grid-cols-1 gap-2 text-slate-400' },
+                    ['Home', 'About', 'Product & Service', 'Information'].map((m) =>
+                      e('button', { key: m, onClick: () => openModal(m), className: 'text-left hover:text-amber-400 py-0.5' }, `› ${m}`)
+                    )
+                  )
+                ),
+                e('div', null,
+                  e('h3', { className: 'font-bold text-amber-400 uppercase tracking-widest mb-4' }, 'Head Office Contact'),
+                  e('p', { className: 'leading-relaxed text-slate-400' }, 'Gedung Dummy Cyber Park, Jl. Jendral Sudirman No. 88, Jakarta Selatan 12190 - Indonesia'),
+                  e('p', { className: 'mt-2 text-slate-400' }, 'Tel: +62 21 500 0000 | Fax: +62 21 500 0001'),
+                  e('p', { className: 'text-amber-400 mt-1' }, 'corporate.secretary@dummytech.com')
+                ),
+                e('div', null,
+                  e('h3', { className: 'font-bold text-amber-400 uppercase tracking-widest mb-4' }, 'Corporate Identity'),
+                  e('span', { className: 'font-extrabold text-xl text-white block' }, 'DUMMY'),
+                  e('span', { className: 'text-[10px] font-bold text-amber-400 tracking-widest block uppercase' }, 'TECHNOLOGY GROUP'),
+                  e('p', { className: 'mt-2 text-slate-400' }, 'Leading System Integrator in Indonesia delivering Cloud, Security Platforms, and Managed Services.'),
+                  e('span', { className: 'inline-block mt-3 bg-emerald-950 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded font-mono font-bold' }, 'IDX: DUMM')
+                )
+              )
+            ),
+            e('div', { className: 'bg-slate-950 py-6 border-t border-slate-900 text-center text-xs text-slate-500' },
+              '© 2026 PT Dummy Technology Tbk. All Rights Reserved.'
+            )
+          ),
+
+          // Search Modal
+          isSearchOpen ? e('div', { className: 'fixed inset-0 z-50 flex items-start justify-center pt-20 bg-slate-950/70 backdrop-blur-md' },
+            e('div', { className: 'bg-white rounded-xl p-6 w-full max-w-xl shadow-2xl' },
+              e('div', { className: 'flex justify-between items-center mb-4' },
+                e('h3', { className: 'font-bold text-slate-900' }, 'Search Dummy Technology'),
+                e('button', { onClick: () => setIsSearchOpen(false) }, e(CloseIcon, { className: 'w-5 h-5 text-gray-500' }))
+              ),
+              e('input', {
+                type: 'text',
+                placeholder: 'Type to search services, IT support, news...',
+                value: searchQuery,
+                onChange: (ev) => setSearchQuery(ev.target.value),
+                className: 'w-full border border-gray-300 p-3 rounded-lg text-sm focus:outline-none focus:border-amber-500'
+              })
+            )
+          ) : null,
+
+          // Detail Modal
+          modalData.isOpen ? e('div', { className: 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md' },
+            e('div', { className: 'bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-4' },
+              e('div', { className: 'flex justify-between items-start border-b pb-3' },
+                e('h3', { className: 'font-bold text-slate-900 text-lg' }, modalData.title),
+                e('button', { onClick: () => setModalData({ isOpen: false, title: '', content: '' }) }, e(CloseIcon, { className: 'w-5 h-5 text-gray-500' }))
+              ),
+              e('p', { className: 'text-sm text-slate-700 leading-relaxed whitespace-pre-line' }, modalData.content),
+              e('div', { className: 'pt-2 text-right' },
+                e('button', {
+                  onClick: () => setModalData({ isOpen: false, title: '', content: '' }),
+                  className: 'bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-lg'
+                }, 'Close')
+              )
+            )
+          ) : null
+
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+    }
+  </script>
+</body>
+</html>

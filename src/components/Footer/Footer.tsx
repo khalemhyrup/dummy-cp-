@@ -1,0 +1,184 @@
+import React from 'react';
+import { footerData } from '../../data/homeData';
+import { MapPin, Phone, Printer, Mail, Linkedin, Youtube, Instagram, Facebook, ArrowRight, ShieldCheck } from 'lucide-react';
+
+interface FooterProps {
+  onLinkClick: (linkName: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
+  return (
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
+      
+      {/* Top Footer Banner */}
+      <div className="border-b border-slate-800/80 bg-slate-900/50 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-base">PT Dummy Technology Tbk</h4>
+              <p className="text-xs text-slate-400">Listed Enterprise IT Solutions & Managed Services Provider</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <input
+              type="email"
+              placeholder="Enter corporate email for updates..."
+              className="bg-slate-900 border border-slate-700 text-xs text-white px-4 py-2.5 rounded-lg focus:outline-none focus:border-amber-500 w-64"
+            />
+            <button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-xs transition-colors flex items-center gap-1">
+              <span>Subscribe</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main 3-Column Layout */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          
+          {/* Column 1: Navigation Links */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+              Sitemap & Navigation
+            </h3>
+            
+            <div className="grid grid-cols-1 gap-2 text-xs">
+              {['Home', 'About', 'Product & Service', 'Information'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => onLinkClick(item)}
+                  className="text-left text-slate-400 hover:text-amber-400 transition-colors py-1 flex items-center gap-1 group"
+                >
+                  <span className="text-amber-500/60 group-hover:text-amber-400">›</span>
+                  <span>{item}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-slate-900">
+              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                Core Services
+              </h4>
+              <ul className="space-y-1.5 text-xs text-slate-400">
+                <li className="flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>IT Support & Maintenance</span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  <span>EO (Event Organizer & Tech Events)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Column 2: Head Office Contact */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+              Head Office Contact
+            </h3>
+            
+            <div className="space-y-3.5 text-xs text-slate-300">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{footerData.address}</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>Tel: {footerData.phone}</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Printer className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>Fax: {footerData.fax}</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <a href={`mailto:${footerData.email}`} className="text-amber-400 hover:underline">
+                  {footerData.email}
+                </a>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="pt-4 border-t border-slate-900">
+              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">
+                Connect With Us
+              </h4>
+              <div className="flex items-center space-x-3">
+                {[
+                  { icon: Linkedin, href: '#' },
+                  { icon: Youtube, href: '#' },
+                  { icon: Instagram, href: '#' },
+                  { icon: Facebook, href: '#' },
+                ].map((social, sIdx) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={sIdx}
+                      href={social.href}
+                      className="p-2.5 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-400 transition-all"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Column 3: Corporate Brand & Copyright */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+              Corporate Identity
+            </h3>
+
+            <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+              <div className="flex flex-col">
+                <span className="font-extrabold text-xl text-white tracking-tighter">
+                  DUMMY
+                </span>
+                <span className="text-[10px] font-bold tracking-[0.25em] text-amber-400 uppercase">
+                  TECHNOLOGY GROUP
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Leading IT Support, Solutions, and Event Management Provider in Indonesia.
+              </p>
+              <div className="pt-2 flex items-center justify-between border-t border-slate-800 text-[11px]">
+                <span className="text-slate-400">Stock Ticker</span>
+                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+                  IDX: DUMM
+                </span>
+              </div>
+            </div>
+
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Disclaimer: All product names, logos, and brands are property of their respective owners.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Copyright Bar */}
+      <div className="bg-slate-950 py-6 border-t border-slate-900 text-center text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© 2026 PT Dummy Technology Tbk. All Rights Reserved.</p>
+          <div className="flex items-center space-x-6">
+            <a href="#" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-amber-400 transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+  );
+};
