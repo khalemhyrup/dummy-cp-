@@ -202,10 +202,20 @@
           label: 'Product & Service',
           href: '#product-service',
           hasDropdown: true,
-          megaMenuType: 'vertical',
-          items: [
-            { id: 'it-support', title: 'IT Support' },
-            { id: 'eo', title: 'EO (Event Organizer)' },
+          megaMenuType: 'columns',
+          columns: [
+            {
+              title: 'IT SOLUTIONS',
+              items: [
+                { id: 'it-support', title: 'IT Support' },
+              ],
+            },
+            {
+              title: 'EVENT ORGANIZER',
+              items: [
+                { id: 'eo', title: 'EO (Event Organizer)' },
+              ],
+            },
           ],
         },
         {

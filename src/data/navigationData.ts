@@ -36,10 +36,20 @@ export const navigationData: NavItem[] = [
     label: 'Product & Service',
     href: '#solution',
     hasDropdown: true,
-    megaMenuType: 'vertical',
-    items: [
-      { id: 'it-support', title: 'IT Support', href: '#it-support' },
-      { id: 'eo', title: 'EO (Event Organizer & IT Event Solutions)', href: '#eo' },
+    megaMenuType: 'columns',
+    columns: [
+      {
+        title: 'IT SOLUTIONS',
+        items: [
+          { id: 'it-support', title: 'IT Support', href: '#it-support' },
+        ],
+      },
+      {
+        title: 'EVENT ORGANIZER',
+        items: [
+          { id: 'eo', title: 'EO (Event Organizer & IT Event Solutions)', href: '#eo' },
+        ],
+      },
     ],
   },
   {
