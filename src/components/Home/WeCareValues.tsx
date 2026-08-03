@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { companyValuesData } from '../../data/homeData';
-import { Users, ShieldCheck, HeartHandshake, Award, CheckCircle2 } from 'lucide-react';
+import { Users, ShieldCheck, HeartHandshake, Award } from 'lucide-react';
 
 export const WeCareValues: React.FC = () => {
   const [activeKey, setActiveKey] = useState<string>('C');
-
-  const activeValue = companyValuesData.find((val) => val.key === activeKey) || companyValuesData[0];
 
   const renderIcon = (key: string) => {
     switch (key) {
@@ -40,7 +38,7 @@ export const WeCareValues: React.FC = () => {
         </div>
 
         {/* C.A.R.E. Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {companyValuesData.map((val) => {
             const isSelected = activeKey === val.key;
 
@@ -71,28 +69,6 @@ export const WeCareValues: React.FC = () => {
               </button>
             );
           })}
-        </div>
-
-        {/* Selected Detail Banner */}
-        <div className="bg-slate-800/90 border border-slate-700 rounded-2xl p-8 backdrop-blur-md shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-3 flex-1">
-            <div className="inline-flex items-center gap-2 text-amber-400 font-bold text-xs tracking-wider uppercase">
-              <CheckCircle2 className="w-4 h-4" />
-              <span>CORE VALUE HIGHLIGHT: {activeValue.title}</span>
-            </div>
-            <h3 className="text-2xl font-bold text-white">
-              {activeValue.title} – {activeValue.tagline}
-            </h3>
-            <p className="text-slate-300 text-sm leading-relaxed max-w-3xl">
-              {activeValue.description}
-            </p>
-          </div>
-
-          <div className="flex-shrink-0">
-            <div className="w-20 h-20 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-              <span className="text-5xl font-black">{activeValue.key}</span>
-            </div>
-          </div>
         </div>
 
       </div>
