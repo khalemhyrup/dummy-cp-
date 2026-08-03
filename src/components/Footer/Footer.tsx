@@ -8,18 +8,18 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
+    <footer className="bg-[#181818] text-gray-300 border-t border-[#2a2a2a]">
       
       {/* Top Footer Banner */}
-      <div className="border-b border-slate-800/80 bg-slate-900/50 py-10">
+      <div className="border-b border-[#2a2a2a] bg-[#141414] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-12 h-12 rounded-xl bg-[#262626] border border-[#333333] flex items-center justify-center text-amber-400">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
               <h4 className="font-bold text-white text-base">PT Dummy Technology Tbk</h4>
-              <p className="text-xs text-slate-400">Listed Enterprise IT Solutions & Managed Services Provider</p>
+              <p className="text-xs text-gray-400">Listed Enterprise IT Solutions & Managed Services Provider</p>
             </div>
           </div>
 
@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             <input
               type="email"
               placeholder="Enter corporate email for updates..."
-              className="bg-slate-900 border border-slate-700 text-xs text-white px-4 py-2.5 rounded-lg focus:outline-none focus:border-amber-500 w-64"
+              className="bg-[#222222] border border-[#333333] text-xs text-white px-4 py-2.5 rounded-lg focus:outline-none focus:border-amber-500 w-64 placeholder-gray-500"
             />
             <button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-xs transition-colors flex items-center gap-1">
               <span>Subscribe</span>
@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
           
           {/* Column 1: Navigation Links */}
           <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-[#2a2a2a] pb-2">
               Sitemap & Navigation
             </h3>
             
@@ -52,19 +52,19 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                 <button
                   key={item}
                   onClick={() => onLinkClick(item)}
-                  className="text-left text-slate-400 hover:text-amber-400 transition-colors py-1 flex items-center gap-1 group"
+                  className="text-left text-gray-400 hover:text-white transition-colors py-1 flex items-center gap-1 group"
                 >
-                  <span className="text-amber-500/60 group-hover:text-amber-400">›</span>
+                  <span className="text-amber-500/80 group-hover:text-amber-400">›</span>
                   <span>{item}</span>
                 </button>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-slate-900">
-              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+            <div className="pt-4 border-t border-[#262626]">
+              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">
                 Core Services
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-400">
+              <ul className="space-y-1.5 text-xs text-gray-400">
                 <li className="flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                   <span>IT Support & Maintenance</span>
@@ -79,11 +79,11 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
 
           {/* Column 2: Head Office Contact */}
           <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-[#2a2a2a] pb-2">
               Head Office Contact
             </h3>
             
-            <div className="space-y-3.5 text-xs text-slate-300">
+            <div className="space-y-3.5 text-xs text-gray-300">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{footerData.address}</span>
@@ -108,8 +108,8 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             </div>
 
             {/* Social Links */}
-            <div className="pt-4 border-t border-slate-900">
-              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">
+            <div className="pt-4 border-t border-[#262626]">
+              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-3">
                 Connect With Us
               </h4>
               <div className="flex items-center space-x-3">
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                     <a
                       key={sIdx}
                       href={social.href}
-                      className="p-2.5 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-slate-400 transition-all"
+                      className="p-2.5 rounded-lg bg-[#262626] hover:bg-amber-500 hover:text-slate-950 text-gray-300 transition-all"
                     >
                       <Icon className="w-4 h-4" />
                     </a>
@@ -136,11 +136,11 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
 
           {/* Column 3: Corporate Brand & Copyright */}
           <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-amber-400 uppercase border-b border-slate-800 pb-2">
+            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-[#2a2a2a] pb-2">
               Corporate Identity
             </h3>
 
-            <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div className="bg-[#141414] p-6 rounded-2xl border border-[#2a2a2a] space-y-4">
               <div className="flex flex-col">
                 <span className="font-extrabold text-xl text-white tracking-tighter">
                   DUMMY
@@ -149,18 +149,18 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                   TECHNOLOGY GROUP
                 </span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-gray-400 leading-relaxed">
                 Leading IT Support, Solutions, and Event Management Provider in Indonesia.
               </p>
-              <div className="pt-2 flex items-center justify-between border-t border-slate-800 text-[11px]">
-                <span className="text-slate-400">Stock Ticker</span>
-                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+              <div className="pt-2 flex items-center justify-between border-t border-[#262626] text-[11px]">
+                <span className="text-gray-400">Stock Ticker</span>
+                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
                   IDX: DUMM
                 </span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-gray-500 leading-relaxed">
               Disclaimer: All product names, logos, and brands are property of their respective owners.
             </p>
           </div>
@@ -169,12 +169,12 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
       </div>
 
       {/* Copyright Bar */}
-      <div className="bg-slate-950 py-6 border-t border-slate-900 text-center text-xs text-slate-500">
+      <div className="bg-[#121212] py-6 border-t border-[#222222] text-center text-xs text-gray-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 PT Dummy Technology Tbk. All Rights Reserved.</p>
           <div className="flex items-center space-x-6">
-            <a href="#" className="hover:text-amber-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-amber-400 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
