@@ -54,7 +54,7 @@ export const HeroBanner: React.FC = () => {
 
           {/* Actions & CTA */}
           <div className="pt-4 flex flex-wrap items-center gap-4">
-            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold px-7 py-3.5 rounded-lg shadow-lg hover:shadow-amber-500/25 transition-all transform hover:-translate-y-0.5">
+            <button className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-3.5 rounded-lg shadow-md transition-all transform hover:-translate-y-0.5">
               <span>{slide.ctaText}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
