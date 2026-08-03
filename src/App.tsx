@@ -4,7 +4,6 @@ import { HeroBanner } from './components/Home/HeroBanner';
 import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
-import { CareerBanner } from './components/Home/CareerBanner';
 import { Footer } from './components/Footer/Footer';
 import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
@@ -75,9 +74,6 @@ export const App: React.FC = () => {
 
         {/* Section 4: We CARE Corporate Values */}
         <WeCareValues />
-
-        {/* Section 5: Career Recruitment CTA Banner */}
-        <CareerBanner onCareerClick={() => handleMenuItemClick('Career')} />
       </main>
 
       {/* Persistent 3-Column Footer */}
