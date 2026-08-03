@@ -395,11 +395,11 @@
               )
             ),
 
-            // Mega Menu Dropdown Panel
+            // Desktop Mega Menu Dropdown Panel (Hidden on mobile)
             activeNavObj && activeNavObj.hasDropdown ? e('div', {
               onMouseEnter: () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); },
               onMouseLeave: handleMouseLeave,
-              className: 'absolute top-full left-0 right-0 w-full z-50 animate-fadeIn'
+              className: 'absolute top-full left-0 right-0 w-full z-50 animate-fadeIn hidden lg:block'
             },
               e('div', { className: 'max-w-7xl mx-auto px-6 relative' },
                 e('div', { className: 'bg-white shadow-2xl rounded-b-xl border-t-2 border-amber-500 p-6 text-gray-800 text-sm relative' },
@@ -439,6 +439,56 @@
                   ) : null
                 )
               )
+            ) : null,
+
+            // Mobile Navigation Drawer (Visible when hamburger button is clicked)
+            mobileMenuOpen ? e('div', { className: 'lg:hidden bg-white border-b border-gray-200 px-4 py-4 space-y-3 shadow-xl max-h-[85vh] overflow-y-auto animate-fadeIn' },
+              navigationData.map((item) => e('div', { key: item.id, className: 'border-b border-gray-100 pb-2' },
+                e('div', {
+                  className: 'flex items-center justify-between font-bold text-slate-900 py-2.5 cursor-pointer text-base hover:text-amber-600',
+                  onClick: () => {
+                    if (item.hasDropdown) {
+                      setActiveDropdown(activeDropdown === item.id ? null : item.id);
+                    } else {
+                      openModal(item.label);
+                      setMobileMenuOpen(false);
+                    }
+                  }
+                },
+                  e('span', null, item.label),
+                  item.hasDropdown ? e(ChevronDown, { className: `w-4 h-4 transition-transform ${activeDropdown === item.id ? 'rotate-180 text-amber-600' : 'text-gray-400'}` }) : null
+                ),
+
+                // Accordion items inside mobile drawer
+                item.hasDropdown && activeDropdown === item.id ? e('div', { className: 'pl-3 pt-2 pb-2 space-y-2 bg-slate-50/80 rounded-lg my-1' },
+                  item.megaMenuType === 'columns' && item.columns ? item.columns.map((col, cIdx) => e('div', { key: cIdx, className: 'mb-2' },
+                    col.title ? e('div', { className: 'text-[11px] font-bold text-amber-700 tracking-wider uppercase mb-1' }, col.title) : null,
+                    e('ul', { className: 'space-y-1.5' },
+                      col.items.map((sub) => e('li', { key: sub.id },
+                        e('button', {
+                          onClick: () => { openModal(sub.title); setMobileMenuOpen(false); },
+                          className: 'text-xs font-medium text-slate-700 hover:text-amber-600 py-1 flex items-center gap-1.5 text-left w-full'
+                        },
+                          e(ChevronRight, { className: 'w-3 h-3 text-amber-500' }),
+                          e('span', null, sub.title)
+                        )
+                      ))
+                    )
+                  )) : null,
+
+                  item.megaMenuType === 'vertical' && item.items ? item.items.map((sub) => e('button', {
+                    key: sub.id,
+                    onClick: () => {
+                      openModal(sub.title, `Product & Service Details: ${sub.title}. PT Dummy Technology Tbk provides complete professional setup, maintenance, SLAs, and technical management.`);
+                      setMobileMenuOpen(false);
+                    },
+                    className: 'text-xs font-bold text-slate-800 hover:text-amber-600 py-2 px-2 flex items-center justify-between w-full rounded hover:bg-white text-left'
+                  },
+                    e('span', null, sub.title),
+                    e(ChevronRight, { className: 'w-3.5 h-3.5 text-amber-500' })
+                  )) : null
+                ) : null
+              ))
             ) : null
           ),
 

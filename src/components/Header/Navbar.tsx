@@ -163,6 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Desktop Mega-Menu Container */}
       {currentActiveNav && (
         <div
+          className="hidden lg:block"
           onMouseEnter={() => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
           }}
