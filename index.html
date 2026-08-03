@@ -223,12 +223,22 @@
           label: 'Information',
           href: '#information',
           hasDropdown: true,
-          megaMenuType: 'vertical',
-          items: [
-            { id: 'news', title: 'News & Updates' },
-            { id: 'activities', title: 'Company Activities' },
-            { id: 'csr', title: 'Corporate Social Responsibility (CSR)' },
-            { id: 'announcements', title: 'Official Announcements' },
+          megaMenuType: 'columns',
+          columns: [
+            {
+              title: 'NEWS & MEDIA',
+              items: [
+                { id: 'news', title: 'News & Updates' },
+                { id: 'activities', title: 'Company Activities' },
+              ],
+            },
+            {
+              title: 'PUBLICATIONS & CSR',
+              items: [
+                { id: 'csr', title: 'Corporate Social Responsibility (CSR)' },
+                { id: 'announcements', title: 'Official Announcements' },
+              ],
+            },
           ],
         },
       ];
@@ -358,7 +368,14 @@
               e('div', { className: 'flex items-center justify-between h-20' },
                 
                 // Logo
-                e('a', { href: '#', className: 'flex items-center gap-3' },
+                e('a', {
+                  href: '#',
+                  onClick: (ev) => {
+                    ev.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  },
+                  className: 'flex items-center gap-3'
+                },
                   e('div', { className: 'flex flex-col' },
                     e('span', { className: 'font-extrabold text-xl sm:text-2xl tracking-tighter text-slate-900' }, 'DUMMY'),
                     e('span', { className: 'text-[10px] font-bold tracking-[0.25em] text-amber-600 uppercase -mt-1' }, 'TECHNOLOGY GROUP')
@@ -376,8 +393,14 @@
                     return e('div', { key: item.id, className: 'relative py-7', onMouseEnter: () => handleMouseEnter(item.id, item.hasDropdown) },
                       e('button', {
                         onClick: () => {
-                          if (item.hasDropdown) setActiveDropdown(isActive ? null : item.id);
-                          else openModal(item.label);
+                          if (item.hasDropdown) {
+                            setActiveDropdown(isActive ? null : item.id);
+                          } else if (item.id === 'home' || item.label === 'Home') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            setActiveDropdown(null);
+                          } else {
+                            openModal(item.label);
+                          }
                         },
                         className: `flex items-center gap-1.5 text-sm font-semibold transition-colors py-1.5 px-3 rounded-md ${isActive ? 'text-amber-600 bg-amber-50/60' : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'}`
                       },
@@ -459,6 +482,10 @@
                   onClick: () => {
                     if (item.hasDropdown) {
                       setActiveDropdown(activeDropdown === item.id ? null : item.id);
+                    } else if (item.id === 'home' || item.label === 'Home') {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      setActiveDropdown(null);
+                      setMobileMenuOpen(false);
                     } else {
                       openModal(item.label);
                       setMobileMenuOpen(false);

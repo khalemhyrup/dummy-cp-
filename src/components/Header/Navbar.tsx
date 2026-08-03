@@ -82,6 +82,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => {
                       if (item.hasDropdown) {
                         setActiveDropdown(isActive ? null : item.id);
+                      } else if (item.id === 'home' || item.label === 'Home') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setActiveDropdown(null);
                       } else {
                         onMenuItemClick(item.label);
                       }

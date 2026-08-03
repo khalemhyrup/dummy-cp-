@@ -57,12 +57,22 @@ export const navigationData: NavItem[] = [
     label: 'Information',
     href: '#information',
     hasDropdown: true,
-    megaMenuType: 'vertical',
-    items: [
-      { id: 'news', title: 'News & Updates', href: '#news' },
-      { id: 'activities', title: 'Company Activities', href: '#activities' },
-      { id: 'csr', title: 'Corporate Social Responsibility (CSR)', href: '#csr' },
-      { id: 'announcements', title: 'Official Press Releases', href: '#press-release' },
+    megaMenuType: 'columns',
+    columns: [
+      {
+        title: 'NEWS & MEDIA',
+        items: [
+          { id: 'news', title: 'News & Updates', href: '#news' },
+          { id: 'activities', title: 'Company Activities', href: '#activities' },
+        ],
+      },
+      {
+        title: 'PUBLICATIONS & CSR',
+        items: [
+          { id: 'csr', title: 'Corporate Social Responsibility (CSR)', href: '#csr' },
+          { id: 'announcements', title: 'Official Press Releases', href: '#press-release' },
+        ],
+      },
     ],
   },
 ];
