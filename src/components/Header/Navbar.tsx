@@ -88,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               const isDropdownActive = activeDropdown === item.id;
               const isPageActive =
                 (currentPage === 'about' && (item.id === 'about' || item.label === 'About')) ||
-                (currentPage === 'services' && (item.id === 'product-service' || item.label.includes('Service'))) ||
+                (currentPage === 'service' && (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product'))) ||
                 (currentPage === 'home' && (item.id === 'home' || item.label === 'Home'));
 
               return (
@@ -100,15 +100,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     onClick={() => {
                       if (item.id === 'about' || item.label === 'About') {
-                        if (onNavigate) onNavigate('about');
+                        if (onNavigate) {
+                          onNavigate('about');
+                        }
                         onMenuItemClick('About Us');
                         setActiveDropdown(null);
-                      } else if (item.id === 'product-service' || item.label.includes('Service')) {
-                        if (onNavigate) onNavigate('services');
+                      } else if (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product')) {
+                        if (onNavigate) {
+                          onNavigate('service');
+                        }
                         onMenuItemClick('Product & Service');
                         setActiveDropdown(null);
                       } else if (item.id === 'home' || item.label === 'Home') {
-                        if (onNavigate) onNavigate('home');
+                        if (onNavigate) {
+                          onNavigate('home');
+                        }
                         onMenuItemClick('Home');
                         setActiveDropdown(null);
                       } else if (item.hasDropdown) {
@@ -225,8 +231,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onMenuItemClick('About Us');
                     setActiveDropdown(null);
                     setMobileMenuOpen(false);
-                  } else if (item.id === 'product-service' || item.label.includes('Service')) {
-                    if (onNavigate) onNavigate('services');
+                  } else if (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product')) {
+                    if (onNavigate) onNavigate('service');
                     onMenuItemClick('Product & Service');
                     setActiveDropdown(null);
                     setMobileMenuOpen(false);
