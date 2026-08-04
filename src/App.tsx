@@ -5,13 +5,14 @@ import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
 import { AboutUs } from './components/About/AboutUs';
+import { ServicesPage } from './components/Services/ServicesPage';
 import { Footer } from './components/Footer/Footer';
 import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'services'>('home');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const [activeModal, setActiveModal] = useState<{
@@ -24,9 +25,11 @@ export const App: React.FC = () => {
     title: '',
   });
 
-  const handleNavigate = (page: 'home' | 'about' | string) => {
+  const handleNavigate = (page: 'home' | 'about' | 'services' | string) => {
     if (page === 'about') {
       setCurrentPage('about');
+    } else if (page === 'services' || page === 'product-service' || page === 'solution') {
+      setCurrentPage('services');
     } else {
       setCurrentPage('home');
     }
@@ -51,6 +54,20 @@ export const App: React.FC = () => {
       itemIdLower === 'leadership'
     ) {
       handleNavigate('about');
+      return;
+    }
+
+    if (
+      titleLower.includes('product') ||
+      titleLower.includes('service') ||
+      titleLower.includes('it support') ||
+      titleLower.includes('eo') ||
+      itemIdLower === 'product-service' ||
+      itemIdLower === 'services' ||
+      itemIdLower === 'it-support' ||
+      itemIdLower === 'eo'
+    ) {
+      handleNavigate('services');
       return;
     }
 
@@ -100,9 +117,20 @@ export const App: React.FC = () => {
 
       {/* Main Page Content */}
       <main className="flex-1">
-        {currentPage === 'about' ? (
-          <AboutUs />
-        ) : (
+        {currentPage === 'about' && <AboutUs />}
+        {currentPage === 'services' && (
+          <ServicesPage
+            onSelectDetail={(title, detail) => {
+              setActiveModal({
+                isOpen: true,
+                title: title,
+                category: 'Service Specification',
+                content: detail,
+              });
+            }}
+          />
+        )}
+        {currentPage === 'home' && (
           <>
             {/* Section 1: Hero Carousel Banner */}
             <HeroBanner />
