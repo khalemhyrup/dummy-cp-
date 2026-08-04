@@ -4,13 +4,14 @@ import { HeroBanner } from './components/Home/HeroBanner';
 import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
+import { AboutUs } from './components/About/AboutUs';
 import { Footer } from './components/Footer/Footer';
 import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('about');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const [activeModal, setActiveModal] = useState<{
@@ -23,8 +24,41 @@ export const App: React.FC = () => {
     title: '',
   });
 
+  const handleNavigate = (page: 'home' | 'about' | string) => {
+    if (page === 'about') {
+      setCurrentPage('about');
+    } else {
+      setCurrentPage('home');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleMenuItemClick = (item: MenuItem | string) => {
     const title = typeof item === 'string' ? item : item.title;
+    const itemId = typeof item === 'object' ? item.id : '';
+
+    const titleLower = title.toLowerCase();
+    const itemIdLower = itemId.toLowerCase();
+
+    if (
+      titleLower === 'about' ||
+      titleLower === 'about us' ||
+      itemIdLower === 'about' ||
+      itemIdLower === 'about-us' ||
+      itemIdLower === 'milestones' ||
+      itemIdLower === 'values' ||
+      itemIdLower === 'org-structure' ||
+      itemIdLower === 'leadership'
+    ) {
+      handleNavigate('about');
+      return;
+    }
+
+    if (titleLower === 'home' || itemIdLower === 'home') {
+      handleNavigate('home');
+      return;
+    }
+
     setActiveModal({
       isOpen: true,
       title: title,
@@ -53,9 +87,11 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col selection:bg-amber-500 selection:text-slate-950">
-
+      
       {/* Persistent Header Navbar */}
       <Navbar
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         onSearchOpen={() => setIsSearchOpen(true)}
         onMenuItemClick={handleMenuItemClick}
         currentLang={currentLang}
@@ -64,17 +100,23 @@ export const App: React.FC = () => {
 
       {/* Main Page Content */}
       <main className="flex-1">
-        {/* Section 1: Hero Carousel Banner */}
-        <HeroBanner />
+        {currentPage === 'about' ? (
+          <AboutUs />
+        ) : (
+          <>
+            {/* Section 1: Hero Carousel Banner */}
+            <HeroBanner />
 
-        {/* Section 2: Newest Updates (News, Activities, CSR, Press Release) */}
-        <NewestUpdates onSelectArticle={handleSelectArticle} />
+            {/* Section 2: Newest Updates (News, Activities, CSR, Press Release) */}
+            <NewestUpdates onSelectArticle={handleSelectArticle} />
 
-        {/* Section 3: Strategic Alliances (Global IT Partner Grid) */}
-        <StrategicAlliances />
+            {/* Section 3: Strategic Alliances (Global IT Partner Grid) */}
+            <StrategicAlliances />
 
-        {/* Section 4: We CARE Corporate Values */}
-        <WeCareValues />
+            {/* Section 4: We CARE Corporate Values */}
+            <WeCareValues />
+          </>
+        )}
       </main>
 
       {/* Persistent 3-Column Footer */}

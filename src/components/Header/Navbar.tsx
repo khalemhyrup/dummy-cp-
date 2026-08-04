@@ -9,6 +9,8 @@ interface NavbarProps {
   onMenuItemClick: (item: MenuItem | string) => void;
   currentLang: 'ID' | 'EN';
   onLangChange: (lang: 'ID' | 'EN') => void;
+  currentPage?: string;
+  onNavigate?: (page: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -16,6 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onMenuItemClick,
   currentLang,
   onLangChange,
+  currentPage = 'home',
+  onNavigate,
 }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,6 +50,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="#"
             onClick={(ev) => {
               ev.preventDefault();
+              if (onNavigate) {
+                onNavigate('home');
+              }
+              onMenuItemClick('Home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="flex items-center gap-3 group focus:outline-none"
@@ -71,13 +79,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </a>
 
-          {/* Desktop Main Navigation List (Without Downloads) */}
+          {/* Desktop Main Navigation List */}
           <nav
             className="hidden lg:flex items-center space-x-1 xl:space-x-2"
             onMouseLeave={handleMouseLeave}
           >
             {navigationData.map((item) => {
-              const isActive = activeDropdown === item.id;
+              const isDropdownActive = activeDropdown === item.id;
+              const isPageActive =
+                (currentPage === 'about' && (item.id === 'about' || item.label === 'About')) ||
+                (currentPage === 'home' && (item.id === 'home' || item.label === 'Home'));
 
               return (
                 <div
@@ -87,25 +98,36 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <button
                     onClick={() => {
-                      if (item.hasDropdown) {
-                        setActiveDropdown(isActive ? null : item.id);
-                      } else if (item.id === 'home' || item.label === 'Home') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      if (item.id === 'about' || item.label === 'About') {
+                        if (onNavigate) {
+                          onNavigate('about');
+                        }
+                        onMenuItemClick('About Us');
                         setActiveDropdown(null);
+                      } else if (item.id === 'home' || item.label === 'Home') {
+                        if (onNavigate) {
+                          onNavigate('home');
+                        }
+                        onMenuItemClick('Home');
+                        setActiveDropdown(null);
+                      } else if (item.hasDropdown) {
+                        setActiveDropdown(isDropdownActive ? null : item.id);
                       } else {
                         onMenuItemClick(item.label);
                       }
                     }}
-                    className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${isActive
+                    className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${
+                      isPageActive || isDropdownActive
                         ? 'text-amber-600 bg-amber-50/50'
                         : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'
-                      }`}
+                    }`}
                   >
                     <span>{item.label}</span>
                     {item.hasDropdown && (
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${isActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
-                          }`}
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isDropdownActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                        }`}
                       />
                     )}
                   </button>
@@ -122,10 +144,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => onLangChange('ID')}
                 title="Indonesian"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'ID'
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
+                  currentLang === 'ID'
                     ? 'bg-white text-red-600 shadow-xs'
                     : 'text-gray-500 hover:text-gray-800'
-                  }`}
+                }`}
               >
                 <span className="text-base leading-none">🇮🇩</span>
                 <span className="hidden sm:inline">ID</span>
@@ -133,10 +156,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => onLangChange('EN')}
                 title="English"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'EN'
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
+                  currentLang === 'EN'
                     ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-gray-500 hover:text-gray-800'
-                  }`}
+                }`}
               >
                 <span className="text-base leading-none">🇬🇧</span>
                 <span className="hidden sm:inline">EN</span>
@@ -178,7 +202,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <MegaMenu
             navItem={currentActiveNav}
             isOpen={!!currentActiveNav}
-            onItemClick={onMenuItemClick}
+            onItemClick={(item) => {
+              onMenuItemClick(item);
+              setActiveDropdown(null);
+            }}
             lang={currentLang}
           />
         </div>
@@ -192,12 +219,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div
                 className="flex items-center justify-between font-bold text-gray-800 py-2 cursor-pointer"
                 onClick={() => {
-                  if (item.hasDropdown) {
-                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
-                  } else if (item.id === 'home' || item.label === 'Home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  if (item.id === 'about' || item.label === 'About') {
+                    if (onNavigate) {
+                      onNavigate('about');
+                    }
+                    onMenuItemClick('About Us');
                     setActiveDropdown(null);
                     setMobileMenuOpen(false);
+                  } else if (item.id === 'home' || item.label === 'Home') {
+                    if (onNavigate) {
+                      onNavigate('home');
+                    }
+                    onMenuItemClick('Home');
+                    setActiveDropdown(null);
+                    setMobileMenuOpen(false);
+                  } else if (item.hasDropdown) {
+                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
                   } else {
                     onMenuItemClick(item.label);
                     setMobileMenuOpen(false);
@@ -207,8 +244,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>{item.label}</span>
                 {item.hasDropdown && (
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform ${activeDropdown === item.id ? 'rotate-180 text-amber-600' : 'text-gray-400'
-                      }`}
+                    className={`w-4 h-4 transition-transform ${
+                      activeDropdown === item.id ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                    }`}
                   />
                 )}
               </div>
@@ -230,6 +268,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                                 onClick={() => {
                                   onMenuItemClick(sub);
                                   setMobileMenuOpen(false);
+                                  setActiveDropdown(null);
                                 }}
                                 className="text-xs text-gray-600 hover:text-amber-600 py-1 block text-left"
                               >
@@ -244,10 +283,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {item.megaMenuType === 'vertical' &&
                     item.items?.map((sub) => (
                       <button
-                        key={sub.id}
                         onClick={() => {
                           onMenuItemClick(sub);
                           setMobileMenuOpen(false);
+                          setActiveDropdown(null);
                         }}
                         className="text-xs text-gray-600 hover:text-amber-600 py-1.5 block w-full text-left"
                       >

@@ -11,7 +11,25 @@ export const navigationData: NavItem[] = [
     id: 'about',
     label: 'About',
     href: '#about',
-    hasDropdown: false,
+    hasDropdown: true,
+    megaMenuType: 'columns',
+    columns: [
+      {
+        title: 'PROFILE',
+        items: [
+          { id: 'about-us', title: 'About Us', href: '#about' },
+          { id: 'milestones', title: 'Company Milestones', href: '#milestone' },
+          { id: 'values', title: 'Core Values (We CARE)', href: '#values' },
+        ],
+      },
+      {
+        title: 'MANAGEMENT',
+        items: [
+          { id: 'org-structure', title: 'Organization Structure', href: '#management' },
+          { id: 'leadership', title: 'Board & Leadership', href: '#management' },
+        ],
+      },
+    ],
   },
   {
     id: 'product-service',
