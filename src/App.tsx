@@ -10,6 +10,7 @@ import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
 export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('about');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const [activeModal, setActiveModal] = useState<{
@@ -52,7 +53,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col selection:bg-amber-500 selection:text-slate-950">
-      
+
       {/* Persistent Header Navbar */}
       <Navbar
         onSearchOpen={() => setIsSearchOpen(true)}

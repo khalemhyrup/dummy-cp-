@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Logo Area */}
           <a
             href="#"
@@ -96,18 +96,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onMenuItemClick(item.label);
                       }
                     }}
-                    className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${
-                      isActive
+                    className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${isActive
                         ? 'text-amber-600 bg-amber-50/50'
                         : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     <span>{item.label}</span>
                     {item.hasDropdown && (
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          isActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
-                        }`}
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${isActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                          }`}
                       />
                     )}
                   </button>
@@ -118,17 +116,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Utility Tools: Language Switch & Search */}
           <div className="flex items-center space-x-3 sm:space-x-4">
-            
+
             {/* Language Switcher */}
             <div className="flex items-center bg-gray-100/80 rounded-full p-1 border border-gray-200">
               <button
                 onClick={() => onLangChange('ID')}
                 title="Indonesian"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
-                  currentLang === 'ID'
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'ID'
                     ? 'bg-white text-red-600 shadow-xs'
                     : 'text-gray-500 hover:text-gray-800'
-                }`}
+                  }`}
               >
                 <span className="text-base leading-none">🇮🇩</span>
                 <span className="hidden sm:inline">ID</span>
@@ -136,11 +133,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => onLangChange('EN')}
                 title="English"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
-                  currentLang === 'EN'
+                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${currentLang === 'EN'
                     ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-gray-500 hover:text-gray-800'
-                }`}
+                  }`}
               >
                 <span className="text-base leading-none">🇬🇧</span>
                 <span className="hidden sm:inline">EN</span>
@@ -211,9 +207,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>{item.label}</span>
                 {item.hasDropdown && (
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      activeDropdown === item.id ? 'rotate-180 text-amber-600' : 'text-gray-400'
-                    }`}
+                    className={`w-4 h-4 transition-transform ${activeDropdown === item.id ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                      }`}
                   />
                 )}
               </div>
