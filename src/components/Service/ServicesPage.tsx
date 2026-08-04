@@ -15,7 +15,7 @@ interface ServicesPageProps {
   onContactClick?: () => void;
 }
 
-export const ServicesPage: React.FC<ServicesPageProps> = () => {
+export const ServicesPage: React.FC<ServicesPageProps> = ({ onContactClick }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
