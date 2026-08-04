@@ -9,6 +9,8 @@ interface NavbarProps {
   onMenuItemClick: (item: MenuItem | string) => void;
   currentLang: 'ID' | 'EN';
   onLangChange: (lang: 'ID' | 'EN') => void;
+  currentPage?: string;
+  onNavigate?: (page: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -16,6 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onMenuItemClick,
   currentLang,
   onLangChange,
+  currentPage = 'home',
+  onNavigate,
 }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,12 +44,16 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Logo Area */}
           <a
             href="#"
             onClick={(ev) => {
               ev.preventDefault();
+              if (onNavigate) {
+                onNavigate('home');
+              }
+              onMenuItemClick('Home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="flex items-center gap-3 group focus:outline-none"
@@ -71,13 +79,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </a>
 
-          {/* Desktop Main Navigation List (Without Downloads) */}
+          {/* Desktop Main Navigation List */}
           <nav
             className="hidden lg:flex items-center space-x-1 xl:space-x-2"
             onMouseLeave={handleMouseLeave}
           >
             {navigationData.map((item) => {
-              const isActive = activeDropdown === item.id;
+              const isDropdownActive = activeDropdown === item.id;
+              const isPageActive =
+                (currentPage === 'about' && (item.id === 'about' || item.label === 'About')) ||
+                (currentPage === 'service' && (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product'))) ||
+                (currentPage === 'home' && (item.id === 'home' || item.label === 'Home'));
 
               return (
                 <div
@@ -87,17 +99,32 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <button
                     onClick={() => {
-                      if (item.hasDropdown) {
-                        setActiveDropdown(isActive ? null : item.id);
-                      } else if (item.id === 'home' || item.label === 'Home') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      if (item.id === 'about' || item.label === 'About') {
+                        if (onNavigate) {
+                          onNavigate('about');
+                        }
+                        onMenuItemClick('About Us');
                         setActiveDropdown(null);
+                      } else if (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product')) {
+                        if (onNavigate) {
+                          onNavigate('service');
+                        }
+                        onMenuItemClick('Product & Service');
+                        setActiveDropdown(null);
+                      } else if (item.id === 'home' || item.label === 'Home') {
+                        if (onNavigate) {
+                          onNavigate('home');
+                        }
+                        onMenuItemClick('Home');
+                        setActiveDropdown(null);
+                      } else if (item.hasDropdown) {
+                        setActiveDropdown(isDropdownActive ? null : item.id);
                       } else {
                         onMenuItemClick(item.label);
                       }
                     }}
                     className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${
-                      isActive
+                      isPageActive || isDropdownActive
                         ? 'text-amber-600 bg-amber-50/50'
                         : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'
                     }`}
@@ -106,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {item.hasDropdown && (
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          isActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                          isDropdownActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
                         }`}
                       />
                     )}
@@ -118,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Utility Tools: Language Switch & Search */}
           <div className="flex items-center space-x-3 sm:space-x-4">
-            
+
             {/* Language Switcher */}
             <div className="flex items-center bg-gray-100/80 rounded-full p-1 border border-gray-200">
               <button
@@ -182,7 +209,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <MegaMenu
             navItem={currentActiveNav}
             isOpen={!!currentActiveNav}
-            onItemClick={onMenuItemClick}
+            onItemClick={(item) => {
+              onMenuItemClick(item);
+              setActiveDropdown(null);
+            }}
             lang={currentLang}
           />
         </div>
@@ -196,12 +226,23 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div
                 className="flex items-center justify-between font-bold text-gray-800 py-2 cursor-pointer"
                 onClick={() => {
-                  if (item.hasDropdown) {
-                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
-                  } else if (item.id === 'home' || item.label === 'Home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  if (item.id === 'about' || item.label === 'About') {
+                    if (onNavigate) onNavigate('about');
+                    onMenuItemClick('About Us');
                     setActiveDropdown(null);
                     setMobileMenuOpen(false);
+                  } else if (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product')) {
+                    if (onNavigate) onNavigate('service');
+                    onMenuItemClick('Product & Service');
+                    setActiveDropdown(null);
+                    setMobileMenuOpen(false);
+                  } else if (item.id === 'home' || item.label === 'Home') {
+                    if (onNavigate) onNavigate('home');
+                    onMenuItemClick('Home');
+                    setActiveDropdown(null);
+                    setMobileMenuOpen(false);
+                  } else if (item.hasDropdown) {
+                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
                   } else {
                     onMenuItemClick(item.label);
                     setMobileMenuOpen(false);
@@ -235,6 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                                 onClick={() => {
                                   onMenuItemClick(sub);
                                   setMobileMenuOpen(false);
+                                  setActiveDropdown(null);
                                 }}
                                 className="text-xs text-gray-600 hover:text-amber-600 py-1 block text-left"
                               >
@@ -249,10 +291,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {item.megaMenuType === 'vertical' &&
                     item.items?.map((sub) => (
                       <button
-                        key={sub.id}
                         onClick={() => {
                           onMenuItemClick(sub);
                           setMobileMenuOpen(false);
+                          setActiveDropdown(null);
                         }}
                         className="text-xs text-gray-600 hover:text-amber-600 py-1.5 block w-full text-left"
                       >

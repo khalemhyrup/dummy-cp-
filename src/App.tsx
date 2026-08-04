@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Header/Navbar';
 import { HeroBanner } from './components/Home/HeroBanner';
 import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
+import { AboutUs } from './components/About/AboutUs';
+import { ServicesPage } from './components/Service/ServicesPage';
 import { Footer } from './components/Footer/Footer';
 import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
+type PageType = 'home' | 'about' | 'service';
+
+const getInitialPage = (): PageType => {
+  if (typeof window !== 'undefined') {
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash === 'about' || hash === 'about-us') return 'about';
+    if (hash === 'service' || hash === 'services' || hash === 'product-service') return 'service';
+    
+    const saved = localStorage.getItem('currentPage') as PageType;
+    if (saved === 'about' || saved === 'service' || saved === 'home') {
+      return saved;
+    }
+  }
+  return 'home';
+};
+
 export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<PageType>(getInitialPage);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const [activeModal, setActiveModal] = useState<{
@@ -22,8 +41,82 @@ export const App: React.FC = () => {
     title: '',
   });
 
+  const handleNavigate = (page: PageType | string) => {
+    let target: PageType = 'home';
+    if (page === 'about' || page === 'about-us') {
+      target = 'about';
+    } else if (page === 'service' || page === 'services' || page === 'product-service') {
+      target = 'service';
+    } else {
+      target = 'home';
+    }
+
+    setCurrentPage(target);
+    localStorage.setItem('currentPage', target);
+    window.location.hash = target === 'home' ? '' : target;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'about' || hash === 'about-us') {
+        setCurrentPage('about');
+        localStorage.setItem('currentPage', 'about');
+      } else if (hash === 'service' || hash === 'services' || hash === 'product-service') {
+        setCurrentPage('service');
+        localStorage.setItem('currentPage', 'service');
+      } else if (hash === '' || hash === 'home') {
+        setCurrentPage('home');
+        localStorage.setItem('currentPage', 'home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const handleMenuItemClick = (item: MenuItem | string) => {
     const title = typeof item === 'string' ? item : item.title;
+    const itemId = typeof item === 'object' ? item.id : '';
+
+    const titleLower = title.toLowerCase();
+    const itemIdLower = itemId.toLowerCase();
+
+    // Navigate to About page
+    if (
+      titleLower === 'about' ||
+      titleLower === 'about us' ||
+      itemIdLower === 'about' ||
+      itemIdLower === 'about-us' ||
+      itemIdLower === 'milestones' ||
+      itemIdLower === 'values' ||
+      itemIdLower === 'org-structure' ||
+      itemIdLower === 'leadership'
+    ) {
+      handleNavigate('about');
+      return;
+    }
+
+    // Navigate to Product & Service page
+    if (
+      titleLower.includes('service') ||
+      titleLower.includes('product') ||
+      titleLower.includes('solution') ||
+      itemIdLower === 'product-service' ||
+      itemIdLower === 'it-support' ||
+      itemIdLower === 'eo'
+    ) {
+      handleNavigate('service');
+      return;
+    }
+
+    // Navigate to Home page
+    if (titleLower === 'home' || itemIdLower === 'home') {
+      handleNavigate('home');
+      return;
+    }
+
     setActiveModal({
       isOpen: true,
       title: title,
@@ -55,6 +148,8 @@ export const App: React.FC = () => {
       
       {/* Persistent Header Navbar */}
       <Navbar
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         onSearchOpen={() => setIsSearchOpen(true)}
         onMenuItemClick={handleMenuItemClick}
         currentLang={currentLang}
@@ -63,17 +158,25 @@ export const App: React.FC = () => {
 
       {/* Main Page Content */}
       <main className="flex-1">
-        {/* Section 1: Hero Carousel Banner */}
-        <HeroBanner />
+        {currentPage === 'about' ? (
+          <AboutUs />
+        ) : currentPage === 'service' ? (
+          <ServicesPage onContactClick={() => setIsSearchOpen(true)} />
+        ) : (
+          <>
+            {/* Section 1: Hero Carousel Banner */}
+            <HeroBanner />
 
-        {/* Section 2: Newest Updates (News, Activities, CSR, Press Release) */}
-        <NewestUpdates onSelectArticle={handleSelectArticle} />
+            {/* Section 2: Newest Updates (News, Activities, CSR, Press Release) */}
+            <NewestUpdates onSelectArticle={handleSelectArticle} />
 
-        {/* Section 3: Strategic Alliances (Global IT Partner Grid) */}
-        <StrategicAlliances />
+            {/* Section 3: Strategic Alliances (Global IT Partner Grid) */}
+            <StrategicAlliances />
 
-        {/* Section 4: We CARE Corporate Values */}
-        <WeCareValues />
+            {/* Section 4: We CARE Corporate Values */}
+            <WeCareValues />
+          </>
+        )}
       </main>
 
       {/* Persistent 3-Column Footer */}
