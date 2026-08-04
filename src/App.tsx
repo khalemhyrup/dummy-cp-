@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Header/Navbar';
 import { HeroBanner } from './components/Home/HeroBanner';
 import { NewestUpdates } from './components/Home/NewestUpdates';
@@ -11,8 +11,24 @@ import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
+type PageType = 'home' | 'about' | 'service';
+
+const getInitialPage = (): PageType => {
+  if (typeof window !== 'undefined') {
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash === 'about' || hash === 'about-us') return 'about';
+    if (hash === 'service' || hash === 'services' || hash === 'product-service') return 'service';
+    
+    const saved = localStorage.getItem('currentPage') as PageType;
+    if (saved === 'about' || saved === 'service' || saved === 'home') {
+      return saved;
+    }
+  }
+  return 'home';
+};
+
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'service'>('home');
+  const [currentPage, setCurrentPage] = useState<PageType>(getInitialPage);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const [activeModal, setActiveModal] = useState<{
@@ -25,16 +41,40 @@ export const App: React.FC = () => {
     title: '',
   });
 
-  const handleNavigate = (page: 'home' | 'about' | 'service' | string) => {
-    if (page === 'about') {
-      setCurrentPage('about');
-    } else if (page === 'service' || page === 'services') {
-      setCurrentPage('service');
+  const handleNavigate = (page: PageType | string) => {
+    let target: PageType = 'home';
+    if (page === 'about' || page === 'about-us') {
+      target = 'about';
+    } else if (page === 'service' || page === 'services' || page === 'product-service') {
+      target = 'service';
     } else {
-      setCurrentPage('home');
+      target = 'home';
     }
+
+    setCurrentPage(target);
+    localStorage.setItem('currentPage', target);
+    window.location.hash = target === 'home' ? '' : target;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'about' || hash === 'about-us') {
+        setCurrentPage('about');
+        localStorage.setItem('currentPage', 'about');
+      } else if (hash === 'service' || hash === 'services' || hash === 'product-service') {
+        setCurrentPage('service');
+        localStorage.setItem('currentPage', 'service');
+      } else if (hash === '' || hash === 'home') {
+        setCurrentPage('home');
+        localStorage.setItem('currentPage', 'home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleMenuItemClick = (item: MenuItem | string) => {
     const title = typeof item === 'string' ? item : item.title;
