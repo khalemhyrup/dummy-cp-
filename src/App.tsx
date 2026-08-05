@@ -5,7 +5,7 @@ import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
 import { AboutUs } from './components/About/AboutUs';
-import { ServicesPage } from './components/Service/ServicesPage';
+import { ITPage } from './components/IT/ITPage';
 import { Footer } from './components/Footer/Footer';
 import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
@@ -17,7 +17,7 @@ const getInitialPage = (): PageType => {
   if (typeof window !== 'undefined') {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     if (hash === 'about' || hash === 'about-us') return 'about';
-    if (hash === 'service' || hash === 'services' || hash === 'product-service') return 'service';
+    if (hash === 'service' || hash === 'services' || hash === 'product-service' || hash === 'it-support' || hash === 'it-solutions') return 'service';
     
     const saved = localStorage.getItem('currentPage') as PageType;
     if (saved === 'about' || saved === 'service' || saved === 'home') {
@@ -45,7 +45,14 @@ export const App: React.FC = () => {
     let target: PageType = 'home';
     if (page === 'about' || page === 'about-us') {
       target = 'about';
-    } else if (page === 'service' || page === 'services' || page === 'product-service') {
+    } else if (
+      page === 'service' ||
+      page === 'services' ||
+      page === 'product-service' ||
+      page === 'it-support' ||
+      page === 'it-solutions' ||
+      page === 'solution'
+    ) {
       target = 'service';
     } else {
       target = 'home';
@@ -63,7 +70,14 @@ export const App: React.FC = () => {
       if (hash === 'about' || hash === 'about-us') {
         setCurrentPage('about');
         localStorage.setItem('currentPage', 'about');
-      } else if (hash === 'service' || hash === 'services' || hash === 'product-service') {
+      } else if (
+        hash === 'service' ||
+        hash === 'services' ||
+        hash === 'product-service' ||
+        hash === 'it-support' ||
+        hash === 'it-solutions' ||
+        hash === 'solution'
+      ) {
         setCurrentPage('service');
         localStorage.setItem('currentPage', 'service');
       } else if (hash === '' || hash === 'home') {
@@ -98,13 +112,15 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to Product & Service page
+    // Navigate to IT Solutions Page
     if (
       titleLower.includes('service') ||
       titleLower.includes('product') ||
       titleLower.includes('solution') ||
+      titleLower.includes('it support') ||
       itemIdLower === 'product-service' ||
       itemIdLower === 'it-support' ||
+      itemIdLower === 'it-solutions' ||
       itemIdLower === 'eo'
     ) {
       handleNavigate('service');
@@ -161,7 +177,7 @@ export const App: React.FC = () => {
         {currentPage === 'about' ? (
           <AboutUs />
         ) : currentPage === 'service' ? (
-          <ServicesPage onContactClick={() => setIsSearchOpen(true)} />
+          <ITPage onContactClick={() => setIsSearchOpen(true)} />
         ) : (
           <>
             {/* Section 1: Hero Carousel Banner */}

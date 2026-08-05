@@ -41,13 +41,18 @@ export const navigationData: NavItem[] = [
       {
         title: 'IT SOLUTIONS',
         items: [
-          { id: 'it-support', title: 'IT Support', href: '#it-support' },
+          { id: 'it-support', title: 'IT Support & Maintenance', href: '#it-support' },
+          { id: 'network-fo', title: 'Fiber Optics & Network Installer', href: '#network-fo' },
+          { id: 'security-systems', title: 'Security Systems (CCTV & Access Door)', href: '#security-systems' },
+          { id: 'software-managed', title: 'Software & IT Managed Services', href: '#software-managed' },
+          { id: 'me-integration', title: 'Mechanical Electrical (M&E) Integration', href: '#me-integration' },
         ],
       },
       {
         title: 'EVENT ORGANIZER',
         items: [
-          { id: 'eo', title: 'EO (Event Organizer & IT Event Solutions)', href: '#eo' },
+          { id: 'eo', title: 'EO (Event Organizer & MICE Solutions)', href: '#eo' },
+          { id: 'media-advertising', title: 'Media Advertising & Billboard', href: '#media-advertising' },
         ],
       },
     ],
