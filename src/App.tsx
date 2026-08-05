@@ -5,6 +5,7 @@ import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
 import { AboutUs } from './components/About/AboutUs';
+import { ServicesPage } from './components/Service/ServicesPage';
 import { ITPage } from './components/IT/ITPage';
 import { EOPage } from './components/EO/EOPage';
 import { Footer } from './components/Footer/Footer';
@@ -12,17 +13,18 @@ import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
 
-type PageType = 'home' | 'about' | 'service' | 'eo';
+type PageType = 'home' | 'about' | 'service' | 'eo' | 'it-solutions';
 
 const getInitialPage = (): PageType => {
   if (typeof window !== 'undefined') {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     if (hash === 'about' || hash === 'about-us') return 'about';
     if (hash === 'eo' || hash === 'event-organizer' || hash === 'advertising') return 'eo';
-    if (hash === 'service' || hash === 'services' || hash === 'product-service' || hash === 'it-support' || hash === 'it-solutions') return 'service';
+    if (hash === 'it-support' || hash === 'it-solutions') return 'it-solutions';
+    if (hash === 'service' || hash === 'services' || hash === 'product-service') return 'service';
     
     const saved = localStorage.getItem('currentPage') as PageType;
-    if (saved === 'about' || saved === 'service' || saved === 'eo' || saved === 'home') {
+    if (saved === 'about' || saved === 'service' || saved === 'eo' || saved === 'it-solutions' || saved === 'home') {
       return saved;
     }
   }
@@ -49,14 +51,9 @@ export const App: React.FC = () => {
       target = 'about';
     } else if (page === 'eo' || page === 'event-organizer' || page === 'advertising' || page === 'mice' || page === 'billboard') {
       target = 'eo';
-    } else if (
-      page === 'service' ||
-      page === 'services' ||
-      page === 'product-service' ||
-      page === 'it-support' ||
-      page === 'it-solutions' ||
-      page === 'solution'
-    ) {
+    } else if (page === 'it-solutions' || page === 'it-support' || page === 'network-fo' || page === 'security-systems') {
+      target = 'it-solutions';
+    } else if (page === 'service' || page === 'services' || page === 'product-service' || page === 'solution') {
       target = 'service';
     } else {
       target = 'home';
@@ -77,14 +74,10 @@ export const App: React.FC = () => {
       } else if (hash === 'eo' || hash === 'event-organizer' || hash === 'advertising') {
         setCurrentPage('eo');
         localStorage.setItem('currentPage', 'eo');
-      } else if (
-        hash === 'service' ||
-        hash === 'services' ||
-        hash === 'product-service' ||
-        hash === 'it-support' ||
-        hash === 'it-solutions' ||
-        hash === 'solution'
-      ) {
+      } else if (hash === 'it-solutions' || hash === 'it-support') {
+        setCurrentPage('it-solutions');
+        localStorage.setItem('currentPage', 'it-solutions');
+      } else if (hash === 'service' || hash === 'services' || hash === 'product-service') {
         setCurrentPage('service');
         localStorage.setItem('currentPage', 'service');
       } else if (hash === '' || hash === 'home') {
@@ -119,12 +112,23 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to EO (Event Organizer & Advertising) Page
+    // Navigate directly to Product & Service Page (Combined IT + EO)
+    if (
+      titleLower === 'product & service' ||
+      titleLower === 'product' ||
+      titleLower === 'services' ||
+      titleLower === 'service' ||
+      itemIdLower === 'product-service'
+    ) {
+      handleNavigate('service');
+      return;
+    }
+
+    // Navigate to EO Page (Event Organizer & Advertising)
     if (
       titleLower.includes('event organizer') ||
       titleLower.includes('advertising') ||
       titleLower.includes('billboard') ||
-      titleLower.includes('eo') ||
       itemIdLower === 'eo' ||
       itemIdLower === 'media-advertising'
     ) {
@@ -134,11 +138,10 @@ export const App: React.FC = () => {
 
     // Navigate to IT Solutions Page
     if (
-      titleLower.includes('service') ||
-      titleLower.includes('product') ||
-      titleLower.includes('solution') ||
       titleLower.includes('it support') ||
-      itemIdLower === 'product-service' ||
+      titleLower.includes('network') ||
+      titleLower.includes('security system') ||
+      titleLower.includes('software') ||
       itemIdLower === 'it-support' ||
       itemIdLower === 'it-solutions' ||
       itemIdLower === 'network-fo' ||
@@ -146,7 +149,7 @@ export const App: React.FC = () => {
       itemIdLower === 'software-managed' ||
       itemIdLower === 'me-integration'
     ) {
-      handleNavigate('service');
+      handleNavigate('it-solutions');
       return;
     }
 
@@ -201,8 +204,10 @@ export const App: React.FC = () => {
           <AboutUs />
         ) : currentPage === 'eo' ? (
           <EOPage onContactClick={() => setIsSearchOpen(true)} />
-        ) : currentPage === 'service' ? (
+        ) : currentPage === 'it-solutions' ? (
           <ITPage onContactClick={() => setIsSearchOpen(true)} />
+        ) : currentPage === 'service' ? (
+          <ServicesPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
         ) : (
           <>
             {/* Section 1: Hero Carousel Banner */}
