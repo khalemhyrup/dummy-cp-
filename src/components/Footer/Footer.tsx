@@ -114,21 +114,20 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             </h3>
 
             <div className="bg-neutral-950 p-6 rounded-2xl border border-neutral-800 space-y-4">
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl text-white tracking-tighter">
-                  GRASINDOPRO
-                </span>
-                <span className="text-[9px] font-bold tracking-[0.15em] text-amber-400 uppercase">
-                  PT INTEGRA ANEKSA KREASINDO
-                </span>
+              <div className="bg-white p-3 rounded-xl flex items-center justify-center border border-neutral-700 shadow-sm">
+                <img
+                  src="/images/logo.png"
+                  alt="Grasindopro - PT Integra Aneksa Kreasindo"
+                  className="h-12 w-auto object-contain"
+                />
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
                 Leading IT Support, Solutions, and Event Management Provider in Indonesia.
               </p>
               <div className="pt-2 flex items-center justify-between border-t border-neutral-900 text-[11px]">
-                <span className="text-gray-400">Company Name</span>
-                <span className="font-mono font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/60">
-                  Grasindopro
+                <span className="text-gray-400">Legal Name</span>
+                <span className="font-semibold text-amber-400 text-[10px]">
+                  PT INTEGRA ANEKSA KREASINDO
                 </span>
               </div>
             </div>

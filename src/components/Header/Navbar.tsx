@@ -58,24 +58,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="relative flex items-center">
-              {/* Grasindopro Corporate Logo */}
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl sm:text-2xl tracking-tighter text-slate-900 group-hover:text-amber-600 transition-colors">
-                  GRASINDOPRO
-                </span>
-                <span className="text-[9px] font-bold tracking-[0.15em] text-amber-600 uppercase -mt-0.5">
-                  PT INTEGRA ANEKSA KREASINDO
-                </span>
-              </div>
-              <div className="ml-2 pl-2 border-l-2 border-amber-500 hidden sm:block">
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold block leading-tight">
-                  IT & EVENT
-                </span>
-                <span className="text-[9px] text-gray-400 font-medium block leading-tight">
-                  SOLUTIONS
-                </span>
-              </div>
+            <div className="relative flex items-center py-1">
+              {/* Grasindopro Official Logo */}
+              <img
+                src="/images/logo.png"
+                alt="Grasindopro - PT Integra Aneksa Kreasindo"
+                className="h-12 sm:h-14 w-auto object-contain max-w-[240px] sm:max-w-[280px]"
+              />
             </div>
           </a>
 
