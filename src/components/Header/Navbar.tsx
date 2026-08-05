@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src="/images/logo.png"
                 alt="Grasindopro - PT Integra Aneksa Kreasindo"
-                className="h-12 sm:h-14 w-auto object-contain max-w-[240px] sm:max-w-[280px]"
+                className="h-14 sm:h-16 md:h-16 w-auto object-contain transition-all"
               />
             </div>
           </a>

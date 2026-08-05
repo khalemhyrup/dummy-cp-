@@ -114,11 +114,11 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             </h3>
 
             <div className="bg-neutral-950 p-6 rounded-2xl border border-neutral-800 space-y-4">
-              <div className="bg-white p-3 rounded-xl flex items-center justify-center border border-neutral-700 shadow-sm">
+              <div className="bg-white p-4 rounded-xl flex items-center justify-center border border-neutral-700 shadow-md">
                 <img
                   src="/images/logo.png"
                   alt="Grasindopro - PT Integra Aneksa Kreasindo"
-                  className="h-12 w-auto object-contain"
+                  className="h-16 sm:h-20 w-auto object-contain"
                 />
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
