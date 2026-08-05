@@ -38,13 +38,23 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                 Core Services
               </h4>
               <ul className="space-y-1.5 text-xs text-gray-400">
-                <li className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>IT Support & Maintenance</span>
+                <li>
+                  <button
+                    onClick={() => onLinkClick('IT Support')}
+                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <span>IT Support & Maintenance</span>
+                  </button>
                 </li>
-                <li className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>EO (Event Organizer & Tech Events)</span>
+                <li>
+                  <button
+                    onClick={() => onLinkClick('Event Organizer')}
+                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <span>EO (Event Organizer & MICE)</span>
+                  </button>
                 </li>
               </ul>
             </div>
