@@ -116,19 +116,19 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             <div className="bg-neutral-950 p-6 rounded-2xl border border-neutral-800 space-y-4">
               <div className="flex flex-col">
                 <span className="font-extrabold text-xl text-white tracking-tighter">
-                  DUMMY
+                  GRASINDOPRO
                 </span>
-                <span className="text-[10px] font-bold tracking-[0.25em] text-amber-400 uppercase">
-                  TECHNOLOGY GROUP
+                <span className="text-[9px] font-bold tracking-[0.15em] text-amber-400 uppercase">
+                  PT INTEGRA ANEKSA KREASINDO
                 </span>
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
                 Leading IT Support, Solutions, and Event Management Provider in Indonesia.
               </p>
               <div className="pt-2 flex items-center justify-between border-t border-neutral-900 text-[11px]">
-                <span className="text-gray-400">Stock Ticker</span>
-                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
-                  IDX: DUMM
+                <span className="text-gray-400">Company Name</span>
+                <span className="font-mono font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/60">
+                  Grasindopro
                 </span>
               </div>
             </div>
@@ -144,7 +144,7 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
       {/* Copyright Bar */}
       <div className="bg-black py-6 border-t border-neutral-900 text-center text-xs text-gray-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 PT Dummy Technology Tbk. All Rights Reserved.</p>
+          <p>© 2026 PT Integra Aneksa Kreasindo (Grasindopro). All Rights Reserved.</p>
           <div className="flex items-center space-x-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

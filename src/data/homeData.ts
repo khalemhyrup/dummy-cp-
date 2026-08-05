@@ -3,7 +3,7 @@ import { HeroSlide, NewsItem, Partner, CompanyValue } from '../types/navigation'
 export const heroSlidesData: HeroSlide[] = [
   {
     id: 'slide-1',
-    title: 'Dummy Technology has received prestigious awards at Global Partner Connect 2026',
+    title: 'Grasindopro has received prestigious awards at Global Partner Connect 2026',
     subtitle: 'Recognized as Top Strategic IT System Integrator for Enterprise Digital Transformation',
     badge: 'EXCELLENCE AWARD 2026',
     ctaText: 'Discover Highlights',
@@ -46,12 +46,12 @@ export const heroSlidesData: HeroSlide[] = [
 export const newsArticlesData: NewsItem[] = [
   {
     id: 'news-1',
-    title: 'Dummy Technology Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
+    title: 'Grasindopro Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
     category: 'News',
     date: '28 July 2026',
     image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80',
-    summary: 'PT Dummy Technology Tbk won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
-    content: 'PT Dummy Technology Tbk has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
+    summary: 'PT Integra Aneksa Kreasindo (Grasindopro) won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
+    content: 'PT Integra Aneksa Kreasindo (Grasindopro) has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
   },
   {
     id: 'news-2',
@@ -60,7 +60,7 @@ export const newsArticlesData: NewsItem[] = [
     date: '15 July 2026',
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80',
     summary: 'Industry leaders gathered at the Executive Tech Forum to discuss hybrid multi-cloud governance and zero-trust security postures.',
-    content: 'Dummy Technology hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
+    content: 'Grasindopro hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
   },
   {
     id: 'news-3',
@@ -68,17 +68,17 @@ export const newsArticlesData: NewsItem[] = [
     category: 'CSR',
     date: '02 June 2026',
     image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80',
-    summary: 'As part of our commitment to sustainable community development, Dummy Technology donated digital lab kits and IT training modules.',
-    content: 'Demonstrating corporate social responsibility, Dummy Technology launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
+    summary: 'As part of our commitment to sustainable community development, Grasindopro donated digital lab kits and IT training modules.',
+    content: 'Demonstrating corporate social responsibility, Grasindopro launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
   },
   {
     id: 'news-4',
-    title: 'Press Release: PT Dummy Technology Tbk Reports Strong Q1 2026 Financial Growth',
+    title: 'Press Release: PT Integra Aneksa Kreasindo Reports Strong Q1 2026 Financial Growth',
     category: 'Press Release',
     date: '18 May 2026',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
     summary: 'Driven by surging demand for AI infrastructure, cloud integration, and security platforms, revenue expanded 14.8% YoY.',
-    content: 'PT Dummy Technology Tbk (IDX: DUMM) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
+    content: 'PT Integra Aneksa Kreasindo (Grasindopro) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
   }
 ];
 
@@ -125,14 +125,14 @@ export const companyValuesData: CompanyValue[] = [
 ];
 
 export const footerData = {
-  address: 'Gedung Dummy Cyber Park, Jl. Jendral Sudirman No. 88, Jakarta Selatan 12190 - Indonesia',
+  address: 'Gedung Grasindopro, Jl. Jendral Sudirman No. 88, Jakarta Selatan 12190 - Indonesia',
   phone: '+62 21 500 0000',
   fax: '+62 21 500 0001',
-  email: 'corporate.secretary@dummytech.com',
+  email: 'corporate@grasindopro.co.id',
   subsidiaries: [
-    'PT Dummy Visionet Data',
-    'PT Dummy Digital Distribusi',
-    'PT Dummy System Integrator',
-    'Dummy Global Services Corp.'
+    'PT Grasindopro Digital Solusi',
+    'PT Grasindopro Event Internasional',
+    'PT Grasindopro System Integrator',
+    'Grasindopro Global Services Corp.'
   ]
 };

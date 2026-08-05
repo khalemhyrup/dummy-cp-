@@ -82,7 +82,7 @@ export const AboutUs: React.FC = () => {
 
               <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="font-semibold text-slate-800">Founded on the principles of rigor and reliability</strong>, Dummy Technology Group has spent decades navigating the complexities of enterprise IT. We don't just adapt to change; we architect the frameworks that define it.
+                  <strong className="font-semibold text-slate-800">Founded on the principles of rigor and reliability</strong>, Grasindopro (PT Integra Aneksa Kreasindo) has spent decades navigating the complexities of enterprise IT and digital solutions. We don't just adapt to change; we architect the frameworks that define it.
                 </p>
                 <p>
                   Our approach is deeply analytical, favoring structured methodologies over fleeting trends. We build systems designed for longevity, scale, and uncompromising security.

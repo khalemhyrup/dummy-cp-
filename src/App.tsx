@@ -121,7 +121,7 @@ export const App: React.FC = () => {
       isOpen: true,
       title: title,
       category: 'Navigation Details',
-      content: `You selected "${title}" from the Multipolar Technology menu hierarchy. This section presents technical specifications, investor publications, or corporate governance documentation.`
+      content: `You selected "${title}" from the Grasindopro menu hierarchy. This section presents technical specifications, investor publications, or corporate governance documentation.`
     });
   };
 

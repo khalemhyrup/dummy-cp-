@@ -14,7 +14,7 @@ export const CareerBanner: React.FC<CareerBannerProps> = ({ onCareerClick }) => 
           <div className="space-y-4 max-w-2xl text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#444444] border border-[#555555] text-amber-400 font-bold text-xs tracking-widest uppercase">
               <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>CAREERS AT DUMMY TECHNOLOGY</span>
+              <span>CAREERS AT GRASINDOPRO</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
