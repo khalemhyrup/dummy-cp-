@@ -76,17 +76,37 @@ export const AboutUs: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="w-1 h-7 bg-[#f97316] flex-shrink-0" />
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  Our Heritage
+                  Tentang Kami & Heritage
                 </h2>
               </div>
 
               <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
                 <p>
-                  <strong className="font-semibold text-slate-800">Founded on the principles of rigor and reliability</strong>, Grasindopro (PT Integra Aneksa Kreasindo) has spent decades navigating the complexities of enterprise IT and digital solutions. We don't just adapt to change; we architect the frameworks that define it.
+                  <strong className="font-semibold text-slate-800">PT. Integra Aneksa Kreasindo (Grasindopro)</strong> merupakan perusahaan general kontraktor yang berpengalaman di bidang Mechanical Electrical (M&E), Teknologi Informasi (IT), Media Advertising, dan Event Organizer (EO).
                 </p>
                 <p>
-                  Our approach is deeply analytical, favoring structured methodologies over fleeting trends. We build systems designed for longevity, scale, and uncompromising security.
+                  Kami menyediakan layanan terpadu mulai dari perencanaan, desain, hingga implementasi dalam berbagai proyek konstruksi dan teknologi, serta strategi pemasaran yang efektif di berbagai sektor industri Indonesia.
                 </p>
+
+                {/* Legal Credentials Badges */}
+                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 font-medium block text-[10px] uppercase">NIB Perusahaan</span>
+                    <span className="font-mono font-bold text-slate-800">0812230083996</span>
+                  </div>
+                  <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 font-medium block text-[10px] uppercase">SK Kemenkumham</span>
+                    <span className="font-mono font-bold text-slate-800">AHU-0093499.AH.01.01</span>
+                  </div>
+                  <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 font-medium block text-[10px] uppercase">NPWP Perusahaan</span>
+                    <span className="font-mono font-bold text-slate-800">99.362.300.8-453.000</span>
+                  </div>
+                  <div className="p-3 bg-slate-100 rounded-lg border border-slate-200">
+                    <span className="text-slate-500 font-medium block text-[10px] uppercase">Akta Pendirian</span>
+                    <span className="font-mono font-bold text-slate-800">No. 24 (07 Des 2023)</span>
+                  </div>
+                </div>
               </div>
             </div>
 

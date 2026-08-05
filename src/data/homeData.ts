@@ -83,56 +83,56 @@ export const newsArticlesData: NewsItem[] = [
 ];
 
 export const strategicPartnersData: Partner[] = [
-  { name: 'IBM', category: 'Strategic Cloud & AI Partner', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-  { name: 'Cisco Systems', category: 'Networking & Security', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
-  { name: 'Microsoft', category: 'Cloud & Business Applications', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-  { name: 'F5 Networks', category: 'Multi-Cloud App Security', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/F5_Networks_logo.svg' },
-  { name: 'Huawei Enterprise', category: 'Hybrid Infrastructure', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Huawei-logo.svg' },
-  { name: 'Oracle', category: 'Database & Cloud Solutions', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' },
-  { name: 'VMware by Broadcom', category: 'Virtualization & Hybrid Cloud', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg' },
-  { name: 'Palo Alto Networks', category: 'Cybersecurity Platforms', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Palo_Alto_Networks_logo.svg' },
+  { name: 'Pertamina', category: 'Energy & Industrial Client', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Pertamina_Logo.svg' },
+  { name: 'Grab', category: 'Technology & Transportation', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Grab_Logo.svg' },
+  { name: 'Herbalife', category: 'Global Wellness Brand', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Herbalife_Logo.svg' },
+  { name: 'Nokia', category: 'Telecommunications', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Nokia_wordmark.svg' },
+  { name: 'OCBC NISP', category: 'Banking & Financial Services', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/87/OCBC_Bank_logo.svg' },
+  { name: 'Asian Paints', category: 'Manufacturing & Industrial', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Asian_Paints_logo.svg' },
+  { name: 'Ciputra Group', category: 'Property & Infrastructure', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Ciputra_Group.svg' },
+  { name: 'Ajaib', category: 'Fintech & Investment Platform', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Ajaib_Sekuritas_Logo.svg' },
 ];
 
 export const companyValuesData: CompanyValue[] = [
   {
     key: 'C',
-    title: 'Customer First',
-    tagline: 'Delivering exceptional value and building trust.',
-    description: 'We prioritize our clients\' strategic business goals, delivering customized IT infrastructure and digital solutions with uncompromised quality and customer satisfaction.',
+    title: 'Customer First & Quality',
+    tagline: 'Mengutamakan konsistensi dan kualitas layanan prima.',
+    description: 'Kami memberikan service terbaik secara prima, cepat, dan berkualitas tinggi sebagai wujud hubungan kemitraan jangka panjang yang berkelanjutan.',
     iconName: 'Users'
   },
   {
     key: 'A',
-    title: 'Accountability',
-    tagline: 'Taking ownership of results and commitments.',
-    description: 'We act with high integrity, taking full responsibility for implementation outcomes, SLA performance, corporate governance, and ethical business conduct.',
+    title: 'Accountability & Integrity',
+    tagline: 'Integritas tinggi dan tanggung jawab penuh.',
+    description: 'Menjaga dan memelihara serta mengembangkan sikap dan etika bisnis secara profesional dengan tanggung jawab penuh di setiap eksekusi proyek.',
     iconName: 'ShieldCheck'
   },
   {
     key: 'R',
-    title: 'Respect',
-    tagline: 'Valuing diversity, teamwork, and human potential.',
-    description: 'We foster an inclusive corporate environment built on mutual respect, continuous learning, collaboration, and empowering our team members to excel.',
+    title: 'Respect & Flexibility',
+    tagline: 'Fleksibel dan responsif mengikuti perkembangan tren.',
+    description: 'Senantiasa fleksibel mengikuti dinamika kebutuhan klien serta menghadirkan inovasi dan solusi terbaik bagi mitra usaha.',
     iconName: 'HeartHandshake'
   },
   {
     key: 'E',
-    title: 'Excellence',
-    tagline: 'Striving for innovation and operational mastery.',
-    description: 'We continuously upgrade our technological expertise, adopting world-class frameworks and cutting-edge innovations to exceed expectations.',
+    title: 'Excellence & Commitment',
+    tagline: 'Komitmen pada hasil sempurna dan nilai tambah.',
+    description: 'Mengintegrasikan solusi IT, Mechanical Electrical, dan Advertising / Event Organizer secara profesional berbasis estetika, efisiensi, dan keamanan.',
     iconName: 'Award'
   }
 ];
 
 export const footerData = {
-  address: 'Gedung Grasindopro, Jl. Jendral Sudirman No. 88, Jakarta Selatan 12190 - Indonesia',
-  phone: '+62 21 500 0000',
-  fax: '+62 21 500 0001',
-  email: 'corporate@grasindopro.co.id',
+  address: 'Bintaro Trade Center Sektor 7, Jl. Jendral Sudirman Blok B2 No. 10, Kel. Pondok Jaya, Kec. Pondok Aren, Kota Tangerang Selatan, Banten 15220',
+  phone: '(021) 7452804',
+  fax: '0813-9847-9044 (Ibu Lia)',
+  email: 'marketing@grasindopro.com',
   subsidiaries: [
-    'PT Grasindopro Digital Solusi',
-    'PT Grasindopro Event Internasional',
-    'PT Grasindopro System Integrator',
-    'Grasindopro Global Services Corp.'
+    'IT & Mechanical Electrical (M&E) Integration',
+    'Media Advertising (Billboard, Neon Box, Signage)',
+    'Event Organizer, MICE & Brand Activation',
+    'Software Solutions & Security Systems'
   ]
 };
