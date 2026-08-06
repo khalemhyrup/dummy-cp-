@@ -222,25 +222,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           {navigationData.map((item) => (
             <div key={item.id} className="border-b border-gray-100 pb-2">
               <div
-                className="flex items-center justify-between font-bold text-gray-800 py-2 cursor-pointer"
+                className="flex items-center justify-between font-bold text-gray-800 py-2.5 px-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors"
                 onClick={() => {
-                  if (item.id === 'about' || item.label === 'About') {
-                    if (onNavigate) onNavigate('about');
-                    onMenuItemClick('About Us');
-                    setActiveDropdown(null);
-                    setMobileMenuOpen(false);
-                  } else if (item.id === 'product-service' || item.label.includes('Service') || item.label.includes('Product')) {
-                    if (onNavigate) onNavigate('service');
-                    onMenuItemClick('Product & Service');
-                    setActiveDropdown(null);
-                    setMobileMenuOpen(false);
+                  if (item.hasDropdown) {
+                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
                   } else if (item.id === 'home' || item.label === 'Home') {
                     if (onNavigate) onNavigate('home');
                     onMenuItemClick('Home');
                     setActiveDropdown(null);
                     setMobileMenuOpen(false);
-                  } else if (item.hasDropdown) {
-                    setActiveDropdown(activeDropdown === item.id ? null : item.id);
                   } else {
                     onMenuItemClick(item.label);
                     setMobileMenuOpen(false);
