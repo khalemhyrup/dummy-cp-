@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Header/Navbar';
 import { HeroBanner } from './components/Home/HeroBanner';
+import { OurSolution } from './components/Home/OurSolution';
 import { NewestUpdates } from './components/Home/NewestUpdates';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
 import { WeCareValues } from './components/Home/WeCareValues';
@@ -213,7 +214,10 @@ export const App: React.FC = () => {
             {/* Section 1: Hero Carousel Banner */}
             <HeroBanner />
 
-            {/* Section 2: Newest Updates (News, Activities, CSR, Press Release) */}
+            {/* Section 2: Our Solutions Bar */}
+            <OurSolution />
+
+            {/* Section 3: Newest Updates (News, Activities, CSR, Press Release) */}
             <NewestUpdates onSelectArticle={handleSelectArticle} />
 
             {/* Section 3: Strategic Alliances (Global IT Partner Grid) */}
