@@ -239,11 +239,6 @@ export const EOPage: React.FC<EOPageProps> = ({ onContactClick }) => {
               PT. Integra Aneksa Kreasindo (Grasindopro) adalah mitra terpercaya penyelenggaraan Media Advertising (Billboard, Neonbox, Signage) dan Event Organizer (MICE, Gathering, Brand Activation) berskala nasional.
             </p>
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/20 text-amber-300 font-semibold text-xs sm:text-sm">
-              <Heart className="w-4 h-4 text-rose-400 fill-rose-400" />
-              <span>Motto: "Take it, do it, love it!"</span>
-            </div>
-
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => {

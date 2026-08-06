@@ -45,7 +45,6 @@ export const navigationData: NavItem[] = [
           { id: 'network-fo', title: 'Fiber Optics & Network Installer', href: '#network-fo' },
           { id: 'security-systems', title: 'Security Systems (CCTV & Access Door)', href: '#security-systems' },
           { id: 'software-managed', title: 'Software & IT Managed Services', href: '#software-managed' },
-          { id: 'me-integration', title: 'Mechanical Electrical (M&E) Integration', href: '#me-integration' },
         ],
       },
       {
@@ -53,6 +52,14 @@ export const navigationData: NavItem[] = [
         items: [
           { id: 'eo', title: 'EO (Event Organizer & MICE Solutions)', href: '#eo' },
           { id: 'media-advertising', title: 'Media Advertising & Billboard', href: '#media-advertising' },
+        ],
+      },
+      {
+        title: 'CME (Civil Mechanical and Electrical)',
+        items: [
+          { id: 'civil-construction', title: 'Civil Construction & Building Works', href: '#civil-construction' },
+          { id: 'me-installation', title: 'Mechanical & Electrical Installation (HVAC, Piping, Power)', href: '#me-installation' },
+          { id: 'telecom-cme', title: 'Telecom Tower & CME Infrastructure Integration', href: '#telecom-cme' },
         ],
       },
     ],

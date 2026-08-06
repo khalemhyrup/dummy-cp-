@@ -28,8 +28,8 @@ interface ITPageProps {
   initialCategory?: string;
 }
 
-export const ITPage: React.FC<ITPageProps> = ({ onContactClick }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory = 'all' }) => {
+  const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [inquiryModal, setInquiryModal] = useState<{ isOpen: boolean; serviceName: string }>({
     isOpen: false,
     serviceName: '',
@@ -88,6 +88,22 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick }) => {
 
   // Services breakdown from PDF
   const services = [
+    {
+      id: 'it-support',
+      category: 'it-support',
+      title: 'IT Support & Maintenance',
+      badge: 'Dukungan & Pemeliharaan IT',
+      icon: Headphones,
+      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
+      description: 'Layanan dukungan teknis IT 24/7, pemeliharaan preventif & kuratif hardware/software, troubleshooting jaringan, dan manajemen ticketing service.',
+      items: [
+        '24/7 IT Helpdesk & On-Site Technical Support',
+        'Preventive & Curative Hardware/Software Maintenance',
+        'PC, Workstation, Server & Peripheral Maintenance',
+        'Network Troubleshooting & Remote Desktop Support',
+        'SLA (Service Level Agreement) Dedicated Response Time'
+      ]
+    },
     {
       id: 'networks',
       category: 'network',
@@ -277,6 +293,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick }) => {
             <div className="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
               {[
                 { id: 'all', label: 'Semua Layanan' },
+                { id: 'it-support', label: 'IT Support' },
                 { id: 'network', label: 'Network & FO' },
                 { id: 'security', label: 'Security Systems' },
                 { id: 'software', label: 'Software & Managed' },
