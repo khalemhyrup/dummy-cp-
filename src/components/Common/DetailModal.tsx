@@ -49,7 +49,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           ) : (
             <div className="space-y-4">
               <p>
-                Welcome to the <strong>{title}</strong> page section of PT Dummy Technology Tbk. Here you can explore comprehensive information regarding our enterprise IT services, financial reports, governance frameworks, and strategic initiatives.
+                Welcome to the <strong>{title}</strong> page section of PT Integra Aneksa Kreasindo (Grasindopro). Here you can explore comprehensive information regarding our enterprise IT services, financial reports, governance frameworks, and strategic initiatives.
               </p>
 
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
@@ -69,9 +69,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
         {/* Footer */}
         <div className="bg-slate-50 p-4 border-t border-gray-100 flex items-center justify-between text-xs text-slate-500">
-          <span className="flex items-center gap-1.5">
-            <Info className="w-3.5 h-3.5 text-amber-500" />
-            <span>PT Dummy Technology Tbk</span>
+          <span className="flex items-center gap-2">
+            <img src="/images/logo.png" alt="Grasindopro" className="h-8 w-auto object-contain" />
+            <span className="font-semibold text-slate-700">PT Integra Aneksa Kreasindo</span>
           </span>
           <button
             onClick={onClose}

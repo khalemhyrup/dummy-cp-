@@ -58,24 +58,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="relative flex items-center">
-              {/* Enterprise IT Generic Dummy Logo */}
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl sm:text-2xl tracking-tighter text-slate-900 group-hover:text-amber-600 transition-colors">
-                  DUMMY
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.25em] text-amber-600 uppercase -mt-1">
-                  TECHNOLOGY GROUP
-                </span>
-              </div>
-              <div className="ml-2 pl-2 border-l-2 border-amber-500 hidden sm:block">
-                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold block leading-tight">
-                  ENTERPRISE IT
-                </span>
-                <span className="text-[9px] text-gray-400 font-medium block leading-tight">
-                  SOLUTIONS
-                </span>
-              </div>
+            <div className="relative flex items-center py-1">
+              {/* Grasindopro Official Logo */}
+              <img
+                src="/images/logo.png"
+                alt="Grasindopro - PT Integra Aneksa Kreasindo"
+                className="h-14 sm:h-16 md:h-16 w-auto object-contain transition-all"
+              />
             </div>
           </a>
 
@@ -146,31 +135,40 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Utility Tools: Language Switch & Search */}
           <div className="flex items-center space-x-3 sm:space-x-4">
 
-            {/* Language Switcher */}
-            <div className="flex items-center bg-gray-100/80 rounded-full p-1 border border-gray-200">
+            {/* Language Switcher with SVG Flags */}
+            <div className="flex items-center bg-gray-100/90 rounded-full p-1 border border-gray-200 shadow-2xs">
               <button
                 onClick={() => onLangChange('ID')}
-                title="Indonesian"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
+                title="Bahasa Indonesia"
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
                   currentLang === 'ID'
-                    ? 'bg-white text-red-600 shadow-xs'
+                    ? 'bg-white text-slate-900 shadow-xs border border-gray-200/60'
                     : 'text-gray-500 hover:text-gray-800'
                 }`}
               >
-                <span className="text-base leading-none">🇮🇩</span>
-                <span className="hidden sm:inline">ID</span>
+                <svg className="w-4 h-3 rounded-2xs border border-gray-300 shadow-2xs flex-shrink-0" viewBox="0 0 3 2">
+                  <rect width="3" height="1" fill="#E70011" />
+                  <rect y="1" width="3" height="1" fill="#FFFFFF" />
+                </svg>
+                <span>ID</span>
               </button>
               <button
                 onClick={() => onLangChange('EN')}
                 title="English"
-                className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold transition-all ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
                   currentLang === 'EN'
-                    ? 'bg-white text-blue-700 shadow-xs'
+                    ? 'bg-white text-slate-900 shadow-xs border border-gray-200/60'
                     : 'text-gray-500 hover:text-gray-800'
                 }`}
               >
-                <span className="text-base leading-none">🇬🇧</span>
-                <span className="hidden sm:inline">EN</span>
+                <svg className="w-4 h-3 rounded-2xs border border-gray-300 shadow-2xs flex-shrink-0" viewBox="0 0 60 30">
+                  <rect width="60" height="30" fill="#012169" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
+                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
+                </svg>
+                <span>EN</span>
               </button>
             </div>
 

@@ -1,8 +1,8 @@
 {
-  "name": "dummy-company-profile",
+  "name": "grasindopro-company-profile",
   "private": true,
   "version": "1.0.0",
-  "description": "Enterprise IT Company Profile Web Application for PT Dummy Technology Tbk",
+  "description": "Enterprise Web Application for PT Integra Aneksa Kreasindo (Grasindopro)",
   "type": "module",
   "scripts": {
     "dev": "vite",

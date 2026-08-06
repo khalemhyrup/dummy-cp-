@@ -45,3 +45,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+
+# Source documents / PDF files
+sumber/
+*.pdf

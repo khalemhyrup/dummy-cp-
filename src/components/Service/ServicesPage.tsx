@@ -1,299 +1,277 @@
 import React, { useState } from 'react';
 import {
-  BarChart3,
-  Landmark,
+  Network,
+  Calendar,
+  ShieldCheck,
   Cpu,
-  Layers,
-  ArrowUpRight,
-  User,
-  ChevronDown,
-  ChevronUp,
-  ArrowRight
+  Server,
+  Zap,
+  PhoneCall,
+  CheckCircle2,
+  Lock,
+  Radio,
+  FileCode,
+  Building2,
+  ArrowRight,
+  Send,
+  Sparkles,
+  ChevronRight,
+  Megaphone,
+  Palette,
+  Briefcase,
+  Star,
+  Users,
+  Award,
+  Layers
 } from 'lucide-react';
 
 interface ServicesPageProps {
+  onNavigate?: (page: string) => void;
   onContactClick?: () => void;
 }
 
-export const ServicesPage: React.FC<ServicesPageProps> = ({ onContactClick }) => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContactClick }) => {
+  const [activeTab, setActiveTab] = useState<'all' | 'it' | 'eo'>('all');
+  const [inquiryModal, setInquiryModal] = useState<{ isOpen: boolean; serviceName: string }>({
+    isOpen: false,
+    serviceName: '',
+  });
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', serviceType: 'IT & EO Combined', message: '' });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
+  const handleOpenInquiry = (serviceName: string) => {
+    setInquiryModal({ isOpen: true, serviceName });
+    setFormSubmitted(false);
   };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setInquiryModal({ isOpen: false, serviceName: '' });
+      setInquiryForm({ name: '', email: '', phone: '', serviceType: 'IT & EO Combined', message: '' });
+      setFormSubmitted(false);
+    }, 2000);
+  };
+
+  // Pillar 1: IT & M&E Services (from PDF IT)
+  const itServices = [
+    {
+      title: 'Fiber Optics & Network Solutions',
+      desc: 'Splicing, OTDR Testing, Wireless (Mikrotik/Ubiquiti/Cambium/Microwave), Cabling System (Cat6/Coaxial), & Maintenance.',
+      icon: Network,
+    },
+    {
+      title: 'Security Systems & Automation',
+      desc: 'Security Camera CCTV, Access Door System, Fire Alarm, Panic Button, & Asset Control Automation.',
+      icon: Lock,
+    },
+    {
+      title: 'Software & IT Managed Services',
+      desc: 'Custom Business Application Software, System Maintenance, Hardware/Software Support, & Data Center Admin.',
+      icon: FileCode,
+    },
+    {
+      title: 'Mechanical & Electrical (M&E)',
+      desc: 'HVAC System (AC/Ventilasi), Plumbing & Hydrant Fire Fighting, Instalasi Listrik, Genset, & Energy Management.',
+      icon: Building2,
+    },
+    {
+      title: 'Telecommunication & PABX',
+      desc: 'GSM/CDMA Equipment, Shelter & SST Tower, Feeder Line, & Corporate PABX Systems.',
+      icon: Radio,
+    },
+  ];
+
+  // Pillar 2: EO & Media Advertising Services (from PDF EO)
+  const eoServices = [
+    {
+      title: 'Event Organizer & MICE Solutions',
+      desc: 'MICE (Meeting, Incentive, Convention, Exhibition), Company Gathering, Brand Activation, & Booth Expo Production.',
+      icon: Calendar,
+    },
+    {
+      title: 'Media Advertising Outdoor & Indoor',
+      desc: 'Billboard Jalan Tol & Protokol Utama, Signage, Letter Sign, Neon Box, Pylon Sign, Baliho, T-Banner, & SKPD Reklame.',
+      icon: Megaphone,
+    },
+    {
+      title: 'Branding Mobil & Wall Painting',
+      desc: 'Vehicle Wrapping Armada Perusahaan, Custom Wall Painting Design, & Produksi Meja Display Promosi.',
+      icon: Palette,
+    },
+    {
+      title: 'Manpower Talent & SPG/Usher',
+      desc: 'Talent Master of Ceremony (MC), Event Usher, SPG/SPB Pameran, LO & Event Coordinator Personnel.',
+      icon: Users,
+    },
+    {
+      title: 'Corporate Merchandise Custom',
+      desc: 'Executive Souvenirs, Apparel Custom (T-shirt/Polo/Jaket Event), Seminar Kits, & Promotional Items.',
+      icon: Briefcase,
+    },
+  ];
 
   return (
     <div className="bg-white min-h-screen font-sans text-slate-900 selection:bg-amber-500 selection:text-slate-950">
-      
-      {/* ================= SECTION 1: HERO ================= */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-slate-50/60 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      {/* ================= SECTION 1: HERO COMBINED ================= */}
+      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 text-white py-20 lg:py-28 overflow-hidden">
+        {/* Glow Effects */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-6">
             
-            {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
-              <span className="text-[11px] font-bold tracking-widest uppercase">
-                OUR SERVICES
-              </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>LAYANAN INTEGRASI TERPADU</span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              Strategic Solutions for Modern Enterprise
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              Solusi Terpadu <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">IT Solutions & Event Organizer</span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
-              We deliver comprehensive business solutions designed to optimize operations, drive growth, and ensure institutional resilience in complex global markets.
+            <p className="text-gray-300 text-base sm:text-xl leading-relaxed font-normal">
+              PT. Integra Aneksa Kreasindo (Grasindopro) merupakan kontraktor terintegrasi berbasis Teknologi Informasi (IT), Mechanical Electrical (M&E), Media Advertising, dan Event Organizer (EO) di Indonesia.
             </p>
 
-          </div>
-        </div>
-      </section>
+            {/* Quick Navigation Buttons to Detail Pages */}
+            <div className="pt-4 flex flex-wrap items-center gap-4">
+              <button
+                onClick={() => {
+                  if (onNavigate) onNavigate('it-solutions');
+                  else {
+                    const el = document.getElementById('it-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer"
+              >
+                <Network className="w-5 h-5 text-slate-950" />
+                <span>Halaman IT Solutions</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
 
-      {/* ================= SECTION 2: SERVICES GRID (2x2) ================= */}
-      <section className="py-8 sm:py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            
-            {/* Card 1: Data-Driven Analytics */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6 text-amber-600">
-                  <BarChart3 className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-extrabold text-slate-900 mb-3">
-                  Data-Driven Analytics
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                  Transform raw data into actionable intelligence. Our advanced analytics frameworks provide executive dashboards, predictive modeling, and real-time operational insights to guide high-stakes decision-making.
-                </p>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                <button className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
-                  <span>Explore Analytics</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-
-                {/* Subtle watermark background chart pattern */}
-                <div className="text-slate-100 group-hover:text-amber-100/50 transition-colors pointer-events-none">
-                  <BarChart3 className="w-16 h-16 transform translate-x-4 translate-y-4 opacity-40" />
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Financial Strategy */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6 text-amber-600">
-                  <Landmark className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-extrabold text-slate-900 mb-3">
-                  Financial Strategy
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                  Comprehensive capital planning, risk assessment, and resource allocation strategies designed to maximize long-term shareholder value.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100">
-                <button className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
-                  <span>Learn More</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3: Digital Transformation */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6 text-amber-600">
-                  <Cpu className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-extrabold text-slate-900 mb-3">
-                  Digital Transformation
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                  Modernize legacy systems and integrate scalable cloud architectures to ensure agility in rapidly evolving technological landscapes.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100">
-                <button className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
-                  <span>Learn More</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* Card 4: Enterprise Restructuring (Featured Dark Card) */}
-            <div className="bg-slate-950 text-white rounded-2xl p-8 shadow-xl border border-slate-800 flex flex-col justify-between relative overflow-hidden group">
-              {/* Background gradient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-slate-900/50 pointer-events-none" />
-
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-6 text-amber-400">
-                  <Layers className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-extrabold text-white mb-3">
-                  Enterprise Restructuring
-                </h3>
-                <p className="text-slate-300 text-sm leading-relaxed mb-8">
-                  Strategic realignments of corporate structures to optimize efficiency, streamline operations, and capture market share. We guide organizations through complex mergers, acquisitions, and internal consolidations.
-                </p>
-              </div>
-
-              <div className="relative z-10 pt-4 border-t border-slate-800">
-                <button className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-extrabold px-4 py-2.5 rounded-lg shadow-sm transition-all">
-                  <span>Explore Restructuring</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  if (onNavigate) onNavigate('eo');
+                  else {
+                    const el = document.getElementById('eo-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3.5 rounded-xl border border-slate-700 shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer"
+              >
+                <Calendar className="w-5 h-5 text-amber-400" />
+                <span>Halaman Event Organizer</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* ================= SECTION 3: OUR ENGAGEMENT PROCESS ================= */}
-      <section className="py-16 sm:py-24 bg-white border-t border-slate-100">
+      {/* ================= SECTION 2: DUAL PILLARS SHOWCASE ================= */}
+      <section className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Section Header */}
-          <div className="max-w-3xl mb-14 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-              Our Engagement Process
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">
+              DUA PILAR UTAMA KORPORAT
+            </span>
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Bidang Usaha Grasindopro
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              A rigorous, methodical approach to delivering solutions that are carefully tailored to the unique operational realities of each client.
-            </p>
           </div>
 
-          {/* Steps List */}
-          <div className="divide-y divide-slate-200/80 border-y border-slate-200/80">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            {/* Step 01 */}
-            <div className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              <div className="lg:col-span-4 flex items-center gap-3">
-                <span className="text-amber-600 font-extrabold text-lg sm:text-xl font-mono">
-                  01
+            {/* Pillar 1: IT & M&E Card */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                  <Network className="w-7 h-7" />
+                </div>
+                <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block">
+                  PILAR 1
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Discovery & Audit
+                <h3 className="text-2xl font-extrabold text-slate-900">
+                  Information Technology (IT) & Mechanical Electrical (M&E)
                 </h3>
-              </div>
-              <div className="lg:col-span-8 space-y-4">
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Comprehensive analysis of current operations, financial standing, and market positioning to identify core challenges and growth opportunities.
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Perencanaan, instalasi, dan pemeliharaan integrasi jaringan Fiber Optics, Wireless, Security Systems (CCTV & Access Door), Software Aplikasi, IT Managed Services, serta Mechanical Electrical (HVAC, Kelistrikan, Genset & Hydrant).
                 </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Deep-dive stakeholder interviews</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Technology and infrastructure review</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Financial and operational efficiency audits</span>
-                  </li>
-                </ul>
+                
+                <div className="space-y-2 pt-2">
+                  {['Network & Fiber Optics Splicing / OTDR', 'Security Camera (CCTV) & Access Control', 'Custom Software & IT Managed Services', 'Mechanical Electrical (HVAC, Genset, Fire Hydrant)'].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
+                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    if (onNavigate) onNavigate('it-solutions');
+                    else {
+                      const el = document.getElementById('it-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Buka Halaman IT Support & Solutions</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
-            {/* Step 02 */}
-            <div className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              <div className="lg:col-span-4 flex items-center gap-3">
-                <span className="text-amber-600 font-extrabold text-lg sm:text-xl font-mono">
-                  02
+            {/* Pillar 2: EO & Media Advertising Card */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-600 flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-slate-950 transition-colors">
+                  <Calendar className="w-7 h-7" />
+                </div>
+                <span className="text-xs font-bold text-orange-600 uppercase tracking-widest block">
+                  PILAR 2
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Strategic Planning
+                <h3 className="text-2xl font-extrabold text-slate-900">
+                  Event Organizer (EO) & Media Advertising
                 </h3>
-              </div>
-              <div className="lg:col-span-8 space-y-4">
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Development of a coherent, actionable roadmap outlining specific milestones, resource allocation, and risk mitigation strategies.
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Penyelenggaraan event perusahaan skala nasional (MICE, Gathering, Brand Activation) serta penataan Media Advertising outdoor/indoor (Billboard Jalan Tol, Neon Box, Signage, Baliho, Branding Mobil, & SKPD Reklame).
                 </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Resource and budget forecasting</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Change management framework design</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>KPI definition and baseline establishment</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            {/* Step 03 */}
-            <div className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              <div className="lg:col-span-4 flex items-center gap-3">
-                <span className="text-amber-600 font-extrabold text-lg sm:text-xl font-mono">
-                  03
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Execution & Integration
-                </h3>
+                <div className="space-y-2 pt-2">
+                  {['MICE (Meeting, Incentive, Convention, Exhibition)', 'Company Gathering & Corporate Event', 'Outdoor Billboard & Neon Box Signage Nasional', 'Manpower SPG, Usher, MC & Custom Merchandise'].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
+                      <CheckCircle2 className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="lg:col-span-8 space-y-4">
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Implementation of defined solutions, working closely with internal teams to ensure seamless integration and minimal operational disruption.
-                </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Agile deployment methodology</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Continuous performance monitoring</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Executive leadership alignment</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            {/* Step 04 */}
-            <div className="py-8 sm:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              <div className="lg:col-span-4 flex items-center gap-3">
-                <span className="text-amber-600 font-extrabold text-lg sm:text-xl font-mono">
-                  04
-                </span>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Optimization & Review
-                </h3>
-              </div>
-              <div className="lg:col-span-8 space-y-4">
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  Post-implementation assessment to refine processes, validate ROI, and ensure long-term sustainability of the strategic initiatives.
-                </p>
-                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Post-mortem analysis and adjustments</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Long-term support planning</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>Knowledge transfer and team training</span>
-                  </li>
-                </ul>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    if (onNavigate) onNavigate('eo');
+                    else {
+                      const el = document.getElementById('eo-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Buka Halaman Event Organizer</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
@@ -302,186 +280,286 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onContactClick }) =>
         </div>
       </section>
 
-      {/* ================= SECTION 4: SUCCESS STORIES ================= */}
-      <section className="py-16 sm:py-24 bg-slate-50/70">
+      {/* ================= SECTION 3: TABBED DETAILED BREAKDOWN ================= */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-              Success Stories
-            </h2>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Hear from industry leaders who have transformed their operations with Stratos Corp.
-            </p>
-          </div>
-
-          {/* 2 Testimonial Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            
-            {/* Testimonial 1 */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-6">
-              <div>
-                <span className="text-amber-500 font-serif text-5xl leading-none select-none block mb-2">
-                  &ldquo;
-                </span>
-                <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic">
-                  &ldquo;Stratos Corp&apos;s restructuring strategy completely revitalized our supply chain operations, resulting in a 24% reduction in overhead within the first fiscal year.&rdquo;
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 flex-shrink-0">
-                  <User className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
-                    Sarah Jenkins
-                  </h4>
-                  <p className="text-xs text-slate-500">
-                    COO, Global Logistics
-                  </p>
-                </div>
-              </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+              <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">
+                KATALOG RINGKASAN LAYANAN
+              </span>
+              <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+                Penjelasan Lengkap IT & Event Organizer
+              </h2>
             </div>
 
-            {/* Testimonial 2 */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-6">
-              <div>
-                <span className="text-amber-500 font-serif text-5xl leading-none select-none block mb-2">
-                  &ldquo;
-                </span>
-                <p className="text-slate-700 text-sm sm:text-base leading-relaxed italic">
-                  &ldquo;Their data analytics framework gave us unprecedented visibility into customer behaviour. We were able to launch a new product line 3 months faster than anticipated.&rdquo;
-                </p>
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
+              {[
+                { id: 'all', label: 'Semua Layanan' },
+                { id: 'it', label: 'Solusi IT & M&E' },
+                { id: 'eo', label: 'Event Organizer & Billboard' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    activeTab === tab.id
+                      ? 'bg-amber-500 text-slate-950 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* IT Section */}
+          {(activeTab === 'all' || activeTab === 'it') && (
+            <div id="it-section" className="mb-16 space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold">
+                    <Network className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">1. Layanan Teknologi Informasi (IT) & M&E</h3>
+                    <p className="text-xs text-slate-500">Berdasarkan dokumen Grasindo Company Profile IT</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onNavigate && onNavigate('it-solutions')}
+                  className="text-xs font-bold text-amber-600 hover:text-amber-700 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Lihat Detail IT Page</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 flex-shrink-0">
-                  <User className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
-                    Marcus Chen
-                  </h4>
-                  <p className="text-xs text-slate-500">
-                    VP of Strategy, FinTech
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {itServices.map((service, idx) => {
+                  const IconComp = service.icon;
+                  return (
+                    <div key={idx} className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 text-amber-600 flex items-center justify-center">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h4 className="font-bold text-slate-900 text-base">{service.title}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed">{service.desc}</p>
+                      <button
+                        onClick={() => handleOpenInquiry(service.title)}
+                        className="text-xs font-bold text-slate-900 hover:text-amber-600 inline-flex items-center gap-1 pt-2 cursor-pointer"
+                      >
+                        <span>Konsultasi Proyek</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
+          )}
 
-          </div>
+          {/* EO Section */}
+          {(activeTab === 'all' || activeTab === 'eo') && (
+            <div id="eo-section" className="space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center font-bold">
+                    <Calendar className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">2. Layanan Event Organizer (EO) & Media Advertising</h3>
+                    <p className="text-xs text-slate-500">Berdasarkan dokumen Grasindo Company Profile EO</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onNavigate && onNavigate('eo')}
+                  className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Lihat Detail EO Page</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {eoServices.map((service, idx) => {
+                  const IconComp = service.icon;
+                  return (
+                    <div key={idx} className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3 hover:shadow-md transition-all">
+                      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 text-orange-600 flex items-center justify-center">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <h4 className="font-bold text-slate-900 text-base">{service.title}</h4>
+                      <p className="text-xs text-slate-600 leading-relaxed">{service.desc}</p>
+                      <button
+                        onClick={() => handleOpenInquiry(service.title)}
+                        className="text-xs font-bold text-slate-900 hover:text-orange-600 inline-flex items-center gap-1 pt-2 cursor-pointer"
+                      >
+                        <span>Konsultasi Event</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
         </div>
       </section>
 
-      {/* ================= SECTION 5: FREQUENTLY ASKED QUESTIONS ================= */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 text-center tracking-tight mb-12">
-            Frequently Asked Questions
+      {/* ================= SECTION 4: CALL TO ACTION ================= */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
+            HUBUNGI TIM PT. INTEGRA ANEKSA KREASINDO
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Siap Mengembangkan Proyek IT & Event Perusahaan Anda?
           </h2>
-
-          <div className="space-y-4">
-            
-            {/* FAQ 1 */}
-            <div className="border border-slate-200/80 rounded-xl overflow-hidden bg-white shadow-2xs">
-              <button
-                onClick={() => toggleFaq(0)}
-                className="w-full text-left p-6 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50/50 transition-colors"
-              >
-                <span>What industries does Stratos Corp specialize in?</span>
-                {openFaq === 0 ? (
-                  <ChevronUp className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                )}
-              </button>
-              {(openFaq === 0 || true) && (
-                <div className="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
-                  We serve enterprise clients across finance, logistics, healthcare, energy, and technology sectors, though our strategic framework is adaptable to complex organizations in any industry.
-                </div>
-              )}
-            </div>
-
-            {/* FAQ 2 */}
-            <div className="border border-slate-200/80 rounded-xl overflow-hidden bg-white shadow-2xs">
-              <button
-                onClick={() => toggleFaq(1)}
-                className="w-full text-left p-6 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50/50 transition-colors"
-              >
-                <span>How long is a typical engagement?</span>
-                {openFaq === 1 ? (
-                  <ChevronUp className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                )}
-              </button>
-              {(openFaq === 1 || true) && (
-                <div className="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
-                  Engagements vary based on scope. Focused audits may take 4–6 weeks, while comprehensive digital transformation or enterprise restructuring typically span 6–18 months.
-                </div>
-              )}
-            </div>
-
-            {/* FAQ 3 */}
-            <div className="border border-slate-200/80 rounded-xl overflow-hidden bg-white shadow-2xs">
-              <button
-                onClick={() => toggleFaq(2)}
-                className="w-full text-left p-6 font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between hover:bg-slate-50/50 transition-colors"
-              >
-                <span>Do you handle the implementation phase?</span>
-                {openFaq === 2 ? (
-                  <ChevronUp className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                )}
-              </button>
-              {(openFaq === 2 || true) && (
-                <div className="px-6 pb-6 pt-0 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
-                  Yes. Unlike advisory-only firms, we believe true accountability means staying through execution. Our team works alongside yours to execute defined strategies, ensuring theoretical plans become operational realities.
-                </div>
-              )}
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* ================= SECTION 6: PRE-FOOTER CTA BANNER ================= */}
-      <section className="bg-slate-950 text-white py-16 sm:py-24 relative overflow-hidden">
-        {/* Subtle grid background accent */}
-        <div className="absolute inset-0 z-0 opacity-15 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:24px_24px]" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Ready to optimize your enterprise?
-          </h2>
-
-          <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Connect with our senior consultants to discuss how Stratos Corp can drive your strategic objectives forward.
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+            Konsultasikan kebutuhan infrastruktur IT, jaringan, billboard, maupun event organizer bersama tim profesional Grasindopro.
           </p>
 
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={onContactClick}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3.5 rounded-lg shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
+            <a
+              href="https://wa.me/6281398479044"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base"
             >
-              <span>Schedule a Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onContactClick}
-              className="border border-slate-700 hover:border-slate-500 bg-slate-900/80 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors cursor-pointer"
+              <PhoneCall className="w-5 h-5 text-slate-950" />
+              <span>WhatsApp Ibu Lia (0813-9847-9044)</span>
+            </a>
+
+            <a
+              href="tel:0217452804"
+              className="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 transition-all flex items-center gap-2 text-sm sm:text-base"
             >
-              <span>Contact Sales</span>
-            </button>
+              <PhoneCall className="w-4 h-4 text-amber-400" />
+              <span>Telepon Office: (021) 7452804</span>
+            </a>
           </div>
         </div>
       </section>
+
+      {/* ================= INQUIRY MODAL ================= */}
+      {inquiryModal.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-fadeIn">
+          <div className="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-lg w-full overflow-hidden text-slate-900">
+            
+            {/* Header */}
+            <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
+              <div>
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block">
+                  KONSULTASI SOLUSI GABUNGAN
+                </span>
+                <h3 className="text-xl font-bold mt-1">
+                  {inquiryModal.serviceName}
+                </h3>
+              </div>
+              <button
+                onClick={() => setInquiryModal({ isOpen: false, serviceName: '' })}
+                className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-slate-800 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Form */}
+            <div className="p-6">
+              {formSubmitted ? (
+                <div className="py-8 text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-lg">Pesan Berhasil Terkirim!</h4>
+                  <p className="text-xs text-slate-600">
+                    Tim PT. Integra Aneksa Kreasindo akan segera menghubungi Anda untuk menindaklanjuti kebutuhan proyek Anda.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap / Perusahaan</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Contoh: Budi Santoso (PT Contoh)"
+                      value={inquiryForm.name}
+                      onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Email Corporate</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="nama@perusahaan.com"
+                        value={inquiryForm.email}
+                        onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Nomor WhatsApp / HP</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="0812xxxxxxxx"
+                        value={inquiryForm.phone}
+                        onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Pilihan Sektor Layanan</label>
+                    <select
+                      value={inquiryForm.serviceType}
+                      onChange={(e) => setInquiryForm({ ...inquiryForm, serviceType: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white"
+                    >
+                      <option value="IT & M&E Solutions">IT & Mechanical Electrical (M&E)</option>
+                      <option value="Event Organizer & MICE">Event Organizer & MICE</option>
+                      <option value="Outdoor Billboard & Advertising">Media Advertising & Billboard</option>
+                      <option value="IT & EO Combined">Paket Solusi Gabungan IT + EO</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan Proyek</label>
+                    <textarea
+                      rows={3}
+                      required
+                      placeholder="Jelaskan kebutuhan spesifikasi teknis IT, titik billboard, atau konsep event Anda..."
+                      value={inquiryForm.message}
+                      onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-xl transition-colors text-xs flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Kirimkan Permintaan Konsultasi</span>
+                  </button>
+                </form>
+              )}
+            </div>
+
+          </div>
+        </div>
+      )}
 
     </div>
   );

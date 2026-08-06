@@ -3,7 +3,7 @@ import { HeroSlide, NewsItem, Partner, CompanyValue } from '../types/navigation'
 export const heroSlidesData: HeroSlide[] = [
   {
     id: 'slide-1',
-    title: 'Dummy Technology has received prestigious awards at Global Partner Connect 2026',
+    title: 'Grasindopro has received prestigious awards at Global Partner Connect 2026',
     subtitle: 'Recognized as Top Strategic IT System Integrator for Enterprise Digital Transformation',
     badge: 'EXCELLENCE AWARD 2026',
     ctaText: 'Discover Highlights',
@@ -46,12 +46,12 @@ export const heroSlidesData: HeroSlide[] = [
 export const newsArticlesData: NewsItem[] = [
   {
     id: 'news-1',
-    title: 'Dummy Technology Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
+    title: 'Grasindopro Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
     category: 'News',
     date: '28 July 2026',
     image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80',
-    summary: 'PT Dummy Technology Tbk won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
-    content: 'PT Dummy Technology Tbk has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
+    summary: 'PT Integra Aneksa Kreasindo (Grasindopro) won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
+    content: 'PT Integra Aneksa Kreasindo (Grasindopro) has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
   },
   {
     id: 'news-2',
@@ -60,7 +60,7 @@ export const newsArticlesData: NewsItem[] = [
     date: '15 July 2026',
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80',
     summary: 'Industry leaders gathered at the Executive Tech Forum to discuss hybrid multi-cloud governance and zero-trust security postures.',
-    content: 'Dummy Technology hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
+    content: 'Grasindopro hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
   },
   {
     id: 'news-3',
@@ -68,71 +68,71 @@ export const newsArticlesData: NewsItem[] = [
     category: 'CSR',
     date: '02 June 2026',
     image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80',
-    summary: 'As part of our commitment to sustainable community development, Dummy Technology donated digital lab kits and IT training modules.',
-    content: 'Demonstrating corporate social responsibility, Dummy Technology launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
+    summary: 'As part of our commitment to sustainable community development, Grasindopro donated digital lab kits and IT training modules.',
+    content: 'Demonstrating corporate social responsibility, Grasindopro launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
   },
   {
     id: 'news-4',
-    title: 'Press Release: PT Dummy Technology Tbk Reports Strong Q1 2026 Financial Growth',
+    title: 'Press Release: PT Integra Aneksa Kreasindo Reports Strong Q1 2026 Financial Growth',
     category: 'Press Release',
     date: '18 May 2026',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
     summary: 'Driven by surging demand for AI infrastructure, cloud integration, and security platforms, revenue expanded 14.8% YoY.',
-    content: 'PT Dummy Technology Tbk (IDX: DUMM) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
+    content: 'PT Integra Aneksa Kreasindo (Grasindopro) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
   }
 ];
 
 export const strategicPartnersData: Partner[] = [
-  { name: 'IBM', category: 'Strategic Cloud & AI Partner', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-  { name: 'Cisco Systems', category: 'Networking & Security', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
-  { name: 'Microsoft', category: 'Cloud & Business Applications', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-  { name: 'F5 Networks', category: 'Multi-Cloud App Security', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/F5_Networks_logo.svg' },
-  { name: 'Huawei Enterprise', category: 'Hybrid Infrastructure', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Huawei-logo.svg' },
-  { name: 'Oracle', category: 'Database & Cloud Solutions', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' },
-  { name: 'VMware by Broadcom', category: 'Virtualization & Hybrid Cloud', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg' },
-  { name: 'Palo Alto Networks', category: 'Cybersecurity Platforms', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/Palo_Alto_Networks_logo.svg' },
+  { name: 'Pertamina', category: 'Energy & Industrial Client', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Pertamina_Logo.svg' },
+  { name: 'Grab', category: 'Technology & Transportation', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Grab_Logo.svg' },
+  { name: 'Herbalife', category: 'Global Wellness Brand', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Herbalife_Logo.svg' },
+  { name: 'Nokia', category: 'Telecommunications', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Nokia_wordmark.svg' },
+  { name: 'OCBC NISP', category: 'Banking & Financial Services', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/87/OCBC_Bank_logo.svg' },
+  { name: 'Asian Paints', category: 'Manufacturing & Industrial', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Asian_Paints_logo.svg' },
+  { name: 'Ciputra Group', category: 'Property & Infrastructure', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Ciputra_Group.svg' },
+  { name: 'Ajaib', category: 'Fintech & Investment Platform', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Ajaib_Sekuritas_Logo.svg' },
 ];
 
 export const companyValuesData: CompanyValue[] = [
   {
     key: 'C',
-    title: 'Customer First',
-    tagline: 'Delivering exceptional value and building trust.',
-    description: 'We prioritize our clients\' strategic business goals, delivering customized IT infrastructure and digital solutions with uncompromised quality and customer satisfaction.',
+    title: 'Customer First & Quality',
+    tagline: 'Mengutamakan konsistensi dan kualitas layanan prima.',
+    description: 'Kami memberikan service terbaik secara prima, cepat, dan berkualitas tinggi sebagai wujud hubungan kemitraan jangka panjang yang berkelanjutan.',
     iconName: 'Users'
   },
   {
     key: 'A',
-    title: 'Accountability',
-    tagline: 'Taking ownership of results and commitments.',
-    description: 'We act with high integrity, taking full responsibility for implementation outcomes, SLA performance, corporate governance, and ethical business conduct.',
+    title: 'Accountability & Integrity',
+    tagline: 'Integritas tinggi dan tanggung jawab penuh.',
+    description: 'Menjaga dan memelihara serta mengembangkan sikap dan etika bisnis secara profesional dengan tanggung jawab penuh di setiap eksekusi proyek.',
     iconName: 'ShieldCheck'
   },
   {
     key: 'R',
-    title: 'Respect',
-    tagline: 'Valuing diversity, teamwork, and human potential.',
-    description: 'We foster an inclusive corporate environment built on mutual respect, continuous learning, collaboration, and empowering our team members to excel.',
+    title: 'Respect & Flexibility',
+    tagline: 'Fleksibel dan responsif mengikuti perkembangan tren.',
+    description: 'Senantiasa fleksibel mengikuti dinamika kebutuhan klien serta menghadirkan inovasi dan solusi terbaik bagi mitra usaha.',
     iconName: 'HeartHandshake'
   },
   {
     key: 'E',
-    title: 'Excellence',
-    tagline: 'Striving for innovation and operational mastery.',
-    description: 'We continuously upgrade our technological expertise, adopting world-class frameworks and cutting-edge innovations to exceed expectations.',
+    title: 'Excellence & Commitment',
+    tagline: 'Komitmen pada hasil sempurna dan nilai tambah.',
+    description: 'Mengintegrasikan solusi IT, Mechanical Electrical, dan Advertising / Event Organizer secara profesional berbasis estetika, efisiensi, dan keamanan.',
     iconName: 'Award'
   }
 ];
 
 export const footerData = {
-  address: 'Gedung Dummy Cyber Park, Jl. Jendral Sudirman No. 88, Jakarta Selatan 12190 - Indonesia',
-  phone: '+62 21 500 0000',
-  fax: '+62 21 500 0001',
-  email: 'corporate.secretary@dummytech.com',
+  address: 'Bintaro Trade Center Sektor 7, Jl. Jendral Sudirman Blok B2 No. 10, Kel. Pondok Jaya, Kec. Pondok Aren, Kota Tangerang Selatan, Banten 15220',
+  phone: '(021) 7452804',
+  fax: '0813-9847-9044 (Ibu Lia)',
+  email: 'marketing@grasindopro.com',
   subsidiaries: [
-    'PT Dummy Visionet Data',
-    'PT Dummy Digital Distribusi',
-    'PT Dummy System Integrator',
-    'Dummy Global Services Corp.'
+    'IT & Mechanical Electrical (M&E) Integration',
+    'Media Advertising (Billboard, Neon Box, Signage)',
+    'Event Organizer, MICE & Brand Activation',
+    'Software Solutions & Security Systems'
   ]
 };

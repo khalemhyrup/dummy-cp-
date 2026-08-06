@@ -38,13 +38,23 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                 Core Services
               </h4>
               <ul className="space-y-1.5 text-xs text-gray-400">
-                <li className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>IT Support & Maintenance</span>
+                <li>
+                  <button
+                    onClick={() => onLinkClick('IT Support')}
+                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <span>IT Support & Maintenance</span>
+                  </button>
                 </li>
-                <li className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>EO (Event Organizer & Tech Events)</span>
+                <li>
+                  <button
+                    onClick={() => onLinkClick('Event Organizer')}
+                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <span>EO (Event Organizer & MICE)</span>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -114,21 +124,20 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             </h3>
 
             <div className="bg-neutral-950 p-6 rounded-2xl border border-neutral-800 space-y-4">
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl text-white tracking-tighter">
-                  DUMMY
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.25em] text-amber-400 uppercase">
-                  TECHNOLOGY GROUP
-                </span>
+              <div className="bg-white p-4 rounded-xl flex items-center justify-center border border-neutral-700 shadow-md">
+                <img
+                  src="/images/logo.png"
+                  alt="Grasindopro - PT Integra Aneksa Kreasindo"
+                  className="h-16 sm:h-20 w-auto object-contain"
+                />
               </div>
               <p className="text-xs text-gray-400 leading-relaxed">
                 Leading IT Support, Solutions, and Event Management Provider in Indonesia.
               </p>
               <div className="pt-2 flex items-center justify-between border-t border-neutral-900 text-[11px]">
-                <span className="text-gray-400">Stock Ticker</span>
-                <span className="font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
-                  IDX: DUMM
+                <span className="text-gray-400">Legal Name</span>
+                <span className="font-semibold text-amber-400 text-[10px]">
+                  PT INTEGRA ANEKSA KREASINDO
                 </span>
               </div>
             </div>
@@ -144,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
       {/* Copyright Bar */}
       <div className="bg-black py-6 border-t border-neutral-900 text-center text-xs text-gray-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 PT Dummy Technology Tbk. All Rights Reserved.</p>
+          <p>© 2026 PT Integra Aneksa Kreasindo (Grasindopro). All Rights Reserved.</p>
           <div className="flex items-center space-x-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
