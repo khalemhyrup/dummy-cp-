@@ -6,6 +6,7 @@ export interface MenuItem {
 }
 
 export interface MenuColumn {
+  id?: string;
   title?: string;
   items: MenuItem[];
 }

@@ -8,7 +8,7 @@ export const heroSlidesData: HeroSlide[] = [
     badge: 'EXCELLENCE AWARD 2026',
     ctaText: 'Discover Highlights',
     bgGradient: 'from-amber-950 via-amber-900 to-amber-950',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80',
+    image: '/why_us_banner_poster.png',
     darkOverlay: true,
   },
   {
@@ -18,7 +18,7 @@ export const heroSlidesData: HeroSlide[] = [
     badge: 'CLOUD SECURITY',
     ctaText: 'Read Whitepaper',
     bgGradient: 'from-slate-950 via-slate-900 to-amber-950',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+    image: '/about_technology_illustration.png',
     darkOverlay: true,
   },
   {
@@ -28,7 +28,7 @@ export const heroSlidesData: HeroSlide[] = [
     badge: 'AI INFRASTRUCTURE',
     ctaText: 'Explore Storage Solutions',
     bgGradient: 'from-blue-950 via-slate-900 to-indigo-950',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80',
+    image: '/why_us_infrastructure_illustration.png',
     darkOverlay: true,
   },
   {
@@ -38,7 +38,7 @@ export const heroSlidesData: HeroSlide[] = [
     badge: 'DIGITAL INNOVATION',
     ctaText: 'Schedule Demo',
     bgGradient: 'from-emerald-950 via-teal-950 to-slate-950',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+    image: '/CME/Electrical/cme_electrical.png',
     darkOverlay: true,
   },
 ];
@@ -49,7 +49,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Grasindopro Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
     category: 'News',
     date: '28 July 2026',
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80',
+    image: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
     summary: 'PT Integra Aneksa Kreasindo (Grasindopro) won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
     content: 'PT Integra Aneksa Kreasindo (Grasindopro) has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
   },
@@ -58,7 +58,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Executive Tech Forum 2026: Losing Control vs. Losing Growth in Multi-Cloud Security',
     category: 'Activities',
     date: '15 July 2026',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80',
+    image: '/it_solution/security/Screenshot 2026-08-08 024113.png',
     summary: 'Industry leaders gathered at the Executive Tech Forum to discuss hybrid multi-cloud governance and zero-trust security postures.',
     content: 'Grasindopro hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
   },
@@ -67,7 +67,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'CSR Education Program: Empowering Tech Talent in Remote Schools Across Indonesia',
     category: 'CSR',
     date: '02 June 2026',
-    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80',
+    image: '/it_solution/network/Screenshot 2026-08-08 024038.png',
     summary: 'As part of our commitment to sustainable community development, Grasindopro donated digital lab kits and IT training modules.',
     content: 'Demonstrating corporate social responsibility, Grasindopro launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
   },
@@ -76,7 +76,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Press Release: PT Integra Aneksa Kreasindo Reports Strong Q1 2026 Financial Growth',
     category: 'Press Release',
     date: '18 May 2026',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+    image: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png',
     summary: 'Driven by surging demand for AI infrastructure, cloud integration, and security platforms, revenue expanded 14.8% YoY.',
     content: 'PT Integra Aneksa Kreasindo (Grasindopro) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
   }

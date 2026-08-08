@@ -116,19 +116,24 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
     <div className="bg-white min-h-screen font-sans text-slate-900 selection:bg-amber-500 selection:text-slate-950">
 
       {/* ================= SECTION 1: HERO COMBINED ================= */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 text-white py-20 lg:py-28 overflow-hidden">
-        {/* Glow Effects */}
+      <section className="relative bg-slate-950 text-white py-20 lg:py-28 overflow-hidden min-h-[480px] flex items-center">
+        {/* Background Image */}
+        <img
+          src="/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png"
+          alt="Layanan IT Solutions & Event Organizer Background"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-luminosity filter brightness-90 contrast-110"
+        />
+
+        {/* Dark Gradient Overlay for High Text Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-amber-950/60" />
+
+        {/* Glowing Background Orbs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">
             
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>LAYANAN INTEGRASI TERPADU</span>
-            </div>
-
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
               Solusi Terpadu <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">IT Solutions & Event Organizer</span>
             </h1>
@@ -137,59 +142,26 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
               PT. Integra Aneksa Kreasindo (Grasindopro) merupakan kontraktor terintegrasi berbasis Teknologi Informasi (IT), Mechanical Electrical (M&E), Media Advertising, dan Event Organizer (EO) di Indonesia.
             </p>
 
-            {/* Quick Navigation Buttons to Detail Pages */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => {
-                  if (onNavigate) onNavigate('it-solutions');
-                  else {
-                    const el = document.getElementById('it-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer"
-              >
-                <Network className="w-5 h-5 text-slate-950" />
-                <span>Halaman IT Solutions</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => {
-                  if (onNavigate) onNavigate('eo');
-                  else {
-                    const el = document.getElementById('eo-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-6 py-3.5 rounded-xl border border-slate-700 shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base cursor-pointer"
-              >
-                <Calendar className="w-5 h-5 text-amber-400" />
-                <span>Halaman Event Organizer</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* ================= SECTION 2: DUAL PILLARS SHOWCASE ================= */}
+      {/* ================= SECTION 2: THREE PILLARS SHOWCASE ================= */}
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">
-              DUA PILAR UTAMA KORPORAT
+              TIGA PILAR UTAMA KORPORAT
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Bidang Usaha Grasindopro
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            {/* Pillar 1: IT & M&E Card */}
+            {/* Pillar 1: Information Technology (IT) Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-600 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
@@ -199,14 +171,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                   PILAR 1
                 </span>
                 <h3 className="text-2xl font-extrabold text-slate-900">
-                  Information Technology (IT) & Mechanical Electrical (M&E)
+                  Information Technology (IT)
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Perencanaan, instalasi, dan pemeliharaan integrasi jaringan Fiber Optics, Wireless, Security Systems (CCTV & Access Door), Software Aplikasi, IT Managed Services, serta Mechanical Electrical (HVAC, Kelistrikan, Genset & Hydrant).
+                  Perencanaan, instalasi, dan pemeliharaan integrasi jaringan Fiber Optics, Wireless, Security Systems (CCTV & Access Door), Software Aplikasi, serta IT Managed Services.
                 </p>
                 
                 <div className="space-y-2 pt-2">
-                  {['Network & Fiber Optics Splicing / OTDR', 'Security Camera (CCTV) & Access Control', 'Custom Software & IT Managed Services', 'Mechanical Electrical (HVAC, Genset, Fire Hydrant)'].map((item, idx) => (
+                  {['Network & Fiber Optics Splicing / OTDR', 'Security Camera (CCTV) & Access Control', 'Custom Software & IT Managed Services', 'IT Support & System Maintenance'].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
                       <span>{item}</span>
@@ -224,7 +196,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer"
+                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer w-full justify-center"
                 >
                   <span>Buka Halaman IT Support & Solutions</span>
                   <ChevronRight className="w-4 h-4" />
@@ -232,14 +204,57 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
               </div>
             </div>
 
-            {/* Pillar 2: EO & Media Advertising Card */}
+            {/* Pillar 2: Mechanical Electrical (M&E) Card */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-600 flex items-center justify-center mb-6 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-colors">
+                  <Zap className="w-7 h-7" />
+                </div>
+                <span className="text-xs font-bold text-yellow-600 uppercase tracking-widest block">
+                  PILAR 2
+                </span>
+                <h3 className="text-2xl font-extrabold text-slate-900">
+                  Mechanical Electrical (M&E)
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Perencanaan, instalasi, dan pemeliharaan sistem kelistrikan, HVAC (AC), Genset Backup, Fire Hydrant, perpipaan gas, serta infrastruktur mekanikal elektrikal gedung.
+                </p>
+
+                <div className="space-y-2 pt-2">
+                  {['Sistem HVAC (Heating, Ventilation & AC)', 'Instalasi Listrik, Transformator & Panel Listrik', 'Genset Backup & Generator Systems', 'Fire Hydrant, Sprinkler & Plumbing Gas'].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
+                      <CheckCircle2 className="w-4 h-4 text-yellow-600 flex-shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    if (onNavigate) onNavigate('service');
+                    else {
+                      const el = document.getElementById('cme-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer w-full justify-center"
+                >
+                  <span>Buka Halaman Mechanical Electrical</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Pillar 3: Event Organizer (EO) & Media Advertising Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-600 flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-slate-950 transition-colors">
                   <Calendar className="w-7 h-7" />
                 </div>
                 <span className="text-xs font-bold text-orange-600 uppercase tracking-widest block">
-                  PILAR 2
+                  PILAR 3
                 </span>
                 <h3 className="text-2xl font-extrabold text-slate-900">
                   Event Organizer (EO) & Media Advertising
@@ -267,7 +282,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                       if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer"
+                  className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl transition-colors text-xs flex items-center gap-2 cursor-pointer w-full justify-center"
                 >
                   <span>Buka Halaman Event Organizer</span>
                   <ChevronRight className="w-4 h-4" />
@@ -276,7 +291,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
             </div>
 
           </div>
-
         </div>
       </section>
 
@@ -423,26 +437,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
           <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
             Konsultasikan kebutuhan infrastruktur IT, jaringan, billboard, maupun event organizer bersama tim profesional Grasindopro.
           </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://wa.me/6281398479044"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base"
-            >
-              <PhoneCall className="w-5 h-5 text-slate-950" />
-              <span>WhatsApp Ibu Lia (0813-9847-9044)</span>
-            </a>
-
-            <a
-              href="tel:0217452804"
-              className="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 transition-all flex items-center gap-2 text-sm sm:text-base"
-            >
-              <PhoneCall className="w-4 h-4 text-amber-400" />
-              <span>Telepon Office: (021) 7452804</span>
-            </a>
-          </div>
         </div>
       </section>
 

@@ -1,34 +1,26 @@
 import React, { useState } from 'react';
 import {
-  Network,
-  ShieldCheck,
-  Cpu,
-  Server,
-  Zap,
-  PhoneCall,
-  CheckCircle2,
   Wrench,
-  Flame,
-  Lock,
-  Radio,
-  FileCode,
-  Layers,
-  Building2,
+  Zap,
+  ShieldCheck,
+  CheckCircle2,
   ArrowRight,
   Send,
-  Sparkles,
   ChevronRight,
   Headphones,
   MapPin,
-  Clock
+  Clock,
+  Award,
+  Activity
 } from 'lucide-react';
 
-interface ITPageProps {
+interface CMEmainProps {
+  onNavigate?: (page: string) => void;
   onContactClick?: () => void;
   initialCategory?: string;
 }
 
-export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory = 'all' }) => {
+export const CMEmain: React.FC<CMEmainProps> = ({ onNavigate, initialCategory = 'all' }) => {
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [inquiryModal, setInquiryModal] = useState<{ isOpen: boolean; serviceName: string }>({
     isOpen: false,
@@ -52,105 +44,97 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
     }, 2000);
   };
 
-  // Strengths from PDF
+  // Strengths / Core Values for CME
   const strengths = [
     {
-      title: 'Service Management System',
-      desc: 'Menyederhanakan proses penanganan masalah & ticketing bagi pelanggan secara terstruktur.',
-      icon: Clock,
+      title: 'Presisi & Standar K3',
+      desc: 'Penerapan standar keselamatan dan presisi tinggi dalam perancangan serta instalasi sistem mekanikal & elektrikal.',
+      icon: ShieldCheck,
     },
     {
-      title: 'Great Support',
-      desc: 'Respon cepat 24/7 adalah bagian dari komitmen kami untuk memberikan layanan terbaik.',
-      icon: Headphones,
+      title: 'Tim Engineer Tersertifikasi',
+      desc: 'Dukungan engineer spesialis HVAC, kelistrikan tegangan tinggi/rendah, dan otomatisasi kontrol sistem.',
+      icon: Award,
     },
     {
-      title: 'Focus Solution',
-      desc: 'Selalu berfikir memberikan solusi terbaik dan tepat sesuai kebutuhan spesifik bisnis Anda.',
-      icon: Zap,
-    },
-    {
-      title: 'Professional Team',
-      desc: 'SDM bersertifikasi profesional & peralatan modern terkini untuk menunjang pekerjaan.',
+      title: 'Material Standar Industri',
+      desc: 'Penggunaan perangkat pendingin, pipa, kabel, panel, trafo, & genset teruji standar SNI dan internasional.',
       icon: Wrench,
     },
     {
-      title: 'Service Point Nasional',
-      desc: 'Cakupan titik lokasi layanan yang komprehensif di berbagai wilayah kota besar di Indonesia.',
+      title: 'Efisiensi & Manajemen Energi',
+      desc: 'Strategi optimasi daya dan otomatisasi sistem untuk menghemat penggunaan energi operasional gedung & fasilitas.',
+      icon: Activity,
+    },
+    {
+      title: 'Cakupan Service Point Nasional',
+      desc: 'Kemampuan eksekusi teknisi dan pengawasan proyek instalasi Mekanikal Elektrikal di seluruh wilayah Indonesia.',
       icon: MapPin,
     },
     {
-      title: 'Best Partners',
-      desc: 'Bermitra resmi dengan produsen hardware & vendor teknologi terkemuka dunia.',
-      icon: ShieldCheck,
+      title: 'Maintenance 24/7 & Incident Support',
+      desc: 'Layanan pemeliharaan berkala (*preventive maintenance*) dan penanganan darurat kelistrikan & sistem pendingin.',
+      icon: Headphones,
     },
   ];
 
-  // Services breakdown from PDF
+  // Exactly 2 CME Services: 1. Mekanikal & 2. Elektrikal
   const services = [
     {
-      id: 'it-support',
-      category: 'it-support',
-      title: 'IT Support & Maintenance',
-      badge: 'Dukungan & Pemeliharaan IT',
-      icon: Headphones,
-      image: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png',
-      description: 'Layanan dukungan teknis IT 24/7, pemeliharaan preventif & kuratif hardware/software, troubleshooting jaringan, dan manajemen ticketing service.',
-      items: [
-        '24/7 IT Helpdesk & On-Site Technical Support',
-        'Preventive & Curative Hardware/Software Maintenance',
-        'PC, Workstation, Server & Peripheral Maintenance',
-        'Network Troubleshooting & Remote Desktop Support',
-        'SLA (Service Level Agreement) Dedicated Response Time'
-      ]
+      id: 'cme-mechanical',
+      category: 'mechanical',
+      title: '1. Mekanikal (Mechanical)',
+      badge: 'Mekanikal & Pemipaan',
+      icon: Wrench,
+      image: '/CME/Mechanical/CME_pipa.png',
+      pageId: 'cme-mechanical',
+      description: 'Layanan perencanaan, instalasi, dan pemeliharaan sistem mekanikal terpadu untuk pendingin udara, plumbing air, pemadam kebakaran, serta pemipaan gas industri & komersial.',
+      subSections: [
+        {
+          name: '1. Sistem HVAC (Heating, Ventilation, and Air Conditioning)',
+          desc: 'Perencanaan, instalasi, dan pemeliharaan sistem pemanas, ventilasi, dan pendingin udara.'
+        },
+        {
+          name: '2. Plumbing',
+          desc: 'Desain dan instalasi sistem perpipaan untuk air bersih, air kotor, air limbah, dan sistem sanitasi.'
+        },
+        {
+          name: '3. Pemadam Kebakaran',
+          desc: 'Perencanaan dan pemasangan sistem pemadam kebakaran seperti sprinkler, hydrant, dan sistem deteksi kebakaran.'
+        },
+        {
+          name: '4. Sistem Pemipaan Gas',
+          desc: 'Perencanaan dan instalasi sistem pipa gas untuk industri, komersial, dan perumahan.'
+        }
+      ],
     },
     {
-      id: 'networks',
-      category: 'network',
-      title: 'Network Solutions & Fiber Optics',
-      badge: 'Jaringan & Kabel Fiber',
-      icon: Network,
-      image: '/it_solution/network/Screenshot 2026-08-08 024038.png',
-      description: 'Layanan instalasi, perencanaan, pengadaan, dan optimasi jaringan komputer baik wireline (Serat Optik) maupun nirkabel (Wireless Radio).',
-      items: [
-        'Fiber Optics Material, Splicing & Testing OTDR',
-        'Wireless Network (Mikrotik, Ubiquiti, Cambium, Microwave, PTP/PTMP)',
-        'Network Planning, Design & Installer Services',
-        'Cabling System (Data Cat6/Cat6A, Multi Pair, Coaxial)',
-        'Maintenance & Network Infrastructure Optimization'
-      ]
-    },
-    {
-      id: 'security',
-      category: 'security',
-      title: 'Security Systems & Automation',
-      badge: 'Keamanan & Otomasi',
-      icon: Lock,
-      image: '/it_solution/security/Screenshot 2026-08-08 024113.png',
-      description: 'Sistem otomasi keamanan, pengawasan, dan pengendalian aset bergerak maupun tidak bergerak yang terintegrasi penuh.',
-      items: [
-        'Security Camera (CCTV IP & High Definition)',
-        'Access Door System & Security Door Lock',
-        'Fire Alarm System & Panic Button Integration',
-        'Infrastruktur Input Alarm & Central Monitoring',
-        'Asset Tracking & Asset Protection Control'
-      ]
-    },
-    {
-      id: 'telecom',
-      category: 'telecom',
-      title: 'Telecommunication & Network Tower Solutions',
-      badge: 'Infrastruktur Telekomunikasi',
-      icon: Radio,
-      image: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png',
-      description: 'Solusi terpadu pengadaan, pembangunan, dan pemeliharaan infrastruktur telekomunikasi seluler GSM/CDMA, menara SST, shelter, feeder, & PABX.',
-      items: [
-        'GSM & CDMA Equipment & Base Transceiver Station',
-        'Menara SST (Self Supporting Tower) & Antenna Pole',
-        'Shelter Outdoor / Indoor Knockdown Fabrication',
-        'Kabel Feeder Coaxial RF, Connector & Grounding Kit',
-        'Sistem PABX Analog, Hybrid & Full IP-PBX Telephony'
-      ]
+      id: 'cme-electrical',
+      category: 'electrical',
+      title: '2. Elektrikal & Integrasi Sistem (Electrical)',
+      badge: 'Kelistrikan & Tenaga',
+      icon: Zap,
+      image: '/CME/Electrical/cme_electrical.png',
+      pageId: 'cme-electrical',
+      description: 'Perencanaan, instalasi, dan pemeliharaan jaringan distribusi listrik, sistem tenaga (trafo, panel, genset), integrasi mekanikal elektrikal, otomatisasi, dan manajemen energi.',
+      subSections: [
+        {
+          name: '1. Instalasi Listrik',
+          desc: 'Desain, instalasi, dan pemeliharaan sistem kelistrikan, termasuk pencahayaan, stopkontak, dan jaringan kabel.'
+        },
+        {
+          name: '2. Sistem Tenaga',
+          desc: 'Perencanaan dan instalasi sistem distribusi listrik, transformator, panel listrik, dan generator cadangan.'
+        },
+        {
+          name: '3. Integrasi Sistem Mekanikal Elektrikal',
+          desc: 'Penggabungan berbagai sistem mekanikal dan elektrikal untuk meningkatkan efisiensi dan fungsionalitas bangunan atau instalasi.'
+        },
+        {
+          name: '4. Otomatisasi & Manajemen Energi',
+          desc: 'Implementasi sistem otomatisasi dan strategi untuk mengoptimalkan penggunaan energi dan efisiensi operasional.'
+        }
+      ],
     }
   ];
 
@@ -165,9 +149,9 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
       <section className="relative bg-slate-950 text-white py-20 lg:py-28 overflow-hidden min-h-[480px] flex items-center">
         {/* Background Image */}
         <img
-          src="/why_us_banner_poster.png"
-          alt="IT & Infrastructure Solutions Background"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-35 mix-blend-luminosity filter brightness-90 contrast-110"
+          src="/CME/Electrical/cme_electrical.png"
+          alt="CME Infrastructure Background"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-luminosity filter brightness-90 contrast-110"
         />
 
         {/* Dark Gradient Overlay for High Text Legibility */}
@@ -180,11 +164,11 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              Solusi Integrasi <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">IT & Infrastructure</span> Terpercaya
+              Solusi Terpadu <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Mekanikal & Elektrikal (CME)</span>
             </h1>
 
             <p className="text-gray-300 text-base sm:text-xl leading-relaxed font-normal">
-              PT. Integra Aneksa Kreasindo (Grasindopro) menyediakan layanan terpadu mulai dari jaringan Fiber Optics, Network Solutions, Security Systems, Software,dan IT Managed Services.
+              PT. Integra Aneksa Kreasindo (Grasindopro) menyediakan layanan komprehensif mulai dari Sistem HVAC, Plumbing, Pemadam Kebakaran, Pemipaan Gas, Instalasi Listrik, Sistem Tenaga (Trafo & Genset), hingga Otomatisasi Integrasi Sistem & Manajemen Energi.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
@@ -195,7 +179,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
                 }}
                 className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-7 py-3.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm sm:text-base cursor-pointer"
               >
-                <span>Jelajahi Layanan IT</span>
+                <span>Jelajahi Solusi CME</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -208,10 +192,10 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              Kekuatan Layanan IT Grasindopro
+              Kekuatan Layanan Mekanikal & Elektrikal Grasindopro
             </h2>
             <p className="text-slate-600 text-sm sm:text-base mt-2">
-              Komitmen kami dalam memberikan kualitas terbaik dan hubungan jangka panjang bagi mitra bisnis.
+              Komitmen kami dalam memberikan efisiensi fungsional, standar K3 tinggi, dan otomatisasi kontrol sistem energi terbaik.
             </p>
           </div>
 
@@ -243,13 +227,49 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
       <section id="services-grid" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="mb-12">
-            <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">
-              KATALOG SOLUSI IT & INFRASTRUKTUR
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Layanan & Spesifikasi Produk
-            </h2>
+          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <span className="text-xs font-bold text-amber-600 uppercase tracking-widest block mb-2">
+                KATALOG BIDANG USAHA CME GRASINDOPRO
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Layanan & Ruang Lingkup Pekerjaan
+              </h2>
+            </div>
+
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 w-fit">
+              <button
+                onClick={() => setActiveCategory('all')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'all'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Semua Bidang
+              </button>
+              <button
+                onClick={() => setActiveCategory('mechanical')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'mechanical'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                1. Mekanikal
+              </button>
+              <button
+                onClick={() => setActiveCategory('electrical')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'electrical'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                2. Elektrikal
+              </button>
+            </div>
           </div>
 
           {/* Services List Grid */}
@@ -261,7 +281,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
                   key={service.id}
                   className="bg-slate-50/80 rounded-3xl border border-slate-200 p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hover:shadow-xl transition-all duration-300"
                 >
-                  {/* Left Column: Info & List */}
+                  {/* Left Column: Info & Sub-sections */}
                   <div className="lg:col-span-7 space-y-6">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-xs font-bold">
                       <ServiceIcon className="w-4 h-4 text-amber-600" />
@@ -276,23 +296,38 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
                       {service.description}
                     </p>
 
-                    {/* Features Checklist */}
-                    <div className="space-y-2.5 pt-2">
-                      {service.items.map((itemStr, idx) => (
-                        <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-800 font-medium">
-                          <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                          <span>{itemStr}</span>
+                    {/* Sub-Sections Accordion / Cards */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      {service.subSections.map((sub, idx) => (
+                        <div key={idx} className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs space-y-1">
+                          <h4 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
+                            {sub.name}
+                          </h4>
+                          <p className="text-[11px] text-slate-600 leading-snug">
+                            {sub.desc}
+                          </p>
                         </div>
                       ))}
                     </div>
 
                     <div className="pt-4 flex flex-wrap items-center gap-4">
                       <button
-                        onClick={() => handleOpenInquiry(service.title)}
+                        onClick={() => {
+                          if (onNavigate) onNavigate(service.pageId);
+                        }}
                         className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-xl transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
                       >
-                        <span>Minta Penawaran / Konsultasi</span>
+                        <span>Lihat Halaman Khusus {service.badge}</span>
                         <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      <button
+                        onClick={() => handleOpenInquiry(service.title)}
+                        className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer shadow-md"
+                      >
+                        <span>Konsultasi Proyek</span>
+                        <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -324,7 +359,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
             <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
               <div>
                 <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block">
-                  KONSULTASI TEKNIS IT & INFRASTRUKTUR
+                  KONSULTASI BIDANG MEKANIKAL & ELEKTRIKAL
                 </span>
                 <h3 className="text-xl font-bold mt-1">
                   {inquiryModal.serviceName}
@@ -332,7 +367,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
               </div>
               <button
                 onClick={() => setInquiryModal({ isOpen: false, serviceName: '' })}
-                className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-slate-800 transition-colors"
+                className="text-slate-400 hover:text-white p-1 rounded-full hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 ✕
               </button>
@@ -347,7 +382,7 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
                   </div>
                   <h4 className="font-bold text-slate-900 text-lg">Pesan Berhasil Terkirim!</h4>
                   <p className="text-xs text-slate-600">
-                    Tim IT Engineer Grasindopro akan segera menghubungi Anda melalui kontak yang dicantumkan.
+                    Tim Engineer Mekanikal & Elektrikal Grasindopro akan segera menghubungi Anda melalui kontak yang dicantumkan.
                   </p>
                 </div>
               ) : (
@@ -390,11 +425,11 @@ export const ITPage: React.FC<ITPageProps> = ({ onContactClick, initialCategory 
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Kebutuhan Spesifikasi Proyek</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Kebutuhan Pekerjaan Mekanikal / Elektrikal</label>
                     <textarea
                       rows={3}
                       required
-                      placeholder="Jelaskan kebutuhan lokasi, jumlah titik CCTV/jaringan/server/HVAC..."
+                      placeholder="Jelaskan kebutuhan pekerjaan (HVAC, Plumbing, Pemadam Kebakaran, Pemipaan Gas, Instalasi Listrik, Trafo, Genset, atau Otomatisasi)..."
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"

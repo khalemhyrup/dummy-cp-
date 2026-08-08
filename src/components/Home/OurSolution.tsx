@@ -5,16 +5,22 @@ export interface SolutionItem {
   title: string;
   bgColor: string;
   icon: React.ReactNode;
+  page?: string;
 }
 
-export const OurSolution: React.FC = () => {
+interface OurSolutionProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const OurSolution: React.FC<OurSolutionProps> = ({ onNavigate }) => {
   const solutions: SolutionItem[] = [
     {
       id: 'it-telecommunication',
       title: 'IT & TELECOMMUNICATION',
       bgColor: 'bg-[#7967a9]', // Purple
+      page: 'it-solutions',
       icon: (
-        <svg className="w-14 h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           {/* Telecom Tower & Signal Waves */}
           <path d="M32 12v40M20 52l12-40 12 40M24 36h16M27 26h10" />
           <circle cx="32" cy="12" r="2.5" fill="currentColor" />
@@ -26,8 +32,9 @@ export const OurSolution: React.FC = () => {
       id: 'mechanical-electrical',
       title: 'MECHANICAL & ELECTRICAL',
       bgColor: 'bg-[#e8af38]', // Golden Yellow
+      page: 'service',
       icon: (
-        <svg className="w-14 h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           {/* Gear (Mechanical) */}
           <circle cx="26" cy="28" r="9" strokeWidth="2.5" />
           <path d="M26 15v4M26 37v4M13 28h4M39 28h4M17 19l3 3M32 34l3 3M17 37l3-3M32 19l3-3" strokeWidth="2" />
@@ -40,8 +47,9 @@ export const OurSolution: React.FC = () => {
       id: 'security-automation',
       title: 'SECURITY & AUTOMATION',
       bgColor: 'bg-[#57a6c5]', // Teal / Cyan
+      page: 'security-systems',
       icon: (
-        <svg className="w-14 h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           {/* Security Shield */}
           <path d="M32 10L14 18v15c0 13 8 22 18 25 10-3 18-12 18-25V18L32 10z" strokeWidth="2.5" />
           {/* Automation Check & Lock */}
@@ -55,8 +63,9 @@ export const OurSolution: React.FC = () => {
       id: 'software-managed-services',
       title: 'SOFTWARE & MANAGED SERVICES',
       bgColor: 'bg-[#8cc44f]', // Lime Green
+      page: 'software-managed',
       icon: (
-        <svg className="w-14 h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           {/* Software Window */}
           <rect x="10" y="12" width="44" height="34" rx="4" strokeWidth="2.5" />
           <path d="M10 22h44M16 17h2M22 17h2M28 17h2" strokeWidth="2" />
@@ -71,8 +80,9 @@ export const OurSolution: React.FC = () => {
       id: 'advertising-event-organizer',
       title: 'ADVERTISING & EVENT ORGANIZER',
       bgColor: 'bg-[#c64a45]', // Red
+      page: 'eo',
       icon: (
-        <svg className="w-14 h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           {/* Broadcast Megaphone */}
           <path d="M12 24v16M12 28h8l18-12v32L20 36h-8a2 2 0 0 1-2-2V30a2 2 0 0 1 2-2z" strokeWidth="2.5" />
           <path d="M16 36v12a3 3 0 0 0 3 3h2" strokeWidth="2.5" />
@@ -84,24 +94,25 @@ export const OurSolution: React.FC = () => {
   ];
 
   return (
-    <section className="bg-[#383838] py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#2d2d2d] py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Heading */}
-        <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-white tracking-wider mb-12 uppercase">
-          OUR SOLUTION
+        <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-white tracking-widest mb-8 sm:mb-12 uppercase">
+          SOLUSI KAMI
         </h2>
 
-        {/* 5 Column Colored Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 shadow-2xl rounded-sm overflow-hidden">
+        {/* 2 Column Mobile, 5 Column Desktop Cards Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 shadow-2xl rounded-sm overflow-hidden">
           {solutions.map((item) => (
             <div
               key={item.id}
-              className={`${item.bgColor} p-8 flex flex-col items-center justify-between text-center min-h-[240px] transition-all duration-300 hover:brightness-110 cursor-pointer group`}
+              onClick={() => item.page && onNavigate?.(item.page)}
+              className={`${item.bgColor} p-4 sm:p-8 flex flex-col items-center justify-center text-center aspect-square transition-all duration-300 hover:brightness-110 cursor-pointer group`}
             >
-              <div className="my-auto transform group-hover:scale-110 transition-transform duration-300">
+              <div className="transform group-hover:scale-110 transition-transform duration-300 mb-3 sm:mb-4">
                 {item.icon}
               </div>
-              <h3 className="text-white font-extrabold text-xs sm:text-sm tracking-wider leading-snug uppercase max-w-[190px] pt-4">
+              <h3 className="text-white font-extrabold text-[11px] sm:text-xs tracking-wider leading-tight uppercase max-w-[160px]">
                 {item.title}
               </h3>
             </div>
@@ -111,3 +122,4 @@ export const OurSolution: React.FC = () => {
     </section>
   );
 };
+

@@ -3,26 +3,26 @@ import {
   Home,
   ChevronDown,
   ChevronUp,
-  Calendar,
+  Megaphone,
   CheckCircle2,
   Sparkles,
-  Users,
   Award,
   Star,
   Send,
   Camera,
   MapPin,
   Building,
-  Briefcase
+  FileCheck,
+  Palette
 } from 'lucide-react';
 
-interface EOPageProps {
+interface EOAdverstingProps {
   onNavigate?: (page: string) => void;
   onContactClick?: () => void;
 }
 
-export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<string>('EO (Event Organizer & MICE)');
+export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate }) => {
+  const [activeTab, setActiveTab] = useState<string>('Media Advertising & Billboard');
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; desc: string } | null>(null);
@@ -31,7 +31,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
     email: '',
     phone: '',
     company: '',
-    eventType: 'Company Gathering',
+    advertisingType: 'Billboard Jalan Tol',
     message: ''
   });
 
@@ -43,34 +43,44 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
 
   const photoGallery = [
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
-      title: 'Penyelenggaraan Event Corporate & Gathering',
-      desc: 'Pelaksanaan event corporate, gathering, dan konferensi perusahaan oleh tim Grasindo Pro.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 034857.png',
+      title: 'Media Outdoor Billboard Jalan Tol',
+      desc: 'Pemasangan Media Outdoor Billboard Jalan Tol Sedyatmo, Jagorawi & Sentul untuk Pertamina, Herbalife, & Chevrolet.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035308.png',
-      title: 'Brand Activation & Pameran Booth Expo',
-      desc: 'Eksekusi program brand activation, booth expo custom, dan interaksi pengunjung pameran.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 034911.png',
+      title: 'Reklame & Signage Jalur Protokol Utama',
+      desc: 'Penempatan media reklame outdoor di jalur arteri utama Jakarta, Bandung, dan kota besar Indonesia.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035318.png',
-      title: 'Konstruksi Panggung & Sound Stage Rigging',
-      desc: 'Desain dan produksi panggung utama, instalasi sound system, lighting, & videotron.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 034918.png',
+      title: 'Konstruksi Baja Billboard & Lampu LED',
+      desc: 'Fabrikasi struktur baja reklame kokoh lengkap dengan lampu penerangan LED malam hari.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035357.png',
-      title: 'Manpower Talent MC & Usher Event',
-      desc: 'Penyediaan talent profesional MC, usher, SPG/SPB, & liaison officer (LO) acara.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 034930.png',
+      title: 'Neon Box & Architectural Building Signage',
+      desc: 'Produksi dan pemasangan Letter Sign, Neon Box Acrylick/Vinyl, & Signage Gedung BEJ & SCBD Jakarta.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035404.png',
-      title: 'Pengelolaan MICE & Gala Dinner Perusahaan',
-      desc: 'Manajemen acara MICE (Meeting, Incentive, Convention, Exhibition) & gala dinner corporate.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 035034.png',
+      title: 'Pylon Sign Office & Shopsign Retail',
+      desc: 'Pabrikasi Pylon Sign perkantoran dan Shopsign promosi retail di berbagai pusat perbelanjaan.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035417.png',
-      title: 'Aktivasi Lapangan & Roadshow Promosi',
-      desc: 'Penyelenggaraan roadshow pameran dan brand activation produk berskala nasional.',
+      src: '/EO/Advertising/Screenshot 2026-08-08 035044.png',
+      title: 'Baliho, Spanduk & T-Banner Promosi',
+      desc: 'Cetak digital high-resolution dan pemasangan Baliho, Spanduk, & T-Banner event.',
+    },
+    {
+      src: '/EO/Advertising/Screenshot 2026-08-08 035114.png',
+      title: 'Vehicle Wrapping & Branding Mobil',
+      desc: 'Pelapisan stiker branding mobil perusahaan (Vehicle Wrapping) dan custom wall painting.',
+    },
+    {
+      src: '/EO/Advertising/Screenshot 2026-08-08 035135.png',
+      title: 'Legalisasi & Perizinan SKPD Pajak Reklame',
+      desc: 'Pengurusan perizinan reklame ke dinas pemerintah daerah & penerbitan SKPD resmi.',
     },
   ];
 
@@ -84,7 +94,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
     setTimeout(() => {
       setInquiryOpen(false);
       setFormSubmitted(false);
-      setInquiryForm({ name: '', email: '', phone: '', company: '', eventType: 'Company Gathering', message: '' });
+      setInquiryForm({ name: '', email: '', phone: '', company: '', advertisingType: 'Billboard Jalan Tol', message: '' });
     }, 2000);
   };
 
@@ -94,8 +104,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
       {/* ================= 1. HERO BANNER (BAGIAN ATAS) ================= */}
       <div className="w-full h-56 sm:h-72 lg:h-80 overflow-hidden relative bg-slate-900">
         <img
-          src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
-          alt="EO & MICE Solutions Hero Banner"
+          src="/EO/Advertising/Screenshot 2026-08-08 034857.png"
+          alt="Media Advertising & Outdoor Billboard Hero Banner"
           className="w-full h-full object-cover object-center grayscale opacity-75"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
@@ -103,7 +113,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
         {/* Floating Headline inside Banner */}
         <div className="absolute bottom-6 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            EO (Event Organizer & MICE Solutions)
+            Media Advertising & Outdoor Billboard
           </h1>
         </div>
       </div>
@@ -124,7 +134,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             Event Organizer & Media
           </button>
           <span>/</span>
-          <span className="text-slate-800 font-semibold whitespace-nowrap">EO & MICE Solutions</span>
+          <span className="text-slate-800 font-semibold whitespace-nowrap">Media Advertising & Billboard</span>
         </div>
       </div>
 
@@ -140,133 +150,133 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               <div className="flex items-start space-x-3">
                 <div className="w-1.5 h-7 bg-amber-600 flex-shrink-0 mt-1" />
                 <h2 className="text-xl sm:text-2xl font-serif italic font-bold text-slate-800">
-                  Solusi Penyelenggaraan Event Perusahaan, MICE, & Brand Activation Profesional.
+                  Spesialis Media Reklame Luar Ruang (Billboard Jalan Tol), Signage, & Legalitas SKPD Resmi.
                 </h2>
               </div>
 
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                Dengan reputasi kami sebagai kontraktor event organizer terkemuka di Indonesia, Grasindopro menawarkan perencanaan, produksi panggung, pengelolaan MICE (Meeting, Incentive, Convention, Exhibition), brand activation, serta eksekusi event corporate yang kreatif, tepat waktu, dan berkesan.
+                Dengan pengalaman luas dan jaringan titik lokasi strategis berskala nasional, PT. Integra Aneksa Kreasindo (Grasindopro) hadir sebagai penyedia layanan profesional periklanan outdoor & indoor advertising. Kami menyajikan solusi komprehensif mulai dari penempatan Billboard jalur tol & protokol, Signage gedung, Neon Box, Pylon Sign, Baliho, T-Banner, hingga pengurusan perizinan SKPD Pajak Reklame resmi.
               </p>
             </div>
 
             {/* ================= 2. LAYANAN UTAMA (CORE SERVICES - 4 CARDS) ================= */}
             <div className="space-y-6 pt-4 border-t border-slate-200">
               <div className="space-y-1">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN TERPADU</span>
+                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN ADVERTISING</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Layanan Utama EO & MICE Solutions
+                  Layanan Utama Media Advertising
                 </h3>
                 <p className="text-slate-600 text-xs sm:text-sm">
-                  Kami menyediakan empat pilar utama manajemen acara profesional untuk mendukung kebutuhan bisnis Anda:
+                  Kami mengelompokkan layanan media periklanan menjadi empat pilar utama berikut:
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                 
-                {/* Core Service 1: MICE & Corporate */}
+                {/* Core Service 1: Billboard */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
                   <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Calendar className="w-5 h-5" />
+                    <Megaphone className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    1. MICE & Corporate Event Management
+                    1. Billboard Jalan Tol & Arteri Utama
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyelenggaraan acara MICE (Meeting, Incentive, Convention, Exhibition), Company Gathering, Customer Loyalty Night, Gala Dinner, & Employee Outing.
+                    Penempatan media Billboard di titik strategis ber-traffic tinggi seperti Jalan Tol Sedyatmo, Jagorawi, Sentul, serta jalur protokol kota besar di Indonesia.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>MICE & Conference Management (Meeting & Convention)</span>
+                      <span>Billboard Jalan Tol Sedyatmo, Jagorawi & Sentul</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Company Gathering, Outing & Gala Dinner</span>
+                      <span>Billboard Jalan Protokol Jakarta, Bandung, Surabaya</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Customer Appreciation Night & Anniversary Event</span>
+                      <span>Konstruksi Reklame Baja Kokoh & Pencahayaan LED</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 2: Brand Activation */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    2. Brand Activation & Roadshow Pameran
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Eksekusi program brand activation di pusat perbelanjaan (mall), roadshow pameran expo, launching produk baru, & interaksi produk interaktif.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Brand Activation Mall & Public Area</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Roadshow Pameran Commercial & Industry Expo</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Product Launching & Live Demonstration Event</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 3: Event Production */}
+                {/* Core Service 2: Signage & Neonbox */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
                   <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
                     <Building className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    3. Event Production & Stage Construction
+                    2. Signage, Neon Box & Pylon Sign
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Desain dan konstruksi panggung utama, instalasi booth pameran custom, rigging lighting, sound system concert-grade, LED Videotron, & dekorasi.
+                    Desain, fabrikasi, dan pemasangan Architectural Building Signage, Letter Sign, Neon Box, Pylon Sign Gedung, & Shopsign retail modern.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Produksi Booth Expo Custom & Stand Pameran</span>
+                      <span>Architectural Signage Gedung SCBD & BEJ</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Sound System, LED Screen Videotron & Stage Lighting</span>
+                      <span>Neon Box Acrylick / Vinyl High Quality</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Konstruksi Panggung Utama, Rigging Truss & Backdrop</span>
+                      <span>Pylon Sign Office Building & Shopsign Retail</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 4: Talent Procurement */}
+                {/* Core Service 3: Baliho & Branding */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Users className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
+                    <Palette className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    4. Manpower Talent & Crew Procurement
+                    3. Baliho, T-Banner & Branding Armada
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyediaan SDM profesional talent MC jam terbang tinggi, SPG/SPB pameran, Usher event, Liaison Officer (LO), & souvenir merchandise corporate.
+                    Cetak digital high-resolution, pemasangan Baliho, T-Banner event, spanduk, hingga Branding Mobil (vehicle wrapping) & custom wall painting.
+                  </p>
+                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
+                      <span>Baliho, T-Banner & Spanduk High Digital Print</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
+                      <span>Branding Mobil Perusahaan (Vehicle Wrapping)</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
+                      <span>Wall Painting Artistic & Display Promotional Table</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Core Service 4: Legalitas SKPD */}
+                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
+                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
+                    <FileCheck className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-base font-extrabold text-slate-900">
+                    4. Izin SKPD Pajak Reklame Resmi
+                  </h4>
+                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
+                    Layanan pengurusan perizinan reklame ke dinas pemerintahan daerah, pembayaran SKPD Pajak Reklame resmi, & garansi legalitas tempat.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Talent MC Profesional Jam Terbang Tinggi</span>
+                      <span>Pengurusan Perizinan Dinas Reklame Daerah</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>SPG / SPB Pameran & Usher Event Prima</span>
+                      <span>Penerbitan SKPD Pajak Reklame Resmi</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Liaison Officer (LO), Protocol Staff & Event Crew</span>
+                      <span>Pemeliharaan & Garansi Legalitas Konstruksi</span>
                     </li>
                   </ul>
                 </div>
@@ -274,15 +284,15 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* ================= 3. KENAPA MEMILIH EO KAMI? (SERVICE EXCELLENCE) ================= */}
+            {/* ================= 3. KENAPA MEMILIH KAMI? (SERVICE EXCELLENCE) ================= */}
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="space-y-2">
                 <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">SERVICE EXCELLENCE</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Kenapa Memilih Layanan EO & MICE Kami?
+                  Kenapa Memilih Media Advertising Kami?
                 </h3>
                 <div className="p-4 bg-slate-100/80 border-l-4 border-slate-800 text-slate-800 font-semibold text-sm italic">
-                  &ldquo;Bagaimana memastikan setiap momen acara perusahaan Anda terlaksana sempurna tanpa kendala teknis?&rdquo; &mdash; Komitmen dari Grasindo Pro.
+                  &ldquo;Bagaimana memastikan promosi produk Anda terlihat oleh jutaan audiens di titik jalan terstrategis Indonesia?&rdquo; &mdash; Komitmen dari Grasindo Pro.
                 </div>
               </div>
 
@@ -292,12 +302,12 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Sparkles className="w-4 h-4" />
+                      <MapPin className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Konsep Kreatif & Fleksibel</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Titik Emas Strategis</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Konsep acara dirancang dinamis dan inovatif, disesuaikan secara khusus dengan pesan brand dan tujuan bisnis perusahaan Anda.
+                    Penempatan billboard di lokasi dengan visibilitas tinggi dan lalu lintas kendaraan terpadat.
                   </p>
                 </div>
 
@@ -305,12 +315,12 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Award className="w-4 h-4" />
+                      <FileCheck className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">On-Time Execution</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Legalitas & SKPD Resmi</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Manajemen rundown dan eksekusi panggung dengan tingkat kedisiplinan waktu yang ketat serta penanganan risiko yang responsif.
+                    Seluruh perizinan reklame dan pajak SKPD dijamin legal sesuai aturan pemerintah daerah.
                   </p>
                 </div>
 
@@ -318,12 +328,12 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <MapPin className="w-4 h-4" />
+                      <Award className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Service Point Nasional</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Konstruksi Kokoh & Aman</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Kemampuan eksekusi acara roadshow dan MICE di berbagai kota besar di seluruh provinsi Indonesia secara serentak.
+                    Struktur baja reklame dirancang presisi berbasis standar keamanan & keselamatan publik.
                   </p>
                 </div>
 
@@ -333,17 +343,17 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
                       <Star className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Talent & Crew Profesional</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Pemeliharaan Berkala</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Didukung oleh MC jam terbang tinggi, SPG/Usher dengan standar penampilan prima, serta kru produksi berpengalaman.
+                    Tim teknisi siap melakukan inspeksi penerangan lampu LED dan perawatan visual reklame.
                   </p>
                 </div>
 
               </div>
             </div>
 
-            {/* ================= 4. DOKUMENTASI FOTO FOTO ================= */}
+            {/* ================= 4. DOKUMENTASI FOTO ================= */}
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="flex items-center justify-between">
                 <div>
@@ -351,13 +361,13 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     <Camera className="w-3.5 h-3.5" /> DOKUMENTASI LAPANGAN
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                    Galeri Dokumentasi Event Organizer & MICE
+                    Galeri Dokumentasi Media Advertising
                   </h3>
                 </div>
               </div>
 
               <p className="text-slate-700 text-sm leading-relaxed">
-                Berikut adalah dokumentasi penyelenggaraan event brand activation, pameran expo, dan corporate gathering Grasindo Pro:
+                Berikut adalah dokumentasi penempatan Billboard jalan tol, signage gedung, & reklame Grasindo Pro:
               </p>
 
               {/* Photo Grid */}
@@ -390,14 +400,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             {/* Interactive Call-to-action Banner */}
             <div className="p-6 bg-slate-900 rounded-sm text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md mt-6">
               <div>
-                <h4 className="font-bold text-base sm:text-lg">Ingin Menyelenggarakan Event & MICE Perusahaan?</h4>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan konsep acara, rencana anggaran (RAB), dan tim talent bersama kami.</p>
+                <h4 className="font-bold text-base sm:text-lg">Ingin Memasang Billboard atau Signage Gedung?</h4>
+                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan titik lokasi strategis, spesifikasi ukuran, & legalitas SKPD bersama kami.</p>
               </div>
               <button
                 onClick={() => setInquiryOpen(true)}
                 className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-sm text-xs sm:text-sm transition-colors whitespace-nowrap cursor-pointer shadow-sm"
               >
-                Minta Penawaran Event
+                Minta Penawaran Billboard
               </button>
             </div>
 
@@ -475,8 +485,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
           <div className="bg-white rounded-lg shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden">
             <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
               <div>
-                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN EVENT</span>
-                <h3 className="text-xl font-bold mt-1">EO & MICE Solutions</h3>
+                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN ADVERTISING</span>
+                <h3 className="text-xl font-bold mt-1">Media Advertising & Billboard</h3>
               </div>
               <button onClick={() => setInquiryOpen(false)} className="text-slate-400 hover:text-white text-lg font-bold cursor-pointer">✕</button>
             </div>
@@ -488,7 +498,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-slate-900 text-lg">Permintaan Terkirim!</h4>
-                  <p className="text-xs text-slate-600">Tim Event Manager Grasindo Pro akan menghubungi Anda segera.</p>
+                  <p className="text-xs text-slate-600">Tim Advertising Manager Grasindo Pro akan menghubungi Anda segera.</p>
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -528,25 +538,25 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Jenis Acara / Kebutuhan EO</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Jenis Media Advertising</label>
                     <select
-                      value={inquiryForm.eventType}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, eventType: e.target.value })}
+                      value={inquiryForm.advertisingType}
+                      onChange={(e) => setInquiryForm({ ...inquiryForm, advertisingType: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
                     >
-                      <option value="Company Gathering">Company Gathering & Outing</option>
-                      <option value="MICE & Conference">MICE & Konferensi Pers</option>
-                      <option value="Brand Activation">Brand Activation & Pameran Mall</option>
-                      <option value="Booth Expo & Stage">Produksi Booth Expo & Panggung</option>
-                      <option value="Talent & SPG">Talent MC, SPG / Usher</option>
+                      <option value="Billboard Jalan Tol">Billboard Jalan Tol & Protokol Utama</option>
+                      <option value="Architectural Signage">Architectural Signage & Letter Sign Gedung</option>
+                      <option value="Neon Box & Pylon Sign">Neon Box & Pylon Sign Office</option>
+                      <option value="Branding Mobil">Branding Mobil & Vehicle Wrapping</option>
+                      <option value="Izin SKPD Reklame">Pengurusan Izin SKPD Pajak Reklame</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan Acara</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Titik Lokasi & Ukuran</label>
                     <textarea
                       rows={3}
                       required
-                      placeholder="Jelaskan tanggal acara, perkiraan peserta, lokasi venue, dan spesifikasi..."
+                      placeholder="Jelaskan titik lokasi tol/kota yang diminati, perkiraan ukuran reklame, dan durasi tayang..."
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
@@ -557,7 +567,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-md text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Kirim Permintaan Penawaran</span>
+                    <span>Kirim Permintaan Penawaran Billboard</span>
                   </button>
                 </form>
               )}

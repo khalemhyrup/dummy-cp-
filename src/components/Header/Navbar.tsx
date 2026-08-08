@@ -253,9 +253,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                     item.columns?.map((col, cIdx) => (
                       <div key={cIdx} className="mb-3">
                         {col.title && (
-                          <div className="text-xs font-bold text-amber-700 tracking-wider uppercase mb-1">
+                          <button
+                            onClick={() => {
+                              onMenuItemClick(col.title!);
+                              setMobileMenuOpen(false);
+                              setActiveDropdown(null);
+                            }}
+                            className="text-xs font-bold text-amber-700 hover:text-amber-900 tracking-wider uppercase mb-1 hover:underline text-left block w-full cursor-pointer"
+                          >
                             {col.title}
-                          </div>
+                          </button>
                         )}
                         <ul className="space-y-1">
                           {col.items.map((sub) => (
