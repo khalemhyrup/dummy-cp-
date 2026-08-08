@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { Home, ChevronDown, ChevronUp } from 'lucide-react';
 
-export const AboutUs: React.FC = () => {
+interface AboutUsProps {
+  onNavigate?: (page: string) => void;
+}
+
+export const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState<string>('Tentang Grasindo Pro');
 
   const sidebarMenuItems = [
-    'Tentang Grasindo Pro',
-    'Rekam Jejak',
-    'Pencapaian Kami',
-    'Nilai-Nilai',
-    'Struktur Organisasi',
-    'Dewan Komisaris',
-    'Direksi',
-    'Struktur Perusahaan',
-    'Pelanggan',
-    'Mitra Strategis',
+    { label: 'Struktur Organisasi', id: 'org-structure' },
+    { label: 'Client (Pelanggan)', id: 'client' },
+    { label: 'Rekam Jejak', id: 'about' },
   ];
 
   const scrollToTop = () => {
@@ -127,14 +124,19 @@ export const AboutUs: React.FC = () => {
               <div className="border border-slate-200/90 rounded-sm bg-slate-50/50 divide-y divide-slate-200/70 overflow-hidden shadow-xs">
                 {sidebarMenuItems.map((item) => (
                   <button
-                    key={item}
-                    onClick={() => setActiveTab(item)}
-                    className={`w-full text-left px-5 py-3.5 text-xs sm:text-sm transition-colors flex items-center justify-between ${activeTab === item
+                    key={item.label}
+                    onClick={() => {
+                      setActiveTab(item.label);
+                      if (onNavigate) {
+                        onNavigate(item.id);
+                      }
+                    }}
+                    className={`w-full text-left px-5 py-3.5 text-xs sm:text-sm transition-colors flex items-center justify-between cursor-pointer ${activeTab === item.label
                       ? 'bg-white font-extrabold text-slate-900 border-l-4 border-slate-900 shadow-2xs'
                       : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium'
                       }`}
                   >
-                    <span>{item}</span>
+                    <span>{item.label}</span>
                   </button>
                 ))}
               </div>

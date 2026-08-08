@@ -3,74 +3,53 @@ import {
   Home,
   ChevronDown,
   ChevronUp,
-  Calendar,
+  Headphones,
   CheckCircle2,
-  Sparkles,
-  Users,
-  Award,
-  Star,
-  Send,
-  Camera,
+  Clock,
+  Wrench,
   MapPin,
-  Building,
-  Briefcase
+  Send,
+  Server,
+  Settings,
+  ShieldCheck,
+  Camera,
+  Layers
 } from 'lucide-react';
 
-interface EOPageProps {
+interface ITSupportPageProps {
   onNavigate?: (page: string) => void;
   onContactClick?: () => void;
 }
 
-export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<string>('EO (Event Organizer & MICE)');
+export const ITSupportPage: React.FC<ITSupportPageProps> = ({ onNavigate }) => {
+  const [activeTab, setActiveTab] = useState<string>('IT Support & Maintenance');
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; desc: string } | null>(null);
-  const [inquiryForm, setInquiryForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    eventType: 'Company Gathering',
-    message: ''
-  });
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
 
   const sidebarMenuItems = [
-    { label: 'EO Overview', id: 'eo-main' },
-    { label: 'EO (Event Organizer & MICE)', id: 'eo' },
-    { label: 'Media Advertising & Billboard', id: 'media-advertising' },
+    { label: 'IT Support & Maintenance', id: 'it-support' },
+    { label: 'Fiber Optics & Network', id: 'fiber-optics' },
+    { label: 'Security Systems (CCTV & Access)', id: 'security-systems' },
+    { label: 'Telecommunications & Tower', id: 'telecommunication' },
   ];
 
   const photoGallery = [
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
-      title: 'Penyelenggaraan Event Corporate & Gathering',
-      desc: 'Pelaksanaan event corporate, gathering, dan konferensi perusahaan oleh tim Grasindo Pro.',
+      src: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png',
+      title: 'Pemeliharaan Server & Hardware IT',
+      desc: 'Inspeksi fisik, perapihan kabel, dan maintenance perangkat keras server oleh engineer profesional Grasindo Pro.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035308.png',
-      title: 'Brand Activation & Pameran Booth Expo',
-      desc: 'Eksekusi program brand activation, booth expo custom, dan interaksi pengunjung pameran.',
+      src: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024124.png',
+      title: 'Field Technician On-Site Support',
+      desc: 'Penanganan perbaikan infrastruktur jaringan dan perbaikan sistem langsung di lokasi pelanggan.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035318.png',
-      title: 'Konstruksi Panggung & Sound Stage Rigging',
-      desc: 'Desain dan produksi panggung utama, instalasi sound system, lighting, & videotron.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035357.png',
-      title: 'Manpower Talent MC & Usher Event',
-      desc: 'Penyediaan talent profesional MC, usher, SPG/SPB, & liaison officer (LO) acara.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035404.png',
-      title: 'Pengelolaan MICE & Gala Dinner Perusahaan',
-      desc: 'Manajemen acara MICE (Meeting, Incentive, Convention, Exhibition) & gala dinner corporate.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035417.png',
-      title: 'Aktivasi Lapangan & Roadshow Promosi',
-      desc: 'Penyelenggaraan roadshow pameran dan brand activation produk berskala nasional.',
+      src: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024858.png',
+      title: 'Monitoring & Troubleshooting Sistem',
+      desc: 'Pengujian performa sistem dan dukungan helpdesk teknis IT secara terstruktur.',
     },
   ];
 
@@ -84,7 +63,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
     setTimeout(() => {
       setInquiryOpen(false);
       setFormSubmitted(false);
-      setInquiryForm({ name: '', email: '', phone: '', company: '', eventType: 'Company Gathering', message: '' });
+      setInquiryForm({ name: '', email: '', phone: '', company: '', message: '' });
     }, 2000);
   };
 
@@ -94,8 +73,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
       {/* ================= 1. HERO BANNER (BAGIAN ATAS) ================= */}
       <div className="w-full h-56 sm:h-72 lg:h-80 overflow-hidden relative bg-slate-900">
         <img
-          src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
-          alt="EO & MICE Solutions Hero Banner"
+          src="/images/service_it_support.png"
+          alt="IT Support & Maintenance Services Hero Banner"
           className="w-full h-full object-cover object-center grayscale opacity-75"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
@@ -103,7 +82,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
         {/* Floating Headline inside Banner */}
         <div className="absolute bottom-6 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            EO (Event Organizer & MICE Solutions)
+            IT Support & Maintenance Services
           </h1>
         </div>
       </div>
@@ -120,11 +99,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             Produk & Layanan
           </button>
           <span>/</span>
-          <button onClick={() => onNavigate?.('eo-main')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
-            Event Organizer & Media
+          <button onClick={() => onNavigate?.('it-solutions')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
+            Solusi IT
           </button>
           <span>/</span>
-          <span className="text-slate-800 font-semibold whitespace-nowrap">EO & MICE Solutions</span>
+          <span className="text-slate-800 font-semibold whitespace-nowrap">IT Support & Maintenance</span>
         </div>
       </div>
 
@@ -138,135 +117,81 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             {/* HERO INTRO SECTION */}
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-1.5 h-7 bg-amber-600 flex-shrink-0 mt-1" />
+                <div className="w-1.5 h-7 bg-slate-800 flex-shrink-0 mt-1" />
                 <h2 className="text-xl sm:text-2xl font-serif italic font-bold text-slate-800">
-                  Solusi Penyelenggaraan Event Perusahaan, MICE, & Brand Activation Profesional.
+                  Menjaga Keandalan Infrastruktur Anda, Kapan Pun dan Di Mana Pun.
                 </h2>
               </div>
 
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                Dengan reputasi kami sebagai kontraktor event organizer terkemuka di Indonesia, Grasindopro menawarkan perencanaan, produksi panggung, pengelolaan MICE (Meeting, Incentive, Convention, Exhibition), brand activation, serta eksekusi event corporate yang kreatif, tepat waktu, dan berkesan.
+                Dengan identitas kami sebagai perusahaan solusi telekomunikasi dan jaringan luas di berbagai daerah di Indonesia, kami menawarkan solusi pemeliharaan dan perbaikan dalam hal perangkat keras, perangkat lunak, dan integrator untuk mendukung bisnis Anda.
               </p>
             </div>
 
-            {/* ================= 2. LAYANAN UTAMA (CORE SERVICES - 4 CARDS) ================= */}
+            {/* ================= 2. LAYANAN UTAMA (CORE SERVICES) ================= */}
             <div className="space-y-6 pt-4 border-t border-slate-200">
               <div className="space-y-1">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN TERPADU</span>
+                <span className="text-xs font-bold tracking-wider text-red-700 uppercase">KATEGORI LAYANAN</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Layanan Utama EO & MICE Solutions
+                  Layanan Utama (Core Services)
                 </h3>
                 <p className="text-slate-600 text-xs sm:text-sm">
-                  Kami menyediakan empat pilar utama manajemen acara profesional untuk mendukung kebutuhan bisnis Anda:
+                  Kami memecah layanan support menjadi dua kategori utama agar Anda dapat memahami seluruh cakupan kerja kami:
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
                 
-                {/* Core Service 1: MICE & Corporate */}
+                {/* Core Service 1 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Calendar className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-sm bg-red-700 text-white flex items-center justify-center font-bold">
+                    <Wrench className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    1. MICE & Corporate Event Management
+                    Maintenance Services (Pemeliharaan & Perbaikan)
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyelenggaraan acara MICE (Meeting, Incentive, Convention, Exhibition), Company Gathering, Customer Loyalty Night, Gala Dinner, & Employee Outing.
+                    Kami berfokus pada solusi pemeliharaan dan perbaikan infrastruktur secara menyeluruh, mencakup pemeliharaan perangkat keras (hardware), pembaruan perangkat lunak (software), dan perbaikan sistem integrator.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>MICE & Conference Management (Meeting & Convention)</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Pemeliharaan Perangkat Keras (Hardware)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Company Gathering, Outing & Gala Dinner</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Pembaruan Perangkat Lunak (Software)</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Customer Appreciation Night & Anniversary Event</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Perbaikan Sistem Integrator</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 2: Brand Activation */}
+                {/* Core Service 2 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
                   <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Sparkles className="w-5 h-5" />
+                    <Layers className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    2. Brand Activation & Roadshow Pameran
+                    IT Managed Services (Pengelolaan IT Terpadu)
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Eksekusi program brand activation di pusat perbelanjaan (mall), roadshow pameran expo, launching produk baru, & interaksi produk interaktif.
+                    Kami menyediakan layanan pengelolaan untuk semua perangkat dan infrastruktur telekomunikasi dari bisnis berskala kecil hingga besar. Layanan ini memastikan infrastruktur Anda dikelola secara profesional dengan dukungan lokasi layanan yang tersebar di berbagai wilayah.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Brand Activation Mall & Public Area</span>
+                      <span>Pengelolaan Perangkat & Jaringan Kompleks</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Roadshow Pameran Commercial & Industry Expo</span>
+                      <span>Skalabilitas Bisnis Kecil hingga Skala Besar</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Product Launching & Live Demonstration Event</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 3: Event Production */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Building className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    3. Event Production & Stage Construction
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Desain dan konstruksi panggung utama, instalasi booth pameran custom, rigging lighting, sound system concert-grade, LED Videotron, & dekorasi.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Produksi Booth Expo Custom & Stand Pameran</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Sound System, LED Screen Videotron & Stage Lighting</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Konstruksi Panggung Utama, Rigging Truss & Backdrop</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 4: Talent Procurement */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    4. Manpower Talent & Crew Procurement
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyediaan SDM profesional talent MC jam terbang tinggi, SPG/SPB pameran, Usher event, Liaison Officer (LO), & souvenir merchandise corporate.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Talent MC Profesional Jam Terbang Tinggi</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>SPG / SPB Pameran & Usher Event Prima</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Liaison Officer (LO), Protocol Staff & Event Crew</span>
+                      <span>Dukungan Lokasi Layanan Tersebar Luas</span>
                     </li>
                   </ul>
                 </div>
@@ -274,15 +199,15 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* ================= 3. KENAPA MEMILIH EO KAMI? (SERVICE EXCELLENCE) ================= */}
+            {/* ================= 3. KENAPA MEMILIH SUPPORT KAMI? (SERVICE EXCELLENCE) ================= */}
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="space-y-2">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">SERVICE EXCELLENCE</span>
+                <span className="text-xs font-bold tracking-wider text-red-700 uppercase">SERVICE EXCELLENCE</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Kenapa Memilih Layanan EO & MICE Kami?
+                  Kenapa Memilih Support Kami?
                 </h3>
                 <div className="p-4 bg-slate-100/80 border-l-4 border-slate-800 text-slate-800 font-semibold text-sm italic">
-                  &ldquo;Bagaimana memastikan setiap momen acara perusahaan Anda terlaksana sempurna tanpa kendala teknis?&rdquo; &mdash; Komitmen dari Grasindo Pro.
+                  &ldquo;Seberapa cepat masalah saya ditangani?&rdquo; &mdash; Pertanyaan utama klien yang kami jawab melalui keunggulan Grasindo Pro.
                 </div>
               </div>
 
@@ -291,52 +216,52 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                 {/* Point 1 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Sparkles className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
+                      <Settings className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Konsep Kreatif & Fleksibel</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Service Management System</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Konsep acara dirancang dinamis dan inovatif, disesuaikan secara khusus dengan pesan brand dan tujuan bisnis perusahaan Anda.
+                    Kami menerapkan sistem yang menyederhanakan proses penanganan masalah bagi pelanggan, memastikan setiap kendala tercatat dan terselesaikan dengan rapi.
                   </p>
                 </div>
 
                 {/* Point 2 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Award className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
+                      <Headphones className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">On-Time Execution</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Great Support</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Manajemen rundown dan eksekusi panggung dengan tingkat kedisiplinan waktu yang ketat serta penanganan risiko yang responsif.
+                    Respon cepat adalah bagian dari komitmen utama kami untuk memberikan layanan terbaik kepada setiap klien.
                   </p>
                 </div>
 
                 {/* Point 3 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
                       <MapPin className="w-4 h-4" />
                     </div>
                     <h4 className="font-extrabold text-slate-900 text-sm">Service Point Nasional</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Kemampuan eksekusi acara roadshow dan MICE di berbagai kota besar di seluruh provinsi Indonesia secara serentak.
+                    Berbeda dengan penyedia layanan lokal, kami memiliki layanan yang tersebar di beberapa kota di Indonesia, sehingga mampu menjangkau cabang-cabang bisnis Anda.
                   </p>
                 </div>
 
                 {/* Point 4 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Star className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
+                      <Clock className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Talent & Crew Profesional</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Tim Profesional</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Didukung oleh MC jam terbang tinggi, SPG/Usher dengan standar penampilan prima, serta kru produksi berpengalaman.
+                    Dukungan kami dikelola oleh sumber daya manusia yang profesional dan dilengkapi dengan peralatan komprehensif yang dibutuhkan untuk menunjang pengerjaan perbaikan di lapangan.
                   </p>
                 </div>
 
@@ -347,17 +272,17 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-bold tracking-wider text-amber-600 uppercase flex items-center gap-1.5">
+                  <span className="text-xs font-bold tracking-wider text-red-700 uppercase flex items-center gap-1.5">
                     <Camera className="w-3.5 h-3.5" /> DOKUMENTASI LAPANGAN
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                    Galeri Dokumentasi Event Organizer & MICE
+                    Galeri Dokumentasi Operational IT Support
                   </h3>
                 </div>
               </div>
 
               <p className="text-slate-700 text-sm leading-relaxed">
-                Berikut adalah dokumentasi penyelenggaraan event brand activation, pameran expo, dan corporate gathering Grasindo Pro:
+                Berikut adalah dokumentasi pengerjaan perbaikan, pemeliharaan server, serta aktivitas dukungan teknis tim lapangan Grasindo Pro di berbagai lokasi proyek:
               </p>
 
               {/* Photo Grid */}
@@ -375,7 +300,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h4 className="font-bold text-sm leading-snug group-hover:text-amber-300 transition-colors">
+                      <h4 className="font-bold text-sm leading-snug group-hover:text-red-300 transition-colors">
                         {photo.title}
                       </h4>
                       <p className="text-slate-300 text-xs mt-1 line-clamp-2">
@@ -390,14 +315,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             {/* Interactive Call-to-action Banner */}
             <div className="p-6 bg-slate-900 rounded-sm text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md mt-6">
               <div>
-                <h4 className="font-bold text-base sm:text-lg">Ingin Menyelenggarakan Event & MICE Perusahaan?</h4>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan konsep acara, rencana anggaran (RAB), dan tim talent bersama kami.</p>
+                <h4 className="font-bold text-base sm:text-lg">Butuh Layanan IT Support & Maintenance?</h4>
+                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan kebutuhan perbaikan dan pemeliharaan perangkat IT bersama tim profesional kami.</p>
               </div>
               <button
                 onClick={() => setInquiryOpen(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-sm text-xs sm:text-sm transition-colors whitespace-nowrap cursor-pointer shadow-sm"
+                className="bg-red-700 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-sm text-xs sm:text-sm transition-colors whitespace-nowrap cursor-pointer shadow-sm"
               >
-                Minta Penawaran Event
+                Minta Penawaran Layanan
               </button>
             </div>
 
@@ -411,7 +336,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                 <span className="text-slate-900 font-extrabold text-sm tracking-wider uppercase flex items-center gap-2">
                   <ChevronDown className="w-4 h-4 text-slate-600" />
-                  EO & ADVERTISING MENU
+                  SOLUSI IT MENU
                 </span>
               </div>
 
@@ -457,7 +382,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
           <div className="bg-slate-900 rounded-sm overflow-hidden max-w-3xl w-full border border-slate-800 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="relative">
               <img src={selectedPhoto.src} alt={selectedPhoto.title} className="w-full h-80 sm:h-96 object-cover" />
-              <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 bg-slate-950/80 hover:bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors">
+              <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 bg-slate-950/80 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors">
                 ✕
               </button>
             </div>
@@ -475,8 +400,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
           <div className="bg-white rounded-lg shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden">
             <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
               <div>
-                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN EVENT</span>
-                <h3 className="text-xl font-bold mt-1">EO & MICE Solutions</h3>
+                <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest block">FORMULIR PENAWARAN</span>
+                <h3 className="text-xl font-bold mt-1">IT Support & Maintenance</h3>
               </div>
               <button onClick={() => setInquiryOpen(false)} className="text-slate-400 hover:text-white text-lg font-bold cursor-pointer">✕</button>
             </div>
@@ -488,7 +413,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-slate-900 text-lg">Permintaan Terkirim!</h4>
-                  <p className="text-xs text-slate-600">Tim Event Manager Grasindo Pro akan menghubungi Anda segera.</p>
+                  <p className="text-xs text-slate-600">Tim IT Support Grasindo Pro akan menghubungi Anda segera.</p>
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -528,25 +453,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Jenis Acara / Kebutuhan EO</label>
-                    <select
-                      value={inquiryForm.eventType}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, eventType: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                    >
-                      <option value="Company Gathering">Company Gathering & Outing</option>
-                      <option value="MICE & Conference">MICE & Konferensi Pers</option>
-                      <option value="Brand Activation">Brand Activation & Pameran Mall</option>
-                      <option value="Booth Expo & Stage">Produksi Booth Expo & Panggung</option>
-                      <option value="Talent & SPG">Talent MC, SPG / Usher</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan Acara</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan IT Support</label>
                     <textarea
                       rows={3}
                       required
-                      placeholder="Jelaskan tanggal acara, perkiraan peserta, lokasi venue, dan spesifikasi..."
+                      placeholder="Jelaskan kebutuhan jumlah PC, server, lokasi kantor, atau layanan yang dibutuhkan..."
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
@@ -557,7 +468,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-md text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Kirim Permintaan Penawaran</span>
+                    <span>Kirim Permintaan</span>
                   </button>
                 </form>
               )}
@@ -569,3 +480,4 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
     </div>
   );
 };
+

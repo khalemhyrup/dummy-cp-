@@ -29,9 +29,13 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ navItem, isOpen, onItemClick
                 <div key={colIdx} className="space-y-4">
                   {col.title && (
                     <div className="border-b border-gray-200 pb-2">
-                      <h4 className="font-bold text-xs tracking-wider uppercase text-gray-900">
-                        {col.title}
-                      </h4>
+                      <button
+                        onClick={() => onItemClick(col.title!)}
+                        className="group flex items-center justify-between w-full text-left font-bold text-xs tracking-wider uppercase text-gray-900 hover:text-amber-600 transition-colors cursor-pointer"
+                      >
+                        <span>{col.title}</span>
+                        <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-amber-600 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                      </button>
                     </div>
                   )}
 

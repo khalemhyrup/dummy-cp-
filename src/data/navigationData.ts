@@ -18,6 +18,7 @@ export const navigationData: NavItem[] = [
         title: 'PROFILE',
         items: [
           { id: 'about-us', title: 'About Us', href: '#about' },
+          { id: 'client', title: 'Our Clients & Track Record', href: '#client' },
           { id: 'milestones', title: 'Company Milestones', href: '#milestone' },
           { id: 'values', title: 'Core Values (We CARE)', href: '#values' },
         ],
@@ -26,7 +27,6 @@ export const navigationData: NavItem[] = [
         title: 'MANAGEMENT',
         items: [
           { id: 'org-structure', title: 'Organization Structure', href: '#management' },
-          { id: 'leadership', title: 'Board & Leadership', href: '#management' },
         ],
       },
     ],
@@ -44,7 +44,7 @@ export const navigationData: NavItem[] = [
           { id: 'it-support', title: 'IT Support & Maintenance', href: '#it-support' },
           { id: 'network-fo', title: 'Fiber Optics & Network Installer', href: '#network-fo' },
           { id: 'security-systems', title: 'Security Systems (CCTV & Access Door)', href: '#security-systems' },
-          { id: 'software-managed', title: 'Software & IT Managed Services', href: '#software-managed' },
+          { id: 'telecom', title: 'Telecommunications & Network Tower', href: '#telecom' },
         ],
       },
       {
@@ -55,36 +55,19 @@ export const navigationData: NavItem[] = [
         ],
       },
       {
-        title: 'CME (Civil Mechanical and Electrical)',
+        title: 'CME (MECHANICAL & ELECTRICAL)',
+        id: 'cme-main',
         items: [
-          { id: 'civil-construction', title: 'Civil Construction & Building Works', href: '#civil-construction' },
-          { id: 'me-installation', title: 'Mechanical & Electrical Installation (HVAC, Piping, Power)', href: '#me-installation' },
-          { id: 'telecom-cme', title: 'Telecom Tower & CME Infrastructure Integration', href: '#telecom-cme' },
+          { id: 'cme-mechanical', title: 'Mekanikal (HVAC, Plumbing, Hydrant & Pemipaan Gas)', href: '#cme-mechanical' },
+          { id: 'cme-electrical', title: 'Elektrikal (Instalasi Listrik, Sistem Tenaga & Otomatisasi)', href: '#cme-electrical' },
         ],
       },
     ],
   },
   {
     id: 'information',
-    label: 'Information',
-    href: '#information',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'NEWS & MEDIA',
-        items: [
-          { id: 'news', title: 'News & Updates', href: '#news' },
-          { id: 'activities', title: 'Company Activities', href: '#activities' },
-        ],
-      },
-      {
-        title: 'PUBLICATIONS & CSR',
-        items: [
-          { id: 'csr', title: 'Corporate Social Responsibility (CSR)', href: '#csr' },
-          { id: 'announcements', title: 'Official Press Releases', href: '#press-release' },
-        ],
-      },
-    ],
+    label: 'Contact',
+    href: '#contact',
+    hasDropdown: false,
   },
 ];

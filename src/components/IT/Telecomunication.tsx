@@ -3,74 +3,60 @@ import {
   Home,
   ChevronDown,
   ChevronUp,
-  Calendar,
+  Radio,
   CheckCircle2,
-  Sparkles,
-  Users,
+  PhoneCall,
+  TowerControl as Tower,
+  ShieldCheck,
   Award,
   Star,
   Send,
   Camera,
   MapPin,
-  Building,
-  Briefcase
+  Building2,
+  Cpu,
+  Zap
 } from 'lucide-react';
 
-interface EOPageProps {
+interface TelecomunicationProps {
   onNavigate?: (page: string) => void;
   onContactClick?: () => void;
 }
 
-export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<string>('EO (Event Organizer & MICE)');
+export const Telecomunication: React.FC<TelecomunicationProps> = ({ onNavigate }) => {
+  const [activeTab, setActiveTab] = useState<string>('Telecommunications & Tower');
   const [inquiryOpen, setInquiryOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; desc: string } | null>(null);
-  const [inquiryForm, setInquiryForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    eventType: 'Company Gathering',
-    message: ''
-  });
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
 
   const sidebarMenuItems = [
-    { label: 'EO Overview', id: 'eo-main' },
-    { label: 'EO (Event Organizer & MICE)', id: 'eo' },
-    { label: 'Media Advertising & Billboard', id: 'media-advertising' },
+    { label: 'IT Support & Maintenance', id: 'it-support' },
+    { label: 'Fiber Optics & Network', id: 'fiber-optics' },
+    { label: 'Security Systems (CCTV & Access)', id: 'security-systems' },
+    { label: 'Telecommunications & Tower', id: 'telecommunication' },
   ];
 
   const photoGallery = [
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
-      title: 'Penyelenggaraan Event Corporate & Gathering',
-      desc: 'Pelaksanaan event corporate, gathering, dan konferensi perusahaan oleh tim Grasindo Pro.',
+      src: '/it_solution/network/Screenshot 2026-08-08 024038.png',
+      title: 'Pemasangan Menara SST & Antena Seluler',
+      desc: 'Konstruksi menara baja SST (Self Supporting Tower) & alignment antena sektor seluler.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035308.png',
-      title: 'Brand Activation & Pameran Booth Expo',
-      desc: 'Eksekusi program brand activation, booth expo custom, dan interaksi pengunjung pameran.',
+      src: '/it_solution/security/Screenshot 2026-08-08 024113.png',
+      title: 'Shelter Telekomunikasi & Rack Equipment',
+      desc: 'Fabrikasi dan instalasi shelter knockdown telekomunikasi lengkap dengan pendingin AC & rack server.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035318.png',
-      title: 'Konstruksi Panggung & Sound Stage Rigging',
-      desc: 'Desain dan produksi panggung utama, instalasi sound system, lighting, & videotron.',
+      src: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024419.png',
+      title: 'Kabel Feeder RF & System Grounding',
+      desc: 'Penarikan kabel feeder coaxial RF, penyambungan connector, & instalasi penangkal petir grounding.',
     },
     {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035357.png',
-      title: 'Manpower Talent MC & Usher Event',
-      desc: 'Penyediaan talent profesional MC, usher, SPG/SPB, & liaison officer (LO) acara.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035404.png',
-      title: 'Pengelolaan MICE & Gala Dinner Perusahaan',
-      desc: 'Manajemen acara MICE (Meeting, Incentive, Convention, Exhibition) & gala dinner corporate.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035417.png',
-      title: 'Aktivasi Lapangan & Roadshow Promosi',
-      desc: 'Penyelenggaraan roadshow pameran dan brand activation produk berskala nasional.',
+      src: '/it_solution/ITsupport&maintanance/Screenshot 2026-08-08 024124.png',
+      title: 'Instalasi Server PABX & IP Telephony Gedung',
+      desc: 'Integrasi sistem komunikasi suara IP-PBX, VoIP interkom gedung, & auto-attendant perkantoran.',
     },
   ];
 
@@ -84,7 +70,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
     setTimeout(() => {
       setInquiryOpen(false);
       setFormSubmitted(false);
-      setInquiryForm({ name: '', email: '', phone: '', company: '', eventType: 'Company Gathering', message: '' });
+      setInquiryForm({ name: '', email: '', phone: '', company: '', message: '' });
     }, 2000);
   };
 
@@ -94,8 +80,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
       {/* ================= 1. HERO BANNER (BAGIAN ATAS) ================= */}
       <div className="w-full h-56 sm:h-72 lg:h-80 overflow-hidden relative bg-slate-900">
         <img
-          src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
-          alt="EO & MICE Solutions Hero Banner"
+          src="/it_solution/network/Screenshot 2026-08-08 024038.png"
+          alt="Telecommunication Solutions Hero Banner"
           className="w-full h-full object-cover object-center grayscale opacity-75"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
@@ -103,7 +89,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
         {/* Floating Headline inside Banner */}
         <div className="absolute bottom-6 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            EO (Event Organizer & MICE Solutions)
+            Infrastruktur & Layanan Telekomunikasi
           </h1>
         </div>
       </div>
@@ -120,11 +106,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             Produk & Layanan
           </button>
           <span>/</span>
-          <button onClick={() => onNavigate?.('eo-main')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
-            Event Organizer & Media
+          <button onClick={() => onNavigate?.('it-solutions')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
+            Solusi IT
           </button>
           <span>/</span>
-          <span className="text-slate-800 font-semibold whitespace-nowrap">EO & MICE Solutions</span>
+          <span className="text-slate-800 font-semibold whitespace-nowrap">Telecommunications & Network Tower</span>
         </div>
       </div>
 
@@ -138,135 +124,135 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             {/* HERO INTRO SECTION */}
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-1.5 h-7 bg-amber-600 flex-shrink-0 mt-1" />
+                <div className="w-1.5 h-7 bg-red-700 flex-shrink-0 mt-1" />
                 <h2 className="text-xl sm:text-2xl font-serif italic font-bold text-slate-800">
-                  Solusi Penyelenggaraan Event Perusahaan, MICE, & Brand Activation Profesional.
+                  Solusi Terpadu Peralatan GSM/CDMA, Menara SST, Shelter, Feeder, PABX, & IP Telephony.
                 </h2>
               </div>
 
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                Dengan reputasi kami sebagai kontraktor event organizer terkemuka di Indonesia, Grasindopro menawarkan perencanaan, produksi panggung, pengelolaan MICE (Meeting, Incentive, Convention, Exhibition), brand activation, serta eksekusi event corporate yang kreatif, tepat waktu, dan berkesan.
+                Sebagai integrator general contractor berpengalaman di bidang Telekomunikasi & IT, PT Integra Aneksa Kreasindo (Grasindopro) menyediakan pengadaan, pembangunan, instalasi, serta pemeliharaan infrastruktur jaringan telekomunikasi seluler maupun gedung. Layanan kami mencakup peralatan GSM/CDMA, shelter outdoor/indoor, menara baja SST, kabel feeder RF, hingga sistem telepon PABX & IP-PBX profesional.
               </p>
             </div>
 
             {/* ================= 2. LAYANAN UTAMA (CORE SERVICES - 4 CARDS) ================= */}
             <div className="space-y-6 pt-4 border-t border-slate-200">
               <div className="space-y-1">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN TERPADU</span>
+                <span className="text-xs font-bold tracking-wider text-red-700 uppercase">KATEGORI SOLUSI TELEKOMUNIKASI</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Layanan Utama EO & MICE Solutions
+                  Layanan Utama Infrastruktur Telekomunikasi
                 </h3>
                 <p className="text-slate-600 text-xs sm:text-sm">
-                  Kami menyediakan empat pilar utama manajemen acara profesional untuk mendukung kebutuhan bisnis Anda:
+                  Kami mengelompokkan spesifikasi proyek telekomunikasi ke dalam 4 pilar utama berikut:
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                
-                {/* Core Service 1: MICE & Corporate */}
+
+                {/* Core Service 1 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Calendar className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-sm bg-red-700 text-white flex items-center justify-center font-bold">
+                    <Radio className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    1. MICE & Corporate Event Management
+                    1. Peralatan GSM & CDMA (Equipment)
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyelenggaraan acara MICE (Meeting, Incentive, Convention, Exhibition), Company Gathering, Customer Loyalty Night, Gala Dinner, & Employee Outing.
+                    Pengadaan, pengujian, dan instalasi perangkat radio pemancar GSM & CDMA, modul BTS, rectifier, & sistem transmisi operator telekomunikasi.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>MICE & Conference Management (Meeting & Convention)</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Transceiver Radio GSM & CDMA Base Station</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Company Gathering, Outing & Gala Dinner</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Rectifier Power System & Backup Battery Bank</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Customer Appreciation Night & Anniversary Event</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Commissioning & Integration BTS Hardware</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 2: Brand Activation */}
+                {/* Core Service 2 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
                   <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Sparkles className="w-5 h-5" />
+                    <Tower className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    2. Brand Activation & Roadshow Pameran
+                    2. Menara SST & Shelter Telekomunikasi
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Eksekusi program brand activation di pusat perbelanjaan (mall), roadshow pameran expo, launching produk baru, & interaksi produk interaktif.
+                    Pembangunan menara baja SST (Self Supporting Tower), pole antenna rooftop, serta pabrikasi shelter knockdown tahan cuaca ekstrem.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Brand Activation Mall & Public Area</span>
+                      <span>Konstruksi Menara Baja SST 4 kaki & 3 kaki</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Roadshow Pameran Commercial & Industry Expo</span>
+                      <span>Pabrikasi Shelter Outdoor & Indoor Knockdown</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Product Launching & Live Demonstration Event</span>
+                      <span>Dudukan Pole Antena & Mounting Bracket</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 3: Event Production */}
+                {/* Core Service 3 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
                   <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Building className="w-5 h-5" />
+                    <Zap className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    3. Event Production & Stage Construction
+                    3. Kabel Feeder & Sistem Grounding RF
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Desain dan konstruksi panggung utama, instalasi booth pameran custom, rigging lighting, sound system concert-grade, LED Videotron, & dekorasi.
+                    Penarikan kabel feeder RF 1/2&quot;, 7/8&quot;, connectorizing, instalasi arrester penangkal petir, serta grounding sistem keselamatan menara.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Produksi Booth Expo Custom & Stand Pameran</span>
+                      <span>Penarikan Kabel Feeder RF Coaxial & Fiber Jumper</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Sound System, LED Screen Videotron & Stage Lighting</span>
+                      <span>Instalasi Grounding Kit & Arrester Penangkal Petir</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Konstruksi Panggung Utama, Rigging Truss & Backdrop</span>
+                      <span>Pengujian VSWR Feeder & Feeder Line Inspection</span>
                     </li>
                   </ul>
                 </div>
 
-                {/* Core Service 4: Talent Procurement */}
+                {/* Core Service 4 */}
                 <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Users className="w-5 h-5" />
+                  <div className="w-10 h-10 rounded-sm bg-red-700 text-white flex items-center justify-center font-bold">
+                    <PhoneCall className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-extrabold text-slate-900">
-                    4. Manpower Talent & Crew Procurement
+                    4. Sistem PABX & IP Telephony Gedung
                   </h4>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyediaan SDM profesional talent MC jam terbang tinggi, SPG/SPB pameran, Usher event, Liaison Officer (LO), & souvenir merchandise corporate.
+                    Instalasi jaringan komunikasi suara internal perkantoran, sistem PABX analog/digital, IP-PBX Server, VoIP gateway, & interkom.
                   </p>
                   <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Talent MC Profesional Jam Terbang Tinggi</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Instalasi PABX Analog, Hybrid & Full IP-PBX</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>SPG / SPB Pameran & Usher Event Prima</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Cabling Multi-Pair Telepon & MDF Terminal Block</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Liaison Officer (LO), Protocol Staff & Event Crew</span>
+                      <CheckCircle2 className="w-4 h-4 text-red-700 flex-shrink-0" />
+                      <span>Integrasi VoIP Interkom & Auto-Attendant Interactive</span>
                     </li>
                   </ul>
                 </div>
@@ -274,90 +260,90 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* ================= 3. KENAPA MEMILIH EO KAMI? (SERVICE EXCELLENCE) ================= */}
+            {/* ================= 3. KENAPA MEMILIH KAMI? (SERVICE EXCELLENCE) ================= */}
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="space-y-2">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">SERVICE EXCELLENCE</span>
+                <span className="text-xs font-bold tracking-wider text-red-700 uppercase">SERVICE EXCELLENCE</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Kenapa Memilih Layanan EO & MICE Kami?
+                  Kenapa Memilih Layanan Telekomunikasi Kami?
                 </h3>
                 <div className="p-4 bg-slate-100/80 border-l-4 border-slate-800 text-slate-800 font-semibold text-sm italic">
-                  &ldquo;Bagaimana memastikan setiap momen acara perusahaan Anda terlaksana sempurna tanpa kendala teknis?&rdquo; &mdash; Komitmen dari Grasindo Pro.
+                  &ldquo;Bagaimana menjaga kestabilan sinyal dan konektivitas infrastruktur telekomunikasi bisnis Anda tanpa gangguan?&rdquo; &mdash; Komitmen dari Grasindo Pro.
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
-                
+
                 {/* Point 1 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Sparkles className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
+                      <ShieldCheck className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Konsep Kreatif & Fleksibel</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Standar Industri Seluler</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Konsep acara dirancang dinamis dan inovatif, disesuaikan secara khusus dengan pesan brand dan tujuan bisnis perusahaan Anda.
+                    Pengerjaan konstruksi menara dan instalasi RF mematuhi standar presisi teknis operator telekomunikasi utama.
                   </p>
                 </div>
 
                 {/* Point 2 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
                       <Award className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">On-Time Execution</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Struktur Menara Kokoh</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Manajemen rundown dan eksekusi panggung dengan tingkat kedisiplinan waktu yang ketat serta penanganan risiko yang responsif.
+                    Kualitas material baja SST dan instalasi grounding tahan petir berstandar keselamatan tinggi.
                   </p>
                 </div>
 
                 {/* Point 3 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
                       <MapPin className="w-4 h-4" />
                     </div>
                     <h4 className="font-extrabold text-slate-900 text-sm">Service Point Nasional</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Kemampuan eksekusi acara roadshow dan MICE di berbagai kota besar di seluruh provinsi Indonesia secara serentak.
+                    Tim rigger dan technician kami siap menangani pengerjaan infrastruktur telekomunikasi di seluruh Indonesia.
                   </p>
                 </div>
 
                 {/* Point 4 */}
                 <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
+                    <div className="w-8 h-8 rounded-sm bg-red-50 text-red-700 flex items-center justify-center font-bold flex-shrink-0">
                       <Star className="w-4 h-4" />
                     </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Talent & Crew Profesional</h4>
+                    <h4 className="font-extrabold text-slate-900 text-sm">Tim Certified Engineer</h4>
                   </div>
                   <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Didukung oleh MC jam terbang tinggi, SPG/Usher dengan standar penampilan prima, serta kru produksi berpengalaman.
+                    SDM berkualifikasi dengan sertifikasi keselamatan kerja menara tinggi & commissioning telekomunikasi.
                   </p>
                 </div>
 
               </div>
             </div>
 
-            {/* ================= 4. DOKUMENTASI FOTO FOTO ================= */}
+            {/* ================= 4. DOKUMENTASI FOTO ================= */}
             <div className="space-y-6 pt-6 border-t border-slate-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-bold tracking-wider text-amber-600 uppercase flex items-center gap-1.5">
+                  <span className="text-xs font-bold tracking-wider text-red-700 uppercase flex items-center gap-1.5">
                     <Camera className="w-3.5 h-3.5" /> DOKUMENTASI LAPANGAN
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                    Galeri Dokumentasi Event Organizer & MICE
+                    Galeri Dokumentasi Infrastruktur Telekomunikasi
                   </h3>
                 </div>
               </div>
 
               <p className="text-slate-700 text-sm leading-relaxed">
-                Berikut adalah dokumentasi penyelenggaraan event brand activation, pameran expo, dan corporate gathering Grasindo Pro:
+                Berikut adalah dokumentasi pengerjaan instalasi menara SST, shelter equipment, kabel feeder, & PABX telekomunikasi Grasindo Pro:
               </p>
 
               {/* Photo Grid */}
@@ -375,7 +361,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h4 className="font-bold text-sm leading-snug group-hover:text-amber-300 transition-colors">
+                      <h4 className="font-bold text-sm leading-snug group-hover:text-red-300 transition-colors">
                         {photo.title}
                       </h4>
                       <p className="text-slate-300 text-xs mt-1 line-clamp-2">
@@ -390,14 +376,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
             {/* Interactive Call-to-action Banner */}
             <div className="p-6 bg-slate-900 rounded-sm text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md mt-6">
               <div>
-                <h4 className="font-bold text-base sm:text-lg">Ingin Menyelenggarakan Event & MICE Perusahaan?</h4>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan konsep acara, rencana anggaran (RAB), dan tim talent bersama kami.</p>
+                <h4 className="font-bold text-base sm:text-lg">Butuh Konsultasi Pembangunan Telekomunikasi?</h4>
+                <p className="text-slate-300 text-xs sm:text-sm mt-1">Diskusikan kebutuhan menara SST, shelter, feeder, PABX, & integrasi sinyal bersama kami.</p>
               </div>
               <button
                 onClick={() => setInquiryOpen(true)}
                 className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-sm text-xs sm:text-sm transition-colors whitespace-nowrap cursor-pointer shadow-sm"
               >
-                Minta Penawaran Event
+                Minta Penawaran Telekomunikasi
               </button>
             </div>
 
@@ -411,7 +397,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
               <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                 <span className="text-slate-900 font-extrabold text-sm tracking-wider uppercase flex items-center gap-2">
                   <ChevronDown className="w-4 h-4 text-slate-600" />
-                  EO & ADVERTISING MENU
+                  SOLUSI IT MENU
                 </span>
               </div>
 
@@ -457,7 +443,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
           <div className="bg-slate-900 rounded-sm overflow-hidden max-w-3xl w-full border border-slate-800 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="relative">
               <img src={selectedPhoto.src} alt={selectedPhoto.title} className="w-full h-80 sm:h-96 object-cover" />
-              <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 bg-slate-950/80 hover:bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors">
+              <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 bg-slate-950/80 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors">
                 ✕
               </button>
             </div>
@@ -475,8 +461,8 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
           <div className="bg-white rounded-lg shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden">
             <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
               <div>
-                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN EVENT</span>
-                <h3 className="text-xl font-bold mt-1">EO & MICE Solutions</h3>
+                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN PROYEK</span>
+                <h3 className="text-xl font-bold mt-1">Infrastruktur Telekomunikasi</h3>
               </div>
               <button onClick={() => setInquiryOpen(false)} className="text-slate-400 hover:text-white text-lg font-bold cursor-pointer">✕</button>
             </div>
@@ -488,7 +474,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h4 className="font-bold text-slate-900 text-lg">Permintaan Terkirim!</h4>
-                  <p className="text-xs text-slate-600">Tim Event Manager Grasindo Pro akan menghubungi Anda segera.</p>
+                  <p className="text-xs text-slate-600">Tim Engineer Telekomunikasi Grasindo Pro akan menghubungi Anda segera.</p>
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -528,25 +514,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Jenis Acara / Kebutuhan EO</label>
-                    <select
-                      value={inquiryForm.eventType}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, eventType: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                    >
-                      <option value="Company Gathering">Company Gathering & Outing</option>
-                      <option value="MICE & Conference">MICE & Konferensi Pers</option>
-                      <option value="Brand Activation">Brand Activation & Pameran Mall</option>
-                      <option value="Booth Expo & Stage">Produksi Booth Expo & Panggung</option>
-                      <option value="Talent & SPG">Talent MC, SPG / Usher</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan Acara</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">Pesan / Spesifikasi Kebutuhan Telekomunikasi</label>
                     <textarea
                       rows={3}
                       required
-                      placeholder="Jelaskan tanggal acara, perkiraan peserta, lokasi venue, dan spesifikasi..."
+                      placeholder="Jelaskan kebutuhan menara SST, shelter, feeder, PABX, atau maintenance seluler..."
                       value={inquiryForm.message}
                       onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
