@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, CheckCircle, Info } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface DetailModalProps {
   isOpen: boolean;
@@ -19,65 +19,49 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-w-xl w-full overflow-hidden">
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn">
+      <div
+        className="fixed inset-0"
+        onClick={onClose}
+      />
+      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-10">
+        
         {/* Header */}
-        <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
-          <div className="space-y-1">
+        <div className="px-6 py-5 bg-slate-900 text-white flex items-start justify-between">
+          <div>
             {category && (
-              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-widest block">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 block mb-1">
                 {category}
               </span>
             )}
-            <h3 className="text-xl font-bold leading-tight">
+            <h3 className="text-lg font-bold tracking-tight text-white leading-snug">
               {title}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-4"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content Body */}
-        <div className="p-6 space-y-4 text-sm text-slate-700 leading-relaxed max-h-[60vh] overflow-y-auto">
+        {/* Body */}
+        <div className="p-6 text-sm text-slate-600 leading-relaxed max-h-[60vh] overflow-y-auto space-y-4">
           {content ? (
-            <p className="whitespace-pre-line">{content}</p>
+            <p>{content}</p>
           ) : (
-            <div className="space-y-4">
-              <p>
-                Welcome to the <strong>{title}</strong> page section of PT Integra Aneksa Kreasindo (Grasindopro). Here you can explore comprehensive information regarding our enterprise IT services, financial reports, governance frameworks, and strategic initiatives.
-              </p>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
-                <div className="flex items-center gap-2 font-bold text-amber-900 text-xs">
-                  <CheckCircle className="w-4 h-4 text-amber-600" />
-                  <span>Key Highlights</span>
-                </div>
-                <ul className="list-disc list-inside text-xs text-amber-950 space-y-1 pl-1">
-                  <li>Enterprise Multi-Cloud & Cyber Security Platforms</li>
-                  <li>Digital Insights & Business Intelligence Systems</li>
-                  <li>Hybrid Infrastructure & Financial Technology Services</li>
-                </ul>
-              </div>
-            </div>
+            <p>Informasi detail mengenai {title} dari PT Integra Aneksa Kreasindo.</p>
           )}
         </div>
 
         {/* Footer */}
-        <div className="bg-slate-50 p-4 border-t border-gray-100 flex items-center justify-between text-xs text-slate-500">
-          <span className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="Grasindopro" className="h-8 w-auto object-contain" />
-            <span className="font-semibold text-slate-700">PT Integra Aneksa Kreasindo</span>
-          </span>
+        <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-end">
           <button
             onClick={onClose}
-            className="bg-slate-900 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-lg transition-colors"
+            className="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors"
           >
-            Close Preview
+            Tutup
           </button>
         </div>
 

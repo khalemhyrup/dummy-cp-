@@ -15,12 +15,15 @@ export const HeroBanner: React.FC = () => {
   const slide = heroSlidesData[currentSlide];
 
   return (
-    <section className="relative w-full h-[380px] sm:h-[480px] lg:h-[580px] bg-slate-950 overflow-hidden">
+    <section className="relative w-full h-screen -mt-20 bg-slate-950 overflow-hidden">
       {/* Pure Image Banner */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000"
         style={{ backgroundImage: `url(${slide.image})` }}
       />
+
+      {/* Dark gradient overlay — top darker for navbar readability */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
       
       {/* Navigation Arrows */}
       <button

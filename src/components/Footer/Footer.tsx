@@ -1,164 +1,94 @@
 import React from 'react';
 import { footerData } from '../../data/homeData';
-import { MapPin, Phone, Printer, Mail, Linkedin, Youtube, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram } from 'lucide-react';
+
+const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.553 4.11 1.519 5.842L.055 23.513l5.808-1.523A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.819 0-3.543-.483-5.043-1.328l-.361-.203-3.738.98.997-3.644-.223-.37A9.943 9.943 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+  </svg>
+);
 
 interface FooterProps {
   onLinkClick: (linkName: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
+  const socials = [
+    { icon: Mail,         href: 'mailto:marketing@grasindopro.com', label: 'Email'     },
+    { icon: WhatsAppIcon, href: 'https://wa.me/6281398479044',       label: 'WhatsApp'  },
+    { icon: Instagram,    href: '#',                                label: 'Instagram' },
+  ];
+
+  const navLinks = ['Home', 'About', 'Product & Service', 'Information'];
+
   return (
-    <footer className="bg-black text-gray-300 border-t border-neutral-800">
-      
-      {/* Main 3-Column Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          
-          {/* Column 1: Navigation Links */}
-          <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-neutral-800 pb-2">
-              Sitemap & Navigation
-            </h3>
-            
-            <div className="grid grid-cols-1 gap-2 text-xs">
-              {['Home', 'About', 'Product & Service', 'Information'].map((item) => (
+    <footer className="bg-[#111111] text-gray-400 border-t border-neutral-800">
+
+      {/* Main content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+
+          {/* Left: Logo + tagline */}
+          <div className="space-y-4">
+            <img
+              src="/images/logo.png"
+              alt="Grasindopro"
+              className="h-10 w-auto object-contain brightness-0 invert opacity-80"
+            />
+            <p className="text-xs text-gray-500 leading-relaxed max-w-xs">
+              Leading IT Support, Solutions, and Event Management Provider in Indonesia.
+            </p>
+          </div>
+
+          {/* Center: Address & Phone */}
+          <div className="space-y-3 text-xs">
+            <div className="flex items-start gap-2.5">
+              <MapPin className="w-3.5 h-3.5 text-amber-500 flex-shrink-0 mt-0.5" />
+              <span className="leading-relaxed text-gray-400">{footerData.address}</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <Phone className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+              <span>{footerData.phone}</span>
+            </div>
+          </div>
+
+          {/* Right: Nav + Socials */}
+          <div className="space-y-5">
+            {/* Nav links */}
+            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs">
+              {navLinks.map((item) => (
                 <button
                   key={item}
                   onClick={() => onLinkClick(item)}
-                  className="text-left text-gray-400 hover:text-white transition-colors py-1 flex items-center gap-1 group"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <span className="text-amber-500/80 group-hover:text-amber-400">›</span>
-                  <span>{item}</span>
+                  {item}
                 </button>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-neutral-900">
-              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">
-                Core Services
-              </h4>
-              <ul className="space-y-1.5 text-xs text-gray-400">
-                <li>
-                  <button
-                    onClick={() => onLinkClick('IT Support')}
-                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>IT Support & Maintenance</span>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => onLinkClick('Event Organizer')}
-                    className="flex items-center gap-1.5 hover:text-amber-400 transition-colors text-left"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span>EO (Event Organizer & MICE)</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 2: Head Office Contact */}
-          <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-neutral-800 pb-2">
-              Head Office Contact
-            </h3>
-            
-            <div className="space-y-3.5 text-xs text-gray-300">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span className="leading-relaxed">{footerData.address}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>Tel: {footerData.phone}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Printer className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>Fax: {footerData.fax}</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <a href={`mailto:${footerData.email}`} className="text-amber-400 hover:underline">
-                  {footerData.email}
+            {/* Social icons */}
+            <div className="flex items-center gap-3">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="text-gray-500 hover:text-amber-400 transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
                 </a>
-              </div>
+              ))}
             </div>
-
-            {/* Social Links */}
-            <div className="pt-4 border-t border-neutral-900">
-              <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-3">
-                Connect With Us
-              </h4>
-              <div className="flex items-center space-x-3">
-                {[
-                  { icon: Linkedin, href: '#' },
-                  { icon: Youtube, href: '#' },
-                  { icon: Instagram, href: '#' },
-                  { icon: Facebook, href: '#' },
-                ].map((social, sIdx) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={sIdx}
-                      href={social.href}
-                      className="p-2.5 rounded-lg bg-neutral-900 border border-neutral-800 hover:bg-amber-500 hover:text-slate-950 hover:border-amber-500 text-gray-300 transition-all"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3: Corporate Brand & Copyright */}
-          <div className="space-y-6">
-            <h3 className="text-xs font-extrabold tracking-widest text-white uppercase border-b border-neutral-800 pb-2">
-              Corporate Identity
-            </h3>
-
-            <div className="bg-neutral-950 p-6 rounded-2xl border border-neutral-800 space-y-4">
-              <div className="bg-white p-4 rounded-xl flex items-center justify-center border border-neutral-700 shadow-md">
-                <img
-                  src="/images/logo.png"
-                  alt="Grasindopro - PT Integra Aneksa Kreasindo"
-                  className="h-16 sm:h-20 w-auto object-contain"
-                />
-              </div>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Leading IT Support, Solutions, and Event Management Provider in Indonesia.
-              </p>
-              <div className="pt-2 flex items-center justify-between border-t border-neutral-900 text-[11px]">
-                <span className="text-gray-400">Legal Name</span>
-                <span className="font-semibold text-amber-400 text-[10px]">
-                  PT INTEGRA ANEKSA KREASINDO
-                </span>
-              </div>
-            </div>
-
-            <p className="text-[11px] text-gray-500 leading-relaxed">
-              Disclaimer: All product names, logos, and brands are property of their respective owners.
-            </p>
           </div>
 
         </div>
       </div>
 
-      {/* Copyright Bar */}
-      <div className="bg-black py-6 border-t border-neutral-900 text-center text-xs text-gray-400">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 PT Integra Aneksa Kreasindo (Grasindopro). All Rights Reserved.</p>
-          <div className="flex items-center space-x-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
-        </div>
+      {/* Copyright bar */}
+      <div className="border-t border-neutral-900 py-4 text-center text-[11px] text-gray-600">
+        © 2026 PT Integra Aneksa Kreasindo (Grasindopro). All Rights Reserved.
       </div>
 
     </footer>

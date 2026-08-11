@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Home,
   ChevronDown,
@@ -13,6 +13,7 @@ import {
   Layers,
   Sliders
 } from 'lucide-react';
+import { scrollAnimate, clipPathReveal } from '../../animations';
 
 interface ElectricalPageProps {
   onNavigate?: (page: string) => void;
@@ -25,6 +26,30 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; desc: string } | null>(null);
   const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
+
+  const introRef    = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const stepsRef    = useRef<HTMLDivElement>(null);
+  const galleryRef  = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const triggers = [
+      ...(introRef.current    ? scrollAnimate(introRef.current,    { type: 'slide-left',  distance: 50, duration: 0.7, start: 'top 88%' }) : []),
+      ...(servicesRef.current ? scrollAnimate(
+          Array.from(servicesRef.current.querySelectorAll('[data-service-card]')),
+          { type: 'slide-up', stagger: 0.12, distance: 45, duration: 0.65, start: 'top 90%' }
+        ) : []),
+      ...(stepsRef.current ? scrollAnimate(
+          Array.from(stepsRef.current.querySelectorAll('[data-step-card]')),
+          { type: 'slide-up', stagger: 0.11, distance: 40, duration: 0.6, start: 'top 90%' }
+        ) : []),
+      ...(galleryRef.current ? clipPathReveal(
+          Array.from(galleryRef.current.querySelectorAll('[data-gallery-item]')),
+          { direction: 'up', duration: 1.0, start: 'top 92%' }
+        ) : []),
+    ];
+    return () => triggers.forEach((t) => t.kill());
+  }, []);
 
   const sidebarMenuItems = [
     { label: 'CME Overview', id: 'cme-main' },
@@ -195,7 +220,7 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
           <div className="lg:col-span-8 space-y-10">
             
             {/* Introductory Statement */}
-            <div className="space-y-4">
+            <div ref={introRef} className="space-y-4">
               <div className="flex items-start space-x-3">
                 <div className="w-1.5 h-7 bg-slate-800 flex-shrink-0 mt-1" />
                 <h2 className="text-xl sm:text-2xl font-serif italic font-bold text-slate-800">
@@ -208,7 +233,7 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
             </div>
 
             {/* SUB-SERVICES GRID */}
-            <div className="space-y-6 pt-4 border-t border-slate-200">
+            <div ref={servicesRef} className="space-y-6 pt-4 border-t border-slate-200">
               <div className="space-y-1">
                 <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN</span>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
@@ -223,6 +248,7 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
                   return (
                     <div
                       key={service.id}
+                      data-service-card
                       className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3"
                     >
                       <div className="flex items-start gap-4">
@@ -286,9 +312,9 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
                 Tahapan Alur Pekerjaan Elektrikal
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div ref={stepsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {processSteps.map((p, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-sm border border-slate-200 space-y-1.5 relative overflow-hidden">
+                  <div key={idx} data-step-card className="bg-white p-4 rounded-sm border border-slate-200 space-y-1.5 relative overflow-hidden">
                     <div className="text-xl font-black text-slate-200 absolute top-2 right-3">
                       {p.step}
                     </div>
@@ -310,10 +336,11 @@ export const ElectricalPage: React.FC<ElectricalPageProps> = ({ onNavigate }) =>
                 Dokumentasi Lapangan & Galeri Foto
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div ref={galleryRef} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {photoGallery.map((item, idx) => (
                   <div
                     key={idx}
+                    data-gallery-item
                     onClick={() => setSelectedPhoto(item)}
                     className="group cursor-pointer rounded-sm overflow-hidden border border-slate-200 bg-slate-100 shadow-2xs hover:shadow-md transition-all"
                   >

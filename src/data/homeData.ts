@@ -127,8 +127,6 @@ export const companyValuesData: CompanyValue[] = [
 export const footerData = {
   address: 'Bintaro Trade Center Sektor 7, Jl. Jendral Sudirman Blok B2 No. 10, Kel. Pondok Jaya, Kec. Pondok Aren, Kota Tangerang Selatan, Banten 15220',
   phone: '(021) 7452804',
-  fax: '0813-9847-9044 (Ibu Lia)',
-  email: 'marketing@grasindopro.com',
   subsidiaries: [
     'IT & Mechanical Electrical (M&E) Integration',
     'Media Advertising (Billboard, Neon Box, Signage)',

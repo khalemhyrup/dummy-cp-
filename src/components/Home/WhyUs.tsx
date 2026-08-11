@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { ChevronRight, Check } from 'lucide-react';
+import { scrollAnimate, clipPathReveal } from '../../animations';
 
 interface WhyUsProps {
   onContactClick?: () => void;
 }
 
 export const WhyUs: React.FC<WhyUsProps> = ({ onContactClick }) => {
+  const imgColRef   = useRef<HTMLDivElement>(null);
+  const textColRef  = useRef<HTMLDivElement>(null);
+  const cardsRef    = useRef<HTMLDivElement>(null);
+  const posterRef   = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const triggers = [
+      ...(imgColRef.current  ? scrollAnimate(imgColRef.current,  { type: 'slide-left',  distance: 70, duration: 0.85, start: 'top 85%' }) : []),
+      ...(textColRef.current ? scrollAnimate(textColRef.current, { type: 'slide-right', distance: 70, duration: 0.85, start: 'top 85%', delay: 0.1 }) : []),
+      ...(cardsRef.current
+        ? scrollAnimate(Array.from(cardsRef.current.children) as Element[], {
+            type: 'slide-up', stagger: 0.13, distance: 40, duration: 0.6, start: 'top 90%',
+          })
+        : []),
+      ...(posterRef.current
+        ? clipPathReveal(posterRef.current, { direction: 'up', duration: 1.2, start: 'top 85%' })
+        : []),
+    ];
+    return () => triggers.forEach((t) => t.kill());
+  }, []);
+
   const cards = [
     {
       number: '01',
@@ -30,12 +52,13 @@ export const WhyUs: React.FC<WhyUsProps> = ({ onContactClick }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Image Poster + Blue CTA Bar */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <div ref={imgColRef} className="lg:col-span-5 flex flex-col justify-center">
             <div className="rounded-xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-50 flex flex-col">
               
               {/* Main Poster Image */}
               <div className="relative overflow-hidden bg-slate-100">
                 <img
+                  ref={posterRef}
                   src="/why_us_banner_poster.png"
                   alt="Kami Terintegrasi Sistem Digital"
                   className="w-full h-auto max-h-[460px] object-cover hover:scale-105 transition-transform duration-500"
@@ -59,7 +82,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({ onContactClick }) => {
           </div>
 
           {/* Right Column: Title + Subtitle + 3 Feature Cards */}
-          <div className="lg:col-span-7 space-y-6">
+          <div ref={textColRef} className="lg:col-span-7 space-y-6">
             
             {/* Category Tag */}
             <div>
@@ -79,7 +102,7 @@ export const WhyUs: React.FC<WhyUsProps> = ({ onContactClick }) => {
             </p>
 
             {/* 3 Feature Cards */}
-            <div className="space-y-4 pt-2">
+            <div ref={cardsRef} className="space-y-4 pt-2">
               {cards.map((item) => (
                 <div
                   key={item.number}
