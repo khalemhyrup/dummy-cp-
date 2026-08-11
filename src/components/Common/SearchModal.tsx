@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Search, X, ChevronRight, FileText, Globe, Tag } from 'lucide-react';
-import { navigationData } from '../../data/navigationData';
-import { newsArticlesData } from '../../data/homeData';
+import { Search, X } from 'lucide-react';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -9,163 +7,110 @@ interface SearchModalProps {
   onSelectResult: (title: string, detail: string) => void;
 }
 
-export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onSelectResult }) => {
+const SEARCH_DATABASE = [
+  { title: 'IT Support & Maintenance', category: 'IT Solutions', detail: 'Layanan pemeliharaan sistem IT, server, hardware, dan penanganan gangguan teknis on-site oleh tim Grasindo Pro.' },
+  { title: 'Fiber Optics & Network Installer', category: 'IT Solutions', detail: 'Instalasi jaringan kabel Fiber Optik, kabel FO indoor/outdoor, penyambungan Splicing, dan tes OTDR.' },
+  { title: 'Security Systems (CCTV & Access Door)', category: 'IT Solutions', detail: 'Pemasangan kamera CCTV IP/Analog, sistem kontrol akses pintu RFID/Biometrik, dan pemantauan keamanan.' },
+  { title: 'Telecommunications & Network Tower', category: 'IT Solutions', detail: 'Konstruksi dan pemeliharaan menara telekomunikasi (BST), instalasi perangkat transmisi radio, dan BTS.' },
+  { title: 'Mekanikal (HVAC, Plumbing & Hydrant)', category: 'CME', detail: 'Perancangan dan instalasi sistem pendingin udara HVAC, pemipaan air, dan instalasi sistem pemadam kebakaran hydrant.' },
+  { title: 'Elektrikal (Instalasi Listrik & Tenaga)', category: 'CME', detail: 'Instalasi jaringan listrik tegangan rendah/menengah, panel distribusi, genset, dan integrasi sistem otomatisasi.' },
+  { title: 'EO (Event Organizer & MICE Solutions)', category: 'Event Organizer', detail: 'Penyelenggaraan acara korporat, pameran MICE, seminar, launching produk, dan manajemen event profesional.' },
+  { title: 'Media Advertising & Billboard', category: 'Advertising', detail: 'Produksi dan pemasangan media iklan luar ruang, billboard, neon box, LED videotron, dan papan penunjuk arah.' },
+];
+
+export const SearchModal: React.FC<SearchModalProps> = ({
+  isOpen,
+  onClose,
+  onSelectResult,
+}) => {
   const [query, setQuery] = useState('');
 
   if (!isOpen) return null;
 
-  // Aggregate searchable items
-  const menuResults: { category: string; title: string }[] = [];
-  navigationData.forEach((nav) => {
-    if (nav.columns) {
-      nav.columns.forEach((col) => {
-        col.items.forEach((item) => {
-          if (!item.isHeader) {
-            menuResults.push({ category: nav.label, title: item.title });
-          }
-        });
-      });
-    } else if (nav.items) {
-      nav.items.forEach((item) => {
-        menuResults.push({ category: nav.label, title: item.title });
-      });
-    }
-  });
-
-  const filteredMenus = query.trim()
-    ? menuResults.filter((m) => m.title.toLowerCase().includes(query.toLowerCase()))
+  const results = query.trim()
+    ? SEARCH_DATABASE.filter(
+        (item) =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.category.toLowerCase().includes(query.toLowerCase()) ||
+          item.detail.toLowerCase().includes(query.toLowerCase())
+      )
     : [];
-
-  const filteredNews = query.trim()
-    ? newsArticlesData.filter((n) => n.title.toLowerCase().includes(query.toLowerCase()))
-    : [];
-
-  const hasQuery = query.trim().length > 0;
-  const hasResults = filteredMenus.length > 0 || filteredNews.length > 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-slate-950/70 backdrop-blur-md animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn">
+      <div
+        className="fixed inset-0"
+        onClick={onClose}
+      />
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-10">
         
-        {/* Search Header */}
-        <div className="p-4 border-b border-gray-100 flex items-center gap-3">
-          <Search className="w-5 h-5 text-amber-500" />
+        {/* Search Bar */}
+        <div className="flex items-center px-4 py-3.5 border-b border-slate-100 gap-3">
+          <Search className="w-5 h-5 text-amber-500 flex-shrink-0" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search solutions, financial reports, news, policies..."
-            className="w-full text-sm text-slate-800 focus:outline-none placeholder-gray-400 font-medium"
+            placeholder="Cari layanan, solusi IT, CME, atau Event Organizer..."
+            className="w-full text-sm font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none bg-transparent"
             autoFocus
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="text-xs text-gray-400 hover:text-gray-600 font-semibold px-1"
+              className="text-xs text-slate-400 hover:text-slate-600 px-2 py-1 bg-slate-100 rounded-md"
             >
               Clear
             </button>
           )}
           <button
             onClick={onClose}
-            className="p-1 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Results List */}
-        <div className="max-h-[60vh] overflow-y-auto p-6">
-          
-          {!hasQuery && (
-            <div className="py-12 text-center text-gray-400 space-y-2">
-              <Search className="w-10 h-10 text-gray-300 mx-auto stroke-[1.5]" />
-              <p className="text-sm font-medium text-slate-600">Type a keyword to start searching</p>
-              <p className="text-xs text-gray-400">Search across solutions, press releases, sitemap, and corporate info</p>
+        <div className="max-h-[60vh] overflow-y-auto p-4 space-y-2">
+          {query.trim() === '' ? (
+            <div className="py-8 text-center text-xs text-slate-400 space-y-2">
+              <p className="font-semibold text-slate-500">Ketik kata kunci untuk mencari</p>
+              <p>Contoh: "Fiber Optic", "IT Support", "CCTV", "MICE"</p>
             </div>
-          )}
-
-          {hasQuery && !hasResults && (
-            <div className="py-12 text-center text-gray-400 space-y-2">
-              <p className="text-sm font-semibold text-slate-700">No results found for "{query}"</p>
-              <p className="text-xs text-gray-400">Try searching with a different keyword or category</p>
-            </div>
-          )}
-
-          {hasQuery && hasResults && (
-            <div className="space-y-6">
-              {/* Navigation Links match */}
-              {filteredMenus.length > 0 && (
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-                    <Globe className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Sitemap & Navigation Results ({filteredMenus.length})</span>
-                  </div>
-                  <div className="divide-y divide-gray-100">
-                    {filteredMenus.map((item, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          onSelectResult(item.title, `Category: ${item.category}`);
-                          onClose();
-                        }}
-                        className="w-full text-left py-2.5 px-3 rounded-lg hover:bg-amber-50/60 transition-colors flex items-center justify-between text-xs group"
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded text-[10px]">
-                            {item.category}
-                          </span>
-                          <span className="font-semibold text-slate-800 group-hover:text-amber-600">
-                            {item.title}
-                          </span>
-                        </div>
-                        <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-amber-600 group-hover:translate-x-0.5 transition-transform" />
-                      </button>
-                    ))}
-                  </div>
+          ) : results.length > 0 ? (
+            results.map((item) => (
+              <button
+                key={item.title}
+                onClick={() => {
+                  onSelectResult(item.title, item.detail);
+                  onClose();
+                }}
+                className="w-full text-left p-3.5 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-200/80 group"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                    {item.category}
+                  </span>
+                  <span className="text-[10px] text-slate-400 group-hover:text-amber-600 transition-colors">
+                    Lihat Detail →
+                  </span>
                 </div>
-              )}
-
-              {/* News articles match */}
-              {filteredNews.length > 0 && (
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-                    <FileText className="w-3.5 h-3.5 text-amber-500" />
-                    <span>News & Press Releases</span>
-                  </div>
-                  <div className="space-y-2">
-                    {filteredNews.map((news) => (
-                      <button
-                        key={news.id}
-                        onClick={() => {
-                          onSelectResult(news.title, news.content);
-                          onClose();
-                        }}
-                        className="w-full text-left p-3 rounded-xl border border-gray-100 hover:border-amber-300 hover:bg-slate-50 transition-all flex items-start gap-3 text-xs"
-                      >
-                        <div className="flex-1">
-                          <span className="text-[10px] font-bold text-amber-600 uppercase">
-                            {news.category} • {news.date}
-                          </span>
-                          <h4 className="font-bold text-slate-900 line-clamp-1">
-                            {news.title}
-                          </h4>
-                          <p className="text-gray-500 line-clamp-1 mt-0.5">
-                            {news.summary}
-                          </p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+                <h4 className="text-sm font-bold text-slate-800 mt-1">{item.title}</h4>
+                <p className="text-xs text-slate-500 mt-1 line-clamp-2">{item.detail}</p>
+              </button>
+            ))
+          ) : (
+            <div className="py-12 text-center text-slate-400 text-xs">
+              Tidak ditemukan hasil untuk "{query}"
             </div>
           )}
-
         </div>
 
-        <div className="bg-slate-50 p-3 text-center text-xs text-gray-400 border-t border-gray-100">
-          Press ESC or click close to exit
+        {/* Footer */}
+        <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
+          <span>Grasindo Pro Search</span>
+          <span>Tekan ESC atau klik luar untuk menutup</span>
         </div>
 
       </div>

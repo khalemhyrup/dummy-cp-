@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Header/Navbar';
 import { HeroBanner } from './components/Home/HeroBanner';
-import { OurSolution } from './components/Home/OurSolution';
 import { AboutTechnology } from './components/Home/AboutTechnology';
 import { WhyUs } from './components/Home/WhyUs';
 import { StrategicAlliances } from './components/Home/StrategicAlliances';
@@ -22,9 +21,9 @@ import { MechanicalPage } from './components/CME/Mechanical';
 import { ElectricalPage } from './components/CME/Electrical';
 import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
-import { SearchModal } from './components/Common/SearchModal';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
+import { pageEnter } from './animations';
 
 type PageType =
   | 'home'
@@ -79,6 +78,7 @@ export const App: React.FC = () => {
   const [itCategory, setItCategory] = useState<string>('all');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
+  const mainRef = useRef<HTMLElement>(null);
   const [activeModal, setActiveModal] = useState<{
     isOpen: boolean;
     title: string;
@@ -120,13 +120,13 @@ export const App: React.FC = () => {
     } else if (page === 'eo' || page === 'event-organizer' || page === 'mice') {
       target = 'eo';
       hashRoute = '/service/event-organizer';
-    } else if (page === 'it-support') {
+    } else if (page === 'it-support' || page === 'it-support-maintenance') {
       target = 'it-support';
       hashRoute = '/service/it-support';
-    } else if (page === 'network-fo' || page === 'network') {
+    } else if (page === 'network-fo' || page === 'network' || page === 'fiber-optic' || page === 'fiber-optics' || page === 'fiber') {
       target = 'network-fo';
       hashRoute = '/service/fiber-optic';
-    } else if (page === 'security-systems' || page === 'security') {
+    } else if (page === 'security-systems' || page === 'security' || page === 'security-system') {
       target = 'security-systems';
       hashRoute = '/service/security-systems';
     } else if (page === 'telecom' || page === 'telecommunication' || page === 'telekomunikasi') {
@@ -152,6 +152,11 @@ export const App: React.FC = () => {
     window.location.hash = hashRoute;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Page enter animation on every navigation
+  useEffect(() => {
+    if (mainRef.current) pageEnter(mainRef.current, 0.55);
+  }, [currentPage]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -410,7 +415,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Page Content */}
-      <main className="flex-1">
+      <main ref={mainRef} className="flex-1">
         {currentPage === 'about' ? (
           <AboutUs onNavigate={handleNavigate} />
         ) : currentPage === 'org-structure' ? (
@@ -436,11 +441,11 @@ export const App: React.FC = () => {
         ) : currentPage === 'security-systems' ? (
           <SecuritySystemsPage onNavigate={handleNavigate} />
         ) : currentPage === 'telecom' ? (
-          <Telecomunication onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <Telecomunication onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'it-solutions' ? (
-          <ITPage key={itCategory} initialCategory={itCategory} onContactClick={() => setIsSearchOpen(true)} />
+          <ITPage key={itCategory} initialCategory={itCategory} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'service' ? (
-          <ServicesPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <ServicesPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'contact' ? (
           <Contact onNavigate={handleNavigate} />
         ) : (
@@ -448,16 +453,13 @@ export const App: React.FC = () => {
             {/* Section 1: Hero Carousel Banner */}
             <HeroBanner />
 
-            {/* Section 2: Our Solutions Bar */}
-            <OurSolution onNavigate={handleNavigate} />
-
-            {/* Section 3: About Technology (Multipolar/Grasindopro Tech & Services) */}
+            {/* Section 2: About Grasindopro */}
             <AboutTechnology onLearnMore={() => handleNavigate('about')} />
 
-            {/* Section 4: Kenapa Kami / Why Choose Us */}
+            {/* Section 3: Why Choose Us */}
             <WhyUs />
 
-            {/* Section 5: Strategic Alliances (Global IT Partner Grid) */}
+            {/* Section 4: Strategic Alliances / Clients */}
             <StrategicAlliances />
           </>
         )}
@@ -465,13 +467,6 @@ export const App: React.FC = () => {
 
       {/* Persistent 3-Column Footer */}
       <Footer onLinkClick={handleMenuItemClick} />
-
-      {/* Global Interactive Modals */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectResult={handleSearchSelect}
-      />
 
       <DetailModal
         isOpen={activeModal.isOpen}

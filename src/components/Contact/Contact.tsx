@@ -1,454 +1,158 @@
-import React, { useState } from 'react';
-import {
-  MapPin, Phone, Printer, Mail, Clock, Send, CheckCircle,
-  Linkedin, Youtube, Instagram, Facebook, Home, ChevronUp,
-  MessageSquare, Building2, Globe, User, AtSign
-} from 'lucide-react';
+import React from 'react';
+import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
 import { footerData } from '../../data/homeData';
+
+const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.553 4.11 1.519 5.842L.055 23.513l5.808-1.523A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.819 0-3.543-.483-5.043-1.328l-.361-.203-3.738.98.997-3.644-.223-.37A9.943 9.943 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/>
+  </svg>
+);
 
 interface ContactProps {
   onNavigate?: (page: string) => void;
 }
 
-export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    company: '',
-    subject: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
-  };
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  const contactCards = [
-    {
-      icon: MapPin,
-      label: 'Head Office',
-      value: footerData.address,
-      color: 'text-amber-500',
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-    },
-    {
-      icon: Phone,
-      label: 'Telepon',
-      value: footerData.phone,
-      href: `tel:${footerData.phone.replace(/\D/g, '')}`,
-      color: 'text-blue-600',
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-    },
-    {
-      icon: Printer,
-      label: 'Fax / WhatsApp',
-      value: footerData.fax,
-      color: 'text-violet-600',
-      bg: 'bg-violet-50',
-      border: 'border-violet-200',
-    },
-    {
-      icon: Mail,
-      label: 'Email Marketing',
-      value: footerData.email,
-      href: `mailto:${footerData.email}`,
-      color: 'text-emerald-600',
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-200',
-    },
-  ];
-
-  const services = [
-    'IT Support & Maintenance',
-    'Fiber Optics & Network Installer',
-    'Security Systems (CCTV & Access Door)',
-    'Telecommunications & Network Tower',
-    'Event Organizer & MICE Solutions',
-    'Media Advertising & Billboard',
-    'CME – Mekanikal & Elektrikal',
-    'Lainnya',
-  ];
-
-  const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
-  ];
-
+export const Contact: React.FC<ContactProps> = () => {
   return (
-    <div className="bg-white min-h-screen font-sans text-slate-800 pb-20 relative">
-
-      {/* ===== HERO BANNER ===== */}
-      <div className="w-full h-48 sm:h-64 lg:h-72 overflow-hidden relative bg-slate-900">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.05) 39px,rgba(255,255,255,.05) 40px), repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.05) 39px,rgba(255,255,255,.05) 40px)',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-900/30" />
-        {/* Decorative circles */}
-        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full border border-amber-500/20" />
-        <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-full border border-amber-500/10" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-0.5 bg-amber-500" />
-            <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Get In Touch</span>
-            <div className="w-8 h-0.5 bg-amber-500" />
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
-            Contact Us
-          </h1>
-          <p className="text-slate-300 text-sm sm:text-base text-center px-4 max-w-lg">
-            Konsultasikan kebutuhan proyek Anda bersama tim ahli Grasindo Pro
-          </p>
-        </div>
+    <div className="bg-white min-h-screen font-sans text-zinc-900 pt-12 pb-24">
+      
+      {/* Header Section */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+        <p className="text-xs font-mono uppercase tracking-widest text-amber-600 mb-3">
+          PT INTEGRA ANEKSA KREASINDO
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-zinc-900">
+          Hubungi Kami<span className="text-amber-500 font-normal">.</span>
+        </h1>
+        <p className="mt-4 text-base text-zinc-500 max-w-xl font-light leading-relaxed">
+          Silakan hubungi tim kami untuk konsultasi layanan IT Support, Mechanical Electrical, Media Advertising, maupun Event Management.
+        </p>
       </div>
 
-      {/* ===== BREADCRUMB ===== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-        <div className="flex items-center space-x-2 text-xs text-slate-500">
-          <Home className="w-3.5 h-3.5 text-slate-400" />
-          <span>/</span>
-          <button
-            onClick={() => onNavigate?.('home')}
-            className="hover:text-amber-600 transition-colors"
-          >
-            Home
-          </button>
-          <span>/</span>
-          <span className="text-slate-800 font-semibold">Contact</span>
-        </div>
-      </div>
-
-      {/* ===== CONTACT INFO CARDS ===== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          {contactCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <div
-                key={card.label}
-                className={`relative flex gap-4 p-5 rounded-2xl border ${card.border} ${card.bg} shadow-sm hover:shadow-md transition-shadow group overflow-hidden`}
+      {/* Main Split Layout */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Contact Details */}
+          <div className="lg:col-span-6 space-y-10 divide-y divide-zinc-100">
+            
+            {/* Office Location */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                <MapPin className="w-4 h-4 text-zinc-700" />
+                <span>Head Office</span>
+              </div>
+              <p className="text-lg font-normal text-zinc-800 leading-relaxed max-w-lg">
+                {footerData.address}
+              </p>
+              <a
+                href="https://maps.app.goo.gl/TnmLe8SBs5ngg82S8"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600 hover:text-amber-700 transition-colors pt-1"
               >
-                {/* Subtle corner accent */}
-                <div className={`absolute top-0 right-0 w-16 h-16 rounded-bl-full opacity-10 ${card.bg.replace('bg-', 'bg-')} border-l border-b ${card.border}`} />
-                <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-white shadow-sm ${card.color}`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">
-                    {card.label}
-                  </p>
-                  {card.href ? (
-                    <a
-                      href={card.href}
-                      className={`text-sm font-semibold ${card.color} hover:underline break-words leading-snug`}
-                    >
-                      {card.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm font-medium text-slate-700 leading-snug">{card.value}</p>
-                  )}
-                </div>
+                <span>Buka Petunjuk Arah</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Direct Channels */}
+            <div className="pt-8 space-y-6">
+              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400">
+                Kontak Langsung
               </div>
-            );
-          })}
-        </div>
-      </div>
 
-      {/* ===== MAIN CONTENT: FORM + SIDEBAR ===== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-
-          {/* ---- LEFT: INQUIRY FORM ---- */}
-          <div className="lg:col-span-8">
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-              {/* Form Header */}
-              <div className="bg-slate-900 px-8 py-6 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 text-slate-900" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Telepon */}
+                <div className="space-y-1">
+                  <span className="text-xs text-zinc-400 block">Telepon Kantor</span>
+                  <a
+                    href={`tel:${footerData.phone.replace(/\D/g, '')}`}
+                    className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block"
+                  >
+                    {footerData.phone}
+                  </a>
                 </div>
-                <div>
-                  <h2 className="text-white font-bold text-lg">Kirim Pesan / Inquiry</h2>
-                  <p className="text-slate-400 text-xs mt-0.5">
-                    Tim kami akan merespons dalam 1×24 jam kerja
-                  </p>
+
+                {/* Email */}
+                <div className="space-y-1">
+                  <span className="text-xs text-zinc-400 block">Email Official</span>
+                  <a
+                    href="mailto:marketing@grasindopro.com"
+                    className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
+                  >
+                    marketing@grasindopro.com
+                  </a>
                 </div>
               </div>
 
-              {/* Form Body */}
-              <div className="p-8">
-                {submitted ? (
-                  <div className="flex flex-col items-center justify-center py-16 gap-4 text-center">
-                    <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center">
-                      <CheckCircle className="w-9 h-9 text-emerald-500" />
+              {/* WhatsApp Action Card */}
+              <div className="pt-2">
+                <a
+                  href="https://wa.me/6281398479044"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between p-4 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 transition-all group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                      <WhatsAppIcon className="w-4 h-4" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">Pesan Terkirim!</h3>
-                    <p className="text-slate-500 text-sm max-w-sm">
-                      Terima kasih telah menghubungi kami. Tim Grasindo Pro akan segera menghubungi Anda.
-                    </p>
-                    <button
-                      onClick={() => { setSubmitted(false); setFormState({ name: '', email: '', company: '', subject: '', message: '' }); }}
-                      className="mt-2 px-6 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-700 transition-colors"
-                    >
-                      Kirim Pesan Lain
-                    </button>
+                    <div>
+                      <p className="text-xs text-zinc-400 font-mono">WhatsApp Hotline</p>
+                      <p className="text-sm font-medium text-white">0813-9847-9044</p>
+                    </div>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Name */}
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                          <User className="w-3.5 h-3.5" /> Nama Lengkap <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formState.name}
-                          onChange={handleChange}
-                          required
-                          placeholder="John Doe"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition"
-                        />
-                      </div>
-
-                      {/* Email */}
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                          <AtSign className="w-3.5 h-3.5" /> Email <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formState.email}
-                          onChange={handleChange}
-                          required
-                          placeholder="john@company.com"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Company */}
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                        <Building2 className="w-3.5 h-3.5" /> Nama Perusahaan
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formState.company}
-                        onChange={handleChange}
-                        placeholder="PT. Nama Perusahaan"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition"
-                      />
-                    </div>
-
-                    {/* Subject / Service */}
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                        <Globe className="w-3.5 h-3.5" /> Layanan yang Diminati <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        name="subject"
-                        value={formState.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition appearance-none cursor-pointer"
-                      >
-                        <option value="">-- Pilih Layanan --</option>
-                        {services.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Message */}
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                        <MessageSquare className="w-3.5 h-3.5" /> Pesan / Deskripsi Kebutuhan <span className="text-red-500">*</span>
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formState.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        placeholder="Ceritakan kebutuhan proyek Anda secara singkat..."
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition resize-none"
-                      />
-                    </div>
-
-                    {/* Submit */}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-900 font-bold text-sm transition-all duration-300 shadow-md hover:shadow-amber-200 disabled:opacity-60 disabled:cursor-not-allowed group"
-                    >
-                      {loading ? (
-                        <>
-                          <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                          </svg>
-                          Mengirim...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                          Kirim Pesan
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
+                  <span className="text-xs text-zinc-400 group-hover:text-white transition-colors">
+                    Chat Sekarang →
+                  </span>
+                </a>
               </div>
             </div>
+
+            {/* Operating Hours */}
+            <div className="pt-8 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                <Clock className="w-4 h-4 text-zinc-700" />
+                <span>Jam Operasional</span>
+              </div>
+
+              <div className="space-y-2.5 max-w-md text-sm">
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <span className="text-zinc-500">Senin – Jumat</span>
+                  <span className="font-medium text-zinc-900">08.00 – 17.00 WIB</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <span className="text-zinc-500">Sabtu</span>
+                  <span className="font-medium text-zinc-900">08.00 – 14.00 WIB</span>
+                </div>
+                <div className="flex justify-between py-1">
+                  <span className="text-zinc-500">Minggu & Libur Nasional</span>
+                  <span className="font-medium text-zinc-400">Tutup</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* ---- RIGHT: SIDEBAR ---- */}
-          <div className="lg:col-span-4 space-y-6">
-
-            {/* Company Card */}
-            <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-lg">
-              <div className="p-6 space-y-4">
-                <div className="flex items-center gap-3 pb-4 border-b border-slate-700">
-                  <div className="bg-white rounded-xl p-2.5 w-12 h-12 flex items-center justify-center shadow">
-                    <img
-                      src="/images/logo.png"
-                      alt="Grasindo Pro Logo"
-                      className="h-7 w-auto object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white font-extrabold text-sm">Grasindo Pro</p>
-                    <p className="text-slate-400 text-[11px]">PT Integra Aneksa Kreasindo</p>
-                  </div>
-                </div>
-
-                {/* Jam Operasional */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Clock className="w-4 h-4 text-amber-400" />
-                    <span className="text-amber-400 text-xs font-bold uppercase tracking-wider">Jam Operasional</span>
-                  </div>
-                  {[
-                    { day: 'Senin – Jumat', time: '08.00 – 17.00 WIB' },
-                    { day: 'Sabtu', time: '08.00 – 14.00 WIB' },
-                    { day: 'Minggu & Libur', time: 'Tutup' },
-                  ].map((item) => (
-                    <div key={item.day} className="flex items-center justify-between text-xs py-2 border-b border-slate-800 last:border-0">
-                      <span className="text-slate-400">{item.day}</span>
-                      <span className={`font-semibold ${item.time === 'Tutup' ? 'text-red-400' : 'text-white'}`}>
-                        {item.time}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Amber accent bottom */}
-              <div className="h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600" />
-            </div>
-
-            {/* Services Quick List */}
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
-              <h3 className="text-xs font-extrabold uppercase tracking-widest text-slate-500 border-b border-slate-100 pb-3">
-                Layanan Kami
-              </h3>
-              <ul className="space-y-2">
-                {footerData.subsidiaries.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-xs text-slate-600">
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0 mt-1.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Social Links */}
-            <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 space-y-4">
-              <h3 className="text-xs font-extrabold uppercase tracking-widest text-slate-500 border-b border-slate-100 pb-3">
-                Ikuti Kami
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-900 hover:text-amber-400 hover:border-slate-900 transition-all text-xs font-semibold"
-                    >
-                      <Icon className="w-4 h-4" />
-                      {social.label}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ===== MAP SECTION ===== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-          {/* Map Header */}
-          <div className="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center gap-3">
-            <MapPin className="w-5 h-5 text-amber-500" />
-            <div>
-              <p className="text-sm font-bold text-slate-800">Lokasi Head Office</p>
-              <p className="text-xs text-slate-500">{footerData.address}</p>
-            </div>
-          </div>
-          {/* Google Maps Embed – Bintaro Trade Center Sektor 7 */}
-          <div className="w-full h-72 sm:h-96 bg-slate-100 relative">
+          {/* Right Column: Google Maps */}
+          <div className="lg:col-span-6 h-[480px] lg:h-[580px] rounded-2xl overflow-hidden border border-zinc-200 shadow-sm relative bg-zinc-100">
             <iframe
-              title="Grasindo Pro Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6428!2d106.7327!3d-6.2729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1d5c2bdfeab%3A0x7c7e43bb85b6c2bb!2sBintaro%20Trade%20Center!5e0!3m2!1sen!2sid!4v1234567890"
+              title="Grasindo Pro Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.8816!2d106.7156975!3d-6.2792818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb000114bd8f%3A0x257b923aa9a944b9!2sPT.%20Integra%20Aneksa%20Kreasindo!5e0!3m2!1sen!2sid!4v1700000000000"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              style={{ border: 0, filter: 'grayscale(0.1)' }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 w-full h-full"
+              className="w-full h-full"
             />
           </div>
+
         </div>
       </div>
-
-      {/* ===== BACK TO TOP ===== */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-11 h-11 rounded-full bg-white border border-slate-300 shadow-lg hover:shadow-xl text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all duration-300 z-50 group hover:scale-110"
-        title="Kembali ke Atas"
-      >
-        <ChevronUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
-      </button>
 
     </div>
   );

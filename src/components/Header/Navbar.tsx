@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { navigationData } from '../../data/navigationData';
 import { NavItem, MenuItem } from '../../types/navigation';
 import { MegaMenu } from './MegaMenu';
-import { ChevronDown, Search, Menu as MenuIcon, X } from 'lucide-react';
+import { ChevronDown, Menu as MenuIcon, X } from 'lucide-react';
 
 interface NavbarProps {
-  onSearchOpen: () => void;
+  onSearchOpen?: () => void;
   onMenuItemClick: (item: MenuItem | string) => void;
   currentLang: 'ID' | 'EN';
   onLangChange: (lang: 'ID' | 'EN') => void;
@@ -14,7 +14,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onSearchOpen,
   onMenuItemClick,
   currentLang,
   onLangChange,
@@ -23,7 +22,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Transparent → solid transition on scroll (only on home page)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // set initial state
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const isHome = currentPage === 'home';
+  // transparent when: on home page AND not scrolled
+  const isTransparent = isHome && !scrolled;
 
   const handleMouseEnter = (itemId: string, hasDropdown: boolean) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -41,7 +53,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const currentActiveNav = navigationData.find((item) => item.id === activeDropdown);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-200">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isTransparent
+          ? 'bg-transparent border-b border-transparent shadow-none'
+          : 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
 
@@ -63,7 +81,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src="/images/logo.png"
                 alt="Grasindopro - PT Integra Aneksa Kreasindo"
-                className="h-14 sm:h-16 md:h-16 w-auto object-contain transition-all"
+                className={`h-14 sm:h-16 md:h-16 w-auto object-contain transition-all ${
+                  isTransparent ? 'brightness-0 invert' : ''
+                }`}
               />
             </div>
           </a>
@@ -114,7 +134,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     }}
                     className={`flex items-center gap-1 text-[14px] font-semibold tracking-tight transition-colors duration-150 py-1 px-2.5 rounded-md ${
                       isPageActive || isDropdownActive
-                        ? 'text-amber-600 bg-amber-50/50'
+                        ? isTransparent ? 'text-amber-300' : 'text-amber-600 bg-amber-50/50'
+                        : isTransparent
+                        ? 'text-white/90 hover:text-amber-300'
                         : 'text-gray-700 hover:text-amber-600 hover:bg-gray-50'
                     }`}
                   >
@@ -122,7 +144,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     {item.hasDropdown && (
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          isDropdownActive ? 'rotate-180 text-amber-600' : 'text-gray-400'
+                          isDropdownActive
+                            ? 'rotate-180 text-amber-400'
+                            : isTransparent ? 'text-white/60' : 'text-gray-400'
                         }`}
                       />
                     )}
@@ -135,57 +159,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Utility Tools: Language Switch & Search */}
           <div className="flex items-center space-x-3 sm:space-x-4">
 
-            {/* Language Switcher with SVG Flags */}
-            <div className="flex items-center bg-gray-100/90 rounded-full p-1 border border-gray-200 shadow-2xs">
-              <button
-                onClick={() => onLangChange('ID')}
-                title="Bahasa Indonesia"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
-                  currentLang === 'ID'
-                    ? 'bg-white text-slate-900 shadow-xs border border-gray-200/60'
-                    : 'text-gray-500 hover:text-gray-800'
-                }`}
-              >
-                <svg className="w-4 h-3 rounded-2xs border border-gray-300 shadow-2xs flex-shrink-0" viewBox="0 0 3 2">
-                  <rect width="3" height="1" fill="#E70011" />
-                  <rect y="1" width="3" height="1" fill="#FFFFFF" />
-                </svg>
-                <span>ID</span>
-              </button>
-              <button
-                onClick={() => onLangChange('EN')}
-                title="English"
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
-                  currentLang === 'EN'
-                    ? 'bg-white text-slate-900 shadow-xs border border-gray-200/60'
-                    : 'text-gray-500 hover:text-gray-800'
-                }`}
-              >
-                <svg className="w-4 h-3 rounded-2xs border border-gray-300 shadow-2xs flex-shrink-0" viewBox="0 0 60 30">
-                  <rect width="60" height="30" fill="#012169" />
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
-                  <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" />
-                  <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
-                  <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
-                </svg>
-                <span>EN</span>
-              </button>
-            </div>
-
-            {/* Search Trigger Button */}
-            <button
-              onClick={onSearchOpen}
-              className="p-2 rounded-full text-gray-600 hover:text-amber-600 hover:bg-amber-50 transition-colors focus:outline-none"
-              aria-label="Search"
-              title="Search website..."
-            >
-              <Search className="w-5 h-5" />
-            </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:text-amber-600 hover:bg-gray-100"
+              className={`lg:hidden p-2 rounded-md transition-colors ${
+                isTransparent
+                  ? 'text-white hover:text-amber-300'
+                  : 'text-gray-700 hover:text-amber-600 hover:bg-gray-100'
+              }`}
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
