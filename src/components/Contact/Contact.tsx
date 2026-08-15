@@ -86,52 +86,6 @@ export const Contact: React.FC<ContactProps> = () => {
                   </a>
                 </div>
               </div>
-
-              {/* WhatsApp Action Card */}
-              <div className="pt-2">
-                <a
-                  href="https://wa.me/6281398479044"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between p-4 rounded-xl bg-zinc-900 text-white hover:bg-zinc-800 transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                      <WhatsAppIcon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-zinc-400 font-mono">WhatsApp Hotline</p>
-                      <p className="text-sm font-medium text-white">0813-9847-9044</p>
-                    </div>
-                  </div>
-                  <span className="text-xs text-zinc-400 group-hover:text-white transition-colors">
-                    Chat Sekarang →
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* Operating Hours */}
-            <div className="pt-8 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                <Clock className="w-4 h-4 text-zinc-700" />
-                <span>Jam Operasional</span>
-              </div>
-
-              <div className="space-y-2.5 max-w-md text-sm">
-                <div className="flex justify-between py-1 border-b border-zinc-100">
-                  <span className="text-zinc-500">Senin – Jumat</span>
-                  <span className="font-medium text-zinc-900">08.00 – 17.00 WIB</span>
-                </div>
-                <div className="flex justify-between py-1 border-b border-zinc-100">
-                  <span className="text-zinc-500">Sabtu</span>
-                  <span className="font-medium text-zinc-900">08.00 – 14.00 WIB</span>
-                </div>
-                <div className="flex justify-between py-1">
-                  <span className="text-zinc-500">Minggu & Libur Nasional</span>
-                  <span className="font-medium text-zinc-400">Tutup</span>
-                </div>
-              </div>
             </div>
 
           </div>

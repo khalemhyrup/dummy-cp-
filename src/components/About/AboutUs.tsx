@@ -93,17 +93,52 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onNavigate }) => {
               />
             </div>
 
-            {/* Sub-section: Logo */}
-            <div className="space-y-3 pt-2">
-              <h3 className="text-red-700 font-extrabold text-lg sm:text-xl">
-                Logo
-              </h3>
-              <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                PT Grasindo Pro (PT Integra Aneksa Kreasindo) adalah perusahaan teknologi yang berfokus membantu pelanggan dalam penyediaan solusi dan layanan teknologi yang paling tepat untuk kebutuhan bisnisnya, mengintegrasikan ke sistem yang digunakan, dan memastikan transisi yang mulus bagi para pemangku kepentingan.
-              </p>
-              <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                Logo perusahaan ini memperkuat identitas Grasindo Pro dalam mencapai Visi Perusahaan – Menjadi penyedia jasa teknologi terkemuka, yang memberikan nilai berkesinambungan bagi para pemangku kepentingan dan dampak positif bagi kehidupan.
-              </p>
+            {/* Sub-section: Visi & Misi Perusahaan */}
+            <div className="space-y-6 pt-4 border-t border-slate-200">
+              
+              {/* Visi Perusahaan */}
+              <div className="space-y-2">
+                <h3 className="text-red-700 font-extrabold text-lg sm:text-xl">
+                  Visi Perusahaan
+                </h3>
+                <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+                  Menjadi perusahaan terkemuka di Indonesia sekaligus mitra usaha terpercaya dan handal di tengah ketatnya persaingan bisnis global, dengan senantiasa memberikan solusi terbaik, inovatif, dan menarik dalam bidang Teknologi Informasi, mekanikal elektrikal, telekomunikasi, event organizer, serta layanan media advertising.
+                </p>
+              </div>
+
+              {/* Misi Perusahaan */}
+              <div className="space-y-3">
+                <h3 className="text-red-700 font-extrabold text-lg sm:text-xl">
+                  Misi Perusahaan
+                </h3>
+                <ul className="space-y-3 text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-700 font-bold mt-1">•</span>
+                    <div>
+                      <strong className="text-slate-900">Kualitas &amp; Layanan (Quality):</strong> Memberikan layanan berkualitas terbaik secara prima dan cepat secara menyeluruh, mencakup layanan integrasi jaringan LAN/IT, mekanikal elektrikal, telekomunikasi, servis perangkat komputer, hingga jasa media advertising dan event organizer.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-700 font-bold mt-1">•</span>
+                    <div>
+                      <strong className="text-slate-900">Kemitraan &amp; Profesionalisme (Commitment):</strong> Mengembangkan hubungan jangka panjang dan pola kemitraan usaha yang saling memberikan keuntungan dengan pelanggan dan mitra bisnis, dengan senantiasa menjaga serta menjunjung tinggi etika bisnis profesional.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-700 font-bold mt-1">•</span>
+                    <div>
+                      <strong className="text-slate-900">Inovasi &amp; Adaptasi (Flexible):</strong> Menyediakan solusi yang efisien dan berkelanjutan untuk memenuhi kebutuhan teknologi pelanggan, sekaligus bersikap fleksibel dalam mengikuti perkembangan media untuk terus memberikan inovasi.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-700 font-bold mt-1">•</span>
+                    <div>
+                      <strong className="text-slate-900">Kreativitas &amp; Dampak:</strong> Menghadirkan event dan promosi kreatif yang mampu meningkatkan brand awareness pelanggan dan memberikan warna baru yang jauh lebih menarik di dunia layanan jasa media.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
             </div>
 
           </div>

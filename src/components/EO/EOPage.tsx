@@ -1,570 +1,648 @@
-import React, { useState } from 'react';
-import {
-  Home,
-  ChevronDown,
-  ChevronUp,
-  Calendar,
-  CheckCircle2,
-  Sparkles,
-  Users,
-  Award,
-  Star,
-  Send,
-  Camera,
-  MapPin,
-  Building,
-  Briefcase
-} from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, Instagram, ChevronRight, ArrowRight, Sparkles, Award } from 'lucide-react';
 
 interface EOPageProps {
   onNavigate?: (page: string) => void;
   onContactClick?: () => void;
 }
 
-export const EOPage: React.FC<EOPageProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState<string>('EO (Event Organizer & MICE)');
-  const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState<{ src: string; title: string; desc: string } | null>(null);
-  const [inquiryForm, setInquiryForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    eventType: 'Company Gathering',
-    message: ''
-  });
-
-  const sidebarMenuItems = [
-    { label: 'EO Overview', id: 'eo-main' },
-    { label: 'EO (Event Organizer & MICE)', id: 'eo' },
-    { label: 'Media Advertising & Billboard', id: 'media-advertising' },
+export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) => {
+  const merchandiseList = [
+    { name: 'Tumbler Rumah BUMN', tag: 'Rumah BUMN', img: '/EO/Event organizer/Merchandise1.png' },
+    { name: 'Tumbler Pajak Kita', tag: 'Pajak Kita', img: '/EO/Event organizer/Merchandise2.png' },
+    { name: 'Paper Bag Kapolri Cup', tag: 'Shooting Championship', img: '/EO/Event organizer/Merchandise3.png' },
+    { name: 'Pouch & Pen Set', tag: 'Startup Studio ID', img: '/EO/Event organizer/Merchandise4.png' },
+    { name: 'T-Shirt BPK RI', tag: 'BPK Perwakilan', img: '/EO/Event organizer/Merchandise5.png' },
+    { name: 'Spunbond Bag Leker', tag: 'Leker Brand', img: '/EO/Event organizer/Merchandise6.png' },
+    { name: 'Topi Bordir PLN', tag: 'PLN Nusantara Power', img: '/EO/Event organizer/Merchandise7.png' },
+    { name: 'Gift Set Tumbler & Book', tag: 'Corporate Premium', img: '/EO/Event organizer/Merchandise8.png' },
+    { name: 'Powerbank Robot MM', tag: 'Custom Tech Gift', img: '/EO/Event organizer/Merchandise9.png' },
+    { name: 'Mug Karikatur Pilkada', tag: 'Custom Print Mug', img: '/EO/Event organizer/Merchandise10.png' },
+    { name: 'Tumbler Prime Video', tag: 'Streaming Service', img: '/EO/Event organizer/Merchandise11.png' },
+    { name: 'Korek Gas Custom', tag: 'Pentas Jenaka', img: '/EO/Event organizer/Merchandise12.png' },
+    { name: 'Executive Powerbank Wallet', tag: 'VIP Gift Set', img: '/EO/Event organizer/Merchandise13.png' },
+    { name: 'Canvas Tote Bag Ilustrasi', tag: 'Event Souvenir', img: '/EO/Event organizer/Merchandise14.png' },
   ];
-
-  const photoGallery = [
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
-      title: 'Penyelenggaraan Event Corporate & Gathering',
-      desc: 'Pelaksanaan event corporate, gathering, dan konferensi perusahaan oleh tim Grasindo Pro.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035308.png',
-      title: 'Brand Activation & Pameran Booth Expo',
-      desc: 'Eksekusi program brand activation, booth expo custom, dan interaksi pengunjung pameran.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035318.png',
-      title: 'Konstruksi Panggung & Sound Stage Rigging',
-      desc: 'Desain dan produksi panggung utama, instalasi sound system, lighting, & videotron.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035357.png',
-      title: 'Manpower Talent MC & Usher Event',
-      desc: 'Penyediaan talent profesional MC, usher, SPG/SPB, & liaison officer (LO) acara.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035404.png',
-      title: 'Pengelolaan MICE & Gala Dinner Perusahaan',
-      desc: 'Manajemen acara MICE (Meeting, Incentive, Convention, Exhibition) & gala dinner corporate.',
-    },
-    {
-      src: '/EO/Event organizer/Screenshot 2026-08-08 035417.png',
-      title: 'Aktivasi Lapangan & Roadshow Promosi',
-      desc: 'Penyelenggaraan roadshow pameran dan brand activation produk berskala nasional.',
-    },
-  ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setInquiryOpen(false);
-      setFormSubmitted(false);
-      setInquiryForm({ name: '', email: '', phone: '', company: '', eventType: 'Company Gathering', message: '' });
-    }, 2000);
-  };
 
   return (
-    <div className="bg-white min-h-screen font-sans text-slate-800 pb-20 relative">
+    <div className="w-full bg-[#040b18] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
 
-      {/* ================= 1. HERO BANNER (BAGIAN ATAS) ================= */}
-      <div className="w-full h-56 sm:h-72 lg:h-80 overflow-hidden relative bg-slate-900">
-        <img
-          src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
-          alt="EO & MICE Solutions Hero Banner"
-          className="w-full h-full object-cover object-center grayscale opacity-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-
-        {/* Floating Headline inside Banner */}
-        <div className="absolute bottom-6 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            EO (Event Organizer & MICE Solutions)
-          </h1>
+      {/* Top Breadcrumb Header */}
+      <div className="bg-[#030814] py-3 px-6 sm:px-8 border-b border-blue-900/40">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <button
+            onClick={() => onNavigate?.('eo-home')}
+            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>← Back to EO &amp; Advertising Portal</span>
+          </button>
+          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
+            Event Organizer Division
+          </span>
         </div>
       </div>
 
-      {/* ================= PAGE TITLE & BREADCRUMBS ================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-        {/* Breadcrumb Navigation */}
-        <div className="flex items-center space-x-2 text-xs text-slate-500 overflow-x-auto">
-          <button onClick={() => onNavigate?.('home')} className="hover:text-amber-600 flex items-center gap-1 font-medium transition-colors cursor-pointer">
-            <Home className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
-          </button>
-          <span>/</span>
-          <button onClick={() => onNavigate?.('service')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
-            Produk & Layanan
-          </button>
-          <span>/</span>
-          <button onClick={() => onNavigate?.('eo-main')} className="hover:text-amber-600 font-medium transition-colors cursor-pointer">
-            Event Organizer & Media
-          </button>
-          <span>/</span>
-          <span className="text-slate-800 font-semibold whitespace-nowrap">EO & MICE Solutions</span>
-        </div>
-      </div>
+      {/* =========================================================================
+          SLIDE 1: EVENT ORGANIZER OVERVIEW & SERVICES LIST
+      ========================================================================== */}
+      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#030917] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+        
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(14,165,233,0.15)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* ================= MAIN CONTENT LAYOUT (2 COLUMNS) ================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Heading + Paragraph + Panorama Image */}
+            <div className="lg:col-span-6 space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide">
+                Event Organizer
+              </h1>
 
-          {/* LEFT COLUMN: MAIN ARTICLE CONTENT (8 cols) */}
-          <div className="lg:col-span-8 space-y-10">
-
-            {/* HERO INTRO SECTION */}
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <div className="w-1.5 h-7 bg-amber-600 flex-shrink-0 mt-1" />
-                <h2 className="text-xl sm:text-2xl font-serif italic font-bold text-slate-800">
-                  Solusi Penyelenggaraan Event Perusahaan, MICE, & Brand Activation Profesional.
-                </h2>
-              </div>
-
-              <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify">
-                Dengan reputasi kami sebagai kontraktor event organizer terkemuka di Indonesia, Grasindopro menawarkan perencanaan, produksi panggung, pengelolaan MICE (Meeting, Incentive, Convention, Exhibition), brand activation, serta eksekusi event corporate yang kreatif, tepat waktu, dan berkesan.
-              </p>
-            </div>
-
-            {/* ================= 2. LAYANAN UTAMA (CORE SERVICES - 4 CARDS) ================= */}
-            <div className="space-y-6 pt-4 border-t border-slate-200">
-              <div className="space-y-1">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">KATEGORI LAYANAN TERPADU</span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Layanan Utama EO & MICE Solutions
-                </h3>
-                <p className="text-slate-600 text-xs sm:text-sm">
-                  Kami menyediakan empat pilar utama manajemen acara profesional untuk mendukung kebutuhan bisnis Anda:
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                
-                {/* Core Service 1: MICE & Corporate */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Calendar className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    1. MICE & Corporate Event Management
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyelenggaraan acara MICE (Meeting, Incentive, Convention, Exhibition), Company Gathering, Customer Loyalty Night, Gala Dinner, & Employee Outing.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>MICE & Conference Management (Meeting & Convention)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Company Gathering, Outing & Gala Dinner</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Customer Appreciation Night & Anniversary Event</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 2: Brand Activation */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    2. Brand Activation & Roadshow Pameran
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Eksekusi program brand activation di pusat perbelanjaan (mall), roadshow pameran expo, launching produk baru, & interaksi produk interaktif.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Brand Activation Mall & Public Area</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Roadshow Pameran Commercial & Industry Expo</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Product Launching & Live Demonstration Event</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 3: Event Production */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-slate-900 text-white flex items-center justify-center font-bold">
-                    <Building className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    3. Event Production & Stage Construction
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Desain dan konstruksi panggung utama, instalasi booth pameran custom, rigging lighting, sound system concert-grade, LED Videotron, & dekorasi.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Produksi Booth Expo Custom & Stand Pameran</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Sound System, LED Screen Videotron & Stage Lighting</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-slate-900 flex-shrink-0" />
-                      <span>Konstruksi Panggung Utama, Rigging Truss & Backdrop</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Core Service 4: Talent Procurement */}
-                <div className="bg-slate-50 p-6 rounded-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-shadow space-y-3">
-                  <div className="w-10 h-10 rounded-sm bg-amber-600 text-white flex items-center justify-center font-bold">
-                    <Users className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-extrabold text-slate-900">
-                    4. Manpower Talent & Crew Procurement
-                  </h4>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Penyediaan SDM profesional talent MC jam terbang tinggi, SPG/SPB pameran, Usher event, Liaison Officer (LO), & souvenir merchandise corporate.
-                  </p>
-                  <ul className="text-xs text-slate-600 space-y-1.5 pt-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Talent MC Profesional Jam Terbang Tinggi</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>SPG / SPB Pameran & Usher Event Prima</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
-                      <span>Liaison Officer (LO), Protocol Staff & Event Crew</span>
-                    </li>
-                  </ul>
-                </div>
-
-              </div>
-            </div>
-
-            {/* ================= 3. KENAPA MEMILIH EO KAMI? (SERVICE EXCELLENCE) ================= */}
-            <div className="space-y-6 pt-6 border-t border-slate-200">
-              <div className="space-y-2">
-                <span className="text-xs font-bold tracking-wider text-amber-600 uppercase">SERVICE EXCELLENCE</span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  Kenapa Memilih Layanan EO & MICE Kami?
-                </h3>
-                <div className="p-4 bg-slate-100/80 border-l-4 border-slate-800 text-slate-800 font-semibold text-sm italic">
-                  &ldquo;Bagaimana memastikan setiap momen acara perusahaan Anda terlaksana sempurna tanpa kendala teknis?&rdquo; &mdash; Komitmen dari Grasindo Pro.
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
-                
-                {/* Point 1 */}
-                <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Konsep Kreatif & Fleksibel</h4>
-                  </div>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Konsep acara dirancang dinamis dan inovatif, disesuaikan secara khusus dengan pesan brand dan tujuan bisnis perusahaan Anda.
-                  </p>
-                </div>
-
-                {/* Point 2 */}
-                <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Award className="w-4 h-4" />
-                    </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">On-Time Execution</h4>
-                  </div>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Manajemen rundown dan eksekusi panggung dengan tingkat kedisiplinan waktu yang ketat serta penanganan risiko yang responsif.
-                  </p>
-                </div>
-
-                {/* Point 3 */}
-                <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Service Point Nasional</h4>
-                  </div>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Kemampuan eksekusi acara roadshow dan MICE di berbagai kota besar di seluruh provinsi Indonesia secara serentak.
-                  </p>
-                </div>
-
-                {/* Point 4 */}
-                <div className="p-5 bg-white rounded-sm border border-slate-200 shadow-2xs hover:border-slate-400 transition-colors space-y-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-sm bg-amber-50 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">
-                      <Star className="w-4 h-4" />
-                    </div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">Talent & Crew Profesional</h4>
-                  </div>
-                  <p className="text-slate-700 text-xs sm:text-sm leading-relaxed text-justify">
-                    Didukung oleh MC jam terbang tinggi, SPG/Usher dengan standar penampilan prima, serta kru produksi berpengalaman.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            {/* ================= 4. DOKUMENTASI FOTO FOTO ================= */}
-            <div className="space-y-6 pt-6 border-t border-slate-200">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold tracking-wider text-amber-600 uppercase flex items-center gap-1.5">
-                    <Camera className="w-3.5 h-3.5" /> DOKUMENTASI LAPANGAN
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                    Galeri Dokumentasi Event Organizer & MICE
-                  </h3>
-                </div>
-              </div>
-
-              <p className="text-slate-700 text-sm leading-relaxed">
-                Berikut adalah dokumentasi penyelenggaraan event brand activation, pameran expo, dan corporate gathering Grasindo Pro:
+              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+                Dari perencanaan hingga eksekusi, kami memastikan setiap momen berjalan tanpa hambatan dan memberikan pengalaman yang tidak terlupakan.
               </p>
 
-              {/* Photo Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {photoGallery.map((photo, index) => (
-                  <div
-                    key={index}
-                    onClick={() => setSelectedPhoto(photo)}
-                    className="group relative rounded-sm overflow-hidden border border-slate-200 bg-slate-900 cursor-pointer shadow-2xs hover:shadow-md transition-all"
-                  >
-                    <img
-                      src={photo.src}
-                      alt={photo.title}
-                      className="w-full h-52 sm:h-60 object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h4 className="font-bold text-sm leading-snug group-hover:text-amber-300 transition-colors">
-                        {photo.title}
-                      </h4>
-                      <p className="text-slate-300 text-xs mt-1 line-clamp-2">
-                        {photo.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              {/* Panorama event banner photo */}
+              <div className="w-full aspect-[21/9] bg-neutral-900 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-xl relative group">
+                <img
+                  src="/EO/Event organizer/CorporateEvent1.png"
+                  alt="Grasindopro Event Production and Cheerful Audience"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/40 to-transparent pointer-events-none" />
               </div>
             </div>
 
-            {/* Interactive Call-to-action Banner */}
-            <div className="p-6 bg-slate-900 rounded-sm text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md mt-6">
-              <div>
-                <h4 className="font-bold text-base sm:text-lg">Ingin Menyelenggarakan Event & MICE Perusahaan?</h4>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1">Konsultasikan konsep acara, rencana anggaran (RAB), dan tim talent bersama kami.</p>
-              </div>
-              <button
-                onClick={() => setInquiryOpen(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-sm text-xs sm:text-sm transition-colors whitespace-nowrap cursor-pointer shadow-sm"
-              >
-                Minta Penawaran Event
-              </button>
-            </div>
+            {/* Right Column: Layanan Kami Meliputi */}
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide">
+                Layanan Kami Meliputi :
+              </h2>
 
-          </div>
+              <ul className="space-y-3 text-xs sm:text-sm text-neutral-200">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-amber-400 font-bold">•</span>
+                  <span><strong className="text-white">Corporate Events</strong> (Rapat Umum Pemegang Saham, Seminar Nasional, Conference, Gala Dinner).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-amber-400 font-bold">•</span>
+                  <span><strong className="text-white">Brand Activation &amp; Product Launch</strong> (Peluncuran produk baru, roadshow, pameran dagang).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-amber-400 font-bold">•</span>
+                  <span><strong className="text-white">Entertainment &amp; Festivals</strong> (Konser musik, festival budaya, gathering komunitas).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-amber-400 font-bold">•</span>
+                  <span><strong className="text-white">Virtual &amp; Hybrid Events</strong> (Manajemen live streaming interaktif, webinar skala besar).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-amber-400 font-bold">•</span>
+                  <span><strong className="text-white">Exhibition Production &amp; Merchandise</strong> (Pembuatan Booth Pameran dan Souvenir)</span>
+                </li>
+              </ul>
 
-          {/* RIGHT COLUMN: SIDEBAR NAVIGATION MENU (4 cols) */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-28 space-y-4">
-
-              {/* Sidebar Header */}
-              <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-                <span className="text-slate-900 font-extrabold text-sm tracking-wider uppercase flex items-center gap-2">
-                  <ChevronDown className="w-4 h-4 text-slate-600" />
-                  EO & ADVERTISING MENU
+              {/* Tagline bottom right */}
+              <div className="text-right pt-6">
+                <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+                  Take it, Do it, Love it
                 </span>
               </div>
-
-              {/* Sidebar Menu Items List */}
-              <div className="border border-slate-200/90 rounded-sm bg-slate-50/50 divide-y divide-slate-200/70 overflow-hidden shadow-xs">
-                {sidebarMenuItems.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      setActiveTab(item.label);
-                      if (onNavigate) {
-                        onNavigate(item.id);
-                      }
-                    }}
-                    className={`w-full text-left px-5 py-3.5 text-xs sm:text-sm transition-colors flex items-center justify-between cursor-pointer ${activeTab === item.label
-                      ? 'bg-white font-extrabold text-slate-900 border-l-4 border-slate-900 shadow-2xs'
-                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium'
-                      }`}
-                  >
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </div>
-
             </div>
+
           </div>
 
         </div>
-      </div>
 
-      {/* ================= FLOATING BACK TO TOP BUTTON ================= */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-11 h-11 rounded-full bg-white border border-slate-300 shadow-lg hover:shadow-xl text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all duration-300 z-50 group hover:scale-110"
-        title="Kembali ke Atas"
-      >
-        <ChevronUp className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" />
-      </button>
+        {/* Bottom Gradient Quote Banner */}
+        <div className="w-full bg-gradient-to-r from-sky-900/80 via-blue-950/90 to-sky-900/80 py-3.5 px-4 text-center mt-12 border-t border-blue-800/40">
+          <p className="text-xs sm:text-sm font-semibold text-neutral-200 max-w-4xl mx-auto leading-relaxed">
+            &ldquo;Komitmen kami menyelenggarakan acara (event) berkualitas tinggi dengan manajemen yang presisi dan konsep kreatif yang berkesan.&rdquo;
+          </p>
+        </div>
 
-      {/* ================= PHOTO LIGHTBOX MODAL ================= */}
-      {selectedPhoto && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs" onClick={() => setSelectedPhoto(null)}>
-          <div className="bg-slate-900 rounded-sm overflow-hidden max-w-3xl w-full border border-slate-800 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="relative">
-              <img src={selectedPhoto.src} alt={selectedPhoto.title} className="w-full h-80 sm:h-96 object-cover" />
-              <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 bg-slate-950/80 hover:bg-amber-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors">
-                ✕
+      </section>
+
+      {/* =========================================================================
+          SLIDE 2: CORPORATE EVENTS & BRAND ACTIVATION & PRODUCT LAUNCH
+      ========================================================================== */}
+      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          
+          <div className="mb-8">
+            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+              OUR EXPERIENCE
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-start">
+            
+            {/* Left: Corporate Events */}
+            <div className="space-y-4">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide">
+                Corporate Events
+              </h2>
+
+              <div className="grid grid-cols-2 gap-3">
+                
+                {/* RUPS Photo */}
+                <div className="col-span-2 space-y-1">
+                  <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/CorporateEvent1.png"
+                      alt="Rapat Umum Pemegang Saham Boardroom"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <span className="text-xs text-neutral-300 font-medium block">
+                    Rapat Umum Pemegang Saham
+                  </span>
+                </div>
+
+                {/* Gala Dinner Photo */}
+                <div className="space-y-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/CorporateEvent2.png"
+                      alt="Gala Dinner Corporate"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <span className="text-xs text-neutral-300 font-medium block">
+                    Gala Dinner
+                  </span>
+                </div>
+
+                {/* Seminar Photo */}
+                <div className="space-y-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/CorporateEvent3.png"
+                      alt="Seminar Nasional & Gathering"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <span className="text-xs text-neutral-300 font-medium block">
+                    Seminar Nasional
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Right: Brand Activation & Product Launch */}
+            <div className="space-y-4">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide">
+                Brand Activation &amp; Product Launch
+              </h2>
+
+              <div className="space-y-4">
+                
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Pembukaan Cabang Baru */}
+                  <div className="space-y-1">
+                    <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                      <img
+                        src="/EO/Event organizer/BrandActivation1.png"
+                        alt="Pembukaan Cabang Baru"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <span className="text-xs text-neutral-300 font-medium block">
+                      Pembukaan Cabang Baru
+                    </span>
+                  </div>
+
+                  {/* Peluncuran Produk Baru */}
+                  <div className="space-y-1">
+                    <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                      <img
+                        src="/EO/Event organizer/productLauhnch1.png"
+                        alt="Peluncuran Produk Baru Asian Paints"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <span className="text-xs text-neutral-300 font-medium block">
+                      Peluncuran Produk Baru
+                    </span>
+                  </div>
+                </div>
+
+                {/* Pameran Dagang */}
+                <div className="space-y-1">
+                  <div className="aspect-[21/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/pamerandagang1.png"
+                      alt="Pameran Dagang Expo Showcase"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <span className="text-xs text-neutral-300 font-medium block">
+                    Pameran Dagang
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          {/* Tagline right */}
+          <div className="text-right pt-8">
+            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </span>
+          </div>
+
+        </div>
+
+        {/* Client Strip 2: PEFINDO, LIXIL, asianpaints */}
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
+            <span className="font-extrabold text-blue-900 text-xs sm:text-sm tracking-tight uppercase">
+              PEFINDO CREDIT RATING AGENCY
+            </span>
+            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
+              LIXIL
+            </span>
+            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
+              ap asianpaints
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      {/* =========================================================================
+          SLIDE 3: ENTERTAINMENT & FESTIVALS, VIRTUAL & HYBRID, BIMTEK
+      ========================================================================== */}
+      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          
+          <div className="mb-8">
+            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+              OUR EXPERIENCE
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-start">
+            
+            {/* 1. Entertainment & Festivals */}
+            <div className="md:col-span-5 space-y-4">
+              <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-wide">
+                Entertainment &amp; Festivals
+              </h2>
+
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/Entertainment1.png"
+                      alt="Festival Kerukunan Panggung Upacara"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/Entertainment2.png"
+                      alt="Peresmian Kanvas Festival"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/Entertainment3.png"
+                    alt="Panggung Musik Festival Pabuaran"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <span className="text-xs text-neutral-300 font-medium block">
+                  Festival Kerukunan Desa Pabuaran, Gn. Sindur
+                </span>
+              </div>
+            </div>
+
+            {/* 2. Virtual & Hybrid Events */}
+            <div className="md:col-span-4 space-y-4">
+              <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-wide">
+                Virtual &amp; Hybrid Events
+              </h2>
+
+              <div className="space-y-3">
+                <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/virtualEvents1.png"
+                    alt="Hybrid Conference Room Setup"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/virtualEvents2.png"
+                    alt="Webinar & Interactive Streaming Room"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Bimtek */}
+            <div className="md:col-span-3 space-y-4">
+              <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-wide">
+                Bimtek
+              </h2>
+
+              <div className="space-y-3">
+                <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/bimtek.png"
+                    alt="Bimbingan Teknis dan Pelatihan"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <span className="text-xs text-neutral-300 font-medium block">
+                  Bimbingan Teknis Profesional
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Tagline right */}
+          <div className="text-right pt-8">
+            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </span>
+          </div>
+
+        </div>
+
+        {/* Client Strip 3: LIXIL, KEMENAG RI, asianpaints */}
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
+            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
+              LIXIL
+            </span>
+            <span className="font-extrabold text-[#065f46] text-xs sm:text-sm tracking-tight uppercase">
+              KEMENTERIAN AGAMA RI
+            </span>
+            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
+              ap asianpaints
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      {/* =========================================================================
+          SLIDE 4: EXHIBITION PRODUCTION & BACKDROP
+      ========================================================================== */}
+      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          
+          <div className="mb-8">
+            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+              OUR EXPERIENCE
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left: Exhibition Production */}
+            <div className="lg:col-span-8 space-y-4">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide">
+                Exhibition Production
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction1.png"
+                      alt="Booth Exhibition Stand"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction2.png"
+                      alt="Booth Exhibition LIXIL Construction"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction3.png"
+                      alt="Asian Paints Expo Pavilion"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction4.png"
+                      alt="Custom Booth Decor"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction5.png"
+                      alt="Atrium Mall Expo Exhibition"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction6.png"
+                      alt="Exhibition Stand Production Detail"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <span className="text-xs text-neutral-300 font-medium block">
+                Booth Exhibition
+              </span>
+            </div>
+
+            {/* Right: Backdrop Image */}
+            <div className="lg:col-span-4 space-y-4 pt-0 sm:pt-11">
+              <div className="space-y-3">
+                <div className="aspect-[16/10] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/ExhibitionProduction2.png"
+                    alt="Backdrop Panggung UNS Home Coming"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <span className="text-xs text-neutral-300 font-medium block">
+                  Stage &amp; Photobooth Backdrop
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Tagline right */}
+          <div className="text-right pt-8">
+            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </span>
+          </div>
+
+        </div>
+
+        {/* Client Strip 4: LIXIL, PT DOVER CHEMICAL, asianpaints */}
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
+            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
+              LIXIL
+            </span>
+            <span className="font-extrabold text-[#1e3a8a] text-xs sm:text-sm tracking-tight uppercase">
+              PT. DOVER CHEMICAL
+            </span>
+            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
+              ap asianpaints
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      {/* =========================================================================
+          SLIDE 5: MERCHANDISE + BOTTOM CONTACT FOOTER STRIP
+      ========================================================================== */}
+      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#030814] overflow-hidden">
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          
+          <div className="mb-2">
+            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+              OUR EXPERIENCE
+            </span>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide mt-1">
+              Merchandise
+            </h2>
+          </div>
+
+          {/* 14 Merchandise Item Cards in 2 Rows of 7 */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5 sm:gap-3.5 my-8">
+            {merchandiseList.map((item, idx) => (
+              <div
+                key={idx}
+                className="aspect-square bg-neutral-900 border-2 border-amber-500/80 rounded-lg overflow-hidden shadow-md group relative hover:border-amber-400 transition-colors"
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Tagline right */}
+          <div className="text-right pt-4">
+            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </span>
+          </div>
+
+        </div>
+
+        {/* Bottom Golden-Amber Contact Strip with Advertising Button */}
+        <div className="w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-2xl border-t border-amber-300/30 mt-10">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            {/* Left: Logo & Circular Socials */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <img
+                src="/images/logo.png"
+                alt="Grasindopro"
+                className="h-10 sm:h-12 w-auto object-contain drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]"
+              />
+              <div className="flex items-center gap-3 text-slate-900">
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  aria-label="TikTok"
+                >
+                  Tk
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  aria-label="LinkedIn"
+                >
+                  in
+                </a>
+              </div>
+            </div>
+
+            {/* Center: Advertising Switcher Button */}
+            <div className="flex flex-col items-center">
+              <span className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1">
+                Advertising
+              </span>
+              <button
+                onClick={() => onNavigate?.('media-advertising')}
+                className="inline-flex items-center gap-1.5 bg-gradient-to-b from-[#f7e4b5] to-[#d4a853] hover:from-white hover:to-amber-400 text-blue-950 font-extrabold text-xs sm:text-sm px-6 py-2 rounded-full shadow-md border border-amber-200 transition-transform hover:scale-105 cursor-pointer"
+              >
+                <span>Info Lengkap</span>
+                <span className="text-amber-700 font-bold">&gt;</span>
               </button>
             </div>
-            <div className="p-5 text-white space-y-1">
-              <h4 className="font-bold text-lg text-white">{selectedPhoto.title}</h4>
-              <p className="text-slate-300 text-xs sm:text-sm">{selectedPhoto.desc}</p>
-            </div>
-          </div>
-        </div>
-      )}
 
-      {/* ================= INQUIRY FORM MODAL ================= */}
-      {inquiryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-200 max-w-lg w-full overflow-hidden">
-            <div className="bg-slate-900 text-white p-6 flex items-start justify-between">
-              <div>
-                <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest block">FORMULIR PENAWARAN EVENT</span>
-                <h3 className="text-xl font-bold mt-1">EO & MICE Solutions</h3>
-              </div>
-              <button onClick={() => setInquiryOpen(false)} className="text-slate-400 hover:text-white text-lg font-bold cursor-pointer">✕</button>
-            </div>
-
-            <div className="p-6">
-              {formSubmitted ? (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-lg">Permintaan Terkirim!</h4>
-                  <p className="text-xs text-slate-600">Tim Event Manager Grasindo Pro akan menghubungi Anda segera.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Nama Anda"
-                      value={inquiryForm.name}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Email Perusahaan</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="nama@perusahaan.com"
-                        value={inquiryForm.email}
-                        onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Telepon / WhatsApp</label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="0812xxxxxxxx"
-                        value={inquiryForm.phone}
-                        onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
-                        className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Jenis Acara / Kebutuhan EO</label>
-                    <select
-                      value={inquiryForm.eventType}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, eventType: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                    >
-                      <option value="Company Gathering">Company Gathering & Outing</option>
-                      <option value="MICE & Conference">MICE & Konferensi Pers</option>
-                      <option value="Brand Activation">Brand Activation & Pameran Mall</option>
-                      <option value="Booth Expo & Stage">Produksi Booth Expo & Panggung</option>
-                      <option value="Talent & SPG">Talent MC, SPG / Usher</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Detail Kebutuhan Acara</label>
-                    <textarea
-                      rows={3}
-                      required
-                      placeholder="Jelaskan tanggal acara, perkiraan peserta, lokasi venue, dan spesifikasi..."
-                      value={inquiryForm.message}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
-                      className="w-full px-3.5 py-2 rounded-md border border-slate-300 text-xs focus:ring-2 focus:ring-slate-800 focus:outline-none"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-md text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+            {/* Right: Company Name & Direct Contacts */}
+            <div className="text-center md:text-right space-y-1">
+              <h4 className="font-extrabold text-base sm:text-lg tracking-wide uppercase text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
+                PT. INTEGRA ANEKSA KREASINDO
+              </h4>
+              <div className="space-y-0.5">
+                <div>
+                  <a
+                    href="tel:+6281398479044"
+                    className="text-xs sm:text-sm font-bold text-white hover:text-slate-950 transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)] inline-block"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>Kirim Permintaan Penawaran</span>
-                  </button>
-                </form>
-              )}
+                    +62 813-9847-9044
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="mailto:admin@grasindopro.com"
+                    className="text-xs sm:text-sm font-bold text-white hover:text-slate-950 transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)] inline-block"
+                  >
+                    admin@grasindopro.com
+                  </a>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
-      )}
+
+      </section>
 
     </div>
   );

@@ -1,63 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { heroSlidesData } from '../../data/homeData';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
-export const HeroBanner: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+interface HeroBannerProps {
+  onExplore?: () => void;
+}
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlidesData.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const slide = heroSlidesData[currentSlide];
-
+export const HeroBanner: React.FC<HeroBannerProps> = ({ onExplore }) => {
   return (
-    <section className="relative w-full h-screen -mt-20 bg-slate-950 overflow-hidden">
-      {/* Pure Image Banner */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-1000"
-        style={{ backgroundImage: `url(${slide.image})` }}
-      />
+    <section className="w-full bg-white pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Content */}
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8 pr-0 lg:pr-6">
+            
+            {/* Tagline / Kicker */}
+            <p className="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase font-mono">
+              TAKE IT, OR IT, LEAVE IT
+            </p>
 
-      {/* Dark gradient overlay — top darker for navbar readability */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
-      
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => setCurrentSlide((prev) => (prev === 0 ? heroSlidesData.length - 1 : prev - 1))}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-slate-900/60 hover:bg-amber-600 text-white border border-slate-700 hover:border-amber-500 backdrop-blur-md transition-all hidden sm:flex"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold tracking-tight text-neutral-900 leading-[1.12]">
+              IT &amp; Infrastructure<br />
+              Solutions for the<br />
+              Modern<br />
+              Enterprise
+            </h1>
 
-      <button
-        onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlidesData.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-slate-900/60 hover:bg-amber-600 text-white border border-slate-700 hover:border-amber-500 backdrop-blur-md transition-all hidden sm:flex"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
+            {/* Subtitle / Paragraph */}
+            <p className="text-neutral-500 text-sm sm:text-base leading-relaxed max-w-xl">
+              We deliver highly efficient, sustainable, and scalable infrastructure ecosystems. From advanced telecommunications to robust mechanical engineering, we build the foundations of tomorrow.
+            </p>
 
-      {/* Pagination Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2">
-        {heroSlidesData.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlide(idx)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
-              idx === currentSlide ? 'w-8 bg-amber-500' : 'w-2.5 bg-white/50 hover:bg-white'
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
+            {/* CTA Button */}
+            <div className="pt-2">
+              <button
+                onClick={onExplore}
+                className="group inline-flex items-center gap-3 bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-semibold px-6 sm:px-7 py-3.5 sm:py-4 transition-all duration-200"
+              >
+                <span>Explore Our Services</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </button>
+            </div>
+
+          </div>
+
+          {/* Right Column: Hero Image */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md lg:max-w-none aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-neutral-100 shadow-sm border border-neutral-100">
+              <img
+                src="/images/hero_datacenter.jpg"
+                alt="Modern Enterprise Data Center Corridor"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
 };
-
-
-
