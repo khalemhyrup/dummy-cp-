@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Navbar } from './components/Header/Navbar';
-import { HeroBanner } from './components/Home/HeroBanner';
-import { AboutTechnology } from './components/Home/AboutTechnology';
-import { WhyUs } from './components/Home/WhyUs';
-import { StrategicAlliances } from './components/Home/StrategicAlliances';
+import { Navbar, PortalType } from './components/Header/Navbar';
+import { GeneralHome } from './components/Home/GeneralHome';
+import { ITHome } from './components/Home/ITHome';
+import { EOHome } from './components/Home/EOHome';
+import { EOAbout } from './components/EO/EOAbout';
 import { AboutUs } from './components/About/AboutUs';
 import { OrgStructurePage } from './components/About/OrgStructurePage';
 import { ClientPage } from './components/About/Client';
@@ -12,6 +12,7 @@ import { ITPage } from './components/IT/ITPage';
 import { EOPage } from './components/EO/EOPage';
 import { EOmain } from './components/EO/EOmain';
 import { EOAdversting } from './components/EO/EOAdversting';
+import { EOContact } from './components/EO/EOContact';
 import { ITSupportPage } from './components/IT/ITSupportPage';
 import { FiberOpticsPage } from './components/IT/FiberOpticsPage';
 import { SecuritySystemsPage } from './components/IT/SecuritySystemsPage';
@@ -27,7 +28,10 @@ import { pageEnter } from './animations';
 
 type PageType =
   | 'home'
+  | 'it-home'
+  | 'eo-home'
   | 'about'
+  | 'eo-about'
   | 'org-structure'
   | 'client'
   | 'service'
@@ -42,7 +46,8 @@ type PageType =
   | 'network-fo'
   | 'security-systems'
   | 'telecom'
-  | 'contact';
+  | 'contact'
+  | 'eo-contact';
 
 const getHashPath = (hashStr: string): string => {
   return hashStr.replace(/^#\/?/, '').toLowerCase();
@@ -51,9 +56,13 @@ const getHashPath = (hashStr: string): string => {
 const getInitialPage = (): PageType => {
   if (typeof window !== 'undefined') {
     const raw = getHashPath(window.location.hash);
+    if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) return 'eo-contact';
+    if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) return 'eo-about';
+    if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') return 'it-home';
+    if (raw === 'eo' || raw === 'eo-home' || raw === 'portal-eo') return 'eo-home';
     if (raw.includes('org-structure') || raw.includes('organization-structure') || raw.includes('struktur-organisasi')) return 'org-structure';
-    if (raw.includes('civil-construction') || raw.includes('civil-building')) return 'civil-construction';
-    if (raw.includes('me-installation') || raw.includes('mechanical-electrical')) return 'me-installation';
+    if (raw.includes('civil-construction') || raw.includes('civil-building') || raw.includes('cme-mechanical')) return 'civil-construction';
+    if (raw.includes('me-installation') || raw.includes('mechanical-electrical') || raw.includes('cme-electrical')) return 'me-installation';
     if (raw.includes('cme-main') || raw === 'cme') return 'cme-main';
     if (raw.includes('it-support')) return 'it-support';
     if (raw.includes('fiber-optic') || raw.includes('network-fo') || raw.includes('network')) return 'network-fo';
@@ -61,9 +70,10 @@ const getInitialPage = (): PageType => {
     if (raw.includes('telecom') || raw.includes('telecommunication') || raw.includes('telekomunikasi')) return 'telecom';
     if (raw.includes('contact')) return 'contact';
     if (raw.includes('about')) return 'about';
+    if (raw.includes('client')) return 'client';
     if (raw.includes('event-organizer-main') || raw.includes('eo-main')) return 'eo-main';
     if (raw.includes('media-advertising') || raw.includes('advertising') || raw.includes('billboard')) return 'media-advertising';
-    if (raw.includes('event-organizer') || raw.includes('eo')) return 'eo';
+    if (raw.includes('event-organizer')) return 'eo';
     if (raw.includes('it-solutions')) return 'it-solutions';
     if (raw.includes('service') || raw.includes('product-service')) return 'service';
     
@@ -76,9 +86,17 @@ const getInitialPage = (): PageType => {
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>(getInitialPage);
   const [itCategory, setItCategory] = useState<string>('all');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState<'ID' | 'EN'>('EN');
   const mainRef = useRef<HTMLElement>(null);
+
+  const isEOPortal =
+    currentPage === 'eo-home' ||
+    currentPage === 'eo-about' ||
+    currentPage === 'eo-main' ||
+    currentPage === 'eo' ||
+    currentPage === 'media-advertising' ||
+    currentPage === 'eo-contact';
+
   const [activeModal, setActiveModal] = useState<{
     isOpen: boolean;
     title: string;
@@ -93,7 +111,19 @@ export const App: React.FC = () => {
     let target: PageType = 'home';
     let hashRoute = '';
 
-    if (page === 'org-structure' || page === 'organization-structure' || page === 'struktur-organisasi') {
+    if (page === 'it-home' || page === 'it' || page === 'portal-it') {
+      target = 'it-home';
+      hashRoute = '/it';
+    } else if (page === 'eo-home' || page === 'eo-portal' || page === 'portal-eo') {
+      target = 'eo-home';
+      hashRoute = '/eo';
+    } else if (page === 'eo-about' || page === 'eo/about') {
+      target = 'eo-about';
+      hashRoute = '/eo/about';
+    } else if (page === 'eo-contact' || page === 'eo/contact') {
+      target = 'eo-contact';
+      hashRoute = '/eo/contact';
+    } else if (page === 'org-structure' || page === 'organization-structure' || page === 'struktur-organisasi') {
       target = 'org-structure';
       hashRoute = '/about/organization-structure';
     } else if (page === 'client' || page === 'clients' || page === 'our-clients' || page === 'rekam-jejak') {
@@ -105,10 +135,10 @@ export const App: React.FC = () => {
     } else if (page === 'cme-main' || page === 'cme') {
       target = 'cme-main';
       hashRoute = '/service/cme-main';
-    } else if (page === 'civil-construction' || page === 'civil-building') {
+    } else if (page === 'civil-construction' || page === 'civil-building' || page === 'cme-mechanical') {
       target = 'civil-construction';
       hashRoute = '/service/civil-construction';
-    } else if (page === 'me-installation' || page === 'me') {
+    } else if (page === 'me-installation' || page === 'me' || page === 'cme-electrical') {
       target = 'me-installation';
       hashRoute = '/service/me-installation';
     } else if (page === 'eo-main' || page === 'event-organizer-main') {
@@ -140,8 +170,13 @@ export const App: React.FC = () => {
       target = 'service';
       hashRoute = '/service';
     } else if (page === 'contact' || page === 'information') {
-      target = 'contact';
-      hashRoute = '/contact';
+      if (isEOPortal || currentPage.startsWith('eo')) {
+        target = 'eo-contact';
+        hashRoute = '/eo/contact';
+      } else {
+        target = 'contact';
+        hashRoute = '/contact';
+      }
     } else {
       target = 'home';
       hashRoute = '';
@@ -163,7 +198,15 @@ export const App: React.FC = () => {
       const raw = getHashPath(window.location.hash);
       let target: PageType = 'home';
 
-      if (raw.includes('org-structure') || raw.includes('organization-structure') || raw.includes('struktur-organisasi')) {
+      if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) {
+        target = 'eo-contact';
+      } else if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) {
+        target = 'eo-about';
+      } else if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') {
+        target = 'it-home';
+      } else if (raw === 'eo' || raw === 'eo-home' || raw === 'portal-eo') {
+        target = 'eo-home';
+      } else if (raw.includes('org-structure') || raw.includes('organization-structure') || raw.includes('struktur-organisasi')) {
         target = 'org-structure';
       } else if (raw.includes('client')) {
         target = 'client';
@@ -179,9 +222,9 @@ export const App: React.FC = () => {
         target = 'contact';
       } else if (raw.includes('about')) {
         target = 'about';
-      } else if (raw.includes('civil-construction') || raw.includes('civil-building')) {
+      } else if (raw.includes('civil-construction') || raw.includes('civil-building') || raw.includes('cme-mechanical')) {
         target = 'civil-construction';
-      } else if (raw.includes('me-installation') || raw.includes('mechanical-electrical')) {
+      } else if (raw.includes('me-installation') || raw.includes('mechanical-electrical') || raw.includes('cme-electrical')) {
         target = 'me-installation';
       } else if (raw.includes('cme-main') || raw === 'cme') {
         target = 'cme-main';
@@ -189,7 +232,7 @@ export const App: React.FC = () => {
         target = 'eo-main';
       } else if (raw.includes('media-advertising') || raw.includes('advertising') || raw.includes('billboard')) {
         target = 'media-advertising';
-      } else if (raw.includes('event-organizer') || raw.includes('eo')) {
+      } else if (raw.includes('event-organizer')) {
         target = 'eo';
       } else if (raw.includes('it-solutions')) {
         target = 'it-solutions';
@@ -214,6 +257,17 @@ export const App: React.FC = () => {
     const titleLower = title.toLowerCase();
     const itemIdLower = itemId.toLowerCase();
 
+    // Portal homepages
+    if (itemIdLower === 'it-home' || titleLower.includes('it & cme portal') || titleLower.includes('home (it & cme)')) {
+      handleNavigate('it-home');
+      return;
+    }
+
+    if (itemIdLower === 'eo-home' || titleLower.includes('eo & advertising portal') || titleLower.includes('home (eo & media)')) {
+      handleNavigate('eo-home');
+      return;
+    }
+
     // Navigate to Client page
     if (
       itemIdLower === 'client' ||
@@ -237,6 +291,17 @@ export const App: React.FC = () => {
       return;
     }
 
+    // Navigate to EO About page if clicked in EO portal context
+    if (
+      itemIdLower === 'eo-about' ||
+      titleLower === 'eo-about' ||
+      (titleLower.includes('tentang kami') && titleLower.includes('eo')) ||
+      ((titleLower === 'about' || titleLower === 'about us') && (isEOPortal || currentPage.startsWith('eo')))
+    ) {
+      handleNavigate('eo-about');
+      return;
+    }
+
     // Navigate to About page
     if (
       titleLower === 'about' ||
@@ -253,12 +318,12 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate directly to CME Main Page
+    // Navigate to CME Main Page
     if (
       itemIdLower === 'cme-main' ||
       itemIdLower === 'cme' ||
       titleLower === 'cme (civil mechanical and electrical)' ||
-      titleLower === 'cme'
+      titleLower.includes('cme solutions')
     ) {
       handleNavigate('cme-main');
       return;
@@ -275,7 +340,7 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to Elektrikal & Integrasi Sistem Page
+    // Navigate to Elektrikal Page
     if (
       itemIdLower === 'cme-electrical' ||
       itemIdLower === 'cme-integration' ||
@@ -288,20 +353,26 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate directly to Product & Service Page (Combined IT + EO)
+    // Navigate to Product & Service Page
     if (
       titleLower === 'product & service' ||
-      titleLower === 'product' ||
-      titleLower === 'services' ||
-      titleLower === 'service' ||
-      itemIdLower === 'product-service'
+      titleLower === 'services & solutions' ||
+      titleLower === 'divisions & services' ||
+      itemIdLower === 'product-service' ||
+      itemIdLower === 'divisions'
     ) {
-      handleNavigate('service');
+      if (currentPage.startsWith('it')) {
+        handleNavigate('it-solutions');
+      } else if (currentPage.startsWith('eo')) {
+        handleNavigate('eo-main');
+      } else {
+        handleNavigate('service');
+      }
       return;
     }
 
     // Header title click "EVENT ORGANIZER" goes to EOmain.tsx
-    if (titleLower === 'event organizer') {
+    if (titleLower === 'event organizer' || itemIdLower === 'eo-main') {
       handleNavigate('eo-main');
       return;
     }
@@ -316,7 +387,7 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to EO Sub-Page (Event Organizer & MICE Solutions)
+    // Navigate to EO Sub-Page
     if (
       titleLower.includes('event organizer') ||
       itemIdLower === 'eo'
@@ -325,14 +396,12 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Individual IT Solutions Dedicated Page Navigation
+    // IT Solutions
     if (
       titleLower.includes('telecom') ||
       titleLower.includes('telekomunikasi') ||
       titleLower.includes('gsm') ||
-      itemIdLower === 'telecom' ||
-      itemIdLower === 'telecommunication' ||
-      itemIdLower === 'telekomunikasi'
+      itemIdLower === 'telecom'
     ) {
       handleNavigate('telecom');
       return;
@@ -353,7 +422,7 @@ export const App: React.FC = () => {
       return;
     }
 
-    if (titleLower.includes('it solution') || itemIdLower === 'it-solutions' || itemIdLower === 'me-integration') {
+    if (titleLower.includes('it solution') || itemIdLower === 'it-solutions') {
       handleNavigate('it-solutions', 'all');
       return;
     }
@@ -363,9 +432,14 @@ export const App: React.FC = () => {
       titleLower === 'contact' ||
       titleLower === 'contact us' ||
       itemIdLower === 'contact' ||
+      itemIdLower === 'eo-contact' ||
       itemIdLower === 'information'
     ) {
-      handleNavigate('contact');
+      if (isEOPortal || currentPage.startsWith('eo')) {
+        handleNavigate('eo-contact');
+      } else {
+        handleNavigate('contact');
+      }
       return;
     }
 
@@ -379,36 +453,18 @@ export const App: React.FC = () => {
       isOpen: true,
       title: title,
       category: 'Navigation Details',
-      content: `You selected "${title}" from the Grasindopro menu hierarchy. This section presents technical specifications, investor publications, or corporate governance documentation.`
-    });
-  };
-
-  const handleSelectArticle = (article: NewsItem) => {
-    setActiveModal({
-      isOpen: true,
-      title: article.title,
-      category: `${article.category} • ${article.date}`,
-      content: article.content
-    });
-  };
-
-  const handleSearchSelect = (title: string, detail: string) => {
-    setActiveModal({
-      isOpen: true,
-      title: title,
-      category: 'Search Result',
-      content: detail
+      content: `You selected "${title}" from the Grasindopro menu hierarchy.`
     });
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white font-sans text-neutral-900 flex flex-col selection:bg-amber-500 selection:text-neutral-950">
       
-      {/* Persistent Header Navbar */}
+      {/* Persistent Header Navbar with Multi-Portal Awareness */}
       <Navbar
         currentPage={currentPage}
+        currentPortal={isEOPortal ? 'eo' : undefined}
         onNavigate={handleNavigate}
-        onSearchOpen={() => setIsSearchOpen(true)}
         onMenuItemClick={handleMenuItemClick}
         currentLang={currentLang}
         onLangChange={setCurrentLang}
@@ -416,26 +472,32 @@ export const App: React.FC = () => {
 
       {/* Main Page Content */}
       <main ref={mainRef} className="flex-1">
-        {currentPage === 'about' ? (
+        {currentPage === 'it-home' ? (
+          <ITHome onNavigate={handleNavigate} />
+        ) : currentPage === 'eo-home' ? (
+          <EOHome onNavigate={handleNavigate} />
+        ) : currentPage === 'eo-about' ? (
+          <EOAbout onNavigate={handleNavigate} />
+        ) : currentPage === 'about' ? (
           <AboutUs onNavigate={handleNavigate} />
         ) : currentPage === 'org-structure' ? (
           <OrgStructurePage onNavigate={handleNavigate} />
         ) : currentPage === 'client' ? (
-          <ClientPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <ClientPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'cme-main' ? (
-          <CMEmain onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <CMEmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'civil-construction' ? (
-          <MechanicalPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <MechanicalPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'me-installation' ? (
-          <ElectricalPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <ElectricalPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo-main' ? (
-          <EOmain onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <EOmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'media-advertising' ? (
-          <EOAdversting onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <EOAdversting onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo' ? (
-          <EOPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <EOPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'it-support' ? (
-          <ITSupportPage onNavigate={handleNavigate} onContactClick={() => setIsSearchOpen(true)} />
+          <ITSupportPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'network-fo' ? (
           <FiberOpticsPage onNavigate={handleNavigate} />
         ) : currentPage === 'security-systems' ? (
@@ -446,27 +508,18 @@ export const App: React.FC = () => {
           <ITPage key={itCategory} initialCategory={itCategory} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'service' ? (
           <ServicesPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+        ) : currentPage === 'eo-contact' ? (
+          <EOContact onNavigate={handleNavigate} onContactClick={() => handleNavigate('eo-contact')} />
         ) : currentPage === 'contact' ? (
           <Contact onNavigate={handleNavigate} />
         ) : (
-          <>
-            {/* Section 1: Hero Carousel Banner */}
-            <HeroBanner />
-
-            {/* Section 2: About Grasindopro */}
-            <AboutTechnology onLearnMore={() => handleNavigate('about')} />
-
-            {/* Section 3: Why Choose Us */}
-            <WhyUs />
-
-            {/* Section 4: Strategic Alliances / Clients */}
-            <StrategicAlliances />
-          </>
+          /* General Homepage (Homepage Utama) with the 2 Core Divisions */
+          <GeneralHome onNavigate={handleNavigate} />
         )}
       </main>
 
-      {/* Persistent 3-Column Footer */}
-      <Footer onLinkClick={handleMenuItemClick} />
+      {/* Persistent 3-Column Footer (Hidden on EO portal pages as EO has dedicated bottom bar) */}
+      {!isEOPortal && <Footer onLinkClick={handleMenuItemClick} />}
 
       <DetailModal
         isOpen={activeModal.isOpen}

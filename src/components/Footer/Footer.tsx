@@ -53,21 +53,9 @@ export const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             </div>
           </div>
 
-          {/* Right: Nav + Socials */}
-          <div className="space-y-5">
-            {/* Nav links */}
-            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-xs">
-              {navLinks.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => onLinkClick(item)}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-
+          {/* Right: Socials */}
+          <div className="space-y-4 flex flex-col items-start md:items-end justify-center">
+            <span className="text-xs text-gray-500 font-medium">Connect with us:</span>
             {/* Social icons */}
             <div className="flex items-center gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
