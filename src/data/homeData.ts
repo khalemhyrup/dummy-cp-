@@ -49,7 +49,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Grasindopro Bags Prestigious Awards at Partner Connect 2026 & Tech Summit 2026',
     category: 'News',
     date: '28 July 2026',
-    image: '/EO/Event organizer/Screenshot 2026-08-08 035300.png',
+    image: '/EO/Event organizer/CorporateEvent1.png',
     summary: 'PT Integra Aneksa Kreasindo (Grasindopro) won multiple strategic partner awards in cybersecurity and hybrid infrastructure excellence.',
     content: 'PT Integra Aneksa Kreasindo (Grasindopro) has been honored with key partner awards at Partner Connect 2026. The recognition highlights the company\'s outstanding performance in delivering advanced multi-cloud security platforms, modern network architectures, and high-availability digital solutions to enterprise clients.'
   },

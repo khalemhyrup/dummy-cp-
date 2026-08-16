@@ -50,7 +50,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onExplore }) => {
             <div className="relative w-full max-w-md lg:max-w-none aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-neutral-100 shadow-sm border border-neutral-100">
               <img
                 src="/images/hero_datacenter.jpg"
-                alt="Modern Enterprise Data Center Corridor"
+                alt="Modern Enterprise IT Network Infrastructure"
                 className="w-full h-full object-cover object-center"
               />
             </div>

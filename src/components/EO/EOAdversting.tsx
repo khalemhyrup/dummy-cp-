@@ -10,21 +10,6 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
   return (
     <div className="w-full bg-[#040b18] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
 
-      {/* Top Breadcrumb Header */}
-      <div className="bg-[#030814] py-3 px-6 sm:px-8 border-b border-blue-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button
-            onClick={() => onNavigate?.('eo-home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>← Back to EO &amp; Advertising Portal</span>
-          </button>
-          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
-            Media Advertising Division
-          </span>
-        </div>
-      </div>
-
       {/* =========================================================================
           SLIDE 1: ADVERTISING - BILLBOARD
       ========================================================================== */}
@@ -71,7 +56,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 {/* Photo 1 */}
                 <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 034857.png"
+                    src="/EO/Advertising/baner1.png"
                     alt="Billboard Nokia Arteri Kota"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -80,7 +65,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 {/* Photo 2 */}
                 <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 034911.png"
+                    src="/EO/Advertising/baner2.png"
                     alt="Billboard Herbalife Jalan Tol Jagorawi"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -89,7 +74,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 {/* Photo 3 */}
                 <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 034918.png"
+                    src="/EO/Advertising/baner3.png"
                     alt="Billboard Grab & BPR BBA"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -154,7 +139,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </span>
                 <div className="w-full aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 034930.png"
+                    src="/EO/Advertising/neonbox1.png"
                     alt="Neon Box Ajaib Sekuritas"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -182,14 +167,14 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 <div className="grid grid-cols-2 gap-3">
                   <div className="aspect-square bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035034.png"
+                      src="/EO/Advertising/shopsign1.png"
                       alt="Shop Sign Asian Paints"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-square bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035044.png"
+                      src="/EO/Advertising/shopsign2.png"
                       alt="Shop Sign Cushman & Wakefield"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -255,21 +240,21 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 <div className="grid grid-cols-3 gap-2">
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035034.png"
+                      src="/EO/Advertising/phylonsign1.png"
                       alt="Pylon Sign SCBD Equity Tower"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035044.png"
+                      src="/EO/Advertising/phylonsign2.png"
                       alt="Pylon Sign Tower Jakarta"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035114.png"
+                      src="/EO/Advertising/phylonsign3.png"
                       alt="Pylon Sign Tenant List"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -298,14 +283,14 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 <div className="grid grid-cols-2 gap-3">
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035135.png"
+                      src="/EO/Advertising/Tbaner1.png"
                       alt="T-Banner IQOS Pinggir Jalan"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 034857.png"
+                      src="/EO/Advertising/Tbaner2.png"
                       alt="T-Banner Herbalife Event"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -368,14 +353,14 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 <div className="grid grid-cols-2 gap-3">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 034930.png"
+                      src="/EO/Advertising/signage1.png"
                       alt="Signage Gedung LPS Lembaga Penjamin Simpanan"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035034.png"
+                      src="/EO/Advertising/signage2.png"
                       alt="Pemasangan Signage LPS Scaffolding"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -404,14 +389,14 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 <div className="grid grid-cols-2 gap-3">
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035044.png"
+                      src="/EO/Advertising/lettersignage1.png"
                       alt="Letter Sign Wisma Nugraha"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Advertising/Screenshot 2026-08-08 035114.png"
+                      src="/EO/Advertising/lettersignage2.png"
                       alt="Illuminated Letter Sign FKNK Law Firm"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -473,7 +458,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </span>
                 <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 035114.png"
+                    src="/EO/Advertising/brandingcar.png"
                     alt="Branding Mobil Van Asian Paints"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -500,7 +485,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </span>
                 <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 035034.png"
+                    src="/EO/Advertising/wallpainting.png"
                     alt="Wall Painting Mural Asian Paints"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -527,7 +512,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <div className="pt-2">
                 <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group flex items-center justify-center p-2 bg-white/5">
                   <img
-                    src="/EO/Advertising/Screenshot 2026-08-08 035135.png"
+                    src="/EO/Advertising/taxpermit1.png"
                     alt="Dokumen Perizinan Pajak Reklame SKPD & IPR"
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   />

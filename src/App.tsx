@@ -355,28 +355,24 @@ export const App: React.FC = () => {
 
     // Navigate to Product & Service Page
     if (
+      titleLower === 'service' ||
+      titleLower === 'services' ||
       titleLower === 'product & service' ||
       titleLower === 'services & solutions' ||
       titleLower === 'divisions & services' ||
       itemIdLower === 'product-service' ||
-      itemIdLower === 'divisions'
+      itemIdLower === 'divisions' ||
+      itemIdLower === 'service'
     ) {
       if (currentPage.startsWith('it')) {
         handleNavigate('it-solutions');
       } else if (currentPage.startsWith('eo')) {
-        handleNavigate('eo-main');
+        handleNavigate('eo');
       } else {
         handleNavigate('service');
       }
       return;
     }
-
-    // Header title click "EVENT ORGANIZER" goes to EOmain.tsx
-    if (titleLower === 'event organizer' || itemIdLower === 'eo-main') {
-      handleNavigate('eo-main');
-      return;
-    }
-
     // Navigate to Media Advertising Dedicated Page
     if (
       titleLower.includes('advertising') ||
@@ -387,10 +383,12 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to EO Sub-Page
+    // Navigate to Event Organizer Dedicated Page
     if (
       titleLower.includes('event organizer') ||
-      itemIdLower === 'eo'
+      titleLower.includes('mice') ||
+      itemIdLower === 'eo' ||
+      itemIdLower === 'eo-main'
     ) {
       handleNavigate('eo');
       return;

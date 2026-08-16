@@ -6,34 +6,6 @@ interface EOHomeProps {
 }
 
 export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
-  const clientLogos = [
-    { name: 'LIXIL', color: '#E4002B' },
-    { name: 'asianpaints', color: '#FF5722' },
-    { name: 'PEFINDO', color: '#0072CE' },
-    { name: 'PT. DOVER CHEMICAL', color: '#1B365D' },
-    { name: 'LPS (Lembaga Penjamin Simpanan)', color: '#D97706' },
-    { name: 'KEMENAG RI', color: '#059669' },
-    { name: 'ajaib', color: '#0066F5' },
-    { name: 'CUSHMAN & WAKEFIELD', color: '#E11900' },
-    { name: 'BRANZ BSD', color: '#333333' },
-    { name: 'Indofood', color: '#005BAA' },
-    { name: 'SOSRO', color: '#D92D20' },
-    { name: 'TEMPO SCAN', color: '#B45309' },
-    { name: 'Permata Bank', color: '#008375' },
-    { name: 'XL axiata', color: '#00529C' },
-    { name: 'HERBALIFE', color: '#74A600' },
-    { name: 'CHEVROLET', color: '#B8860B' },
-    { name: 'Nestle', color: '#2774AE' },
-    { name: 'PONDOK INDAH GOLF', color: '#D97706' },
-    { name: 'Great Eastern', color: '#E53E3E' },
-    { name: 'Panasonic', color: '#004098' },
-    { name: 'KEMENTERIAN PERHUBUNGAN', color: '#1E3A8A' },
-    { name: 'Sudirman 7.8', color: '#0284C7' },
-    { name: 'BERGER PAINTS', color: '#0D9488' },
-    { name: 'OCBC NISP', color: '#DC2626' },
-    { name: 'KEMENTERIAN KEUANGAN RI', color: '#B45309' },
-  ];
-
   const scrollToServices = () => {
     const el = document.getElementById('eo-services-section');
     if (el) {
@@ -45,18 +17,24 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
     <div className="w-full bg-[#050e1f] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION (Gala Doors Opening Atmosphere)
+          SECTION 1: HERO SECTION (Cinematic Video Atmosphere)
       ========================================================================== */}
       <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden">
         
-        {/* Background Image with Dark Blue Radial Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/eo_hero_doors.jpg')" }}
-        />
+        {/* Background Video with Poster Fallback */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/eo_hero_doors.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/homepageEO.mp4" type="video/mp4" />
+        </video>
         
-        {/* Deep Blue Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030917]/90 via-[#071738]/80 to-[#050e1f]" />
+        {/* Deep Blue Gradient Tint Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030917]/80 via-[#071738]/70 to-[#050e1f] pointer-events-none" />
 
         {/* Top Spacer / Back Link */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
@@ -86,36 +64,42 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Bar: Hubungi Kami, Chevron, Tagline */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full grid grid-cols-1 sm:grid-cols-3 items-center gap-6">
           
           {/* Left: Hubungi Kami Badge */}
-          <button
-            onClick={() => onNavigate('eo-contact')}
-            className="group flex items-center bg-gradient-to-r from-amber-500 via-amber-400 to-sky-400 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
-          >
-            <div className="bg-gradient-to-r from-amber-500 to-sky-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl flex items-center gap-2">
-              <span className="p-1 bg-black text-white rounded-full text-xs">
-                👤
-              </span>
-              <span>Hubungi Kami</span>
-            </div>
-          </button>
+          <div className="flex justify-center sm:justify-start">
+            <button
+              onClick={() => onNavigate('eo-contact')}
+              className="group flex items-center bg-gradient-to-r from-amber-500 via-amber-400 to-sky-400 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="bg-gradient-to-r from-amber-500 to-sky-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl flex items-center gap-2">
+                <span className="p-1 bg-black text-white rounded-full text-xs">
+                  👤
+                </span>
+                <span>Hubungi Kami</span>
+              </div>
+            </button>
+          </div>
 
-          {/* Center: Scroll Down Chevron */}
-          <button
-            onClick={scrollToServices}
-            className="text-amber-500 hover:text-amber-400 animate-bounce transition-colors cursor-pointer"
-            aria-label="Scroll Down"
-          >
-            <div className="flex flex-col items-center">
-              <ChevronDown className="w-8 h-8 stroke-[3]" />
-              <ChevronDown className="w-8 h-8 -mt-5 stroke-[3]" />
-            </div>
-          </button>
+          {/* Center: Scroll Down Chevron (Exact Center Alignment) */}
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToServices}
+              className="text-amber-500 hover:text-amber-400 animate-bounce transition-colors cursor-pointer"
+              aria-label="Scroll Down"
+            >
+              <div className="flex flex-col items-center">
+                <ChevronDown className="w-8 h-8 stroke-[3]" />
+                <ChevronDown className="w-8 h-8 -mt-5 stroke-[3]" />
+              </div>
+            </button>
+          </div>
 
           {/* Right: Tagline */}
-          <div className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-            Take it, Do it, Love it
+          <div className="flex justify-center sm:justify-end">
+            <div className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </div>
           </div>
 
         </div>
@@ -253,7 +237,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
       </section>
 
       {/* =========================================================================
-          SECTION 3: OUR CLIENT (High-Visibility Client Grid)
+          SECTION 3: OUR CLIENT (High-Visibility Client Grid Image)
       ========================================================================== */}
       <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-[#040b18] via-[#0a1b38] to-[#040d1c] border-t border-blue-900/40">
         
@@ -278,23 +262,13 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
             OUR CLIENT
           </h2>
 
-          {/* White Rounded Container for Client Logos */}
-          <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-200">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center">
-              {clientLogos.map((client, idx) => (
-                <div
-                  key={idx}
-                  className="w-full h-16 flex items-center justify-center p-3 rounded-xl border border-neutral-100 hover:border-amber-400/60 hover:shadow-md transition-all duration-200 bg-neutral-50/60 group"
-                >
-                  <span
-                    className="text-xs sm:text-sm font-bold tracking-tight text-center uppercase group-hover:scale-105 transition-transform"
-                    style={{ color: client.color }}
-                  >
-                    {client.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Client Showcase Image */}
+          <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-blue-500/20 group hover:border-amber-400/50 transition-colors">
+            <img
+              src="/EO/ClientEO.png"
+              alt="Our Clients - PT Integra Aneksa Kreasindo"
+              className="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-500"
+            />
           </div>
 
         </div>

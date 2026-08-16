@@ -13,54 +13,14 @@ export const mainNavigationData: NavItem[] = [
   {
     id: 'about',
     label: 'About',
-    href: '#about',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'PROFILE',
-        items: [
-          { id: 'about-us', title: 'About Grasindopro', href: '#about' },
-          { id: 'client', title: 'Our Clients & Track Record', href: '#client' },
-          { id: 'milestones', title: 'Company Milestones', href: '#milestone' },
-          { id: 'values', title: 'Core Values (We CARE)', href: '#values' },
-        ],
-      },
-      {
-        title: 'MANAGEMENT',
-        items: [
-          { id: 'org-structure', title: 'Organization Structure', href: '#management' },
-        ],
-      },
-    ],
+    href: '#about-us',
+    hasDropdown: false,
   },
   {
     id: 'divisions',
-    label: 'Divisions & Services',
-    href: '#solution',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'IT & CME DIVISION',
-        items: [
-          { id: 'it-home', title: 'IT & CME Portal (Homepage)', href: '#it' },
-          { id: 'it-support', title: 'IT Support & Maintenance', href: '#it-support' },
-          { id: 'network-fo', title: 'Fiber Optics & Network Installer', href: '#network-fo' },
-          { id: 'security-systems', title: 'Security Systems (CCTV & Access Door)', href: '#security-systems' },
-          { id: 'telecom', title: 'Telecommunications & Network Tower', href: '#telecom' },
-          { id: 'cme-main', title: 'Civil, Mechanical & Electrical (CME)', href: '#cme-main' },
-        ],
-      },
-      {
-        title: 'EO & ADVERTISING DIVISION',
-        items: [
-          { id: 'eo-home', title: 'EO & Advertising Portal (Homepage)', href: '#eo' },
-          { id: 'eo', title: 'EO (Event Organizer & MICE Solutions)', href: '#eo' },
-          { id: 'media-advertising', title: 'Media Advertising & Billboard', href: '#media-advertising' },
-        ],
-      },
-    ],
+    label: 'Services',
+    href: '#service',
+    hasDropdown: false,
   },
   {
     id: 'information',
@@ -76,7 +36,7 @@ export const mainNavigationData: NavItem[] = [
 export const itNavigationData: NavItem[] = [
   {
     id: 'it-home',
-    label: 'Home (IT & CME)',
+    label: 'Home',
     href: '#it',
     hasDropdown: false,
   },
@@ -99,7 +59,7 @@ export const itNavigationData: NavItem[] = [
   },
   {
     id: 'product-service',
-    label: 'Services & Solutions',
+    label: 'Services',
     href: '#it-solutions',
     hasDropdown: true,
     megaMenuType: 'columns',
@@ -139,7 +99,7 @@ export const itNavigationData: NavItem[] = [
 export const eoNavigationData: NavItem[] = [
   {
     id: 'eo-home',
-    label: 'Home (EO & Media)',
+    label: 'Home',
     href: '#eo',
     hasDropdown: false,
   },
@@ -151,23 +111,23 @@ export const eoNavigationData: NavItem[] = [
   },
   {
     id: 'product-service',
-    label: 'Services & Solutions',
-    href: '#eo-main',
+    label: 'Services',
+    href: '#eo',
     hasDropdown: true,
     megaMenuType: 'columns',
     columns: [
       {
-        title: 'EVENT ORGANIZER & MICE',
+        title: 'ADVERTISING',
+        id: 'media-advertising',
         items: [
-          { id: 'eo-main', title: 'Overview Event Organizer', href: '#eo-main' },
-          { id: 'eo', title: 'MICE, Gathering & Brand Activation', href: '#eo' },
+          { id: 'media-advertising', title: 'Billboard, Signage, Neon Box & Fleet Branding', href: '#media-advertising' },
         ],
       },
       {
-        title: 'MEDIA ADVERTISING',
+        title: 'EVENT ORGANIZER',
+        id: 'eo',
         items: [
-          { id: 'media-advertising', title: 'Billboard & Highway Structures', href: '#media-advertising' },
-          { id: 'media-advertising', title: 'Signage, Neon Box & Fleet Branding', href: '#media-advertising' },
+          { id: 'eo', title: 'MICE, Corporate Gathering, Expo & Brand Activation', href: '#eo' },
         ],
       },
     ],

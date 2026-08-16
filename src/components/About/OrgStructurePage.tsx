@@ -105,7 +105,7 @@ export const OrgStructurePage: React.FC<OrgStructurePageProps> = ({ onNavigate }
       name: 'Alam R',
       department: 'IT Infrastructure',
       headerBg: '#4A6B9C',
-      roleDescription: 'Memimpin divisi teknologi informasi, infrastruktur jaringan fiber optik, data center, dan integrasi sistem IT.'
+      roleDescription: 'Memimpin divisi teknologi informasi, infrastruktur jaringan fiber optik, hardware maintenance, dan integrasi sistem IT.'
     },
     dirAdvEO: {
       id: 'dirAdvEO',

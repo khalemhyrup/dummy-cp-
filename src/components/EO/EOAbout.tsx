@@ -18,15 +18,6 @@ export const EOAbout: React.FC<EOAboutProps> = ({ onNavigate }) => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.12)_0%,transparent_70%)] pointer-events-none" />
         <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#1e40af15_1px,transparent_1px),linear-gradient(to_bottom,#1e40af15_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        {/* Top Breadcrumb / Return to EO Home */}
-        <div className="max-w-6xl mx-auto w-full relative z-10 flex items-center justify-between">
-          <button
-            onClick={() => onNavigate('eo-home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-3 py-1 rounded-full border border-white/10"
-          >
-            <span>← Back to EO &amp; Advertising Portal</span>
-          </button>
-        </div>
 
         {/* Main Content Area */}
         <div className="max-w-6xl mx-auto w-full my-auto py-12 relative z-10 space-y-8 text-center sm:text-left">

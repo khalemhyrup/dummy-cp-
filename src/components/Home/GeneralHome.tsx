@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Plus, Minus, Play, CheckCircle2, ChevronRight, Sparkles, Server, ShieldCheck, Award, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Plus, Minus, CheckCircle2, ChevronRight, Sparkles, Server, ShieldCheck, Award, ArrowUpRight } from 'lucide-react';
 
 interface GeneralHomeProps {
   onNavigate: (page: string) => void;
@@ -39,35 +39,100 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       ],
       portalBadge: 'CREATIVE MEDIA & MICE',
     },
-    {
-      id: 2,
-      number: '03',
-      title: 'Comprehensive General Contracting & Engineering',
-      route: 'service',
-      summary: 'Layanan manajemen proyek terintegrasi dari tahap feasibility study, perizinan, rancang bangun, hingga pemeliharaan berkala untuk instansi pemerintah, BUMN, dan swasta multinasional.',
-      bullets: [
-        'End-to-End Turnkey Project Management',
-        'Cross-Discipline Engineering Synergy',
-        'Nationwide Deployment & Local Service Points',
-        'Guaranteed SLA & Standard Operating Procedures',
-      ],
-      portalBadge: 'INTEGRATED SERVICES',
-    },
   ];
 
   return (
     <div className="w-full bg-white font-sans text-neutral-900 overflow-x-hidden selection:bg-black selection:text-white">
 
       {/* =====================================================================
+          HERO SECTION 0: EXECUTIVE STRATEGY CINEMATIC HERO (Reference Image)
+      ====================================================================== */}
+      <section className="relative w-full h-screen min-h-[600px] flex flex-col justify-between overflow-hidden bg-neutral-950">
+        
+        {/* Background Image with Crisp Photorealistic Executive Boardroom Desk */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
+          style={{ backgroundImage: "url('/images/executive_boardroom_hero.jpg')" }}
+        />
+
+        {/* Ambient Dark/Warm Overlay matching reference photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/75" />
+
+        {/* Top Minimal Bar matching the reference UI */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 w-full flex items-center justify-between">
+          <div className="text-white font-semibold text-lg sm:text-xl tracking-tight drop-shadow-md">
+            PT Integra Aneksa Kreasindo
+          </div>
+          <div className="hidden sm:flex items-center gap-8 text-xs sm:text-sm text-white/85 font-medium">
+            <button onClick={() => onNavigate('service')} className="hover:text-white transition-colors cursor-pointer drop-shadow-xs">
+              Services
+            </button>
+            <button onClick={() => onNavigate('about')} className="hover:text-white transition-colors cursor-pointer drop-shadow-xs">
+              About
+            </button>
+            <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors cursor-pointer drop-shadow-xs">
+              Contact
+            </button>
+          </div>
+        </div>
+
+        {/* Center Main Hero Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center my-auto py-12 space-y-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.7)]">
+            Integrasi Infrastruktur &amp; Inovasi Promosi
+          </h1>
+
+          <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-normal drop-shadow-md leading-relaxed">
+            Menyediakan layanan terpadu mulai dari infrastruktur Teknologi Informasi dan Mekanikal Elektrikal, hingga eksekusi Media Advertising dan Event Organizer
+          </p>
+
+          <div className="pt-4">
+            <button
+              onClick={() => {
+                const nextSection = document.getElementById('overview-section');
+                if (nextSection) {
+                  nextSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+                }
+              }}
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white/90 hover:bg-white text-neutral-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-2xl hover:scale-105 backdrop-blur-md cursor-pointer border border-white/40"
+            >
+              START WINNING
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom subtle scroll indicator */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full flex justify-center">
+          <button
+            onClick={() => {
+              const nextSection = document.getElementById('overview-section');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+              }
+            }}
+            className="text-white/70 hover:text-white transition-colors cursor-pointer text-xs flex flex-col items-center gap-1 group animate-bounce"
+          >
+            <span className="font-mono text-[11px] tracking-wider uppercase">Explore Solutions</span>
+            <span>↓</span>
+          </button>
+        </div>
+
+      </section>
+
+      {/* =====================================================================
           SECTION 1: TOP MASSIVE KINETIC OVERVIEW + OVERLAPPING ASSET CARD
           (Editorial Style: Image 1)
       ====================================================================== */}
-      <section className="w-full bg-white pt-10 pb-20 sm:pt-14 sm:pb-28 border-b border-neutral-200 relative overflow-hidden">
+      <section id="overview-section" className="w-full bg-white pt-10 pb-20 sm:pt-14 sm:pb-28 border-b border-neutral-200 relative overflow-hidden">
         
         {/* Giant Marquee / Background Kinetic Headline */}
         <div className="w-full overflow-hidden whitespace-nowrap select-none opacity-90 mb-4 sm:mb-8 pointer-events-none">
           <h1 className="text-[12vw] sm:text-[10vw] lg:text-[8.5vw] font-bold tracking-tighter text-neutral-900 leading-none inline-block animate-marquee uppercase">
-            High-Impact Solutions &nbsp;•&nbsp; Grasindo Pro &nbsp;•&nbsp; Engineering &amp; Media &nbsp;•&nbsp; Integrated Excellence &nbsp;•&nbsp;
+            High-Impact Solutions &nbsp;•&nbsp; Grasindo Pro &nbsp;•&nbsp; IT &amp; Media &nbsp;•&nbsp; Integrated Excellence &nbsp;•&nbsp;
           </h1>
         </div>
 
@@ -106,14 +171,6 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
 
             {/* Right: Clean Welcome Intro & Action Pill */}
             <div className="lg:col-span-6 flex flex-col justify-center space-y-6 lg:pl-6">
-              
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 rounded-full w-fit">
-                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-700">
-                  WELCOME TO GRASINDO PRO
-                </span>
-              </div>
-
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
                 Grab proven integrated frameworks that accelerate enterprise growth.
               </h2>
@@ -168,19 +225,19 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
             {/* Column 2: Lead Paragraph */}
             <div className="md:col-span-4">
               <p className="text-neutral-700 text-sm sm:text-base leading-relaxed font-medium">
-                We turn bold objectives into concrete victories. Our seasoned specialists cut through complexity, identify critical leverage points, and ignite operational momentum across your entire business ecosystem.
+                Kami mewujudkan target strategis menjadi pencapaian nyata. Tim spesialis berpengalaman kami menyederhanakan kompleksitas, memetakan solusi tepat sasaran, dan mendorong momentum operasional di seluruh ekosistem bisnis Anda.
               </p>
             </div>
 
             {/* Column 3: Secondary Context + Learn More */}
             <div className="md:col-span-3">
               <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed">
-                From high-capacity physical &amp; digital infrastructure to nationwide brand activations, we embed with your team, challenge assumptions, and deliver results that stick.{' '}
+                Mulai dari infrastruktur fisik &amp; digital berkapasitas tinggi hingga aktivasi merek berskala nasional, kami bersinergi erat dengan tim Anda untuk menghadirkan hasil yang berdampak jangka panjang.{' '}
                 <button
-                  onClick={() => onNavigate('about')}
+                  onClick={() => onNavigate('service')}
                   className="font-bold text-black underline underline-offset-4 hover:text-amber-600 transition-colors inline cursor-pointer"
                 >
-                  Learn More
+                  Pelajari Selengkapnya
                 </button>
               </p>
             </div>
@@ -332,26 +389,13 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
-            {/* Left: Boardroom Collaboration Scene with Video Player Overlay */}
-            <div className="lg:col-span-8 bg-black overflow-hidden relative shadow-md group">
+            {/* Left: Boardroom Collaboration Scene (Clean Photo Showcase) */}
+            <div className="lg:col-span-8 bg-neutral-100 overflow-hidden relative shadow-md group border border-neutral-200">
               <img
                 src="/images/editorial_boardroom_collab.jpg"
-                alt="Corporate Strategy & Engineering Synergy"
-                className="w-full h-full object-cover object-center opacity-90 group-hover:scale-102 transition-transform duration-700"
+                alt="Corporate Strategy & IT Synergy"
+                className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
               />
-              
-              {/* Play Badge Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm border border-white/40 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Play className="w-6 h-6 fill-white text-white translate-x-0.5" />
-                </div>
-              </div>
-
-              {/* Bottom Video Bar Mock */}
-              <div className="absolute bottom-3 inset-x-4 flex items-center justify-between text-[11px] font-mono text-white/80 bg-black/50 backdrop-blur-xs px-3 py-1.5 rounded">
-                <span>00:00 / 02:45</span>
-                <span>GRASINDOPRO CORPORATE PROFILE</span>
-              </div>
             </div>
 
             {/* Right: Featured Capability Card with Border Box */}

@@ -10,21 +10,6 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
   return (
     <div className="w-full bg-[#030917] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
       
-      {/* Top Breadcrumb Header */}
-      <div className="bg-[#020610] py-3 px-6 sm:px-8 border-b border-blue-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button
-            onClick={() => onNavigate?.('eo-home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>← Back to EO &amp; Advertising Portal</span>
-          </button>
-          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
-            Contact &amp; Workshop
-          </span>
-        </div>
-      </div>
-
       {/* =========================================================================
           SECTION 1: KONTAK & ALAMAT KAMI (NETWORK MESH BANNER)
       ========================================================================== */}
@@ -180,66 +165,66 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* 6 Workshop Production Photos */}
+          {/* 7 Workshop Production Photos */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
             
             {/* Photo 1: Big Vertical Steel Assembly */}
             <div className="lg:col-span-4 aspect-[4/5] bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
               <img
-                src="/EO/Advertising/Screenshot 2026-08-08 034857.png"
+                src="/EO/workshop/Screenshot 2026-08-16 051131.png"
                 alt="Perakitan Rangka Besi Baja Billboard di Lantai Workshop"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
-            {/* Photos 2 & 5: Welding & Signage Assembly */}
+            {/* Photos 2 & 3: Welding & Signage Assembly */}
             <div className="lg:col-span-2 flex flex-col gap-4 sm:gap-6">
               <div className="aspect-square bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 034911.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051138.png"
                   alt="Pengelasan Struktur Konstruksi"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="aspect-square bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 034918.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051143.png"
                   alt="Perakitan Panel Signage dan Lampu"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
 
-            {/* Photos 3 & 6: Custom Curved Booth & Finishing */}
+            {/* Photos 4 & 5: Custom Curved Booth & Finishing */}
             <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-6">
               <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 034930.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051149.png"
                   alt="Produksi Booth Pameran Kayu Putih"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 035034.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051156.png"
                   alt="Pengecatan dan Finishing Counter Curved Booth"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
 
-            {/* Photos 4 & 7: Modular Stage & Finishing Decor */}
+            {/* Photos 6 & 7: Modular Stage & Finishing Decor */}
             <div className="lg:col-span-3 flex flex-col gap-4 sm:gap-6">
               <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 035044.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051202.png"
                   alt="Perakitan Furniture dan Meja Receptionist"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-xl overflow-hidden shadow-xl group">
                 <img
-                  src="/EO/Advertising/Screenshot 2026-08-08 035114.png"
+                  src="/EO/workshop/Screenshot 2026-08-16 051208.png"
                   alt="Finishing Spirella Decor Exhibition"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

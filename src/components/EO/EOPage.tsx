@@ -8,39 +8,24 @@ interface EOPageProps {
 
 export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) => {
   const merchandiseList = [
-    { name: 'Tumbler Rumah BUMN', tag: 'Rumah BUMN', img: '/EO/Event organizer/Screenshot 2026-08-08 035300.png' },
-    { name: 'Tumbler Pajak Kita', tag: 'Pajak Kita Untuk Kita', img: '/EO/Event organizer/Screenshot 2026-08-08 035308.png' },
-    { name: 'Paper Bag Kapolri Cup', tag: 'Shooting Championship', img: '/EO/Event organizer/Screenshot 2026-08-08 035318.png' },
-    { name: 'Pouch & Pen Set', tag: 'Startup Studio ID', img: '/EO/Event organizer/Screenshot 2026-08-08 035357.png' },
-    { name: 'T-Shirt BPK RI', tag: 'BPK Perwakilan', img: '/EO/Event organizer/Screenshot 2026-08-08 035404.png' },
-    { name: 'Spunbond Bag Leker', tag: 'Leker Brand', img: '/EO/Event organizer/Screenshot 2026-08-08 035417.png' },
-    { name: 'Topi Bordir PLN', tag: 'PLN Nusantara Power', img: '/EO/Event organizer/Screenshot 2026-08-08 035300.png' },
-    { name: 'Gift Set Tumbler & Book', tag: 'Corporate Premium', img: '/EO/Event organizer/Screenshot 2026-08-08 035308.png' },
-    { name: 'Powerbank Robot MM', tag: 'Custom Tech Gift', img: '/EO/Event organizer/Screenshot 2026-08-08 035318.png' },
-    { name: 'Mug Karikatur Pilkada', tag: 'Custom Print Mug', img: '/EO/Event organizer/Screenshot 2026-08-08 035357.png' },
-    { name: 'Tumbler Prime Video', tag: 'Streaming Service', img: '/EO/Event organizer/Screenshot 2026-08-08 035404.png' },
-    { name: 'Korek Gas Custom', tag: 'Pentas Jenaka', img: '/EO/Event organizer/Screenshot 2026-08-08 035417.png' },
-    { name: 'Executive Powerbank Wallet', tag: 'VIP Gift Set', img: '/EO/Event organizer/Screenshot 2026-08-08 035300.png' },
-    { name: 'Canvas Tote Bag Ilustrasi', tag: 'Event Souvenir', img: '/EO/Event organizer/Screenshot 2026-08-08 035308.png' },
+    { name: 'Tumbler Rumah BUMN', tag: 'Rumah BUMN', img: '/EO/Event organizer/Merchandise1.png' },
+    { name: 'Tumbler Pajak Kita', tag: 'Pajak Kita', img: '/EO/Event organizer/Merchandise2.png' },
+    { name: 'Paper Bag Kapolri Cup', tag: 'Shooting Championship', img: '/EO/Event organizer/Merchandise3.png' },
+    { name: 'Pouch & Pen Set', tag: 'Startup Studio ID', img: '/EO/Event organizer/Merchandise4.png' },
+    { name: 'T-Shirt BPK RI', tag: 'BPK Perwakilan', img: '/EO/Event organizer/Merchandise5.png' },
+    { name: 'Spunbond Bag Leker', tag: 'Leker Brand', img: '/EO/Event organizer/Merchandise6.png' },
+    { name: 'Topi Bordir PLN', tag: 'PLN Nusantara Power', img: '/EO/Event organizer/Merchandise7.png' },
+    { name: 'Gift Set Tumbler & Book', tag: 'Corporate Premium', img: '/EO/Event organizer/Merchandise8.png' },
+    { name: 'Powerbank Robot MM', tag: 'Custom Tech Gift', img: '/EO/Event organizer/Merchandise9.png' },
+    { name: 'Mug Karikatur Pilkada', tag: 'Custom Print Mug', img: '/EO/Event organizer/Merchandise10.png' },
+    { name: 'Tumbler Prime Video', tag: 'Streaming Service', img: '/EO/Event organizer/Merchandise11.png' },
+    { name: 'Korek Gas Custom', tag: 'Pentas Jenaka', img: '/EO/Event organizer/Merchandise12.png' },
+    { name: 'Executive Powerbank Wallet', tag: 'VIP Gift Set', img: '/EO/Event organizer/Merchandise13.png' },
+    { name: 'Canvas Tote Bag Ilustrasi', tag: 'Event Souvenir', img: '/EO/Event organizer/Merchandise14.png' },
   ];
 
   return (
     <div className="w-full bg-[#040b18] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
-
-      {/* Top Breadcrumb Header */}
-      <div className="bg-[#030814] py-3 px-6 sm:px-8 border-b border-blue-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button
-            onClick={() => onNavigate?.('eo-home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>← Back to EO &amp; Advertising Portal</span>
-          </button>
-          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
-            Event Organizer Division
-          </span>
-        </div>
-      </div>
 
       {/* =========================================================================
           SLIDE 1: EVENT ORGANIZER OVERVIEW & SERVICES LIST
@@ -66,7 +51,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               {/* Panorama event banner photo */}
               <div className="w-full aspect-[21/9] bg-neutral-900 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-xl relative group">
                 <img
-                  src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
+                  src="/EO/Event organizer/CorporateEvent1.png"
                   alt="Grasindopro Event Production and Cheerful Audience"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -151,7 +136,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="col-span-2 space-y-1">
                   <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
+                      src="/EO/Event organizer/CorporateEvent1.png"
                       alt="Rapat Umum Pemegang Saham Boardroom"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -165,7 +150,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="space-y-1">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035308.png"
+                      src="/EO/Event organizer/CorporateEvent2.png"
                       alt="Gala Dinner Corporate"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -179,7 +164,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="space-y-1">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035318.png"
+                      src="/EO/Event organizer/CorporateEvent3.png"
                       alt="Seminar Nasional & Gathering"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -205,7 +190,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   <div className="space-y-1">
                     <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                       <img
-                        src="/EO/Event organizer/Screenshot 2026-08-08 035357.png"
+                        src="/EO/Event organizer/BrandActivation1.png"
                         alt="Pembukaan Cabang Baru"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -219,7 +204,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   <div className="space-y-1">
                     <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                       <img
-                        src="/EO/Event organizer/Screenshot 2026-08-08 035404.png"
+                        src="/EO/Event organizer/productLauhnch1.png"
                         alt="Peluncuran Produk Baru Asian Paints"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -234,7 +219,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="space-y-1">
                   <div className="aspect-[21/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035417.png"
+                      src="/EO/Event organizer/pamerandagang1.png"
                       alt="Pameran Dagang Expo Showcase"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -300,14 +285,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
+                      src="/EO/Event organizer/Entertainment1.png"
                       alt="Festival Kerukunan Panggung Upacara"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035308.png"
+                      src="/EO/Event organizer/Entertainment2.png"
                       alt="Peresmian Kanvas Festival"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -316,7 +301,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
 
                 <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/Screenshot 2026-08-08 035318.png"
+                    src="/EO/Event organizer/Entertainment3.png"
                     alt="Panggung Musik Festival Pabuaran"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -337,14 +322,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               <div className="space-y-3">
                 <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/Screenshot 2026-08-08 035357.png"
+                    src="/EO/Event organizer/virtualEvents1.png"
                     alt="Hybrid Conference Room Setup"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/Screenshot 2026-08-08 035404.png"
+                    src="/EO/Event organizer/virtualEvents2.png"
                     alt="Webinar & Interactive Streaming Room"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -361,7 +346,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               <div className="space-y-3">
                 <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/Screenshot 2026-08-08 035417.png"
+                    src="/EO/Event organizer/bimtek.png"
                     alt="Bimbingan Teknis dan Pelatihan"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -425,14 +410,14 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="space-y-3 sm:col-span-1">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035300.png"
+                      src="/EO/Event organizer/ExhibitionProduction1.png"
                       alt="Booth Exhibition Stand"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035308.png"
+                      src="/EO/Event organizer/ExhibitionProduction2.png"
                       alt="Booth Exhibition LIXIL Construction"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -442,25 +427,32 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 <div className="space-y-3 sm:col-span-1">
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035318.png"
+                      src="/EO/Event organizer/ExhibitionProduction3.png"
                       alt="Asian Paints Expo Pavilion"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035357.png"
+                      src="/EO/Event organizer/ExhibitionProduction4.png"
                       alt="Custom Booth Decor"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-1">
-                  <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
-                      src="/EO/Event organizer/Screenshot 2026-08-08 035404.png"
+                      src="/EO/Event organizer/ExhibitionProduction5.png"
                       alt="Atrium Mall Expo Exhibition"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/ExhibitionProduction6.png"
+                      alt="Exhibition Stand Production Detail"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -472,16 +464,12 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               </span>
             </div>
 
-            {/* Right: Backdrop */}
-            <div className="lg:col-span-4 space-y-4">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide">
-                Backdrop
-              </h2>
-
+            {/* Right: Backdrop Image */}
+            <div className="lg:col-span-4 space-y-4 pt-0 sm:pt-11">
               <div className="space-y-3">
                 <div className="aspect-[16/10] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/Screenshot 2026-08-08 035417.png"
+                    src="/EO/Event organizer/ExhibitionProduction2.png"
                     alt="Backdrop Panggung UNS Home Coming"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -548,11 +536,6 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-black/80 p-1 text-center">
-                  <span className="text-[9px] text-amber-300 font-bold block truncate">
-                    {item.tag}
-                  </span>
-                </div>
               </div>
             ))}
           </div>
