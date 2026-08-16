@@ -1,16 +1,23 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 interface ITHomeProps {
   onNavigate: (page: string) => void;
 }
 
 export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
+  const scrollToOverview = () => {
+    const el = document.getElementById('it-overview-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const itDisciplines = [
     {
       id: '01',
       title: 'IT Infrastructure & Telecommunication',
-      desc: 'Comprehensive network design, fiber optic deployment, and secure data center integrations designed for maximum uptime and scalability.',
+      desc: 'Comprehensive network design, fiber optic deployment, and secure enterprise IT network integrations designed for maximum uptime and scalability.',
       subList: [
         'Fiber Optics & Splicing (OTDR Testing)',
         'Security Systems (CCTV & Biometric Access Door)',
@@ -38,7 +45,7 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
       id: 'it-p1',
       image: '/images/hero_datacenter.jpg',
       category: 'IT Infrastructure',
-      title: 'Enterprise Server & Cloud Data Center',
+      title: 'Enterprise Server & Network Infrastructure',
       route: 'network-fo',
     },
     {
@@ -58,10 +65,94 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="w-full bg-white font-sans text-neutral-900">
+    <div className="w-full bg-white font-sans text-neutral-900 overflow-x-hidden">
 
-      {/* ================= 1. HERO BANNER (IT & CME DEDICATED) ================= */}
-      <section className="w-full bg-white pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+      {/* =========================================================================
+          SECTION 0: GRAND HERO BANNER (PT INTEGRA IT & CME ATMOSPHERE)
+      ========================================================================== */}
+      <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-[#030917] text-white">
+        
+        {/* Background Visual with Tech Tint */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105 transition-transform duration-1000"
+          style={{ backgroundImage: "url('/images/hero_datacenter.jpg')" }}
+        />
+        
+        {/* Deep Tech Blue Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020714]/90 via-[#061533]/85 to-[#030917] pointer-events-none" />
+
+        {/* Top Spacer / Back Link */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
+          <button
+            onClick={() => onNavigate('home')}
+            className="text-xs font-mono text-neutral-300 hover:text-blue-400 transition-colors flex items-center gap-1.5 bg-black/50 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-white/10 cursor-pointer"
+          >
+            <span>← Back to Corporate Portal</span>
+          </button>
+        </div>
+
+        {/* Center Main Hero Title */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center my-auto py-16 space-y-4">
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-wide uppercase text-white drop-shadow-[0_4px_16px_rgba(37,99,235,0.6)]">
+            PT. INTEGRA ANEKSA KREASINDO
+          </h1>
+
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-blue-200">
+            IT Solutions &amp; CME Infrastructure
+          </h2>
+
+          <p className="text-xs sm:text-sm text-neutral-300 max-w-2xl mx-auto pt-2 font-medium leading-relaxed">
+            Rekayasa infrastruktur jaringan fiber optik, sistem keamanan biometrik, telekomunikasi transmisi, serta tata udara mekanikal &amp; elektrikal industri berstandar enterprise.
+          </p>
+
+        </div>
+
+        {/* Bottom Bar: Hubungi Kami, Chevron, Tagline */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full grid grid-cols-1 sm:grid-cols-3 items-center gap-6">
+          
+          {/* Left: Hubungi Kami Badge */}
+          <div className="flex justify-center sm:justify-start">
+            <button
+              onClick={() => onNavigate('contact')}
+              className="group flex items-center bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl flex items-center gap-2">
+                <span className="p-1 bg-black text-white rounded-full text-xs">
+                  👤
+                </span>
+                <span>Hubungi Kami</span>
+              </div>
+            </button>
+          </div>
+
+          {/* Center: Scroll Down Chevron */}
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToOverview}
+              className="text-cyan-400 hover:text-cyan-300 animate-bounce transition-colors cursor-pointer"
+              aria-label="Scroll Down"
+            >
+              <div className="flex flex-col items-center">
+                <ChevronDown className="w-8 h-8 stroke-[3]" />
+                <ChevronDown className="w-8 h-8 -mt-5 stroke-[3]" />
+              </div>
+            </button>
+          </div>
+
+          {/* Right: Tagline */}
+          <div className="flex justify-center sm:justify-end">
+            <div className="text-cyan-400 font-extrabold text-sm sm:text-base md:text-lg tracking-wider drop-shadow-[0_2px_8px_rgba(6,182,212,0.4)] font-mono uppercase">
+              Precision • Power • Connectivity
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= 1. HERO BANNER (IT & CME OVERVIEW) ================= */}
+      <section id="it-overview-section" className="w-full bg-white pt-16 pb-16 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28 border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -114,7 +205,7 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
               <div className="relative w-full max-w-md lg:max-w-none aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] overflow-hidden bg-neutral-100 shadow-sm border border-neutral-100">
                 <img
                   src="/images/hero_datacenter.jpg"
-                  alt="Enterprise Data Center Infrastructure"
+                  alt="Enterprise Server & Network Infrastructure"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -131,11 +222,8 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
           {/* Header Row */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start mb-12 sm:mb-16">
             <div className="lg:col-span-5">
-              <span className="text-xs font-mono font-semibold tracking-wider text-blue-600 uppercase block mb-2">
-                DIVISION DISCIPLINES
-              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] font-bold tracking-tight text-neutral-900 leading-tight">
-                Core Disciplines
+                Our Services
               </h2>
             </div>
             <div className="lg:col-span-7">

@@ -18,7 +18,7 @@ export const mainNavigationData: NavItem[] = [
   },
   {
     id: 'divisions',
-    label: 'Divisions & Services',
+    label: 'Services',
     href: '#service',
     hasDropdown: false,
   },
@@ -36,7 +36,7 @@ export const mainNavigationData: NavItem[] = [
 export const itNavigationData: NavItem[] = [
   {
     id: 'it-home',
-    label: 'Home (IT & CME)',
+    label: 'Home',
     href: '#it',
     hasDropdown: false,
   },
@@ -59,7 +59,7 @@ export const itNavigationData: NavItem[] = [
   },
   {
     id: 'product-service',
-    label: 'Services & Solutions',
+    label: 'Services',
     href: '#it-solutions',
     hasDropdown: true,
     megaMenuType: 'columns',
@@ -99,7 +99,7 @@ export const itNavigationData: NavItem[] = [
 export const eoNavigationData: NavItem[] = [
   {
     id: 'eo-home',
-    label: 'Home (EO & Media)',
+    label: 'Home',
     href: '#eo',
     hasDropdown: false,
   },
@@ -111,23 +111,23 @@ export const eoNavigationData: NavItem[] = [
   },
   {
     id: 'product-service',
-    label: 'Services & Solutions',
-    href: '#eo-main',
+    label: 'Services',
+    href: '#eo',
     hasDropdown: true,
     megaMenuType: 'columns',
     columns: [
       {
-        title: 'EVENT ORGANIZER & MICE',
+        title: 'ADVERTISING',
+        id: 'media-advertising',
         items: [
-          { id: 'eo-main', title: 'Overview Event Organizer', href: '#eo-main' },
-          { id: 'eo', title: 'MICE, Gathering & Brand Activation', href: '#eo' },
+          { id: 'media-advertising', title: 'Billboard, Signage, Neon Box & Fleet Branding', href: '#media-advertising' },
         ],
       },
       {
-        title: 'MEDIA ADVERTISING',
+        title: 'EVENT ORGANIZER',
+        id: 'eo',
         items: [
-          { id: 'media-advertising', title: 'Billboard & Highway Structures', href: '#media-advertising' },
-          { id: 'media-advertising', title: 'Signage, Neon Box & Fleet Branding', href: '#media-advertising' },
+          { id: 'eo', title: 'MICE, Corporate Gathering, Expo & Brand Activation', href: '#eo' },
         ],
       },
     ],

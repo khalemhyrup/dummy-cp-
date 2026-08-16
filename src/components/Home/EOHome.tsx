@@ -17,18 +17,24 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
     <div className="w-full bg-[#050e1f] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION (Gala Doors Opening Atmosphere)
+          SECTION 1: HERO SECTION (Cinematic Video Atmosphere)
       ========================================================================== */}
       <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden">
         
-        {/* Background Image with Dark Blue Radial Overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/eo_hero_doors.jpg')" }}
-        />
+        {/* Background Video with Poster Fallback */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/eo_hero_doors.jpg"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/homepageEO.mp4" type="video/mp4" />
+        </video>
         
-        {/* Deep Blue Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030917]/90 via-[#071738]/80 to-[#050e1f]" />
+        {/* Deep Blue Gradient Tint Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030917]/80 via-[#071738]/70 to-[#050e1f] pointer-events-none" />
 
         {/* Top Spacer / Back Link */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
@@ -58,36 +64,42 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Bar: Hubungi Kami, Chevron, Tagline */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full grid grid-cols-1 sm:grid-cols-3 items-center gap-6">
           
           {/* Left: Hubungi Kami Badge */}
-          <button
-            onClick={() => onNavigate('eo-contact')}
-            className="group flex items-center bg-gradient-to-r from-amber-500 via-amber-400 to-sky-400 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
-          >
-            <div className="bg-gradient-to-r from-amber-500 to-sky-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl flex items-center gap-2">
-              <span className="p-1 bg-black text-white rounded-full text-xs">
-                👤
-              </span>
-              <span>Hubungi Kami</span>
-            </div>
-          </button>
+          <div className="flex justify-center sm:justify-start">
+            <button
+              onClick={() => onNavigate('eo-contact')}
+              className="group flex items-center bg-gradient-to-r from-amber-500 via-amber-400 to-sky-400 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="bg-gradient-to-r from-amber-500 to-sky-400 text-slate-950 font-extrabold text-xs sm:text-sm px-4 py-2 rounded-xl flex items-center gap-2">
+                <span className="p-1 bg-black text-white rounded-full text-xs">
+                  👤
+                </span>
+                <span>Hubungi Kami</span>
+              </div>
+            </button>
+          </div>
 
-          {/* Center: Scroll Down Chevron */}
-          <button
-            onClick={scrollToServices}
-            className="text-amber-500 hover:text-amber-400 animate-bounce transition-colors cursor-pointer"
-            aria-label="Scroll Down"
-          >
-            <div className="flex flex-col items-center">
-              <ChevronDown className="w-8 h-8 stroke-[3]" />
-              <ChevronDown className="w-8 h-8 -mt-5 stroke-[3]" />
-            </div>
-          </button>
+          {/* Center: Scroll Down Chevron (Exact Center Alignment) */}
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToServices}
+              className="text-amber-500 hover:text-amber-400 animate-bounce transition-colors cursor-pointer"
+              aria-label="Scroll Down"
+            >
+              <div className="flex flex-col items-center">
+                <ChevronDown className="w-8 h-8 stroke-[3]" />
+                <ChevronDown className="w-8 h-8 -mt-5 stroke-[3]" />
+              </div>
+            </button>
+          </div>
 
           {/* Right: Tagline */}
-          <div className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-            Take it, Do it, Love it
+          <div className="flex justify-center sm:justify-end">
+            <div className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+              Take it, Do it, Love it
+            </div>
           </div>
 
         </div>

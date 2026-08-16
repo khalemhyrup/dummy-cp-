@@ -40,8 +40,8 @@ export const SoftwareManagedPage: React.FC = () => {
       icon: Server
     },
     {
-      title: 'Database & Data Center Administration',
-      desc: 'Administrasi basis data, optimasi query, manajemen backup berkala, dan penanganan infrastruktur data center perusahaan.',
+      title: 'Server & System Administration',
+      desc: 'Administrasi basis data, optimasi performa query, manajemen backup berkala, dan penanganan infrastruktur server perusahaan.',
       icon: Database
     },
     {
@@ -90,7 +90,7 @@ export const SoftwareManagedPage: React.FC = () => {
             </h1>
 
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-normal">
-              Solusi pengembangan aplikasi bisnis custom, pengelolaan infrastruktur cloud server, administrasi data center, serta pemeliharaan software enterprise secara terpadu.
+              Solusi pengembangan aplikasi bisnis custom, pengelolaan infrastruktur cloud server, administrasi basis data, serta pemeliharaan software enterprise secara terpadu.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">

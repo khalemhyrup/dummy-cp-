@@ -10,21 +10,6 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
   return (
     <div className="w-full bg-[#030917] font-sans text-white overflow-x-hidden selection:bg-amber-500 selection:text-black">
       
-      {/* Top Breadcrumb Header */}
-      <div className="bg-[#020610] py-3 px-6 sm:px-8 border-b border-blue-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <button
-            onClick={() => onNavigate?.('eo-home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>← Back to EO &amp; Advertising Portal</span>
-          </button>
-          <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">
-            Contact &amp; Workshop
-          </span>
-        </div>
-      </div>
-
       {/* =========================================================================
           SECTION 1: KONTAK & ALAMAT KAMI (NETWORK MESH BANNER)
       ========================================================================== */}

@@ -13,7 +13,6 @@ import {
   FileCode,
   Building2,
   ArrowRight,
-  Send,
   Sparkles,
   ChevronRight,
   Megaphone,
@@ -41,57 +40,26 @@ interface ServicesPageProps {
 export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContactClick }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'it' | 'cme' | 'eo' | 'advertising'>('all');
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
-  const [inquiryModal, setInquiryModal] = useState<{ isOpen: boolean; serviceName: string }>({
-    isOpen: false,
-    serviceName: '',
-  });
-  const [inquiryForm, setInquiryForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    serviceType: 'Paket Solusi Terpadu (IT + EO)',
-    message: '',
-  });
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleOpenInquiry = (serviceName: string) => {
-    setInquiryModal({ isOpen: true, serviceName });
-    setFormSubmitted(false);
+  const handleOpenInquiry = (_serviceName?: string) => {
+    if (onContactClick) {
+      onContactClick();
+    } else if (onNavigate) {
+      onNavigate('contact');
+    }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setInquiryModal({ isOpen: false, serviceName: '' });
-      setInquiryForm({
-        name: '',
-        email: '',
-        phone: '',
-        serviceType: 'Paket Solusi Terpadu (IT + EO)',
-        message: '',
-      });
-      setFormSubmitted(false);
-    }, 2200);
-  };
-
-  // Comprehensive Services Catalog
+  // Streamlined Services Catalog with Portal Homepage Routes
   const serviceCatalog = [
-    // IT & Telecom
     {
       id: 'it-fo',
       category: 'it',
       categoryLabel: 'IT INFRASTRUCTURE',
       number: '01',
-      title: 'Fiber Optics & Network Engineering',
-      route: 'network-fo',
-      desc: 'Instalasi backbone fiber optic, penyambungan splicing presisi tinggi, pengujian OTDR berkala, dan penataan kabel terstruktur Cat6/Cat6A untuk gedung bertingkat & kawasan industri.',
-      specs: [
-        'Fusion Splicing & OTDR Loss Certification',
-        'Backbone FO Single-Mode / Multi-Mode Deployment',
-        'Wireless Backhaul & Microwave Link Point-to-Point',
-        'Rack Server Cable Management & Fluke Testing',
-      ],
+      title: 'Fiber Optics & Structured Cabling',
+      route: 'it-home',
+      desc: 'Instalasi backbone FO, fusion splicing presisi tinggi, uji OTDR, dan penataan kabel Cat6/Cat6A gedung & kawasan.',
+      tags: ['Fusion Splicing', 'OTDR Loss Test', 'FO/Cat6 Backbone'],
       icon: Network,
     },
     {
@@ -99,15 +67,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'it',
       categoryLabel: 'SECURITY & ACCESS',
       number: '02',
-      title: 'Security Systems & Smart Building Automation',
-      route: 'security-systems',
-      desc: 'Integrasi sistem keamanan komprehensif mulai dari IP Camera CCTV resolusi tinggi, kontrol akses pintu biometrik/RFID, hingga sistem deteksi alarm kebakaran dan panic button.',
-      specs: [
-        'Enterprise IP CCTV Surveillance & NVR Storage Array',
-        'Biometric, Facial Recognition & RFID Access Door',
-        'Fire Alarm Addressable & Barrier Gate Integration',
-        'Perimeter Intrusion Detection & Central Monitoring',
-      ],
+      title: 'IP CCTV & Biometric Security',
+      route: 'it-home',
+      desc: 'Integrasi kamera IP CCTV resolusi tinggi, akses pintu biometrik/RFID, dan sistem alarm kebakaran gedung.',
+      tags: ['Enterprise IP CCTV', 'Access Door RFID', 'Fire Alarm System'],
       icon: Lock,
     },
     {
@@ -115,15 +78,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'it',
       categoryLabel: 'MANAGED SERVICES',
       number: '03',
-      title: 'IT Support, Data Center & Managed Maintenance',
-      route: 'it-support',
-      desc: 'Layanan pemeliharaan sistem berkala, perbaikan perangkat keras & perangkat lunak, optimasi performa data center, serta dukungan teknisi dedicated sesuai Standard Service Level Agreement (SLA).',
-      specs: [
-        'Dedicated On-Site & Remote Helpdesk SLA 99.9%',
-        'Server Virtualization, Backup & Disaster Recovery',
-        'Preventive & Corrective Hardware Maintenance',
-        'Network Operating Center (NOC) 24/7 Monitoring',
-      ],
+      title: 'IT Managed Services & On-Site Support',
+      route: 'it-home',
+      desc: 'Pemeliharaan perangkat keras & jaringan berkala, teknisi on-site dedicated, serta respon cepat pemecahan masalah dengan jaminan SLA.',
+      tags: ['24/7 SLA Helpdesk', 'Hardware & Network Support', 'Preventive Maintenance'],
       icon: Server,
     },
     {
@@ -131,33 +89,21 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'it',
       categoryLabel: 'TELECOMMUNICATION',
       number: '04',
-      title: 'Telecommunication Infrastructure & Towers',
-      route: 'telecom',
-      desc: 'Rancang bangun menara telekomunikasi (SST / Guyed Mast / Monopole), feeder line installation, perakitan shelter BTS, serta instalasi sistem komunikasi PABX korporat.',
-      specs: [
-        'Tower Erection, Strenghtening & Site Acquisition',
-        'RF Antenna, Feeder & Waveguide Installation',
-        'Shelter BTS Assembly, Rectifier & Battery Backup',
-        'IP PBX, VoIP & Enterprise Unified Communication',
-      ],
+      title: 'Menara Telekomunikasi & BTS',
+      route: 'it-home',
+      desc: 'Rancang bangun menara SST/Monopole, instalasi feeder antena RF, shelter BTS, dan komunikasi IP PBX korporat.',
+      tags: ['Tower Erection', 'BTS Shelter & RF', 'IP PBX / VoIP'],
       icon: Radio,
     },
-
-    // CME (Civil Mechanical Electrical)
     {
       id: 'cme-me',
       category: 'cme',
       categoryLabel: 'MECHANICAL ELECTRICAL',
       number: '05',
-      title: 'Mechanical, Electrical & HVAC Engineering',
-      route: 'me-installation',
-      desc: 'Penyediaan dan instalasi sistem pendingin udara terpusat (VRV/Chiller), distribusi daya listrik gedung, instalasi genset kapasitas besar, dan panel kontrol otomatis (AMF/ATS).',
-      specs: [
-        'Central HVAC System, Ducting & Ventilation Airflow',
-        'Panel LVMDP/SDP, Trafo & Kapasitor Bank Industri',
-        'Genset Standby Power Supply & Auto Synchronizing',
-        'Energy Audit & Smart Power Management Systems',
-      ],
+      title: 'HVAC, Panel LVMDP & Genset',
+      route: 'it-home',
+      desc: 'Instalasi pendingin VRV/Chiller, panel distribusi daya listrik, genset standby, dan manajemen energi gedung.',
+      tags: ['Central HVAC & VRV', 'Panel LVMDP/SDP', 'Genset Standby Power'],
       icon: Zap,
     },
     {
@@ -165,33 +111,21 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'cme',
       categoryLabel: 'CIVIL & PLUMBING',
       number: '06',
-      title: 'Civil Construction & Hydrant Fire Protection',
-      route: 'civil-construction',
-      desc: 'Konstruksi sipil gedung & fasilitas industri, instalasi sistem perpipaan air bersih/kotor, jaringan pipa gas, serta sistem proteksi kebakaran hydrant dan sprinkle otomatis.',
-      specs: [
-        'Fire Hydrant Piping, Booster Pump & Sprinkler System',
-        'Industrial Plumbing, Deep Well & Sewage Treatment (STP)',
-        'Steel Structural Fabrication & Heavy Equipment Foundation',
-        'Interior Fit-Out, Raised Floor & Clean Room Construction',
-      ],
+      title: 'Konstruksi Sipil & Fire Hydrant',
+      route: 'it-home',
+      desc: 'Struktur sipil, sistem perpipaan air & STP, serta instalasi proteksi kebakaran pipa hydrant dan sprinkler otomatis.',
+      tags: ['Fire Hydrant & Sprinkler', 'Industrial Plumbing & STP', 'Struktur Baja & Fit-Out'],
       icon: Building2,
     },
-
-    // EO & MICE
     {
       id: 'eo-mice',
       category: 'eo',
       categoryLabel: 'EVENT MANAGEMENT',
       number: '07',
       title: 'MICE & Corporate Event Production',
-      route: 'eo',
-      desc: 'Manajemen acara korporat berskala nasional, mulai dari RUPS (Rapat Umum Pemegang Saham), Gala Dinner, Brand Launching, Hybrid Bimtek, hingga Seminar & Konferensi Internasional.',
-      specs: [
-        'Turnkey Event Concept, Creative Design & Rundown Flow',
-        'Professional Sound System, Rigging & Stage Lighting',
-        'LED Videowall Screen, Live Streaming & Hybrid Setup',
-        'VIP Hospitality, Protocol & Crowd Management',
-      ],
+      route: 'eo-home',
+      desc: 'Penyelenggaraan RUPS, seminar nasional, konferensi, festival, dan gala dinner dengan tata suara & visual spektakuler.',
+      tags: ['RUPS & Konferensi', 'Sound & Stage Lighting', 'Live Streaming Hybrid'],
       icon: Calendar,
     },
     {
@@ -199,33 +133,21 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'eo',
       categoryLabel: 'EXHIBITION & STAGE',
       number: '08',
-      title: 'Exhibition Booth & Spatial Stage Fabrication',
-      route: 'eo',
-      desc: 'Pembuatan custom booth pameran, backdrop 3D interaktif, podium megah, serta display produk ergonomis langsung dari workshop produksi mandiri berpengalaman.',
-      specs: [
-        'Custom Exhibition Stand / Pavilion Construction',
-        '3D Scenic Stage Backdrop & Interactive Photo Booth',
-        'In-House Workshop Woodworking, Acrylic & Metal Finishing',
-        'Dismantling, Logistics & Nationwide Storage Handling',
-      ],
+      title: 'Custom Exhibition Booth & Backdrop',
+      route: 'eo-home',
+      desc: 'Fabrikasi booth pameran paviliun, backdrop 3D panggung, dan display produk langsung dari workshop mandiri.',
+      tags: ['Custom Stand Booth', '3D Stage Backdrop', 'In-House Woodworking'],
       icon: Layers,
     },
-
-    // Media Advertising
     {
       id: 'ad-ooh',
       category: 'advertising',
       categoryLabel: 'OUTDOOR ADVERTISING',
       number: '09',
-      title: 'Billboard Jalan Tol & Pylon Signage',
-      route: 'media-advertising',
-      desc: 'Penyewaan dan pembangunan titik reklame strategis di jalan tol, jalur arteri utama, serta pembuatan pylon sign dan neon box megah berizin resmi SKPD lengkap.',
-      specs: [
-        'Prime Highway & Arterial Billboard Structural Locations',
-        'Architectural Pylon Sign, Totem & Shop Sign Production',
-        'Heavy-Duty Signage Steel Framing & High-Lumen Illumination',
-        'Permit, Local Tax (SKPD) & Structural Safety Assurance',
-      ],
+      title: 'Billboard Tol & Pylon Signage',
+      route: 'eo-home',
+      desc: 'Titik reklame strategis jalan tol & arteri, pylon sign gedung, dan neon box dengan kelengkapan izin pajak SKPD.',
+      tags: ['Billboard Jalan Tol', 'Pylon Sign & Totem', 'Pajak Reklame SKPD'],
       icon: Megaphone,
     },
     {
@@ -233,15 +155,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       category: 'advertising',
       categoryLabel: 'BRAND ACTIVATION',
       number: '10',
-      title: 'Fleet Branding, Wall Painting & Merchandising',
-      route: 'media-advertising',
-      desc: 'Branding stiker armada kendaraan perusahaan (Car / Truck Wrapping), seni mural promosi wall painting, serta produksi merchandise korporat premium (souvenir & seminar kit).',
-      specs: [
-        'Commercial Fleet Vinyl Wrapping & Weatherproof Laminate',
-        'Large-Scale Exterior & Interior Wall Graphic Mural',
-        'Custom Executive Souvenirs, Apparel & Seminar Kits',
-        'Event Manpower: MC, SPG/SPB, Usher & Liaison Officers',
-      ],
+      title: 'Branding Mobil, Mural & Merchandise',
+      route: 'eo-home',
+      desc: 'Wrapping stiker armada mobil/truk, seni mural lukis dinding promosi, dan produksi suvenir merchandise korporat.',
+      tags: ['Car Fleet Wrapping', 'Wall Painting Mural', 'Corporate Souvenir'],
       icon: Palette,
     },
   ];
@@ -323,7 +240,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                   onClick={() => onNavigate && onNavigate('it-home')}
                   className="inline-flex items-center gap-2 bg-black hover:bg-neutral-800 text-white text-xs sm:text-sm font-semibold px-7 py-3.5 rounded-full transition-all shadow-sm cursor-pointer"
                 >
-                  <span>PORTAL IT &amp; CME</span>
+                  <span>IT &amp; CME</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -331,7 +248,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                   onClick={() => onNavigate && onNavigate('eo-home')}
                   className="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 text-xs sm:text-sm font-semibold px-7 py-3.5 rounded-full transition-all border border-neutral-300 cursor-pointer"
                 >
-                  <span>PORTAL EO &amp; MEDIA</span>
+                  <span>EO &amp; MEDIA</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -416,7 +333,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                   onClick={() => onNavigate && onNavigate('it-home')}
                   className="bg-neutral-950 hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-full transition-all inline-flex items-center gap-2 cursor-pointer w-full sm:w-auto justify-center"
                 >
-                  <span>Buka Portal IT &amp; CME</span>
+                  <span>Buka IT &amp; CME</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -471,7 +388,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                   onClick={() => onNavigate && onNavigate('eo-home')}
                   className="bg-amber-500 hover:bg-amber-400 text-neutral-950 text-xs font-extrabold uppercase tracking-wider px-6 py-3.5 rounded-full transition-all inline-flex items-center gap-2 cursor-pointer w-full sm:w-auto justify-center shadow-xs"
                 >
-                  <span>Buka Portal EO &amp; Media</span>
+                  <span>Buka EO &amp; Media</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -483,26 +400,26 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       </section>
 
       {/* =====================================================================
-          SECTION 3: INTERACTIVE CAPABILITIES MATRIX / EXPLORER
+          SECTION 3: STREAMLINED TEXT DIRECTORY (Minimal & Clean, Direct Navigation)
       ====================================================================== */}
-      <section className="w-full py-20 sm:py-28 bg-white border-b border-neutral-300">
+      <section className="w-full py-12 sm:py-16 bg-white border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-neutral-900 gap-4">
             <div>
-              <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest block mb-2">
-                DETAILED DIRECTORY
+              <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest block mb-1">
+                DIRECTORY
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">
                 Layanan &amp; Spesifikasi Proyek
               </h2>
             </div>
 
             {/* Filter Pills */}
-            <div className="flex flex-wrap gap-1.5 bg-neutral-100 p-1.5 rounded-full border border-neutral-200 w-fit">
+            <div className="flex flex-wrap gap-1 bg-neutral-100 p-1 rounded-full border border-neutral-200 w-fit">
               {[
-                { id: 'all', label: 'Semua Layanan' },
-                { id: 'it', label: 'IT & Data Center' },
+                { id: 'all', label: 'Semua' },
+                { id: 'it', label: 'IT Solutions & Network' },
                 { id: 'cme', label: 'Mechanical & Civil' },
                 { id: 'eo', label: 'Event Organizer' },
                 { id: 'advertising', label: 'Media Advertising' },
@@ -510,7 +427,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                 <button
                   key={tab.id}
                   onClick={() => setActiveFilter(tab.id as any)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                     activeFilter === tab.id
                       ? 'bg-neutral-900 text-white shadow-xs'
                       : 'text-neutral-600 hover:text-neutral-900 hover:bg-white'
@@ -522,58 +439,55 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
             </div>
           </div>
 
-          {/* Grid of Capability Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Clean Editorial Text List with Direct Routing */}
+          <div className="divide-y divide-neutral-200">
             {filteredServices.map((srv) => {
               const IconComp = srv.icon;
               return (
                 <div
                   key={srv.id}
-                  className="bg-neutral-50/70 border border-neutral-200 p-7 rounded-2xl hover:bg-white hover:border-neutral-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  onClick={() => onNavigate && onNavigate(srv.route)}
+                  className="py-4 sm:py-5 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6 hover:bg-neutral-50 px-3 -mx-3 rounded-lg transition-colors cursor-pointer group"
                 >
-                  <div className="space-y-4">
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 rounded-xl bg-white border border-neutral-200 text-neutral-900 flex items-center justify-center group-hover:bg-neutral-950 group-hover:text-white transition-colors">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400 px-2.5 py-1 bg-white border border-neutral-200 rounded-md">
+                  {/* Left: Number + Icon + Title */}
+                  <div className="flex items-center gap-3.5 md:w-5/12">
+                    <span className="text-xs font-mono font-bold text-neutral-400 w-6">
+                      {srv.number}
+                    </span>
+                    <IconComp className="w-4 h-4 text-neutral-400 group-hover:text-amber-600 transition-colors flex-shrink-0" />
+                    <div>
+                      <h4 className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-amber-600 transition-colors">
+                        {srv.title}
+                      </h4>
+                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block sm:hidden">
                         {srv.categoryLabel}
                       </span>
                     </div>
-
-                    <div>
-                      <span className="text-xs font-mono text-neutral-400 block mb-1">
-                        SPEC. {srv.number}
-                      </span>
-                      <h4 className="text-lg font-bold text-neutral-900 group-hover:text-amber-600 transition-colors">
-                        {srv.title}
-                      </h4>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                      {srv.desc}
-                    </p>
-
-                    <div className="space-y-1.5 pt-2 border-t border-neutral-200/80">
-                      {srv.specs.map((sp, spIdx) => (
-                        <div key={spIdx} className="flex items-start gap-2 text-xs text-neutral-700 font-medium">
-                          <span className="text-neutral-400 font-bold mt-0.5">•</span>
-                          <span>{sp}</span>
-                        </div>
-                      ))}
-                    </div>
-
                   </div>
 
-                  <div className="pt-6 mt-4 border-t border-neutral-200 flex items-center justify-between">
-                    <button
-                      onClick={() => handleOpenInquiry(srv.title)}
-                      className="text-xs font-bold text-neutral-900 group-hover:text-amber-600 inline-flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Konsultasikan Spesifikasi</span>
+                  {/* Center: Concise Description & Inline Tags */}
+                  <div className="md:w-5/12 pl-9 md:pl-0">
+                    <p className="text-xs text-neutral-600 leading-relaxed">
+                      {srv.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 pt-1.5">
+                      {srv.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="text-[10px] font-mono text-neutral-500 bg-neutral-100 px-1.5 py-0.5 rounded"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right: Direct Navigation Action */}
+                  <div className="md:w-2/12 flex justify-end items-center pl-9 md:pl-0">
+                    <span className="text-xs font-bold text-neutral-900 group-hover:text-amber-600 inline-flex items-center gap-1.5">
+                      Buka Layanan
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </span>
                   </div>
                 </div>
               );
@@ -619,7 +533,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
               </div>
               <h3 className="text-lg font-bold text-white">2. Dedicated On-Site Support</h3>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                Tim teknisi bersiaga 24/7 untuk pemeliharaan jaringan, respon insiden cepat data center, serta standby penuh selama jalannya event korporat.
+                Tim teknisi bersiaga 24/7 untuk pemeliharaan jaringan, respon cepat penanganan kendala perangkat, serta standby penuh selama jalannya event korporat.
               </p>
             </div>
 
@@ -647,136 +561,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
 
         </div>
       </section>
-
-      {/* =====================================================================
-          INQUIRY & CONSULTATION MODAL
-      ====================================================================== */}
-      {inquiryModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-fadeIn">
-          <div className="bg-white rounded-3xl shadow-2xl border border-neutral-200 max-w-lg w-full overflow-hidden text-neutral-900">
-            
-            {/* Modal Header */}
-            <div className="bg-neutral-950 text-white p-6 sm:p-7 flex items-start justify-between">
-              <div>
-                <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest block">
-                  KONSULTASI SPESIFIKASI PROYEK
-                </span>
-                <h3 className="text-xl font-bold mt-1 text-white">
-                  {inquiryModal.serviceName}
-                </h3>
-              </div>
-              <button
-                onClick={() => setInquiryModal({ isOpen: false, serviceName: '' })}
-                className="text-neutral-400 hover:text-white p-1 rounded-full hover:bg-neutral-800 transition-colors cursor-pointer text-lg leading-none"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Modal Form */}
-            <div className="p-6 sm:p-7">
-              {formSubmitted ? (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-bold text-neutral-900 text-lg">Permintaan Terkirim!</h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed max-w-xs mx-auto">
-                    Tim PT Integra Aneksa Kreasindo akan segera menghubungi Anda melalui WhatsApp / Email untuk menindaklanjuti detail teknis.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Nama Lengkap / Instansi
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Contoh: Budi Santoso (PT Contoh)"
-                      value={inquiryForm.name}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:ring-2 focus:ring-black focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-bold text-neutral-700 mb-1">
-                        Email Resmi
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="nama@perusahaan.com"
-                        value={inquiryForm.email}
-                        onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:ring-2 focus:ring-black focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-neutral-700 mb-1">
-                        Nomor WhatsApp / Telp
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="0812xxxxxxxx"
-                        value={inquiryForm.phone}
-                        onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:ring-2 focus:ring-black focus:outline-none"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Kategori Layanan
-                    </label>
-                    <select
-                      value={inquiryForm.serviceType}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, serviceType: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:ring-2 focus:ring-black focus:outline-none bg-white"
-                    >
-                      <option value="IT Infrastructure & Data Center">IT Infrastructure &amp; Data Center</option>
-                      <option value="Security System & Access Control">Security System &amp; Access Control</option>
-                      <option value="Mechanical Electrical & HVAC">Mechanical Electrical &amp; HVAC</option>
-                      <option value="Civil & Fire Hydrant Protection">Civil &amp; Fire Hydrant Protection</option>
-                      <option value="MICE & Event Management">MICE &amp; Corporate Event Management</option>
-                      <option value="Billboard & Media Advertising">Billboard &amp; Media Advertising</option>
-                      <option value="Paket Solusi Terpadu (IT + EO)">Paket Solusi Terpadu (IT + EO Combined)</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Deskripsi Kebutuhan Proyek
-                    </label>
-                    <textarea
-                      rows={3}
-                      required
-                      placeholder="Jelaskan perkiraan volume kabel, titik CCTV, lokasi billboard, atau konsep acara yang diinginkan..."
-                      value={inquiryForm.message}
-                      onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:ring-2 focus:ring-black focus:outline-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-neutral-950 hover:bg-neutral-800 text-white font-bold py-3.5 rounded-xl transition-colors text-xs flex items-center justify-center gap-2 cursor-pointer shadow-md"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>Kirimkan Formulir Konsultasi</span>
-                  </button>
-                </form>
-              )}
-            </div>
-
-          </div>
-        </div>
-      )}
 
     </div>
   );

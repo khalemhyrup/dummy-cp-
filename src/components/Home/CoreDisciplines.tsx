@@ -10,7 +10,7 @@ export const CoreDisciplines: React.FC<CoreDisciplinesProps> = ({ onNavigate }) 
     {
       id: '01',
       title: 'IT Infrastructure & Telecommunication',
-      desc: 'Comprehensive network design, fiber optic deployment, and secure data center integrations designed for maximum uptime and scalability.',
+      desc: 'Comprehensive network design, fiber optic deployment, and secure enterprise IT network integrations designed for maximum uptime and scalability.',
       route: 'it-solutions',
     },
     {

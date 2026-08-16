@@ -17,7 +17,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ navItem, isOpen, onItemClick
   const isDarkEO = portal === 'eo';
 
   return (
-    <div className="absolute top-full left-0 right-0 w-full z-50 transition-all duration-300 animate-fadeIn pointer-events-auto">
+    <div className="absolute top-full left-0 right-0 w-full z-50 transition-all duration-300 animate-mega-menu pointer-events-auto">
       {/* Pointer Caret aligned under nav */}
       <div className="max-w-7xl mx-auto px-6 relative">
         <div
@@ -33,14 +33,18 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ navItem, isOpen, onItemClick
 
           {navItem.megaMenuType === 'columns' && navItem.columns && (
             <div className={`grid gap-8 ${
-              navItem.columns.length === 4 ? 'grid-cols-1 md:grid-cols-4' : 'grid-cols-1 md:grid-cols-3'
+              navItem.columns.length === 4
+                ? 'grid-cols-1 md:grid-cols-4'
+                : navItem.columns.length === 2
+                ? 'grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto'
+                : 'grid-cols-1 md:grid-cols-3'
             }`}>
               {navItem.columns.map((col, colIdx) => (
                 <div key={colIdx} className="space-y-4">
                   {col.title && (
                     <div className={`border-b pb-2 ${isDarkEO ? 'border-blue-900/60' : 'border-gray-200'}`}>
                       <button
-                        onClick={() => onItemClick(col.title!)}
+                        onClick={() => onItemClick(col.id ? { id: col.id, title: col.title! } : col.title!)}
                         className={`group flex items-center justify-between w-full text-left font-bold text-xs tracking-wider uppercase transition-colors cursor-pointer ${
                           isDarkEO ? 'text-amber-400 hover:text-white' : 'text-gray-900 hover:text-amber-600'
                         }`}

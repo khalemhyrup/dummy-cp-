@@ -52,3 +52,62 @@
   animation: marquee 25s linear infinite;
 }
 
+/* Navbar & Mobile Drawer Animations */
+@keyframes slideDownDrawer {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDownSubMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes megaMenuFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-drawer-down {
+  animation: slideDownDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-sub-menu {
+  animation: slideDownSubMenu 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-backdrop-in {
+  animation: fadeInOverlay 0.3s ease-out forwards;
+}
+
+.animate-mega-menu {
+  animation: megaMenuFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
