@@ -244,17 +244,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
         </div>
 
         {/* Client Strip 2: PEFINDO, LIXIL, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
-            <span className="font-extrabold text-blue-900 text-xs sm:text-sm tracking-tight uppercase">
-              PEFINDO CREDIT RATING AGENCY
-            </span>
-            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
-              LIXIL
-            </span>
-            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
-              ap asianpaints
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
+            <img src="/EO/logo-client/pefindo-logo.svg" alt="PEFINDO" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/asian-paint-logo.svg" alt="Asian Paints" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 
@@ -369,17 +363,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
         </div>
 
         {/* Client Strip 3: LIXIL, KEMENAG RI, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
-            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
-              LIXIL
-            </span>
-            <span className="font-extrabold text-[#065f46] text-xs sm:text-sm tracking-tight uppercase">
-              KEMENTERIAN AGAMA RI
-            </span>
-            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
-              ap asianpaints
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
+            <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/kementrian-agama-logo.svg" alt="Kementerian Agama RI" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/asian-paint-logo.svg" alt="Asian Paints" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 
@@ -492,17 +480,11 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
         </div>
 
         {/* Client Strip 4: LIXIL, PT DOVER CHEMICAL, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
-            <span className="font-extrabold text-[#e4002b] text-xs sm:text-sm tracking-tight uppercase">
-              LIXIL
-            </span>
-            <span className="font-extrabold text-[#1e3a8a] text-xs sm:text-sm tracking-tight uppercase">
-              PT. DOVER CHEMICAL
-            </span>
-            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
-              ap asianpaints
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
+            <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/dover-chemical-logo.svg" alt="PT Dover Chemical" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/asian-paint-logo.svg" alt="Asian Paints" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 

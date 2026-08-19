@@ -32,6 +32,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const activePortal: PortalType =
     propPortal ||
     (currentPage === 'it-home' ||
+    currentPage === 'it-about' ||
+    currentPage === 'it-contact' ||
     currentPage === 'it-solutions' ||
     currentPage === 'it-support' ||
     currentPage === 'network-fo' ||
@@ -142,7 +144,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ? 'eo-home'
                   : 'home';
               if (onNavigate) onNavigate(homeTarget);
-              onMenuItemClick('Home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="flex items-center gap-3 group focus:outline-none"
@@ -194,28 +195,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                             : 'home';
                         if (onNavigate) onNavigate(target);
                         setActiveDropdown(null);
-                      } else if (item.id === 'about' || item.id === 'eo-about' || item.label === 'About') {
+                      } else if (item.id === 'about' || item.id === 'it-about' || item.id === 'eo-about' || item.label === 'About') {
                         if (activePortal === 'eo') {
                           if (onNavigate) onNavigate('eo-about');
+                        } else if (activePortal === 'it') {
+                          if (onNavigate) onNavigate('it-about');
                         } else {
                           if (onNavigate) onNavigate('about');
                         }
                         setActiveDropdown(null);
                       } else if (item.id === 'product-service' || item.id === 'divisions' || item.label.includes('Service') || item.label.includes('Division')) {
-                        if (activePortal === 'eo') {
-                          // EO Portal: only toggle the dropdown popup, do not navigate
+                        if (activePortal === 'eo' || activePortal === 'it') {
+                          // EO & IT Portal: only toggle the dropdown popup, do not navigate
                           setActiveDropdown(isDropdownActive ? null : item.id);
                           return;
                         }
-                        const target =
-                          activePortal === 'it'
-                            ? 'it-solutions'
-                            : 'service';
+                        const target = 'service';
                         if (onNavigate) onNavigate(target);
                         setActiveDropdown(null);
-                      } else if (item.id === 'information' || item.id === 'eo-contact' || item.label === 'Contact') {
+                      } else if (item.id === 'information' || item.id === 'it-contact' || item.id === 'eo-contact' || item.label === 'Contact') {
                         if (activePortal === 'eo') {
                           if (onNavigate) onNavigate('eo-contact');
+                        } else if (activePortal === 'it') {
+                          if (onNavigate) onNavigate('it-contact');
                         } else {
                           if (onNavigate) onNavigate('contact');
                         }
@@ -260,6 +262,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => {
                 if (activePortal === 'eo') {
                   if (onNavigate) onNavigate('eo-contact');
+                  onMenuItemClick('Contact');
+                } else if (activePortal === 'it') {
+                  if (onNavigate) onNavigate('it-contact');
                   onMenuItemClick('Contact');
                 } else {
                   if (onNavigate) onNavigate('contact');
@@ -358,21 +363,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                       if (onNavigate) onNavigate(target);
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
-                    } else if (item.id === 'about' || item.id === 'eo-about' || item.label === 'About') {
+                    } else if (item.id === 'about' || item.id === 'it-about' || item.id === 'eo-about' || item.label === 'About') {
                       if (activePortal === 'eo') {
                         if (onNavigate) onNavigate('eo-about');
+                      } else if (activePortal === 'it') {
+                        if (onNavigate) onNavigate('it-about');
                       } else {
                         if (onNavigate) onNavigate('about');
                       }
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
                     } else if (item.id === 'divisions' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
-                      if (onNavigate) onNavigate('service');
+                      if (activePortal === 'it') {
+                        if (onNavigate) onNavigate('it-solutions');
+                      } else {
+                        if (onNavigate) onNavigate('service');
+                      }
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
-                    } else if (item.id === 'information' || item.id === 'eo-contact' || item.label === 'Contact') {
+                    } else if (item.id === 'information' || item.id === 'it-contact' || item.id === 'eo-contact' || item.label === 'Contact') {
                       if (activePortal === 'eo') {
                         if (onNavigate) onNavigate('eo-contact');
+                      } else if (activePortal === 'it') {
+                        if (onNavigate) onNavigate('it-contact');
                       } else {
                         if (onNavigate) onNavigate('contact');
                       }
@@ -449,6 +462,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => {
                 if (activePortal === 'eo') {
                   if (onNavigate) onNavigate('eo-contact');
+                } else if (activePortal === 'it') {
+                  if (onNavigate) onNavigate('it-contact');
                 } else {
                   if (onNavigate) onNavigate('contact');
                 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, Phone, Mail, ArrowRight, Sparkles, Megaphone, Calendar, Users, Award, ExternalLink, Instagram } from 'lucide-react';
+import { ChevronDown, Phone, Mail, ArrowRight, Sparkles, Megaphone, Calendar, Users, Award, ExternalLink, Instagram, Home } from 'lucide-react';
 
 interface EOHomeProps {
   onNavigate: (page: string) => void;
@@ -40,9 +40,11 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
           <button
             onClick={() => onNavigate('home')}
-            className="text-xs font-mono text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-3 py-1 rounded-full border border-white/10"
+            aria-label="Back to Corporate Portal"
+            title="Kembali ke Main Portal"
+            className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white border border-white/25 backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer flex items-center justify-center group"
           >
-            <span>← Back to Corporate Portal</span>
+            <Home className="w-5 h-5 text-white transition-transform group-hover:scale-110" />
           </button>
         </div>
 

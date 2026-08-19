@@ -3,6 +3,8 @@ import { Navbar, PortalType } from './components/Header/Navbar';
 import { GeneralHome } from './components/Home/GeneralHome';
 import { ITHome } from './components/Home/ITHome';
 import { EOHome } from './components/Home/EOHome';
+import { ITAbout } from './components/IT/ITAbout';
+import { ITContact } from './components/IT/ITContact';
 import { EOAbout } from './components/EO/EOAbout';
 import { AboutUs } from './components/About/AboutUs';
 import { OrgStructurePage } from './components/About/OrgStructurePage';
@@ -13,13 +15,7 @@ import { EOPage } from './components/EO/EOPage';
 import { EOmain } from './components/EO/EOmain';
 import { EOAdversting } from './components/EO/EOAdversting';
 import { EOContact } from './components/EO/EOContact';
-import { ITSupportPage } from './components/IT/ITSupportPage';
-import { FiberOpticsPage } from './components/IT/FiberOpticsPage';
-import { SecuritySystemsPage } from './components/IT/SecuritySystemsPage';
-import { Telecomunication } from './components/IT/Telecomunication';
-import { CMEmain } from './components/CME/CMEmain';
-import { MechanicalPage } from './components/CME/Mechanical';
-import { ElectricalPage } from './components/CME/Electrical';
+import { CMEmain } from './components/IT/CME';
 import { Contact } from './components/Contact/Contact';
 import { Footer } from './components/Footer/Footer';
 import { DetailModal } from './components/Common/DetailModal';
@@ -31,6 +27,7 @@ type PageType =
   | 'it-home'
   | 'eo-home'
   | 'about'
+  | 'it-about'
   | 'eo-about'
   | 'org-structure'
   | 'client'
@@ -47,15 +44,18 @@ type PageType =
   | 'security-systems'
   | 'telecom'
   | 'contact'
+  | 'it-contact'
   | 'eo-contact';
 
 const getHashPath = (hashStr: string): string => {
-  return hashStr.replace(/^#\/?/, '').toLowerCase();
+  return hashStr.replace(/^#\/?/, '').replace(/\/+$/, '').toLowerCase();
 };
 
 const getInitialPage = (): PageType => {
   if (typeof window !== 'undefined') {
     const raw = getHashPath(window.location.hash);
+    if (raw === 'it/contact' || raw === 'it-contact' || (raw.includes('it') && raw.includes('contact'))) return 'it-contact';
+    if (raw === 'it/about' || raw === 'it-about' || (raw.includes('it') && raw.includes('about'))) return 'it-about';
     if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) return 'eo-contact';
     if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) return 'eo-about';
     if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') return 'it-home';
@@ -97,6 +97,19 @@ export const App: React.FC = () => {
     currentPage === 'media-advertising' ||
     currentPage === 'eo-contact';
 
+  const isITPortal =
+    currentPage === 'it-home' ||
+    currentPage === 'it-about' ||
+    currentPage === 'it-contact' ||
+    currentPage === 'it-solutions' ||
+    currentPage === 'it-support' ||
+    currentPage === 'network-fo' ||
+    currentPage === 'security-systems' ||
+    currentPage === 'telecom' ||
+    currentPage === 'cme-main' ||
+    currentPage === 'civil-construction' ||
+    currentPage === 'me-installation';
+
   const [activeModal, setActiveModal] = useState<{
     isOpen: boolean;
     title: string;
@@ -114,6 +127,12 @@ export const App: React.FC = () => {
     if (page === 'it-home' || page === 'it' || page === 'portal-it') {
       target = 'it-home';
       hashRoute = '/it';
+    } else if (page === 'it-about' || page === 'it/about') {
+      target = 'it-about';
+      hashRoute = '/it/about';
+    } else if (page === 'it-contact' || page === 'it/contact') {
+      target = 'it-contact';
+      hashRoute = '/it/contact';
     } else if (page === 'eo-home' || page === 'eo-portal' || page === 'portal-eo') {
       target = 'eo-home';
       hashRoute = '/eo';
@@ -130,8 +149,16 @@ export const App: React.FC = () => {
       target = 'client';
       hashRoute = '/about/client';
     } else if (page === 'about' || page === 'about-us') {
-      target = 'about';
-      hashRoute = '/about-us';
+      if (isEOPortal || currentPage.startsWith('eo')) {
+        target = 'eo-about';
+        hashRoute = '/eo/about';
+      } else if (isITPortal || currentPage.startsWith('it')) {
+        target = 'it-about';
+        hashRoute = '/it/about';
+      } else {
+        target = 'about';
+        hashRoute = '/about-us';
+      }
     } else if (page === 'cme-main' || page === 'cme') {
       target = 'cme-main';
       hashRoute = '/service/cme-main';
@@ -173,6 +200,9 @@ export const App: React.FC = () => {
       if (isEOPortal || currentPage.startsWith('eo')) {
         target = 'eo-contact';
         hashRoute = '/eo/contact';
+      } else if (isITPortal || currentPage.startsWith('it')) {
+        target = 'it-contact';
+        hashRoute = '/it/contact';
       } else {
         target = 'contact';
         hashRoute = '/contact';
@@ -198,7 +228,11 @@ export const App: React.FC = () => {
       const raw = getHashPath(window.location.hash);
       let target: PageType = 'home';
 
-      if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) {
+      if (raw === 'it/contact' || raw === 'it-contact' || (raw.includes('it') && raw.includes('contact'))) {
+        target = 'it-contact';
+      } else if (raw === 'it/about' || raw === 'it-about' || (raw.includes('it') && raw.includes('about'))) {
+        target = 'it-about';
+      } else if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) {
         target = 'eo-contact';
       } else if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) {
         target = 'eo-about';
@@ -218,10 +252,6 @@ export const App: React.FC = () => {
         target = 'security-systems';
       } else if (raw.includes('telecom') || raw.includes('telecommunication') || raw.includes('telekomunikasi')) {
         target = 'telecom';
-      } else if (raw.includes('contact')) {
-        target = 'contact';
-      } else if (raw.includes('about')) {
-        target = 'about';
       } else if (raw.includes('civil-construction') || raw.includes('civil-building') || raw.includes('cme-mechanical')) {
         target = 'civil-construction';
       } else if (raw.includes('me-installation') || raw.includes('mechanical-electrical') || raw.includes('cme-electrical')) {
@@ -236,6 +266,10 @@ export const App: React.FC = () => {
         target = 'eo';
       } else if (raw.includes('it-solutions')) {
         target = 'it-solutions';
+      } else if (raw.includes('contact')) {
+        target = 'contact';
+      } else if (raw.includes('about')) {
+        target = 'about';
       } else if (raw.includes('service') || raw.includes('product-service')) {
         target = 'service';
       } else {
@@ -258,12 +292,29 @@ export const App: React.FC = () => {
     const itemIdLower = itemId.toLowerCase();
 
     // Portal homepages
-    if (itemIdLower === 'it-home' || titleLower.includes('it & cme portal') || titleLower.includes('home (it & cme)')) {
+    if (
+      itemIdLower === 'it-home' ||
+      itemIdLower === 'it' ||
+      itemIdLower === 'portal-it' ||
+      titleLower === 'it & cme' ||
+      titleLower === 'buka it & cme' ||
+      titleLower.includes('it & cme') ||
+      titleLower.includes('home (it & cme)')
+    ) {
       handleNavigate('it-home');
       return;
     }
 
-    if (itemIdLower === 'eo-home' || titleLower.includes('eo & advertising portal') || titleLower.includes('home (eo & media)')) {
+    if (
+      itemIdLower === 'eo-home' ||
+      itemIdLower === 'eo' ||
+      itemIdLower === 'portal-eo' ||
+      titleLower === 'eo & media' ||
+      titleLower === 'buka eo & media' ||
+      titleLower.includes('eo & media') ||
+      titleLower.includes('eo & advertising portal') ||
+      titleLower.includes('home (eo & media)')
+    ) {
       handleNavigate('eo-home');
       return;
     }
@@ -291,30 +342,29 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to EO About page if clicked in EO portal context
+    // Navigate to About page (Portal Aware)
     if (
+      itemIdLower === 'it-about' ||
       itemIdLower === 'eo-about' ||
-      titleLower === 'eo-about' ||
-      (titleLower.includes('tentang kami') && titleLower.includes('eo')) ||
-      ((titleLower === 'about' || titleLower === 'about us') && (isEOPortal || currentPage.startsWith('eo')))
-    ) {
-      handleNavigate('eo-about');
-      return;
-    }
-
-    // Navigate to About page
-    if (
-      titleLower === 'about' ||
-      titleLower === 'about us' ||
-      titleLower.includes('profile') ||
-      titleLower.includes('management') ||
       itemIdLower === 'about' ||
       itemIdLower === 'about-us' ||
       itemIdLower === 'milestones' ||
       itemIdLower === 'values' ||
-      itemIdLower === 'leadership'
+      itemIdLower === 'leadership' ||
+      titleLower === 'about' ||
+      titleLower === 'about us' ||
+      titleLower === 'tentang kami' ||
+      titleLower.includes('tentang kami') ||
+      titleLower.includes('profile') ||
+      titleLower.includes('management')
     ) {
-      handleNavigate('about');
+      if (itemIdLower === 'it-about' || isITPortal || currentPage.startsWith('it')) {
+        handleNavigate('it-about');
+      } else if (itemIdLower === 'eo-about' || isEOPortal || currentPage.startsWith('eo')) {
+        handleNavigate('eo-about');
+      } else {
+        handleNavigate('about');
+      }
       return;
     }
 
@@ -430,20 +480,41 @@ export const App: React.FC = () => {
       titleLower === 'contact' ||
       titleLower === 'contact us' ||
       itemIdLower === 'contact' ||
+      itemIdLower === 'it-contact' ||
       itemIdLower === 'eo-contact' ||
       itemIdLower === 'information'
     ) {
       if (isEOPortal || currentPage.startsWith('eo')) {
         handleNavigate('eo-contact');
+      } else if (isITPortal || currentPage.startsWith('it')) {
+        handleNavigate('it-contact');
       } else {
         handleNavigate('contact');
       }
       return;
     }
 
+    // Direct navigation for Main Portal
+    if (
+      titleLower === 'main portal' ||
+      titleLower === 'portal main' ||
+      titleLower === 'corporate portal' ||
+      itemIdLower === 'main-portal' ||
+      itemIdLower === 'portal-main'
+    ) {
+      handleNavigate('home');
+      return;
+    }
+
     // Navigate to Home page
     if (titleLower === 'home' || itemIdLower === 'home') {
-      handleNavigate('home');
+      if (isEOPortal || currentPage.startsWith('eo')) {
+        handleNavigate('eo-home');
+      } else if (isITPortal || currentPage.startsWith('it')) {
+        handleNavigate('it-home');
+      } else {
+        handleNavigate('home');
+      }
       return;
     }
 
@@ -461,7 +532,7 @@ export const App: React.FC = () => {
       {/* Persistent Header Navbar with Multi-Portal Awareness */}
       <Navbar
         currentPage={currentPage}
-        currentPortal={isEOPortal ? 'eo' : undefined}
+        currentPortal={isEOPortal ? 'eo' : isITPortal ? 'it' : undefined}
         onNavigate={handleNavigate}
         onMenuItemClick={handleMenuItemClick}
         currentLang={currentLang}
@@ -472,6 +543,10 @@ export const App: React.FC = () => {
       <main ref={mainRef} className="flex-1">
         {currentPage === 'it-home' ? (
           <ITHome onNavigate={handleNavigate} />
+        ) : currentPage === 'it-about' ? (
+          <ITAbout onNavigate={handleNavigate} />
+        ) : currentPage === 'it-contact' ? (
+          <ITContact onNavigate={handleNavigate} />
         ) : currentPage === 'eo-home' ? (
           <EOHome onNavigate={handleNavigate} />
         ) : currentPage === 'eo-about' ? (
@@ -485,9 +560,9 @@ export const App: React.FC = () => {
         ) : currentPage === 'cme-main' ? (
           <CMEmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'civil-construction' ? (
-          <MechanicalPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+          <CMEmain key="mechanical" initialCategory="mechanical" onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'me-installation' ? (
-          <ElectricalPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+          <CMEmain key="electrical" initialCategory="electrical" onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo-main' ? (
           <EOmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'media-advertising' ? (
@@ -495,13 +570,13 @@ export const App: React.FC = () => {
         ) : currentPage === 'eo' ? (
           <EOPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'it-support' ? (
-          <ITSupportPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+          <ITPage key="it-support" initialCategory="it-support" onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'network-fo' ? (
-          <FiberOpticsPage onNavigate={handleNavigate} />
+          <ITPage key="network-fo" initialCategory="network-fo" onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'security-systems' ? (
-          <SecuritySystemsPage onNavigate={handleNavigate} />
+          <ITPage key="security-systems" initialCategory="security-systems" onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'telecom' ? (
-          <Telecomunication onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+          <ITPage key="telecom" initialCategory="telecom" onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'it-solutions' ? (
           <ITPage key={itCategory} initialCategory={itCategory} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'service' ? (
