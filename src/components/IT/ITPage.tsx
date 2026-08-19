@@ -3,6 +3,7 @@ import React from 'react';
 interface ITPageProps {
   onNavigate?: (page: string) => void;
   onContactClick?: () => void;
+  initialCategory?: string;
 }
 
 export const ITPage: React.FC<ITPageProps> = () => {
