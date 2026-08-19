@@ -41,21 +41,10 @@ export const itNavigationData: NavItem[] = [
     hasDropdown: false,
   },
   {
-    id: 'about',
+    id: 'it-about',
     label: 'About',
-    href: '#about',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'PROFILE',
-        items: [
-          { id: 'about-us', title: 'About Grasindopro', href: '#about' },
-          { id: 'client', title: 'Track Record & Clients', href: '#client' },
-          { id: 'org-structure', title: 'Organization Structure', href: '#org-structure' },
-        ],
-      },
-    ],
+    href: '#it/about',
+    hasDropdown: false,
   },
   {
     id: 'product-service',
@@ -86,9 +75,9 @@ export const itNavigationData: NavItem[] = [
     ],
   },
   {
-    id: 'information',
+    id: 'it-contact',
     label: 'Contact',
-    href: '#contact',
+    href: '#it/contact',
     hasDropdown: false,
   },
 ];

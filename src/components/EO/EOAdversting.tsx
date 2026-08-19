@@ -95,17 +95,11 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
         </div>
 
         {/* Client Strip 1: Grab, Herbalife, Chevrolet */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
-            <div className="flex items-center gap-2 bg-emerald-600 px-4 py-1 rounded-full text-white font-extrabold text-xs tracking-wider shadow-sm">
-              <span>Grab</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-1 text-[#2d5f27] font-extrabold text-xs sm:text-sm tracking-wider uppercase">
-              <span>HERBALIFE</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-1 text-[#8c6b12] font-extrabold text-xs sm:text-sm tracking-wider uppercase">
-              <span>CHEVROLET</span>
-            </div>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
+            <img src="/EO/logo-client/Grab-logo.svg" alt="Grab" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/herbalife-logo.svg" alt="Herbalife" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/chevrolet-logo.svg" alt="Chevrolet" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 
@@ -195,17 +189,11 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
         </div>
 
         {/* Client Strip 2: Ajaib, Asian Paints, Cushman & Wakefield */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16">
-            <span className="font-extrabold text-blue-900 text-xs sm:text-sm tracking-tight uppercase">
-              🧞 ajaib
-            </span>
-            <span className="font-extrabold text-[#d84315] text-xs sm:text-sm tracking-tight uppercase">
-              ap asianpaints
-            </span>
-            <span className="font-extrabold text-[#c62828] text-xs sm:text-sm tracking-tight uppercase">
-              CUSHMAN &amp; WAKEFIELD
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
+            <img src="/EO/logo-client/ajaib-logo.svg" alt="Ajaib" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/asian-paint-logo.svg" alt="Asian Paints" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/Chusman-wakefield-logo.svg" alt="Cushman & Wakefield" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 
@@ -248,14 +236,14 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Advertising/phylonsign2.png"
-                      alt="Pylon Sign Tower Jakarta"
+                      alt="Pylon Sign Wisma Nugraha"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Advertising/phylonsign3.png"
-                      alt="Pylon Sign Tenant List"
+                      alt="Pylon Sign Sopodel Tower"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -273,7 +261,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 Fungsi Utama
               </span>
               <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
-                Menciptakan efek urgensi, kemeriahan, dan keramaian untuk promosi jangka pendek.
+                T-Banner efektif untuk promosi dinamis, event, dan penanda lokasi dengan jangkauan luas.
               </p>
 
               <div className="pt-2">
@@ -284,7 +272,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                   <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Advertising/Tbaner1.png"
-                      alt="T-Banner IQOS Pinggir Jalan"
+                      alt="T-Banner IQOS Event"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
@@ -311,14 +299,10 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
         </div>
 
         {/* Client Strip 3: PEFINDO, IQOS */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20">
-            <span className="font-extrabold text-blue-900 text-xs sm:text-sm tracking-tight uppercase">
-              PEFINDO CREDIT RATING AGENCY
-            </span>
-            <span className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight uppercase flex items-center gap-1">
-              <span>●</span> IQOS
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20 md:gap-24">
+            <img src="/EO/logo-client/pefindo-logo.svg" alt="PEFINDO" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/iqos-logo.svg" alt="IQOS" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 
@@ -417,14 +401,10 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
         </div>
 
         {/* Client Strip 4: LPS, FKNK */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20">
-            <span className="font-extrabold text-amber-950 text-xs sm:text-sm tracking-tight uppercase">
-              LPS LEMBAGA PENJAMIN SIMPANAN
-            </span>
-            <span className="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight uppercase">
-              FKNK LAW FIRM
-            </span>
+        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20 md:gap-24">
+            <img src="/EO/logo-client/LPS-logo.svg" alt="LPS" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+            <img src="/EO/logo-client/fknk-logo.svg" alt="FKNK Law Firm" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
           </div>
         </div>
 

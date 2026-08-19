@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Home } from 'lucide-react';
 
 interface ITHomeProps {
   onNavigate: (page: string) => void;
@@ -72,22 +72,29 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
       ========================================================================== */}
       <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-[#030917] text-white">
         
-        {/* Background Visual with Tech Tint */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105 transition-transform duration-1000"
-          style={{ backgroundImage: "url('/images/hero_datacenter.jpg')" }}
-        />
+        {/* Background Video with Poster Fallback */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/it_solution/homepage-it.mp4" type="video/mp4" />
+        </video>
         
         {/* Deep Tech Blue Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020714]/90 via-[#061533]/85 to-[#030917] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020714]/80 via-[#061533]/70 to-[#030917] pointer-events-none" />
 
         {/* Top Spacer / Back Link */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-6 w-full flex items-center justify-between">
           <button
             onClick={() => onNavigate('home')}
-            className="text-xs font-mono text-neutral-300 hover:text-blue-400 transition-colors flex items-center gap-1.5 bg-black/50 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-white/10 cursor-pointer"
+            aria-label="Back to Corporate Portal"
+            title="Kembali ke Main Portal"
+            className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white border border-white/25 backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer flex items-center justify-center group"
           >
-            <span>← Back to Corporate Portal</span>
+            <Home className="w-5 h-5 text-white transition-transform group-hover:scale-110" />
           </button>
         </div>
 

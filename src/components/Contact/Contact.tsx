@@ -78,12 +78,20 @@ export const Contact: React.FC<ContactProps> = () => {
                 {/* Email */}
                 <div className="space-y-1">
                   <span className="text-xs text-zinc-400 block">Email Official</span>
-                  <a
-                    href="mailto:marketing@grasindopro.com"
-                    className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
-                  >
-                    marketing@grasindopro.com
-                  </a>
+                  <div className="space-y-1">
+                    <a
+                      href="mailto:marketing@grasindopro.com"
+                      className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
+                    >
+                      marketing@grasindopro.com
+                    </a>
+                    <a
+                      href="mailto:marketing_it@grasindopro.com"
+                      className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
+                    >
+                      marketing_it@grasindopro.com
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

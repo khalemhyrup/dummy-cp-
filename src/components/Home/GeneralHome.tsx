@@ -48,11 +48,11 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
           HERO SECTION 0: EXECUTIVE STRATEGY CINEMATIC HERO (Reference Image)
       ====================================================================== */}
       <section className="relative w-full h-screen min-h-[600px] flex flex-col justify-between overflow-hidden bg-neutral-950">
-        
+
         {/* Background Image with Crisp Photorealistic Executive Boardroom Desk */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
-          style={{ backgroundImage: "url('/images/executive_boardroom_hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/main-homepage.jpeg')" }}
         />
 
         {/* Ambient Dark/Warm Overlay matching reference photo */}
@@ -98,7 +98,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
               }}
               className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white/90 hover:bg-white text-neutral-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-2xl hover:scale-105 backdrop-blur-md cursor-pointer border border-white/40"
             >
-              START WINNING
+              Explore
             </button>
           </div>
         </div>
@@ -128,7 +128,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
           (Editorial Style: Image 1)
       ====================================================================== */}
       <section id="overview-section" className="w-full bg-white pt-10 pb-20 sm:pt-14 sm:pb-28 border-b border-neutral-200 relative overflow-hidden">
-        
+
         {/* Giant Marquee / Background Kinetic Headline */}
         <div className="w-full overflow-hidden whitespace-nowrap select-none opacity-90 mb-4 sm:mb-8 pointer-events-none">
           <h1 className="text-[12vw] sm:text-[10vw] lg:text-[8.5vw] font-bold tracking-tighter text-neutral-900 leading-none inline-block animate-marquee uppercase">
@@ -138,7 +138,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
+
             {/* Left: Overlapping Clean Asset Card */}
             <div className="lg:col-span-6 flex justify-center lg:justify-start">
               <div className="w-full max-w-md bg-neutral-100 border border-neutral-200 p-4 sm:p-6 shadow-xl relative group">
@@ -210,10 +210,10 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       ====================================================================== */}
       <section className="w-full bg-[#f4f4f4] py-20 sm:py-28 border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          
+
           {/* 3-Column Editorial Header */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
-            
+
             {/* Column 1: Main Title */}
             <div className="md:col-span-5">
               <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-neutral-900 leading-[1.12]">
@@ -266,10 +266,10 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       <section className="w-full bg-white py-20 sm:py-28 lg:py-32 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Column: Heading + Accordion */}
             <div className="lg:col-span-6 space-y-8">
-              
+
               <div>
                 <span className="text-xs font-mono font-bold tracking-widest text-amber-600 uppercase block mb-2">
                   OUR TWO SPECIALIZED PILLARS
@@ -379,7 +379,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       ====================================================================== */}
       <section className="w-full bg-[#ebebeb] py-20 sm:py-28 border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          
+
           {/* Big Kinetic Section Title */}
           <div className="mb-10 sm:mb-14">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 leading-tight">
@@ -388,7 +388,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-            
+
             {/* Left: Boardroom Collaboration Scene (Clean Photo Showcase) */}
             <div className="lg:col-span-8 bg-neutral-100 overflow-hidden relative shadow-md group border border-neutral-200">
               <img
@@ -444,7 +444,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       ====================================================================== */}
       <section className="w-full bg-white py-20 sm:py-28 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          
+
           {/* Big Typography Header */}
           <div className="mb-8">
             <h2 className="text-4xl sm:text-5xl lg:text-[4rem] font-bold tracking-tight text-neutral-900 leading-tight">
@@ -465,7 +465,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
 
           {/* 4-Column Editorial Gallery Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
-            
+
             {/* Gallery Item 1 */}
             <div className="group overflow-hidden bg-neutral-100 border border-neutral-200">
               <div className="aspect-square overflow-hidden relative">
@@ -536,7 +536,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
       ====================================================================== */}
       <section className="w-full bg-black text-white py-24 sm:py-32 lg:py-40">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center flex flex-col items-center">
-          
+
           <span className="text-xs font-mono font-bold tracking-widest text-amber-500 uppercase block mb-4">
             START YOUR NEXT PROJECT
           </span>
