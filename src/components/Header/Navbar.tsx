@@ -210,10 +210,34 @@ export const Navbar: React.FC<NavbarProps> = ({
                         if (onNavigate) onNavigate('it-product');
                         setActiveDropdown(null);
                       } else if (item.id === 'product-service' || item.id === 'divisions' || item.label.includes('Service') || item.label.includes('Division')) {
-                        if (activePortal === 'eo' || activePortal === 'it') {
-                          // EO & IT Portal: only toggle the dropdown popup, do not navigate
-                          setActiveDropdown(isDropdownActive ? null : item.id);
+                        if (activePortal === 'it') {
+                          const scrollToServices = () => {
+                            const el = document.getElementById('services');
+                            if (el) {
+                              const navHeight = 90;
+                              const elementPosition = el.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                              window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth',
+                              });
+                            }
+                          };
+
+                          if (currentPage === 'it-home') {
+                            scrollToServices();
+                          } else {
+                            if (onNavigate) onNavigate('it-home');
+                            setTimeout(scrollToServices, 150);
+                          }
+                          setActiveDropdown(null);
                           return;
+                        }
+                        if (activePortal === 'eo') {
+                          if (item.hasDropdown) {
+                            setActiveDropdown(isDropdownActive ? null : item.id);
+                            return;
+                          }
                         }
                         const target = 'service';
                         if (onNavigate) onNavigate(target);
@@ -379,13 +403,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                       }
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
-                    } else if (item.id === 'it-product' || item.label.toLowerCase() === 'product') {
-                      if (onNavigate) onNavigate('it-product');
-                      setActiveDropdown(null);
-                      setMobileMenuOpen(false);
-                    } else if (item.id === 'divisions' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
+                    } else if (item.id === 'divisions' || item.id === 'product-service' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
                       if (activePortal === 'it') {
-                        if (onNavigate) onNavigate('it-solutions');
+                        const scrollToServices = () => {
+                          const el = document.getElementById('services');
+                          if (el) {
+                            const navHeight = 90;
+                            const elementPosition = el.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: 'smooth',
+                            });
+                          }
+                        };
+                        if (currentPage === 'it-home') {
+                          scrollToServices();
+                        } else {
+                          if (onNavigate) onNavigate('it-home');
+                          setTimeout(scrollToServices, 150);
+                        }
                       } else {
                         if (onNavigate) onNavigate('service');
                       }

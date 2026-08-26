@@ -49,30 +49,8 @@ export const itNavigationData: NavItem[] = [
   {
     id: 'product-service',
     label: 'Services',
-    href: '#it-solutions',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'IT SOLUTIONS',
-        items: [
-          { id: 'it-solutions', title: 'Overview IT Solutions', href: '#it-solutions' },
-          { id: 'it-support', title: 'IT Support & Maintenance', href: '#it-support' },
-          { id: 'network-fo', title: 'Fiber Optics & Network Installer', href: '#network-fo' },
-          { id: 'security-systems', title: 'Security Systems (CCTV & Access)', href: '#security-systems' },
-          { id: 'telecom', title: 'Telecommunications & Network Tower', href: '#telecom' },
-        ],
-      },
-      {
-        title: 'CME (MECHANICAL & ELECTRICAL)',
-        id: 'cme-main',
-        items: [
-          { id: 'cme-main', title: 'Overview CME Solutions', href: '#cme-main' },
-          { id: 'cme-mechanical', title: 'Mekanikal (HVAC, Plumbing & Hydrant)', href: '#cme-mechanical' },
-          { id: 'cme-electrical', title: 'Elektrikal (Instalasi Listrik & Tenaga)', href: '#cme-electrical' },
-        ],
-      },
-    ],
+    href: '#services',
+    hasDropdown: false,
   },
   {
     id: 'it-product',

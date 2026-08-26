@@ -22,10 +22,10 @@ export const ITContact: React.FC<ITContactProps> = () => {
             loop
             muted
             playsInline
-            poster="/it_solution/background-it-page.jpg"
+            poster="/IT/background-it-page.jpg"
             className="w-full h-full object-cover object-center"
           >
-            <source src="/it_solution/background-it.mp4" type="video/mp4" />
+            <source src="/IT/background-it.mp4" type="video/mp4" />
           </video>
           {/* Subtle overlay for optimal contrast */}
           <div className="absolute inset-0 bg-black/30" />
@@ -168,10 +168,10 @@ export const ITContact: React.FC<ITContactProps> = () => {
             loop
             muted
             playsInline
-            poster="/it_solution/background-it-page.jpg"
+            poster="/IT/background-it-page.jpg"
             className="w-full h-full object-cover object-center"
           >
-            <source src="/it_solution/background-it.mp4" type="video/mp4" />
+            <source src="/IT/background-it.mp4" type="video/mp4" />
           </video>
           {/* Subtle overlay for optimal contrast */}
           <div className="absolute inset-0 bg-black/30" />

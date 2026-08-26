@@ -105,7 +105,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Garansi Resmi 2 Tahun',
       price: 1250000,
       formattedPrice: 'Rp 1.250.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024113.png',
+      image: '/IT/IT-solution/security1.jpeg',
       specs: [
         'Resolusi Ultra HD 4K (8 Megapixel) lensa 2.8mm wide angle',
         'Smart AI Human & Vehicle Classification (anti alarm palsu)',
@@ -125,7 +125,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'ColorHunter 24/7 Full Color',
       price: 1850000,
       formattedPrice: 'Rp 1.850.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024330.png',
+      image: '/IT/IT-solution/security2.png',
       specs: [
         'Sensor Starlight ColorHunter menampilkan warna terang 24 jam',
         'Jangkauan Smart EXIR LED jarak jauh hingga 80 meter',
@@ -163,7 +163,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Paket Komplit: Lock + Bracket ZL',
       price: 850000,
       formattedPrice: 'Rp 850.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024315.png',
+      image: '/IT/IT-solution/security3.png',
       specs: [
         'Kekuatan daya tahan magnetik 280 kg / 600 lbs anti-dobrak',
         'Mode Fail-Safe: Otomatis terbuka saat listrik padam/darurat kebakaran',
@@ -182,7 +182,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Stainless Steel SUS304',
       price: 950000,
       formattedPrice: 'Rp 950.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024330.png',
+      image: '/IT/IT-solution/security2.png',
       specs: [
         'Batang silinder baja solid tahan potong (Stainless Steel SUS304)',
         'Pengaturan waktu penguncian otomatis (Time Delay: 0, 3, 6, 9 detik)',
@@ -200,7 +200,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: '5 Metode Akses (Fingerprint + PIN + RFID)',
       price: 2350000,
       formattedPrice: 'Rp 2.350.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024113.png',
+      image: '/IT/IT-solution/security1.jpeg',
       specs: [
         '5 Metode akses: Fingerprint, PIN Anti-Peeping, Kartu RFID, App, & Kunci',
         'Sensor sidik jari biometrik semikonduktor 360° kecepatan ≤ 0.3s',
@@ -218,7 +218,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Kapasitas 10.000 Wajah + Software',
       price: 3650000,
       formattedPrice: 'Rp 3.650.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024315.png',
+      image: '/IT/IT-solution/security3.png',
       specs: [
         'Kamera ganda resolusi HD dengan algoritma pengenalan wajah 0.2 detik',
         'Teknologi Liveness Detection (tidak bisa dipalsukan foto / video)',
@@ -237,7 +237,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Free Software Payroll & Excel Export',
       price: 1450000,
       formattedPrice: 'Rp 1.450.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024113.png',
+      image: '/IT/IT-solution/security1.jpeg',
       specs: [
         'Sensor optik anti-gores dengan pembacaan sidik jari basah & kering',
         'Kapasitas 3.000 sidik jari, 10.000 kartu Mifare/EM-ID, 100.000 transaksi',
@@ -255,7 +255,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Panjang Palang 3 - 6 Meter LED',
       price: 9800000,
       formattedPrice: 'Rp 9.800.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024330.png',
+      image: '/IT/IT-solution/security2.png',
       specs: [
         'Motor DC Brushless Servo dengan kecepatan buka fleksibel (0.8s - 3s)',
         'Panjang palang oktagonal aluminium dengan lampu LED strip (3 - 6 meter)',
@@ -274,7 +274,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Integrasi Card Reader / Face Terminal',
       price: 11500000,
       formattedPrice: 'Rp 11.500.000',
-      image: '/it_solution/security/Screenshot 2026-08-08 024315.png',
+      image: '/IT/IT-solution/security3.png',
       specs: [
         'Material bodi Stainless Steel SUS304 berkualitas tinggi ketebalan 1.5mm',
         'Lampu indikator arah LED hijau/merah di bagian atas dan depan',
@@ -292,7 +292,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Panel LCD + Sirine Strobe 105dB',
       price: 6500000,
       formattedPrice: 'Rp 6.500.000',
-      image: '/CME/Mechanical/CME_pipa.png',
+      image: '/IT/CME/Mechanical/CME_pipa.png',
       specs: [
         'Panel kontrol cerdas dengan layar LCD interaktif pemetaan zona gedung',
         'Detektor asap fotoelektrik presisi tinggi mendeteksi titik api seketika',
@@ -319,6 +319,30 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
     },
   ];
 
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
+  const [quickFilter, setQuickFilter] = useState<'all' | 'best-seller' | 'enterprise'>('all');
+
+  const subCategoryChips = [
+    { id: 'all', label: 'All Products', group: 'all' },
+    { id: 'cctv-all', label: 'CCTV & IP Cam', group: 'cctv' },
+    { id: 'cctv-dome', label: 'Dome 4K', group: 'cctv' },
+    { id: 'access-all', label: 'Access Control', group: 'access' },
+    { id: 'access-emlock', label: 'EM-Lock 600lbs', group: 'access' },
+    { id: 'bio-all', label: 'Biometrics', group: 'biometric' },
+    { id: 'bio-face', label: 'Face AI', group: 'biometric' },
+    { id: 'barrier-all', label: 'Barrier Gate', group: 'barrier' },
+    { id: 'safety-fire', label: 'Fire Alarm', group: 'safety' },
+    { id: 'net-rack', label: 'Server Rack 42U', group: 'safety' },
+  ];
+
+  const activeFilterCount = useMemo(() => {
+    let count = 0;
+    if (selectedGroup !== 'all' || selectedSubCategory !== 'all') count++;
+    if (sortBy !== 'featured') count++;
+    if (quickFilter !== 'all') count++;
+    return count;
+  }, [selectedGroup, selectedSubCategory, sortBy, quickFilter]);
+
   // Filtering products
   const filteredProducts = useMemo(() => {
     let list = allProducts.filter((p) => {
@@ -335,6 +359,12 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       return true;
     });
 
+    if (quickFilter === 'best-seller') {
+      list = list.filter((p) => p.badge.toLowerCase().includes('best'));
+    } else if (quickFilter === 'enterprise') {
+      list = list.filter((p) => p.badge.toLowerCase().includes('enterprise') || p.badge.toLowerCase().includes('heavy') || p.badge.toLowerCase().includes('speed'));
+    }
+
     if (sortBy === 'price-low') {
       list.sort((a, b) => a.price - b.price);
     } else if (sortBy === 'price-high') {
@@ -343,12 +373,12 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       list.sort((a, b) => a.title.localeCompare(b.title));
     }
     return list;
-  }, [allProducts, selectedSubCategory, selectedGroup, sortBy]);
+  }, [allProducts, selectedSubCategory, selectedGroup, quickFilter, sortBy]);
 
   // Page Heading title
   const currentTitle = useMemo(() => {
     if (selectedSubCategory === 'all' && selectedGroup === 'all') {
-      return 'All Products';
+      return 'IT Hardware & Systems';
     }
     for (const group of sidebarGroups) {
       for (const item of group.items) {
@@ -359,13 +389,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
     }
     const foundGroup = sidebarGroups.find((g) => g.groupId === selectedGroup);
     if (foundGroup) return foundGroup.title;
-    return 'Products';
+    return 'IT Hardware & Systems';
   }, [selectedSubCategory, selectedGroup, sidebarGroups]);
-
-  const toggleFavorite = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   const handleSendWhatsApp = (product: ProductItem) => {
     const text = encodeURIComponent(
@@ -384,8 +409,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
   const getProductGallery = (prod: ProductItem) => {
     const defaultGallery = [
       prod.image,
-      '/it_solution/security/Screenshot 2026-08-08 024113.png',
-      '/it_solution/security/Screenshot 2026-08-08 024315.png',
+      '/IT/IT-solution/security1.jpeg',
+      '/IT/IT-solution/security2.png',
     ];
     return defaultGallery;
   };
@@ -518,8 +543,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
                 </div>
               </div>
 
-              {/* Action Buttons: Chat WhatsApp & Minta Penawaran BoQ */}
-              <div className="space-y-3 pt-2">
+              {/* Action Button: Chat WhatsApp Langsung */}
+              <div className="pt-2">
                 <button
                   onClick={() => handleSendWhatsApp(selectedProduct)}
                   className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-2xl flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all cursor-pointer"
@@ -534,115 +559,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
           </div>
         </div>
 
-        {/* Modal for Order / Inquiry Form */}
-        {inquiryModalOpen && (
-          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-            <div className="bg-white max-w-xl w-full p-6 sm:p-8 rounded-3xl shadow-2xl relative animate-fadeIn max-h-[90vh] overflow-y-auto">
-              
-              {/* Close Button */}
-              <button
-                onClick={() => setInquiryModalOpen(false)}
-                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 flex items-center justify-center text-sm font-bold cursor-pointer"
-              >
-                ✕
-              </button>
-
-              {inquirySuccess ? (
-                <div className="text-center py-12 space-y-3">
-                  <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                    <Check className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-xl font-bold text-neutral-900">Permintaan Penawaran Terkirim!</h3>
-                  <p className="text-xs text-neutral-600">
-                    Tim marketing kami akan segera menghubungi Anda dengan penawaran resmi dan rincian harga BoQ.
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-5">
-                  <div className="flex items-center gap-4 border-b border-neutral-100 pb-4">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden bg-neutral-100 shrink-0">
-                      <img src={selectedProduct.image} alt={selectedProduct.title} className="w-full h-full object-cover" />
-                    </div>
-                    <div>
-                      <span className="text-[11px] font-bold text-red-600 uppercase">{selectedProduct.badge}</span>
-                      <h3 className="text-sm font-bold text-neutral-900">{selectedProduct.title}</h3>
-                      <p className="text-xs font-black text-neutral-900 mt-0.5">{selectedProduct.formattedPrice}</p>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => handleSendWhatsApp(selectedProduct)}
-                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-xs cursor-pointer transition-colors"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>Chat WhatsApp Langsung untuk Pemesanan Cepat</span>
-                  </button>
-
-                  <div className="pt-2 border-t border-neutral-100">
-                    <h4 className="text-xs font-bold text-neutral-800 mb-3">Atau Isi Form Penawaran Resmi (BoQ):</h4>
-                    <form onSubmit={handleInquirySubmit} className="space-y-3">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-[11px] font-bold text-neutral-700 mb-1">Nama Lengkap *</label>
-                          <input
-                            type="text"
-                            required
-                            value={inquiryForm.name}
-                            onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
-                            placeholder="Nama Anda"
-                            className="w-full px-3 py-2 text-xs border border-neutral-200 rounded-lg focus:outline-none focus:border-black"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-[11px] font-bold text-neutral-700 mb-1">Nama Perusahaan</label>
-                          <input
-                            type="text"
-                            value={inquiryForm.company}
-                            onChange={(e) => setInquiryForm({ ...inquiryForm, company: e.target.value })}
-                            placeholder="PT / CV / Instansi"
-                            className="w-full px-3 py-2 text-xs border border-neutral-200 rounded-lg focus:outline-none focus:border-black"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                          <label className="block text-[11px] font-bold text-neutral-700 mb-1">Nomor WhatsApp *</label>
-                          <input
-                            type="tel"
-                            required
-                            value={inquiryForm.phone}
-                            onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
-                            placeholder="08xxxxxxxxxx"
-                            className="w-full px-3 py-2 text-xs border border-neutral-200 rounded-lg focus:outline-none focus:border-black"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-[11px] font-bold text-neutral-700 mb-1">Jumlah Kebutuhan (Unit)</label>
-                          <input
-                            type="number"
-                            min="1"
-                            value={inquiryForm.quantity}
-                            onChange={(e) => setInquiryForm({ ...inquiryForm, quantity: e.target.value })}
-                            className="w-full px-3 py-2 text-xs border border-neutral-200 rounded-lg focus:outline-none focus:border-black"
-                          />
-                        </div>
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="w-full py-3 bg-black hover:bg-neutral-800 text-white font-bold text-xs rounded-xl shadow-xs cursor-pointer transition-colors mt-2"
-                      >
-                        Kirim Permintaan Penawaran
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
       </div>
     );
   }
@@ -650,17 +566,18 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
   return (
     <div className="w-full min-h-screen bg-white font-sans text-neutral-900 overflow-x-hidden selection:bg-black selection:text-white">
       
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-10">
         
         {/* =========================================================================
-            HEADER BAR: TITLE (COUNT) + HIDE FILTERS & SORT BY
+            HEADER TITLE: Category Title (Count) + Desktop Controls (Hide Filters & Sort)
         ========================================================================== */}
-        <div className="flex items-center justify-between pb-6 sm:pb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900 tracking-tight">
+        <div className="flex items-center justify-between pb-3 sm:pb-5">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
             {currentTitle} ({filteredProducts.length})
           </h1>
 
-          <div className="flex items-center gap-4 sm:gap-6">
+          {/* Desktop Filter Toggle & Desktop Sort Dropdown (Visible on md+) */}
+          <div className="hidden md:flex items-center gap-6 shrink-0">
             
             {/* Toggle Filters Button */}
             <button
@@ -671,7 +588,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
               <SlidersHorizontal className="w-4 h-4" />
             </button>
 
-            {/* Sort Dropdown */}
+            {/* Desktop Sort Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
@@ -691,7 +608,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
               </button>
 
               {sortDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-neutral-200 rounded-xl shadow-lg z-30 py-2">
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-neutral-200 rounded-xl shadow-lg z-30 py-2 animate-fadeIn">
                   <button
                     onClick={() => {
                       setSortBy('featured');
@@ -744,12 +661,166 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
         </div>
 
         {/* =========================================================================
-            MAIN SECTION: SIDEBAR + PRODUCT GRID
+            HORIZONTAL SUBCATEGORY CHIPS BAR (ONLY VISIBLE ON MOBILE/HP: md:hidden)
+        ========================================================================== */}
+        <div className="flex md:hidden items-center gap-6 sm:gap-8 overflow-x-auto no-scrollbar pb-3.5 text-sm whitespace-nowrap border-b border-transparent">
+          {subCategoryChips.map((chip) => {
+            const isChipActive =
+              chip.id === 'all'
+                ? selectedSubCategory === 'all' && selectedGroup === 'all'
+                : selectedSubCategory === chip.id;
+            return (
+              <button
+                key={chip.id}
+                onClick={() => {
+                  if (chip.id === 'all') {
+                    setSelectedSubCategory('all');
+                    setSelectedGroup('all');
+                  } else {
+                    setSelectedSubCategory(chip.id);
+                    setSelectedGroup(chip.group);
+                  }
+                }}
+                className={`transition-all cursor-pointer font-medium text-xs sm:text-sm pb-1 ${
+                  isChipActive
+                    ? 'text-neutral-950 font-bold underline underline-offset-8 decoration-2'
+                    : 'text-neutral-600 hover:text-neutral-950'
+                }`}
+              >
+                {chip.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* =========================================================================
+            FILTER PILLS ROW (Nike Style - ONLY VISIBLE ON MOBILE/HP: md:hidden)
+        ========================================================================== */}
+        <div className="flex md:hidden border-t border-neutral-200/80 pt-3.5 pb-6 items-center justify-between gap-3">
+          
+          {/* Scrollable Pills List */}
+          <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1">
+            
+            {/* Pill 1: Master Filter Drawer Toggle (with active count badge) */}
+            <button
+              onClick={() => setIsMobileDrawerOpen(true)}
+              className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2 shrink-0 transition-all cursor-pointer border shadow-2xs ${
+                activeFilterCount > 0
+                  ? 'border-neutral-950 bg-neutral-950 text-white'
+                  : 'border-neutral-300 hover:border-neutral-900 bg-white text-neutral-900'
+              }`}
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5" />
+              <span>Filter {activeFilterCount > 0 ? `(${activeFilterCount})` : ''}</span>
+            </button>
+
+            {/* Pill 2: Quick Sort Dropdown for Mobile */}
+            <div className="relative shrink-0">
+              <button
+                onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
+                className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shrink-0 transition-all cursor-pointer border ${
+                  sortBy !== 'featured'
+                    ? 'border-neutral-950 bg-neutral-950 text-white'
+                    : 'border-neutral-300 hover:border-neutral-900 bg-white text-neutral-900'
+                }`}
+              >
+                <span>
+                  {sortBy === 'price-low'
+                    ? 'Price: Low to High'
+                    : sortBy === 'price-high'
+                    ? 'Price: High to Low'
+                    : sortBy === 'name'
+                    ? 'Name: A-Z'
+                    : 'Shop By Price / Sort'}
+                </span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+
+              {sortDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-52 bg-white border border-neutral-200 rounded-2xl shadow-xl z-30 py-2 animate-fadeIn">
+                  <button
+                    onClick={() => {
+                      setSortBy('featured');
+                      setSortDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-neutral-50 cursor-pointer ${
+                      sortBy === 'featured' ? 'font-bold text-neutral-900 bg-neutral-100' : 'text-neutral-600'
+                    }`}
+                  >
+                    Featured / Default
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSortBy('price-low');
+                      setSortDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-neutral-50 cursor-pointer ${
+                      sortBy === 'price-low' ? 'font-bold text-neutral-900 bg-neutral-100' : 'text-neutral-600'
+                    }`}
+                  >
+                    Price: Low to High
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSortBy('price-high');
+                      setSortDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-neutral-50 cursor-pointer ${
+                      sortBy === 'price-high' ? 'font-bold text-neutral-900 bg-neutral-100' : 'text-neutral-600'
+                    }`}
+                  >
+                    Price: High to Low
+                  </button>
+                  <button
+                    onClick={() => {
+                      setSortBy('name');
+                      setSortDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2.5 text-xs font-semibold hover:bg-neutral-50 cursor-pointer ${
+                      sortBy === 'name' ? 'font-bold text-neutral-900 bg-neutral-100' : 'text-neutral-600'
+                    }`}
+                  >
+                    Product Name: A to Z
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Pill 3: Best Seller Quick Filter */}
+            <button
+              onClick={() => setQuickFilter(quickFilter === 'best-seller' ? 'all' : 'best-seller')}
+              className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shrink-0 transition-all cursor-pointer border ${
+                quickFilter === 'best-seller'
+                  ? 'border-neutral-950 bg-neutral-950 text-white'
+                  : 'border-neutral-300 hover:border-neutral-900 bg-white text-neutral-800'
+              }`}
+            >
+              <span>Best Seller</span>
+            </button>
+
+            {/* Pill 4: Enterprise Grade Quick Filter */}
+            <button
+              onClick={() => setQuickFilter(quickFilter === 'enterprise' ? 'all' : 'enterprise')}
+              className={`rounded-full px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shrink-0 transition-all cursor-pointer border ${
+                quickFilter === 'enterprise'
+                  ? 'border-neutral-950 bg-neutral-950 text-white'
+                  : 'border-neutral-300 hover:border-neutral-900 bg-white text-neutral-800'
+              }`}
+            >
+              <span>Enterprise Grade</span>
+            </button>
+
+          </div>
+
+        </div>
+
+        {/* =========================================================================
+            MAIN BODY: DESKTOP SIDEBAR + RESPONSIVE PRODUCT GRID (2 COLS ON MOBILE)
         ========================================================================== */}
         <div className="flex gap-8 lg:gap-12 items-start">
           
           {/* =======================
-              LEFT SIDEBAR FILTERS
+              DESKTOP LEFT SIDEBAR
           ======================== */}
           {showFilters && (
             <aside className="w-56 sm:w-64 shrink-0 space-y-8 pr-4 select-none animate-fadeIn hidden md:block">
@@ -760,9 +831,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
                   onClick={() => {
                     setSelectedSubCategory('all');
                     setSelectedGroup('all');
+                    setQuickFilter('all');
                   }}
                   className={`text-sm font-semibold tracking-tight cursor-pointer hover:text-neutral-500 transition-colors ${
-                    selectedSubCategory === 'all' && selectedGroup === 'all'
+                    selectedSubCategory === 'all' && selectedGroup === 'all' && quickFilter === 'all'
                       ? 'text-neutral-950 underline underline-offset-4 font-bold'
                       : 'text-neutral-700'
                   }`}
@@ -805,76 +877,78 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
             </aside>
           )}
 
-          {/* =======================
-              PRODUCT GRID (3 COLS)
-          ======================== */}
+          {/* =======================================================================
+              PRODUCT GRID (2 COLUMNS ON MOBILE, 3-4 COLUMNS ON TABLET/DESKTOP)
+          ======================================================================== */}
           <main className="flex-1">
             {filteredProducts.length === 0 ? (
               <div className="text-center py-24 bg-neutral-50 rounded-2xl p-8">
                 <p className="text-base font-semibold text-neutral-800">
-                  Tidak ada produk dalam kategori ini.
+                  Tidak ada produk dalam filter ini.
                 </p>
                 <button
                   onClick={() => {
                     setSelectedSubCategory('all');
                     setSelectedGroup('all');
+                    setQuickFilter('all');
+                    setSortBy('featured');
                   }}
                   className="mt-3 text-xs font-bold text-neutral-900 underline cursor-pointer"
                 >
-                  Tampilkan Semua Produk
+                  Reset Semua Filter
                 </button>
               </div>
             ) : (
-              <div className={`grid grid-cols-1 sm:grid-cols-2 ${showFilters ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-x-6 gap-y-12`}>
+              <div className={`grid grid-cols-2 ${showFilters ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-x-3 sm:gap-x-6 gap-y-8 sm:gap-y-12`}>
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
                     onClick={() => handleProductClick(product)}
                     className="group flex flex-col cursor-pointer"
                   >
-                      {/* Image Container (Square / Portrait 1:1 Aspect Ratio) */}
-                      <div className="relative aspect-square w-full bg-[#f6f6f6] rounded-none overflow-hidden mb-3">
-                        <img
-                          src={product.image}
-                          alt={product.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/images/service_it_support.png';
-                          }}
-                        />
-                      </div>
+                    {/* Image Container (Square 1:1 Aspect Ratio) */}
+                    <div className="relative aspect-square w-full bg-[#f6f6f6] rounded-xl sm:rounded-none overflow-hidden mb-2.5 sm:mb-3">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = '/images/service_it_support.png';
+                        }}
+                      />
+                    </div>
 
-                      {/* Product Information Details (Nike/Apple Clean Style) */}
-                      <div className="space-y-1">
-                        
-                        {/* Top Mini Badge Tag (e.g. Recycled Materials, Best Seller, Just In) */}
-                        <p className={`text-sm font-semibold tracking-tight ${product.badgeColor || 'text-amber-800'}`}>
-                          {product.badge}
-                        </p>
+                    {/* Product Information Details */}
+                    <div className="space-y-0.5 sm:space-y-1">
+                      
+                      {/* Badge Tag */}
+                      <p className={`text-[11px] sm:text-xs font-semibold tracking-tight ${product.badgeColor || 'text-red-700'} line-clamp-1`}>
+                        {product.badge}
+                      </p>
 
-                        {/* Product Title */}
-                        <h2 className="text-sm font-bold text-neutral-900 leading-snug group-hover:text-neutral-600 transition-colors">
-                          {product.title}
-                        </h2>
+                      {/* Product Title */}
+                      <h2 className="text-xs sm:text-sm font-bold text-neutral-900 leading-snug group-hover:text-neutral-600 transition-colors line-clamp-2">
+                        {product.title}
+                      </h2>
 
-                        {/* Subtitle / Spec */}
-                        <p className="text-xs text-neutral-500 leading-normal line-clamp-1">
-                          {product.subtitle}
-                        </p>
+                      {/* Subtitle */}
+                      <p className="text-[11px] sm:text-xs text-neutral-500 leading-normal line-clamp-1">
+                        {product.subtitle}
+                      </p>
 
-                        {/* Colors / Option Text */}
-                        <p className="text-xs text-neutral-500 pt-0.5">
-                          {product.colorsText}
-                        </p>
+                      {/* Colors / Spec Text */}
+                      <p className="text-[10px] sm:text-xs text-neutral-400 pt-0.5 line-clamp-1">
+                        {product.colorsText}
+                      </p>
 
-                        {/* Price */}
-                        <p className="text-sm font-bold text-neutral-900 pt-1">
-                          {product.formattedPrice}
-                        </p>
-
-                      </div>
+                      {/* Price */}
+                      <p className="text-xs sm:text-sm font-extrabold text-neutral-900 pt-1">
+                        {product.formattedPrice}
+                      </p>
 
                     </div>
+
+                  </div>
                 ))}
               </div>
             )}
@@ -883,6 +957,156 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
         </div>
 
       </div>
+
+      {/* =========================================================================
+          MOBILE FILTER & SORT DRAWER (SLIDE-OVER / BOTTOM SHEET)
+      ========================================================================== */}
+      {isMobileDrawerOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4">
+          <div className="bg-white w-full sm:max-w-md max-h-[85vh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-fadeIn">
+            
+            {/* Drawer Header */}
+            <div className="p-4 sm:p-6 border-b border-neutral-100 flex items-center justify-between">
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-neutral-900">Filter &amp; Sort</h3>
+                <p className="text-xs text-neutral-500">Sesuaikan kriteria produk IT yang diinginkan</p>
+              </div>
+              <button
+                onClick={() => setIsMobileDrawerOpen(false)}
+                className="w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 flex items-center justify-center text-sm font-bold cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Drawer Body (Scrollable) */}
+            <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1 text-xs sm:text-sm">
+              
+              {/* Sort Section */}
+              <div className="space-y-3">
+                <h4 className="font-bold uppercase tracking-wider text-xs text-neutral-400 font-mono">Urutkan Berdasarkan</h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { id: 'featured', label: 'Featured / Default' },
+                    { id: 'price-low', label: 'Price: Low to High' },
+                    { id: 'price-high', label: 'Price: High to Low' },
+                    { id: 'name', label: 'Name: A-Z' },
+                  ].map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setSortBy(s.id as any)}
+                      className={`p-2.5 rounded-xl border text-xs font-semibold transition-all text-left ${
+                        sortBy === s.id
+                          ? 'border-black bg-black text-white'
+                          : 'border-neutral-200 text-neutral-800 bg-neutral-50'
+                      }`}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick Tags Section */}
+              <div className="space-y-3">
+                <h4 className="font-bold uppercase tracking-wider text-xs text-neutral-400 font-mono">Kategori Unggulan</h4>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => setQuickFilter(quickFilter === 'best-seller' ? 'all' : 'best-seller')}
+                    className={`px-3.5 py-2 rounded-full border text-xs font-bold transition-all ${
+                      quickFilter === 'best-seller'
+                        ? 'border-black bg-black text-white'
+                        : 'border-neutral-200 text-neutral-800 bg-white'
+                    }`}
+                  >
+                    Best Seller
+                  </button>
+                  <button
+                    onClick={() => setQuickFilter(quickFilter === 'enterprise' ? 'all' : 'enterprise')}
+                    className={`px-3.5 py-2 rounded-full border text-xs font-bold transition-all ${
+                      quickFilter === 'enterprise'
+                        ? 'border-black bg-black text-white'
+                        : 'border-neutral-200 text-neutral-800 bg-white'
+                    }`}
+                  >
+                    Enterprise Grade
+                  </button>
+                </div>
+              </div>
+
+              {/* Categories Section */}
+              <div className="space-y-4">
+                <h4 className="font-bold uppercase tracking-wider text-xs text-neutral-400 font-mono">Kategori Produk</h4>
+                
+                <button
+                  onClick={() => {
+                    setSelectedGroup('all');
+                    setSelectedSubCategory('all');
+                  }}
+                  className={`w-full text-left p-2.5 rounded-xl border text-xs font-bold ${
+                    selectedGroup === 'all' && selectedSubCategory === 'all'
+                      ? 'border-black bg-neutral-100 text-black'
+                      : 'border-neutral-100 text-neutral-600'
+                  }`}
+                >
+                  Semua Produk ({allProducts.length})
+                </button>
+
+                {sidebarGroups.map((group) => (
+                  <div key={group.groupId} className="space-y-1.5">
+                    <span className="text-xs font-extrabold text-neutral-900 block">{group.title}</span>
+                    <div className="grid grid-cols-1 gap-1 pl-1">
+                      {group.items.map((sub) => {
+                        const isSubActive = selectedSubCategory === sub.subCategory;
+                        return (
+                          <button
+                            key={sub.id}
+                            onClick={() => {
+                              setSelectedSubCategory(sub.subCategory);
+                              setSelectedGroup(group.groupId);
+                            }}
+                            className={`text-left text-xs py-1.5 px-2 rounded-lg transition-colors ${
+                              isSubActive
+                                ? 'font-bold text-neutral-900 bg-neutral-100'
+                                : 'text-neutral-600 hover:text-neutral-900'
+                            }`}
+                          >
+                            • {sub.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+            {/* Drawer Footer Actions */}
+            <div className="p-4 border-t border-neutral-100 bg-neutral-50 flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setSelectedSubCategory('all');
+                  setSelectedGroup('all');
+                  setQuickFilter('all');
+                  setSortBy('featured');
+                }}
+                className="py-3 px-4 rounded-xl border border-neutral-300 text-xs font-bold text-neutral-800 hover:bg-neutral-100 transition-colors"
+              >
+                Reset
+              </button>
+              <button
+                onClick={() => setIsMobileDrawerOpen(false)}
+                className="flex-1 py-3 px-4 rounded-xl bg-black text-white text-xs font-bold hover:bg-neutral-800 transition-colors shadow-xs"
+              >
+                Tampilkan ({filteredProducts.length} Produk)
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

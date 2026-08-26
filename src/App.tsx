@@ -10,12 +10,10 @@ import { AboutUs } from './components/About/AboutUs';
 import { OrgStructurePage } from './components/About/OrgStructurePage';
 import { ClientPage } from './components/About/Client';
 import { ServicesPage } from './components/Service/ServicesPage';
-import { ITPage } from './components/IT/ITPage';
 import { EOPage } from './components/EO/EOPage';
 import { EOmain } from './components/EO/EOmain';
 import { EOAdversting } from './components/EO/EOAdversting';
 import { EOContact } from './components/EO/EOContact';
-import { CMEmain } from './components/IT/CME';
 import { Contact } from './components/Contact/Contact';
 import { ProductPage } from './components/IT/product';
 import { Footer } from './components/Footer/Footer';
@@ -56,6 +54,9 @@ const getHashPath = (hashStr: string): string => {
 const getInitialPage = (): PageType => {
   if (typeof window !== 'undefined') {
     const raw = getHashPath(window.location.hash);
+    if (!raw || raw === '' || raw === '/' || raw === 'home' || raw === 'main') {
+      return 'home';
+    }
     if (raw === 'it/contact' || raw === 'it-contact' || (raw.includes('it') && raw.includes('contact'))) return 'it-contact';
     if (raw === 'it/about' || raw === 'it-about' || (raw.includes('it') && raw.includes('about'))) return 'it-about';
     if (raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) return 'it-product';
@@ -79,9 +80,6 @@ const getInitialPage = (): PageType => {
     if (raw.includes('event-organizer')) return 'eo';
     if (raw.includes('it-solutions')) return 'it-solutions';
     if (raw.includes('service') || raw.includes('product-service')) return 'service';
-    
-    const saved = localStorage.getItem('currentPage') as PageType;
-    if (saved) return saved;
   }
   return 'home';
 };
@@ -579,28 +577,21 @@ export const App: React.FC = () => {
           <OrgStructurePage onNavigate={handleNavigate} />
         ) : currentPage === 'client' ? (
           <ClientPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'cme-main' ? (
-          <CMEmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'civil-construction' ? (
-          <CMEmain key="mechanical" initialCategory="mechanical" onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'me-installation' ? (
-          <CMEmain key="electrical" initialCategory="electrical" onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
+        ) : currentPage === 'cme-main' ||
+            currentPage === 'civil-construction' ||
+            currentPage === 'me-installation' ||
+            currentPage === 'it-support' ||
+            currentPage === 'network-fo' ||
+            currentPage === 'security-systems' ||
+            currentPage === 'telecom' ||
+            currentPage === 'it-solutions' ? (
+          <ITHome onNavigate={handleNavigate} />
         ) : currentPage === 'eo-main' ? (
           <EOmain onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'media-advertising' ? (
           <EOAdversting onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo' ? (
           <EOPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'it-support' ? (
-          <ITPage key="it-support" initialCategory="it-support" onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'network-fo' ? (
-          <ITPage key="network-fo" initialCategory="network-fo" onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'security-systems' ? (
-          <ITPage key="security-systems" initialCategory="security-systems" onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'telecom' ? (
-          <ITPage key="telecom" initialCategory="telecom" onContactClick={() => handleNavigate('contact')} />
-        ) : currentPage === 'it-solutions' ? (
-          <ITPage key={itCategory} initialCategory={itCategory} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'service' ? (
           <ServicesPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo-contact' ? (
