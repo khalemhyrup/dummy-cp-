@@ -91,6 +91,9 @@ export const strategicPartnersData: Partner[] = [
   { name: 'Asian Paints', category: 'Manufacturing & Industrial', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d4/Asian_Paints_logo.svg' },
   { name: 'Ciputra Group', category: 'Property & Infrastructure', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Ciputra_Group.svg' },
   { name: 'Ajaib', category: 'Fintech & Investment Platform', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Ajaib_Sekuritas_Logo.svg' },
+  { name: 'Huawei', category: 'Telecommunication & Enterprise Network', logoUrl: '/images/partners/huawei.svg' },
+  { name: 'Ruijie Networks', category: 'Enterprise Network & Wireless Solutions', logoUrl: '/images/partners/ruijie.svg' },
+  { name: 'Netviel', category: 'Fiber Optic & Structured Cabling', logoUrl: '/images/partners/netviel.svg' },
 ];
 
 export const companyValuesData: CompanyValue[] = [

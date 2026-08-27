@@ -74,8 +74,8 @@ export const ITAbout: React.FC<ITAboutProps> = ({ onNavigate }) => {
 
         </div>
 
-        {/* Bottom Elements: Hubungi Kami & Tagline */}
-        <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 pt-6">
+        {/* Bottom Elements: Hubungi Kami */}
+        <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col sm:flex-row items-center justify-start gap-6 pt-6">
           <button
             onClick={() => onNavigate('it-contact')}
             className="group flex items-center bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-500 p-0.5 rounded-xl shadow-lg hover:scale-105 transition-transform cursor-pointer"
@@ -87,10 +87,6 @@ export const ITAbout: React.FC<ITAboutProps> = ({ onNavigate }) => {
               <span>Hubungi Kami</span>
             </div>
           </button>
-
-          <div className="text-cyan-300 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide font-mono uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-            Precision • Power • Connectivity
-          </div>
         </div>
 
       </section>
@@ -183,12 +179,7 @@ export const ITAbout: React.FC<ITAboutProps> = ({ onNavigate }) => {
 
           </div>
 
-          {/* Right Bottom Tagline */}
-          <div className="text-right pt-8">
-            <span className="text-cyan-300 font-extrabold text-xl sm:text-2xl tracking-wide font-mono uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              Precision • Power • Connectivity
-            </span>
-          </div>
+
 
         </div>
 
@@ -286,12 +277,7 @@ export const ITAbout: React.FC<ITAboutProps> = ({ onNavigate }) => {
 
           </div>
 
-          {/* Right Bottom Tagline */}
-          <div className="text-right pt-8">
-            <span className="text-cyan-300 font-extrabold text-xl sm:text-2xl tracking-wide font-mono uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              Precision • Power • Connectivity
-            </span>
-          </div>
+
 
         </div>
 

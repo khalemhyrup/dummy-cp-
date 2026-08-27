@@ -35,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     currentPage === 'it-about' ||
     currentPage === 'it-contact' ||
     currentPage === 'it-product' ||
+    currentPage === 'it-project' ||
     currentPage === 'it-solutions' ||
     currentPage === 'it-support' ||
     currentPage === 'network-fo' ||
@@ -176,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               const isDropdownActive = activeDropdown === item.id;
               const isPageActive =
                 (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.id === 'it-about' || item.label.includes('About'))) ||
-                (currentPage === 'it-product' && (item.id === 'it-product' || item.label.toLowerCase() === 'product')) ||
+                ((currentPage === 'it-project' || currentPage === 'it-product') && (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product'))) ||
                 (currentPage.includes('service') && item.label.includes('Service')) ||
                 ((currentPage === 'home' || currentPage === 'it-home' || currentPage === 'eo-home') && item.label.includes('Home'));
 
@@ -206,8 +207,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                           if (onNavigate) onNavigate('about');
                         }
                         setActiveDropdown(null);
-                      } else if (item.id === 'it-product' || item.label.toLowerCase() === 'product') {
-                        if (onNavigate) onNavigate('it-product');
+                      } else if (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product')) {
+                        if (onNavigate) onNavigate('it-project');
                         setActiveDropdown(null);
                       } else if (item.id === 'product-service' || item.id === 'divisions' || item.label.includes('Service') || item.label.includes('Division')) {
                         if (activePortal === 'it') {
@@ -362,7 +363,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {activeNavData.map((item) => {
             const isItemActive =
               (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.id === 'it-about' || item.label.includes('About'))) ||
-              (currentPage === 'it-product' && (item.id === 'it-product' || item.label.toLowerCase() === 'product')) ||
+              ((currentPage === 'it-project' || currentPage === 'it-product') && (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product'))) ||
               (currentPage.includes('service') && item.label.includes('Service')) ||
               (currentPage.includes('contact') && (item.id === 'information' || item.id === 'eo-contact' || item.id === 'it-contact' || item.label.includes('Contact'))) ||
               ((currentPage === 'home' || currentPage === 'it-home' || currentPage === 'eo-home') && item.label.includes('Home'));
@@ -401,6 +402,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                       } else {
                         if (onNavigate) onNavigate('about');
                       }
+                      setActiveDropdown(null);
+                      setMobileMenuOpen(false);
+                    } else if (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product')) {
+                      if (onNavigate) onNavigate('it-project');
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
                     } else if (item.id === 'divisions' || item.id === 'product-service' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {

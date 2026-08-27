@@ -48,7 +48,7 @@ export const ITContact: React.FC<ITContactProps> = () => {
                     Person in Charge
                   </span>
                   <span className="text-base sm:text-lg font-extrabold text-white tracking-wide">
-                    Deny Taufik
+                    Admin
                   </span>
                 </div>
               </div>
@@ -59,8 +59,8 @@ export const ITContact: React.FC<ITContactProps> = () => {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div className="space-y-0.5">
-                  <a href="tel:081398479044" className="text-base sm:text-lg font-extrabold text-white hover:text-cyan-300 transition-colors block">
-                    0813-9847-9044
+                  <a href="tel:087777288810" className="text-base sm:text-lg font-extrabold text-white hover:text-cyan-300 transition-colors block">
+                    0877-7728-8810
                   </a>
                   <a href="tel:0217452304" className="text-sm font-semibold text-slate-300 hover:text-cyan-300 transition-colors block">
                     (021) 745 2304
@@ -141,12 +141,7 @@ export const ITContact: React.FC<ITContactProps> = () => {
                 </div>
               </div>
 
-              {/* Tagline bottom right */}
-              <div className="text-right pt-6">
-                <span className="text-cyan-300 font-extrabold text-xl sm:text-2xl md:text-3xl tracking-wide font-mono uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                  Precision • Power • Connectivity
-                </span>
-              </div>
+
 
             </div>
 
@@ -225,12 +220,7 @@ export const ITContact: React.FC<ITContactProps> = () => {
             />
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-cyan-300 font-extrabold text-xl sm:text-2xl md:text-3xl tracking-wide font-mono uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              Precision • Power • Connectivity
-            </span>
-          </div>
+
 
         </div>
 

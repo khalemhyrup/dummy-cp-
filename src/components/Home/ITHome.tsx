@@ -3,6 +3,14 @@ import {
   Home,
   ChevronDown,
   MessageCircle,
+  Building2,
+  Landmark,
+  Briefcase,
+  Factory,
+  Store,
+  Layers,
+  Compass,
+  Sparkles,
 } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -354,33 +362,9 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
     },
   ];
 
-  // Exact 20 Partners matching Screenshot 3
-  const partnerLogos = [
-    // Row 1
-    { name: 'HP', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg' },
-    { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-    { name: 'Hewlett Packard Enterprise', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg' },
-    { name: 'Lenovo', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg' },
-    { name: 'DELL', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg' },
-    // Row 2
-    { name: 'aruba NETWORKS', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Aruba_Networks_logo.svg' },
-    { name: 'UBIQUITI NETWORKS', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Ubiquiti_Networks_Logo_2016.svg' },
-    { name: 'CISCO', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
-    { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-    { name: 'redhat', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Red_Hat_logo.svg' },
-    // Row 3
-    { name: 'Synology', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Synology_logo.svg' },
-    { name: 'QNAP', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/79/QNAP_Systems_logo.svg' },
-    { name: 'Symantec', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Symantec_logo.svg' },
-    { name: 'SANGFOR', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Sangfor_Technologies_Logo.png/600px-Sangfor_Technologies_Logo.png' },
-    { name: 'vmware', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Vmware.svg' },
-    // Row 4
-    { name: 'HIKVISION', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Hikvision_logo.svg' },
-    { name: 'dahua TECHNOLOGY', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/77/Dahua_Technology_logo.svg' },
-    { name: 'APC by Schneider Electric', logo: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/APC_by_Schneider_Electric_logo.svg' },
-    { name: 'BELDEN', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Belden_Logo.svg' },
-    { name: 'AMP NETCONNECT', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/CommScope_Logo.svg/600px-CommScope_Logo.svg.png' },
-  ];
+
+
+
 
   return (
     <div className="w-full bg-white font-sans text-neutral-900 overflow-x-hidden relative">
@@ -465,12 +449,8 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
             </button>
           </div>
 
-          {/* Right: Tagline */}
-          <div className="flex justify-center sm:justify-end">
-            <div className="text-cyan-400 font-extrabold text-sm sm:text-base md:text-lg tracking-wider drop-shadow-[0_2px_8px_rgba(6,182,212,0.4)] font-mono uppercase">
-              Precision • Power • Connectivity
-            </div>
-          </div>
+          {/* Right: Empty spacer to keep center aligned */}
+          <div className="hidden sm:block" />
 
         </div>
 
@@ -562,30 +542,48 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           
           {/* Section Header */}
-          <div ref={partnersHeaderRef} className="text-center mb-16 sm:mb-20">
+          <div ref={partnersHeaderRef} className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-[#2f6596] tracking-tight">
               Our Partners
             </h2>
             <div className="w-12 h-[3px] bg-[#2f6596] mx-auto mt-3" />
           </div>
 
-          {/* 4 Rows x 5 Columns Grid */}
-          <div ref={partnersContainerRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 sm:gap-12 items-center justify-items-center">
-            {partnerLogos.map((p, idx) => (
-              <div
-                key={idx}
-                className="w-full h-24 flex items-center justify-center p-3 transition-transform duration-300 hover:scale-110"
-              >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="max-h-12 max-w-[140px] w-auto h-auto object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = 'none';
-                  }}
-                />
-              </div>
-            ))}
+          {/* Single Combined Partners SVG Banner */}
+          <div ref={partnersContainerRef} className="w-full flex items-center justify-center">
+            <img
+              src="/IT/our-partner-it.svg"
+              alt="Our Partners"
+              loading="lazy"
+              className="w-full max-w-5xl h-auto object-contain transition-transform duration-300 hover:scale-[1.01]"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 4: OUR CLIENTS
+      ========================================================================== */}
+      <section id="client" className="w-full bg-white pb-24 sm:pb-32">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-normal text-[#2f6596] tracking-tight">
+              Our Clients
+            </h2>
+            <div className="w-12 h-[3px] bg-[#2f6596] mx-auto mt-3" />
+          </div>
+
+          {/* Single Combined Clients SVG Banner */}
+          <div className="w-full flex items-center justify-center">
+            <img
+              src="/IT/our-client-it.svg"
+              alt="Our Clients"
+              loading="lazy"
+              className="w-full max-w-5xl h-auto object-contain transition-transform duration-300 hover:scale-[1.01]"
+            />
           </div>
 
         </div>

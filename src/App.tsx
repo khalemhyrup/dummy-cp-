@@ -16,6 +16,7 @@ import { EOAdversting } from './components/EO/EOAdversting';
 import { EOContact } from './components/EO/EOContact';
 import { Contact } from './components/Contact/Contact';
 import { ProductPage } from './components/IT/product';
+import { ITProject } from './components/IT/ITProject';
 import { Footer } from './components/Footer/Footer';
 import { DetailModal } from './components/Common/DetailModal';
 import { MenuItem, NewsItem } from './types/navigation';
@@ -43,6 +44,7 @@ type PageType =
   | 'security-systems'
   | 'telecom'
   | 'it-product'
+  | 'it-project'
   | 'contact'
   | 'it-contact'
   | 'eo-contact';
@@ -59,7 +61,8 @@ const getInitialPage = (): PageType => {
     }
     if (raw === 'it/contact' || raw === 'it-contact' || (raw.includes('it') && raw.includes('contact'))) return 'it-contact';
     if (raw === 'it/about' || raw === 'it-about' || (raw.includes('it') && raw.includes('about'))) return 'it-about';
-    if (raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) return 'it-product';
+    if (raw === 'it/project' || raw === 'it-project' || raw === 'project' || raw === 'our-project' || (raw.includes('it') && raw.includes('project'))) return 'it-project';
+    if (raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) return 'it-project';
     if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) return 'eo-contact';
     if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) return 'eo-about';
     if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') return 'it-home';
@@ -103,6 +106,7 @@ export const App: React.FC = () => {
     currentPage === 'it-about' ||
     currentPage === 'it-contact' ||
     currentPage === 'it-product' ||
+    currentPage === 'it-project' ||
     currentPage === 'it-solutions' ||
     currentPage === 'it-support' ||
     currentPage === 'network-fo' ||
@@ -135,9 +139,9 @@ export const App: React.FC = () => {
     } else if (page === 'it-contact' || page === 'it/contact') {
       target = 'it-contact';
       hashRoute = '/it/contact';
-    } else if (page === 'it-product' || page === 'it/product' || page === 'product') {
-      target = 'it-product';
-      hashRoute = '/it/product';
+    } else if (page === 'it-project' || page === 'it/project' || page === 'project' || page === 'our-project' || page === 'it-product' || page === 'it/product' || page === 'product') {
+      target = 'it-project';
+      hashRoute = '/it/project';
     } else if (page === 'eo-home' || page === 'eo-portal' || page === 'portal-eo') {
       target = 'eo-home';
       hashRoute = '/eo';
@@ -237,8 +241,8 @@ export const App: React.FC = () => {
         target = 'it-contact';
       } else if (raw === 'it/about' || raw === 'it-about' || (raw.includes('it') && raw.includes('about'))) {
         target = 'it-about';
-      } else if (raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) {
-        target = 'it-product';
+      } else if (raw === 'it/project' || raw === 'it-project' || raw === 'project' || raw === 'our-project' || (raw.includes('it') && raw.includes('project')) || raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) {
+        target = 'it-project';
       } else if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) {
         target = 'eo-contact';
       } else if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) {
@@ -410,14 +414,18 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Navigate to IT Product Page
+    // Navigate to IT Project Page
     if (
+      itemIdLower === 'it-project' ||
       itemIdLower === 'it-product' ||
+      itemIdLower === 'project' ||
       itemIdLower === 'product' ||
+      titleLower.includes('project') ||
+      titleLower === 'our project' ||
       titleLower === 'product' ||
       titleLower === 'katalog produk'
     ) {
-      handleNavigate('it-product');
+      handleNavigate('it-project');
       return;
     }
 
@@ -563,8 +571,8 @@ export const App: React.FC = () => {
           <ITHome onNavigate={handleNavigate} />
         ) : currentPage === 'it-about' ? (
           <ITAbout onNavigate={handleNavigate} />
-        ) : currentPage === 'it-product' ? (
-          <ProductPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('it-contact')} />
+        ) : currentPage === 'it-project' || currentPage === 'it-product' ? (
+          <ITProject onNavigate={handleNavigate} />
         ) : currentPage === 'it-contact' ? (
           <ITContact onNavigate={handleNavigate} />
         ) : currentPage === 'eo-home' ? (

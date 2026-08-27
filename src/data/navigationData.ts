@@ -53,9 +53,9 @@ export const itNavigationData: NavItem[] = [
     hasDropdown: false,
   },
   {
-    id: 'it-product',
-    label: 'Product',
-    href: '#it/product',
+    id: 'it-project',
+    label: 'Our Project',
+    href: '#it/project',
     hasDropdown: false,
   },
   {

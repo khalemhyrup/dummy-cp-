@@ -6,23 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      ignored: [
-        '**/public/**',
-        '**/*.mp4',
-        '**/*.webm',
-        '**/*.ogg',
-        '**/*.mp3',
-        '**/*.wav',
-        '**/*.png',
-        '**/*.jpg',
-        '**/*.jpeg',
-        '**/*.gif',
-        '**/*.svg',
-        '**/*.tmp',
-        '**/*.~tmp',
-        '**/*.tmp.*',
-        '**/.git/**',
-      ],
+      usePolling: true,
+      interval: 1000,
     },
   },
 });
