@@ -50,11 +50,11 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </span>
               </div>
 
-              {/* 3 Billboard Photo Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* 3 Billboard Photo Cards (Side by side on mobile and desktop) */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-4">
                 
                 {/* Photo 1 */}
-                <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="aspect-[3/4] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
                     src="/EO/Advertising/baner1.png"
                     alt="Billboard Nokia Arteri Kota"
@@ -63,7 +63,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </div>
 
                 {/* Photo 2 */}
-                <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="aspect-[3/4] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
                     src="/EO/Advertising/baner2.png"
                     alt="Billboard Herbalife Jalan Tol Jagorawi"
@@ -72,7 +72,7 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 </div>
 
                 {/* Photo 3 */}
-                <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="aspect-[3/4] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
                     src="/EO/Advertising/baner3.png"
                     alt="Billboard Grab & BPR BBA"

@@ -314,19 +314,21 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               </h2>
 
               <div className="space-y-3">
-                <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
-                  <img
-                    src="/EO/Event organizer/virtualEvents1.png"
-                    alt="Hybrid Conference Room Setup"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
-                  <img
-                    src="/EO/Event organizer/virtualEvents2.png"
-                    alt="Webinar & Interactive Streaming Room"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+                  <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/virtualEvents1.png"
+                      alt="Hybrid Conference Room Setup"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/virtualEvents2.png"
+                      alt="Webinar & Interactive Streaming Room"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -394,16 +396,16 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 Exhibition Production
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="space-y-3 sm:col-span-1">
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="space-y-2 sm:space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction1.png"
                       alt="Booth Exhibition Stand"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction2.png"
                       alt="Booth Exhibition LIXIL Construction"
@@ -412,15 +414,15 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   </div>
                 </div>
 
-                <div className="space-y-3 sm:col-span-1">
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="space-y-2 sm:space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction3.png"
                       alt="Asian Paints Expo Pavilion"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction4.png"
                       alt="Custom Booth Decor"
@@ -429,15 +431,15 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   </div>
                 </div>
 
-                <div className="space-y-3 sm:col-span-1">
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                <div className="space-y-2 sm:space-y-3 sm:col-span-1">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction5.png"
                       alt="Atrium Mall Expo Exhibition"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                     <img
                       src="/EO/Event organizer/ExhibitionProduction6.png"
                       alt="Exhibition Stand Production Detail"

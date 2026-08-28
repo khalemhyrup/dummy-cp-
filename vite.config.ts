@@ -6,7 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      ignored: ['**/*.tmp', '**/*.~tmp', '**/*.tmp.*', '**/.git/**'],
+      usePolling: true,
+      interval: 1000,
     },
   },
 });

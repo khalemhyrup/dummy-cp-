@@ -34,6 +34,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     (currentPage === 'it-home' ||
     currentPage === 'it-about' ||
     currentPage === 'it-contact' ||
+    currentPage === 'it-product' ||
+    currentPage === 'it-project' ||
     currentPage === 'it-solutions' ||
     currentPage === 'it-support' ||
     currentPage === 'network-fo' ||
@@ -174,7 +176,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             {activeNavData.map((item) => {
               const isDropdownActive = activeDropdown === item.id;
               const isPageActive =
-                (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.label.includes('About'))) ||
+                (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.id === 'it-about' || item.label.includes('About'))) ||
+                ((currentPage === 'it-project' || currentPage === 'it-product') && (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product'))) ||
                 (currentPage.includes('service') && item.label.includes('Service')) ||
                 ((currentPage === 'home' || currentPage === 'it-home' || currentPage === 'eo-home') && item.label.includes('Home'));
 
@@ -204,11 +207,38 @@ export const Navbar: React.FC<NavbarProps> = ({
                           if (onNavigate) onNavigate('about');
                         }
                         setActiveDropdown(null);
+                      } else if (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product')) {
+                        if (onNavigate) onNavigate('it-project');
+                        setActiveDropdown(null);
                       } else if (item.id === 'product-service' || item.id === 'divisions' || item.label.includes('Service') || item.label.includes('Division')) {
-                        if (activePortal === 'eo' || activePortal === 'it') {
-                          // EO & IT Portal: only toggle the dropdown popup, do not navigate
-                          setActiveDropdown(isDropdownActive ? null : item.id);
+                        if (activePortal === 'it') {
+                          const scrollToServices = () => {
+                            const el = document.getElementById('services');
+                            if (el) {
+                              const navHeight = 90;
+                              const elementPosition = el.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                              window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth',
+                              });
+                            }
+                          };
+
+                          if (currentPage === 'it-home') {
+                            scrollToServices();
+                          } else {
+                            if (onNavigate) onNavigate('it-home');
+                            setTimeout(scrollToServices, 150);
+                          }
+                          setActiveDropdown(null);
                           return;
+                        }
+                        if (activePortal === 'eo') {
+                          if (item.hasDropdown) {
+                            setActiveDropdown(isDropdownActive ? null : item.id);
+                            return;
+                          }
                         }
                         const target = 'service';
                         if (onNavigate) onNavigate(target);
@@ -332,9 +362,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Nav Items */}
           {activeNavData.map((item) => {
             const isItemActive =
-              (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.label.includes('About'))) ||
+              (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.id === 'it-about' || item.label.includes('About'))) ||
+              ((currentPage === 'it-project' || currentPage === 'it-product') && (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product'))) ||
               (currentPage.includes('service') && item.label.includes('Service')) ||
-              (currentPage.includes('contact') && (item.id === 'information' || item.id === 'eo-contact' || item.label.includes('Contact'))) ||
+              (currentPage.includes('contact') && (item.id === 'information' || item.id === 'eo-contact' || item.id === 'it-contact' || item.label.includes('Contact'))) ||
               ((currentPage === 'home' || currentPage === 'it-home' || currentPage === 'eo-home') && item.label.includes('Home'));
 
             return (
@@ -373,9 +404,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                       }
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
-                    } else if (item.id === 'divisions' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
+                    } else if (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product')) {
+                      if (onNavigate) onNavigate('it-project');
+                      setActiveDropdown(null);
+                      setMobileMenuOpen(false);
+                    } else if (item.id === 'divisions' || item.id === 'product-service' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
                       if (activePortal === 'it') {
-                        if (onNavigate) onNavigate('it-solutions');
+                        const scrollToServices = () => {
+                          const el = document.getElementById('services');
+                          if (el) {
+                            const navHeight = 90;
+                            const elementPosition = el.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                            window.scrollTo({
+                              top: offsetPosition,
+                              behavior: 'smooth',
+                            });
+                          }
+                        };
+                        if (currentPage === 'it-home') {
+                          scrollToServices();
+                        } else {
+                          if (onNavigate) onNavigate('it-home');
+                          setTimeout(scrollToServices, 150);
+                        }
                       } else {
                         if (onNavigate) onNavigate('service');
                       }
