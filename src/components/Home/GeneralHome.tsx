@@ -52,32 +52,32 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Center Main Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center mt-6 sm:mt-10 md:mt-14 py-2 space-y-2.5 sm:space-y-3">
-          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase">
+        <div className="relative z-10 max-w-5xl mx-auto px-2 sm:px-6 text-center mt-24 sm:mt-10 md:mt-14 py-2 space-y-2.5 sm:space-y-3">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase tracking-tight">
             PT. INTEGRA ANEKSA KREASINDO
           </h1>
 
-          <p className="text-xs sm:text-base md:text-lg text-white/95 max-w-2xl mx-auto font-medium drop-shadow-md leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-white/95 max-w-2xl mx-auto font-medium drop-shadow-md leading-relaxed px-2">
             Inovasi Karya Terbaik Solusi kreatif untuk kebutuhan bisnis Anda
           </p>
         </div>
 
         {/* Portal Gateway Buttons: IT SOLUTION (Left) & EVENT ORGANIZER (Right) */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 w-full pb-28 sm:pb-28 md:pb-36 mt-auto -translate-y-14 sm:-translate-y-8 md:-translate-y-10">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 w-full pb-32 sm:pb-28 md:pb-36 mt-auto -translate-y-24 sm:-translate-y-8 md:-translate-y-10">
           
           {/* Single Centered Core Business Label */}
           <div className="text-center mb-4 sm:mb-8">
-            <span className="text-base sm:text-2xl md:text-3xl font-bold font-mono tracking-[0.2em] sm:tracking-[0.25em] text-white drop-shadow-md uppercase">
+            <span className="text-lg sm:text-2xl md:text-3xl font-extrabold font-mono tracking-[0.22em] sm:tracking-[0.25em] text-white drop-shadow-md uppercase">
               Core Business
             </span>
           </div>
 
-          <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-12 md:gap-24 lg:gap-32 w-full max-w-4xl mx-auto px-2 sm:px-4">
+          <div className="flex flex-row items-center justify-center gap-3 sm:gap-12 md:gap-24 lg:gap-32 w-full max-w-4xl mx-auto px-2 sm:px-4">
 
             {/* Left Gateway: IT & CME SOLUTION */}
             <button
               onClick={() => onNavigate('it-home')}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-3 sm:px-8 md:px-10 py-2.5 sm:py-3.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-neutral-950 border border-white/20 transition-all duration-300 cursor-pointer font-semibold text-[11px] sm:text-sm md:text-base tracking-normal sm:tracking-wider uppercase whitespace-nowrap text-center"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 sm:px-8 md:px-10 py-3.5 sm:py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-neutral-950 border border-white/30 backdrop-blur-xs transition-all duration-300 cursor-pointer font-bold text-xs sm:text-sm md:text-base tracking-normal sm:tracking-wider uppercase whitespace-nowrap text-center shadow-lg"
             >
               <span>IT &amp; CME SOLUTION</span>
             </button>
@@ -85,7 +85,7 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
             {/* Right Gateway: EO & ADVERTISING */}
             <button
               onClick={() => onNavigate('eo-home')}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-3 sm:px-8 md:px-10 py-2.5 sm:py-3.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-neutral-950 border border-white/20 transition-all duration-300 cursor-pointer font-semibold text-[11px] sm:text-sm md:text-base tracking-normal sm:tracking-wider uppercase whitespace-nowrap text-center"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 sm:px-8 md:px-10 py-3.5 sm:py-3.5 rounded-full bg-white/15 hover:bg-white text-white hover:text-neutral-950 border border-white/30 backdrop-blur-xs transition-all duration-300 cursor-pointer font-bold text-xs sm:text-sm md:text-base tracking-normal sm:tracking-wider uppercase whitespace-nowrap text-center shadow-lg"
             >
               <span>EO &amp; ADVERTISING</span>
             </button>

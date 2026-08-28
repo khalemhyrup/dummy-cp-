@@ -401,9 +401,9 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Center Main Hero Title */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center my-auto py-16 space-y-3 sm:space-y-4">
+        <div className="relative z-10 max-w-5xl mx-auto px-2 sm:px-6 text-center my-auto py-16 space-y-3 sm:space-y-4">
           
-          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase tracking-tight">
             PT. INTEGRA ANEKSA KREASINDO
           </h1>
 
@@ -411,7 +411,7 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
             IT Solutions &amp; CME Infrastructure
           </h2>
 
-          <p className="text-xs sm:text-sm text-neutral-300 max-w-2xl mx-auto pt-1 font-medium leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-300 max-w-2xl mx-auto pt-1 font-medium leading-relaxed px-2">
             Rekayasa infrastruktur jaringan fiber optik, sistem keamanan biometrik, telekomunikasi transmisi, serta tata udara mekanikal &amp; elektrikal industri berstandar enterprise.
           </p>
 
