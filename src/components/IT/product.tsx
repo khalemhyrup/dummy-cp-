@@ -105,7 +105,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Garansi Resmi 2 Tahun',
       price: 1250000,
       formattedPrice: 'Rp 1.250.000',
-      image: '/IT/IT-solution/security1.jpeg',
+      image: '/IT/Our Project/CCTV/1708909002900.jpg',
       specs: [
         'Resolusi Ultra HD 4K (8 Megapixel) lensa 2.8mm wide angle',
         'Smart AI Human & Vehicle Classification (anti alarm palsu)',
@@ -125,7 +125,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'ColorHunter 24/7 Full Color',
       price: 1850000,
       formattedPrice: 'Rp 1.850.000',
-      image: '/IT/IT-solution/security2.png',
+      image: '/IT/Our Project/CCTV/1708909027188.jpg',
       specs: [
         'Sensor Starlight ColorHunter menampilkan warna terang 24 jam',
         'Jangkauan Smart EXIR LED jarak jauh hingga 80 meter',
@@ -163,7 +163,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Paket Komplit: Lock + Bracket ZL',
       price: 850000,
       formattedPrice: 'Rp 850.000',
-      image: '/IT/IT-solution/security3.png',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/IMG_20230109_131600.jpg',
       specs: [
         'Kekuatan daya tahan magnetik 280 kg / 600 lbs anti-dobrak',
         'Mode Fail-Safe: Otomatis terbuka saat listrik padam/darurat kebakaran',
@@ -182,7 +182,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Stainless Steel SUS304',
       price: 950000,
       formattedPrice: 'Rp 950.000',
-      image: '/IT/IT-solution/security2.png',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/IMG_20230109_135949.jpg',
       specs: [
         'Batang silinder baja solid tahan potong (Stainless Steel SUS304)',
         'Pengaturan waktu penguncian otomatis (Time Delay: 0, 3, 6, 9 detik)',
@@ -200,7 +200,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: '5 Metode Akses (Fingerprint + PIN + RFID)',
       price: 2350000,
       formattedPrice: 'Rp 2.350.000',
-      image: '/IT/IT-solution/security1.jpeg',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/IMG_20230109_150050.jpg',
       specs: [
         '5 Metode akses: Fingerprint, PIN Anti-Peeping, Kartu RFID, App, & Kunci',
         'Sensor sidik jari biometrik semikonduktor 360° kecepatan ≤ 0.3s',
@@ -218,7 +218,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Kapasitas 10.000 Wajah + Software',
       price: 3650000,
       formattedPrice: 'Rp 3.650.000',
-      image: '/IT/IT-solution/security3.png',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/IMG_20241123_124329.jpg',
       specs: [
         'Kamera ganda resolusi HD dengan algoritma pengenalan wajah 0.2 detik',
         'Teknologi Liveness Detection (tidak bisa dipalsukan foto / video)',
@@ -237,7 +237,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Free Software Payroll & Excel Export',
       price: 1450000,
       formattedPrice: 'Rp 1.450.000',
-      image: '/IT/IT-solution/security1.jpeg',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/IMG_20250306_103656.jpg',
       specs: [
         'Sensor optik anti-gores dengan pembacaan sidik jari basah & kering',
         'Kapasitas 3.000 sidik jari, 10.000 kartu Mifare/EM-ID, 100.000 transaksi',
@@ -255,7 +255,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Panjang Palang 3 - 6 Meter LED',
       price: 9800000,
       formattedPrice: 'Rp 9.800.000',
-      image: '/IT/IT-solution/security2.png',
+      image: '/IT/Our Project/CCTV/IMG_20220729_093229.jpg',
       specs: [
         'Motor DC Brushless Servo dengan kecepatan buka fleksibel (0.8s - 3s)',
         'Panjang palang oktagonal aluminium dengan lampu LED strip (3 - 6 meter)',
@@ -274,7 +274,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Integrasi Card Reader / Face Terminal',
       price: 11500000,
       formattedPrice: 'Rp 11.500.000',
-      image: '/IT/IT-solution/security3.png',
+      image: '/IT/Our Project/Access Control & Slidding  Door Automatic/1737266516775.jpg',
       specs: [
         'Material bodi Stainless Steel SUS304 berkualitas tinggi ketebalan 1.5mm',
         'Lampu indikator arah LED hijau/merah di bagian atas dan depan',
@@ -292,7 +292,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
       colorsText: 'Panel LCD + Sirine Strobe 105dB',
       price: 6500000,
       formattedPrice: 'Rp 6.500.000',
-      image: '/IT/CME/Mechanical/CME_pipa.png',
+      image: '/IT/Our Project/HVAC/IMG_20240605_102014.jpg',
       specs: [
         'Panel kontrol cerdas dengan layar LCD interaktif pemetaan zona gedung',
         'Detektor asap fotoelektrik presisi tinggi mendeteksi titik api seketika',
@@ -409,8 +409,8 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
   const getProductGallery = (prod: ProductItem) => {
     const defaultGallery = [
       prod.image,
-      '/IT/IT-solution/security1.jpeg',
-      '/IT/IT-solution/security2.png',
+      '/IT/Our Project/CCTV/1708909002900.jpg',
+      '/IT/Our Project/CCTV/1708909027188.jpg',
     ];
     return defaultGallery;
   };

@@ -52,12 +52,12 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Center Main Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center mt-6 sm:mt-10 md:mt-14 py-2 space-y-3 sm:space-y-4">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.7)]">
-            PT  INTEGRA   ANEKSA  KREASINDO
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center mt-6 sm:mt-10 md:mt-14 py-2 space-y-2.5 sm:space-y-3">
+          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase">
+            PT. INTEGRA ANEKSA KREASINDO
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-white/95 max-w-3xl mx-auto font-medium drop-shadow-md leading-relaxed">
+          <p className="text-xs sm:text-base md:text-lg text-white/95 max-w-2xl mx-auto font-medium drop-shadow-md leading-relaxed">
             Inovasi Karya Terbaik Solusi kreatif untuk kebutuhan bisnis Anda
           </p>
         </div>

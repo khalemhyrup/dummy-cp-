@@ -38,7 +38,7 @@ export const heroSlidesData: HeroSlide[] = [
     badge: 'DIGITAL INNOVATION',
     ctaText: 'Schedule Demo',
     bgGradient: 'from-emerald-950 via-teal-950 to-slate-950',
-    image: '/IT/CME/Electrical/cme_electrical.png',
+    image: '/IT/Our Project/Elektrical/IMG_20240929_154651.jpg',
     darkOverlay: true,
   },
 ];
@@ -58,7 +58,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Executive Tech Forum 2026: Losing Control vs. Losing Growth in Multi-Cloud Security',
     category: 'Activities',
     date: '15 July 2026',
-    image: '/IT/IT-solution/security1.jpeg',
+    image: '/IT/Our Project/CCTV/1708909002900.jpg',
     summary: 'Industry leaders gathered at the Executive Tech Forum to discuss hybrid multi-cloud governance and zero-trust security postures.',
     content: 'Grasindopro hosted its signature executive forum inviting over 100 CIOs and CISOs to discuss multi-cloud risk management, unified threat monitoring, and automated compliance frameworks.'
   },
@@ -67,7 +67,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'CSR Education Program: Empowering Tech Talent in Remote Schools Across Indonesia',
     category: 'CSR',
     date: '02 June 2026',
-    image: '/IT/IT-solution/network1.jpeg',
+    image: '/IT/Our Project/Instlasi Jaringan/1708908937705.jpg',
     summary: 'As part of our commitment to sustainable community development, Grasindopro donated digital lab kits and IT training modules.',
     content: 'Demonstrating corporate social responsibility, Grasindopro launched a nationwide digital literacy initiative, providing computer hardware, internet connectivity, and coding workshops for vocational high school students.'
   },
@@ -76,7 +76,7 @@ export const newsArticlesData: NewsItem[] = [
     title: 'Press Release: PT Integra Aneksa Kreasindo Reports Strong Q1 2026 Financial Growth',
     category: 'Press Release',
     date: '18 May 2026',
-    image: '/IT/IT-solution/maintanance1.png',
+    image: '/IT/Our Project/Instlasi Jaringan/1708908943953.jpg',
     summary: 'Driven by surging demand for AI infrastructure, cloud integration, and security platforms, revenue expanded 14.8% YoY.',
     content: 'PT Integra Aneksa Kreasindo (Grasindopro) released its Q1 financial highlights showcasing double-digit growth driven by strong adoption of enterprise digital platforms and IT managed services.'
   }

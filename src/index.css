@@ -123,3 +123,33 @@
   animation: megaMenuFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* 3D Bold Layered Hero Title Style */
+.font-company-hero {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 
+    1.5px 2px 0px #cf8223,
+    3px 4px 0px #6d3309,
+    4px 5.5px 0px #381803;
+}
+
+@media (min-width: 640px) {
+  .font-company-hero {
+    text-shadow: 
+      2px 3px 0px #cf8223,
+      4px 6px 0px #6d3309,
+      5.5px 8px 0px #381803;
+  }
+}
+
+@media (min-width: 1024px) {
+  .font-company-hero {
+    text-shadow: 
+      2.5px 3.5px 0px #cf8223,
+      5px 7px 0px #6d3309,
+      7px 9.5px 0px #381803;
+  }
+}
+
