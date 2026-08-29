@@ -59,7 +59,12 @@ export const ITContact: React.FC<ITContactProps> = () => {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div className="space-y-0.5">
-                  <a href="tel:087777288810" className="text-base sm:text-lg font-extrabold text-white hover:text-cyan-300 transition-colors block">
+                  <a 
+                    href="https://wa.me/6287777288810" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-base sm:text-lg font-extrabold text-white hover:text-cyan-300 transition-colors block cursor-pointer"
+                  >
                     0877-7728-8810
                   </a>
                   <a href="tel:0217452304" className="text-sm font-semibold text-slate-300 hover:text-cyan-300 transition-colors block">

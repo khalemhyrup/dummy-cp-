@@ -43,7 +43,12 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div className="space-y-0.5">
-                  <a href="tel:081398479044" className="text-base sm:text-lg font-extrabold text-white hover:text-amber-400 transition-colors block">
+                  <a 
+                    href="https://wa.me/6281398479044" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-base sm:text-lg font-extrabold text-white hover:text-amber-400 transition-colors block cursor-pointer"
+                  >
                     0813-9847-9044
                   </a>
                   <a href="tel:0217452304" className="text-base sm:text-lg font-extrabold text-white hover:text-amber-400 transition-colors block">
@@ -262,8 +267,10 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
                   Tk
                 </a>
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  href="https://www.instagram.com/grasindo.pro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-pink-600 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
@@ -286,7 +293,9 @@ export const EOContact: React.FC<EOContactProps> = ({ onNavigate }) => {
               <div className="space-y-0.5">
                 <div>
                   <a
-                    href="tel:+6281398479044"
+                    href="https://wa.me/6281398479044"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-amber-300 transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.4)] inline-block"
                   >
                     +62 813-9847-9044

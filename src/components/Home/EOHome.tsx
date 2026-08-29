@@ -20,7 +20,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           SECTION 1: HERO SECTION (Cinematic Video Atmosphere)
       ========================================================================== */}
       <section className="relative w-full min-h-[85vh] lg:min-h-[90vh] flex flex-col justify-between overflow-hidden">
-        
+
         {/* Background Video with Poster Fallback */}
         <video
           autoPlay
@@ -32,7 +32,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         >
           <source src="/EO/homepageEO.mp4" type="video/mp4" />
         </video>
-        
+
         {/* Deep Blue Gradient Tint Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#030917]/80 via-[#071738]/70 to-[#050e1f] pointer-events-none" />
 
@@ -50,7 +50,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
 
         {/* Center Main Hero Title */}
         <div className="relative z-10 w-full max-w-5xl mx-auto px-3 sm:px-6 text-center my-auto py-16 space-y-3 sm:space-y-4">
-          
+
           <h1 className="text-[clamp(14px,5.1vw,24px)] sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase tracking-tighter sm:tracking-tight leading-tight">
             PT. INTEGRA ANEKSA KREASINDO
           </h1>
@@ -67,7 +67,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
 
         {/* Bottom Bar: Hubungi Kami, Chevron, Tagline */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-8 w-full grid grid-cols-1 sm:grid-cols-3 items-center gap-6">
-          
+
           {/* Left: Hubungi Kami Badge */}
           <div className="flex justify-center sm:justify-start">
             <button
@@ -112,7 +112,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           SECTION 2: OUR SERVICE (Advertising vs Event Organizer)
       ========================================================================== */}
       <section id="eo-services-section" className="w-full relative py-16 sm:py-24 bg-gradient-to-b from-[#050e1f] via-[#081a3d] to-[#040b18] overflow-hidden">
-        
+
         {/* Top Gradient Quote Banner */}
         <div className="w-full bg-gradient-to-r from-amber-600/90 via-amber-500 to-amber-600/90 py-3.5 px-4 text-center mb-12 shadow-md">
           <p className="text-xs sm:text-sm md:text-base font-semibold text-slate-950 max-w-4xl mx-auto leading-relaxed">
@@ -121,7 +121,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         </div>
 
         <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-10">
-          
+
           {/* Grasindopro Logo Header */}
           <div className="flex justify-center items-center mb-4">
             <img
@@ -138,10 +138,10 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
 
           {/* 2 Big Glowing Pillar Choices: Advertising & Event Organizer */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-stretch">
-            
+
             {/* Pillar 1: Advertising */}
             <div className="group relative bg-gradient-to-b from-blue-900/40 via-blue-950/60 to-black/80 border-2 border-blue-500/40 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:border-amber-400/80 hover:shadow-[0_0_40px_rgba(245,158,11,0.25)] transition-all duration-300">
-              
+
               <div>
                 {/* Glowing Title */}
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-wide mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] group-hover:text-amber-300 transition-colors">
@@ -188,7 +188,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
 
             {/* Pillar 2: Event Organizer */}
             <div className="group relative bg-gradient-to-b from-blue-900/40 via-blue-950/60 to-black/80 border-2 border-blue-500/40 rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:border-amber-400/80 hover:shadow-[0_0_40px_rgba(245,158,11,0.25)] transition-all duration-300">
-              
+
               <div>
                 {/* Glowing Title */}
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-wide mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.7)] group-hover:text-amber-300 transition-colors">
@@ -242,14 +242,14 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           SECTION 3: OUR CLIENT (High-Visibility Client Grid Image)
       ========================================================================== */}
       <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-[#040b18] via-[#0a1b38] to-[#040d1c] border-t border-blue-900/40">
-        
+
         {/* Top Quote */}
         <p className="text-xs sm:text-sm font-semibold text-neutral-300 text-center px-4 mb-6">
           &ldquo;Mengubah Ide Menjadi Kenyataan : Event Berkesan untuk Setiap Kesempatan.&rdquo;
         </p>
 
         <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center">
-          
+
           {/* Logo */}
           <div className="flex justify-center items-center mb-3">
             <img
@@ -267,7 +267,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           {/* Client Showcase Image */}
           <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-blue-500/20 group hover:border-amber-400/50 transition-colors">
             <img
-              src="/EO/ClientEO.png"
+              src="/EO/ClientEO.svg"
               alt="Our Clients - PT Integra Aneksa Kreasindo"
               className="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-500"
             />
@@ -280,7 +280,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           SECTION 4: BOTTOM BANNER & DIRECT CONTACT STRIP
       ========================================================================== */}
       <section className="w-full bg-[#030814] border-t border-neutral-800">
-        
+
         {/* Tagline text centered */}
         <div className="py-6 sm:py-8 text-center bg-gradient-to-b from-[#040d1c] to-[#0a1b38]">
           <span className="text-[#f57c00] font-extrabold text-xl sm:text-2xl md:text-3xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,124,0,0.5)]">
@@ -291,7 +291,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         {/* Golden Gradient Contact Strip (Balanced Medium Proportions) */}
         <div className="w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-xl border-t border-amber-300/30">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
-            
+
             {/* Left: Logo & Circular Socials */}
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5">
               <img
@@ -308,8 +308,10 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
                   Tk
                 </a>
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  href="https://www.instagram.com/grasindo.pro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-pink-600 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />

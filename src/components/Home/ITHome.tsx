@@ -597,7 +597,7 @@ export const ITHome: React.FC<ITHomeProps> = ({ onNavigate }) => {
           Message us
         </div>
         <a
-          href="https://wa.me/628111696090"
+          href="https://wa.me/6287777288810"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat via WhatsApp"

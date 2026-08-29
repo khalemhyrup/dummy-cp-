@@ -396,7 +396,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ onNavigate, onContactC
     const text = encodeURIComponent(
       `Halo Grasindo Pro,\nSaya tertarik untuk konsultasi dan penawaran harga produk:\n\n*${product.title}*\n${product.subtitle}\nHarga: ${product.formattedPrice}\n\nMohon info ketersediaan stok, harga, dan paket instalasinya. Terima kasih.`
     );
-    window.open(`https://wa.me/6281398479044?text=${text}`, '_blank');
+    window.open(`https://wa.me/6287777288810?text=${text}`, '_blank');
   };
 
   const handleInquirySubmit = (e: React.FormEvent) => {
