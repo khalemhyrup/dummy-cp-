@@ -29,7 +29,8 @@ import {
   Clock,
   Settings,
   Flame,
-  Tv
+  Tv,
+  Globe
 } from 'lucide-react';
 
 interface ServicesPageProps {
@@ -85,10 +86,21 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       icon: Server,
     },
     {
+      id: 'it-web',
+      category: 'it',
+      categoryLabel: 'WEB & DIGITAL SOLUTIONS',
+      number: '04',
+      title: 'Web Development & Company Profile',
+      route: 'it-home',
+      desc: 'Perancangan & pengembangan website profil perusahaan (Company Profile), web aplikasi kustom, sistem informasi terintegrasi, dan optimasi performa digital modern yang responsif.',
+      tags: ['Company Profile Web', 'Custom Web Application', 'UI/UX & Responsive Design'],
+      icon: Globe,
+    },
+    {
       id: 'it-tel',
       category: 'it',
       categoryLabel: 'TELECOMMUNICATION',
-      number: '04',
+      number: '05',
       title: 'Menara Telekomunikasi & BTS',
       route: 'it-home',
       desc: 'Rancang bangun menara SST/Monopole, instalasi feeder antena RF, shelter BTS, dan komunikasi IP PBX korporat.',
@@ -99,7 +111,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'cme-me',
       category: 'cme',
       categoryLabel: 'MECHANICAL ELECTRICAL',
-      number: '05',
+      number: '06',
       title: 'HVAC, Panel LVMDP & Genset',
       route: 'it-home',
       desc: 'Instalasi pendingin VRV/Chiller, panel distribusi daya listrik, genset standby, dan manajemen energi gedung.',
@@ -110,7 +122,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'cme-civil',
       category: 'cme',
       categoryLabel: 'CIVIL & PLUMBING',
-      number: '06',
+      number: '07',
       title: 'Konstruksi Sipil & Fire Hydrant',
       route: 'it-home',
       desc: 'Struktur sipil, sistem perpipaan air & STP, serta instalasi proteksi kebakaran pipa hydrant dan sprinkler otomatis.',
@@ -121,7 +133,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'eo-mice',
       category: 'eo',
       categoryLabel: 'EVENT MANAGEMENT',
-      number: '07',
+      number: '08',
       title: 'MICE & Corporate Event Production',
       route: 'eo-home',
       desc: 'Penyelenggaraan RUPS, seminar nasional, konferensi, festival, dan gala dinner dengan tata suara & visual spektakuler.',
@@ -132,7 +144,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'eo-expo',
       category: 'eo',
       categoryLabel: 'EXHIBITION & STAGE',
-      number: '08',
+      number: '09',
       title: 'Custom Exhibition Booth & Backdrop',
       route: 'eo-home',
       desc: 'Fabrikasi booth pameran paviliun, backdrop 3D panggung, dan display produk langsung dari workshop mandiri.',
@@ -143,7 +155,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'ad-ooh',
       category: 'advertising',
       categoryLabel: 'OUTDOOR ADVERTISING',
-      number: '09',
+      number: '10',
       title: 'Billboard Tol & Pylon Signage',
       route: 'eo-home',
       desc: 'Titik reklame strategis jalan tol & arteri, pylon sign gedung, dan neon box dengan kelengkapan izin pajak SKPD.',
@@ -154,7 +166,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       id: 'ad-brand',
       category: 'advertising',
       categoryLabel: 'BRAND ACTIVATION',
-      number: '10',
+      number: '11',
       title: 'Branding Mobil, Mural & Merchandise',
       route: 'eo-home',
       desc: 'Wrapping stiker armada mobil/truk, seni mural lukis dinding promosi, dan produksi suvenir merchandise korporat.',
@@ -171,15 +183,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
     <div className="w-full bg-white font-sans text-neutral-900 overflow-x-hidden selection:bg-black selection:text-white">
 
       {/* =====================================================================
-          SECTION 1: MASSIVE KINETIC EDITORIAL HEADER
-          (Matching Homepage Main Template & Editorial Typography)
+          SECTION 1: STICKY HERO HEADER (Background & Header stay fixed at top)
       ====================================================================== */}
-      <section className="w-full bg-white pt-10 pb-16 sm:pt-14 sm:pb-20 border-b border-neutral-200 relative overflow-hidden">
-        
-        {/* Giant Kinetic Marquee Headline */}
-        <div className="w-full overflow-hidden whitespace-nowrap select-none opacity-90 mb-4 sm:mb-8 pointer-events-none">
-          <h1 className="text-[12vw] sm:text-[10vw] lg:text-[8.5vw] font-bold tracking-tighter text-neutral-900 leading-none inline-block animate-marquee uppercase">
-            Services &amp; Capabilities &nbsp;•&nbsp; Grasindo Pro &nbsp;•&nbsp; IT Solutions &nbsp;•&nbsp; CME Engineering &nbsp;•&nbsp; Event &amp; Advertising &nbsp;•&nbsp;
+      <section 
+        className="sticky top-0 z-0 w-full min-h-[580px] lg:min-h-[640px] bg-cover bg-center bg-no-repeat pt-10 pb-16 sm:pt-14 sm:pb-24 border-b border-neutral-200 overflow-hidden"
+        style={{
+          backgroundImage: `url('/images/background-service.jpg')`,
+        }}
+      >
+        {/* Giant Headline */}
+        <div className="w-full overflow-hidden whitespace-nowrap select-none opacity-90 mb-4 sm:mb-8 pointer-events-none text-center flex justify-center">
+          <h1 className="text-[12vw] sm:text-[10vw] lg:text-[8.5vw] font-bold tracking-tighter text-neutral-900 leading-none uppercase text-center">
+            GRASINDO PRO
           </h1>
         </div>
 
@@ -188,16 +203,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
             
             {/* Left: Overlapping Editorial Showcase Card */}
             <div className="lg:col-span-6 flex justify-center lg:justify-start">
-              <div className="w-full max-w-md bg-neutral-100 border border-neutral-200 p-4 sm:p-6 shadow-xl relative group">
-                <div className="aspect-[4/4] overflow-hidden bg-white relative mb-4">
+              <div className="w-full max-w-md bg-white border border-neutral-200 p-4 sm:p-6 shadow-xl relative group rounded-xl">
+                <div className="aspect-[4/4] overflow-hidden bg-white relative mb-4 rounded-lg">
                   <img
                     src="/images/corporate_hero_headquarters.jpg"
                     alt="Grasindopro Multi-Service Facilities"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-xs text-white text-[10px] font-mono font-bold tracking-widest px-2.5 py-1 uppercase">
-                    CAPABILITIES PORTFOLIO
-                  </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
@@ -219,7 +231,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
             {/* Right: Section Overview & Division Switcher */}
             <div className="lg:col-span-6 flex flex-col justify-center space-y-6 lg:pl-6">
               
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 rounded-full w-fit">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-xs border border-neutral-200 rounded-full w-fit">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-700">
                   SERVICES &amp; SOLUTIONS CATALOG
@@ -246,7 +258,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
 
                 <button
                   onClick={() => onNavigate && onNavigate('eo-home')}
-                  className="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 text-xs sm:text-sm font-semibold px-7 py-3.5 rounded-full transition-all border border-neutral-300 cursor-pointer"
+                  className="inline-flex items-center gap-2 bg-white hover:bg-neutral-100 text-neutral-900 text-xs sm:text-sm font-semibold px-7 py-3.5 rounded-full transition-all border border-neutral-300 cursor-pointer shadow-xs"
                 >
                   <span>EO &amp; MEDIA</span>
                   <ArrowRight className="w-4 h-4" />
@@ -260,16 +272,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       </section>
 
       {/* =====================================================================
-          SECTION 2: 2 CORE PILLARS OVERVIEW (Editorial Style)
+          SCROLLING OVERLAY CONTAINER (Scrolls UP over Section 1)
       ====================================================================== */}
-      <section className="w-full bg-[#f4f4f4] py-16 sm:py-24 border-b border-neutral-300">
+      <div className="relative z-10 bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+
+        {/* =====================================================================
+            SECTION 2: 2 CORE PILLARS OVERVIEW (Editorial Style)
+        ====================================================================== */}
+        <section className="w-full bg-[#f4f4f4] py-16 sm:py-24 border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start mb-12">
             <div className="md:col-span-5">
-              <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest block mb-2">
-                02 DIVISI OPERASIONAL UTAMA
-              </span>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-tight">
                 Two Dedicated Divisions.<br />One Integrated Governance.
               </h2>
@@ -294,17 +308,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                       <Server className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono font-bold text-neutral-400 uppercase tracking-widest block">
-                        DIVISION 01
-                      </span>
                       <h3 className="text-xl font-bold text-neutral-900">
                         IT &amp; CME Infrastructure
                       </h3>
                     </div>
                   </div>
-                  <span className="text-xs font-mono font-bold bg-neutral-100 px-3 py-1 text-neutral-700">
-                    ENGINEERING
-                  </span>
                 </div>
 
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -349,17 +357,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                       <Sparkles className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-mono font-bold text-neutral-400 uppercase tracking-widest block">
-                        DIVISION 02
-                      </span>
                       <h3 className="text-xl font-bold text-neutral-900">
                         Event Organizer &amp; Media
                       </h3>
                     </div>
                   </div>
-                  <span className="text-xs font-mono font-bold bg-amber-100 text-amber-900 px-3 py-1">
-                    CREATIVE &amp; MICE
-                  </span>
                 </div>
 
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -405,37 +407,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
       <section className="w-full py-12 sm:py-16 bg-white border-b border-neutral-300">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-neutral-900 gap-4">
+          <div className="mb-8 pb-4 border-b border-neutral-900">
             <div>
-              <span className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest block mb-1">
-                DIRECTORY
-              </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">
                 Layanan &amp; Spesifikasi Proyek
               </h2>
-            </div>
-
-            {/* Filter Pills */}
-            <div className="flex flex-wrap gap-1 bg-neutral-100 p-1 rounded-full border border-neutral-200 w-fit">
-              {[
-                { id: 'all', label: 'Semua' },
-                { id: 'it', label: 'IT Solutions & Network' },
-                { id: 'cme', label: 'Mechanical & Civil' },
-                { id: 'eo', label: 'Event Organizer' },
-                { id: 'advertising', label: 'Media Advertising' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveFilter(tab.id as any)}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                    activeFilter === tab.id
-                      ? 'bg-neutral-900 text-white shadow-xs'
-                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-white'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
             </div>
           </div>
 
@@ -465,21 +441,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
                     </div>
                   </div>
 
-                  {/* Center: Concise Description & Inline Tags */}
+                  {/* Center: Concise Description */}
                   <div className="md:w-5/12 pl-9 md:pl-0">
                     <p className="text-xs text-neutral-600 leading-relaxed">
                       {srv.desc}
                     </p>
-                    <div className="flex flex-wrap gap-1.5 pt-1.5">
-                      {srv.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="text-[10px] font-mono text-neutral-500 bg-neutral-100 px-1.5 py-0.5 rounded"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Right: Direct Navigation Action */}
@@ -561,6 +527,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onContac
 
         </div>
       </section>
+
+      </div>
 
     </div>
   );

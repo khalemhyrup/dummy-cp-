@@ -49,9 +49,9 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
         </div>
 
         {/* Center Main Hero Title */}
-        <div className="relative z-10 max-w-5xl mx-auto px-2 sm:px-6 text-center my-auto py-16 space-y-3 sm:space-y-4">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-3 sm:px-6 text-center my-auto py-16 space-y-3 sm:space-y-4">
           
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase tracking-tight">
+          <h1 className="text-[clamp(14px,5.1vw,24px)] sm:text-3xl md:text-4xl lg:text-5xl font-company-hero whitespace-nowrap uppercase tracking-tighter sm:tracking-tight leading-tight">
             PT. INTEGRA ANEKSA KREASINDO
           </h1>
 
@@ -59,7 +59,7 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
             Media Advertising &amp; Event Organizer
           </h2>
 
-          <p className="text-xs sm:text-sm text-neutral-300 max-w-2xl mx-auto pt-1 font-medium px-2">
+          <p className="text-xs sm:text-sm text-neutral-300 max-w-xs sm:max-w-2xl mx-auto pt-1 font-medium">
             Spesialis periklanan luar ruang (OOH) &amp; manajemen acara berkelas nasional untuk menghadirkan pengalaman tak terlupakan bagi setiap audiens.
           </p>
 
