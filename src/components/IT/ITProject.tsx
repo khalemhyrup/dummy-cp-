@@ -13,7 +13,7 @@ interface ProjectCategoryGroup {
 const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   {
     "id": "access-control-sliding-door",
-    "title": "Access Control & Slidding Door Automatic",
+    "title": "Smart Access & Automatic Door Solutions",
     "imagePosition": "object-[center_25%]",
     "images": [
       {
@@ -55,12 +55,32 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
       {
         "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/videoframe_17026.png",
         "alt": "Access Control & Slidding Door Automatic #10"
+      },
+      {
+        "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/accessdoor.svg",
+        "alt": "Access Control & Slidding Door Automatic #11"
+      },
+      {
+        "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/accessdoor2.svg",
+        "alt": "Access Control & Slidding Door Automatic #12"
+      },
+      {
+        "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/accessdoor3.svg",
+        "alt": "Access Control & Slidding Door Automatic #13"
+      },
+      {
+        "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/accessdoor4.svg",
+        "alt": "Access Control & Slidding Door Automatic #14"
+      },
+      {
+        "src": "/IT/Our Project/Access Control & Slidding  Door Automatic/accessdoor5.svg",
+        "alt": "Access Control & Slidding Door Automatic #15"
       }
     ]
   },
   {
     "id": "cctv",
-    "title": "CCTV",
+    "title": "Integrated Surveillance & Security Systems",
     "images": [
       {
         "src": "/IT/Our Project/CCTV/1708909002900.jpg",
@@ -97,14 +117,6 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
       {
         "src": "/IT/Our Project/CCTV/IMG_20220729_141320.jpg",
         "alt": "CCTV #9"
-      },
-      {
-        "src": "/IT/Our Project/CCTV/IMG_20220729_141322.jpg",
-        "alt": "CCTV #10"
-      },
-      {
-        "src": "/IT/Our Project/CCTV/IMG_20220729_141354.jpg",
-        "alt": "CCTV #11"
       },
       {
         "src": "/IT/Our Project/CCTV/IMG_20220816_145417.jpg",
@@ -266,7 +278,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "elektrical",
-    "title": "Elektrical",
+    "title": "Electrical Reliability Solutions",
     "images": [
       {
         "src": "/IT/Our Project/Elektrical/FB_IMG_1747901835768.jpg",
@@ -275,10 +287,6 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
       {
         "src": "/IT/Our Project/Elektrical/IMG_20240929_154651.jpg",
         "alt": "Elektrical #2"
-      },
-      {
-        "src": "/IT/Our Project/Elektrical/IMG_20240929_154657.jpg",
-        "alt": "Elektrical #3"
       },
       {
         "src": "/IT/Our Project/Elektrical/IMG_20241003_151850.jpg",
@@ -300,7 +308,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "hvac",
-    "title": "HVAC",
+    "title": "HVAC Care Solutions",
     "images": [
       {
         "src": "/IT/Our Project/HVAC/IMG_20240605_102014.jpg",
@@ -338,7 +346,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "instalasi-jaringan",
-    "title": "Instalasi Jaringan",
+    "title": "Integrated Network Solutions",
     "images": [
       {
         "src": "/IT/Our Project/Instlasi Jaringan/1708908937705.jpg",
@@ -539,12 +547,16 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
       {
         "src": "/IT/Our Project/Instlasi Jaringan/IMG_20250701_125438.jpg",
         "alt": "Instalasi Jaringan #50"
-      }
+      },
+      {
+        "src": "/IT/Our Project/Instlasi Jaringan/network.jpeg",
+        "alt": "Instalasi Jaringan #51"
+      },
     ]
   },
   {
     "id": "pabx",
-    "title": "PABX",
+    "title": "Telephony Systems Solutions",
     "images": [
       {
         "src": "/IT/Our Project/PABX/20200123_110213.jpg",
@@ -578,7 +590,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "radio-trunk",
-    "title": "Radio Trunk 2 meter Band",
+    "title": "Two Way Radio Installation & Maintenance",
     "images": [
       {
         "src": "/IT/Our Project/Radio Trunk 2 meter Band/IMG_20220723_101955.jpg",
@@ -644,7 +656,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "telecomunication",
-    "title": "Telecomunication",
+    "title": "Telecommunication Solutions",
     "images": [
       {
         "src": "/IT/Our Project/Telecomunication/100_0589.JPG",
@@ -674,7 +686,7 @@ const PROJECT_GROUPS: ProjectCategoryGroup[] = [
   },
   {
     "id": "videotron",
-    "title": "Videotron",
+    "title": "Videotron Care & Maintenance",
     "images": [
       {
         "src": "/IT/Our Project/Videotron/IMG_20240318_133905.jpg",
@@ -739,20 +751,20 @@ interface ITProjectProps {
 export const ITProject: React.FC<ITProjectProps> = () => {
   return (
     <div className="w-full min-h-screen bg-[#fafcff] relative overflow-hidden font-sans text-neutral-900 selection:bg-neutral-950 selection:text-white">
-      
+
       {/* =========================================================================
           AMBIENT BACKGROUND VISUALS (Pattern & Subtle Gradient Glows)
       ========================================================================== */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Subtle Tech Dot Grid Pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `radial-gradient(#004B87 1px, transparent 1px)`,
             backgroundSize: '28px 28px',
           }}
         />
-        
+
         {/* Soft Ambient Radial Lights */}
         <div className="absolute -top-40 right-0 w-[550px] h-[550px] bg-gradient-to-br from-cyan-400/10 to-blue-600/5 rounded-full blur-3xl" />
         <div className="absolute top-[35%] -left-32 w-[600px] h-[600px] bg-gradient-to-tr from-blue-500/10 to-teal-400/5 rounded-full blur-3xl" />
@@ -763,10 +775,10 @@ export const ITProject: React.FC<ITProjectProps> = () => {
           MAIN GALLERY CONTENT CONTAINER
       ========================================================================== */}
       <div className="relative z-10 max-w-7xl mx-auto px-3.5 sm:px-8 lg:px-12 py-10 sm:py-24 space-y-12 sm:space-y-24">
-        
+
         {PROJECT_GROUPS.map((group) => (
           <section key={group.id} className="space-y-5 sm:space-y-8 group/section">
-            
+
             {/* Category Header */}
             <div className="mb-4 sm:mb-8">
               <h2 className="text-xl sm:text-3xl lg:text-[40px] font-normal text-[#2f6596] tracking-tight">
@@ -782,7 +794,7 @@ export const ITProject: React.FC<ITProjectProps> = () => {
                   key={idx}
                   className="group relative aspect-[4/3] w-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden bg-white p-1 sm:p-2 border border-neutral-200/90 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.06)] transition-all duration-300"
                 >
-                  
+
                   {/* Photo Inner Container */}
                   <div className="relative w-full h-full rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden bg-neutral-100">
                     <img

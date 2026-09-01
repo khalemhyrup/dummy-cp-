@@ -7,9 +7,15 @@ interface EOHomeProps {
 
 export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
   const scrollToServices = () => {
-    const el = document.getElementById('eo-services-section');
+    const el = document.getElementById('eo-services-content') || document.getElementById('eo-services-section');
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 85;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -98,9 +104,9 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
           </div>
 
           {/* Right: Tagline */}
-          <div className="flex justify-center sm:justify-end">
-            <div className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          <div className="flex justify-center sm:justify-end pt-6 sm:pt-10">
+            <div className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </div>
           </div>
 
@@ -111,16 +117,31 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
       {/* =========================================================================
           SECTION 2: OUR SERVICE (Advertising vs Event Organizer)
       ========================================================================== */}
-      <section id="eo-services-section" className="w-full relative py-16 sm:py-24 bg-gradient-to-b from-[#050e1f] via-[#081a3d] to-[#040b18] overflow-hidden">
+      <section id="eo-services-section" className="w-full relative pt-0 pb-16 sm:pb-24 bg-[#050e1f] overflow-hidden">
 
-        {/* Top Gradient Quote Banner */}
-        <div className="w-full bg-gradient-to-r from-amber-600/90 via-amber-500 to-amber-600/90 py-3.5 px-4 text-center mb-12 shadow-md">
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/our-services.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/our-services.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay for readability */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+
+        {/* Top Gradient Quote Banner - Flush at Top Edge */}
+        <div className="relative z-10 w-full bg-gradient-to-r from-amber-600/90 via-amber-500 to-amber-600/90 py-3.5 px-4 text-center mb-12 shadow-md">
           <p className="text-xs sm:text-sm md:text-base font-semibold text-slate-950 max-w-4xl mx-auto leading-relaxed">
             &ldquo;Spesialis Advertising &amp; Event Organizer yang bekerja dengan hati. Kami tidak hanya mengelola acara, kami menciptakan pengalaman yang tak terlupakan.&rdquo;
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-10">
+        <div id="eo-services-content" className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-10 scroll-mt-24">
 
           {/* Grasindopro Logo Header */}
           <div className="flex justify-center items-center mb-4">
@@ -235,41 +256,53 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
 
           </div>
 
+          {/* Bottom Quote of Section 2 */}
+          <div className="text-center pt-10 sm:pt-14">
+            <p className="text-xs sm:text-sm md:text-base font-semibold text-neutral-300 px-4">
+              &ldquo;Mengubah Ide Menjadi Kenyataan : Event Berkesan untuk Setiap Kesempatan.&rdquo;
+            </p>
+          </div>
+
         </div>
       </section>
 
       {/* =========================================================================
           SECTION 3: OUR CLIENT (High-Visibility Client Grid Image)
       ========================================================================== */}
-      <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-[#040b18] via-[#0a1b38] to-[#040d1c] border-t border-blue-900/40">
+      <section className="w-full relative pt-8 sm:pt-12 pb-14 sm:pb-20 bg-[#040b18] border-t border-blue-900/40 overflow-hidden">
 
-        {/* Top Quote */}
-        <p className="text-xs sm:text-sm font-semibold text-neutral-300 text-center px-4 mb-6">
-          &ldquo;Mengubah Ide Menjadi Kenyataan : Event Berkesan untuk Setiap Kesempatan.&rdquo;
-        </p>
+        {/* Background Image */}
+        <img
+          src="/EO/our-client-eo.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        />
 
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center">
+        {/* Top-focused Darkening Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-transparent pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
           {/* Logo */}
-          <div className="flex justify-center items-center mb-3">
+          <div className="flex justify-center items-center mb-2">
             <img
               src="/images/logo.png"
               alt="Grasindo Pro"
-              className="h-12 sm:h-14 w-auto object-contain"
+              className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_0_14px_rgba(255,255,255,0.35)]"
             />
           </div>
 
           {/* Section Title */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-wider uppercase text-amber-400 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] mb-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-wider uppercase text-amber-400 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] mb-6 sm:mb-8">
             OUR CLIENT
           </h2>
 
-          {/* Client Showcase Image */}
-          <div className="w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-blue-500/20 group hover:border-amber-400/50 transition-colors">
+          {/* Client Showcase Image - Smooth Rounded Corners & Clean Fit */}
+          <div className="w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-blue-500/30 group hover:border-amber-400/50 transition-all duration-300">
             <img
               src="/EO/ClientEO.svg"
               alt="Our Clients - PT Integra Aneksa Kreasindo"
-              className="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-500"
+              className="w-full h-auto object-contain block group-hover:scale-[1.01] transition-transform duration-300"
             />
           </div>
 
@@ -282,9 +315,9 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
       <section className="w-full bg-[#030814] border-t border-neutral-800">
 
         {/* Tagline text centered */}
-        <div className="py-6 sm:py-8 text-center bg-gradient-to-b from-[#040d1c] to-[#0a1b38]">
-          <span className="text-[#f57c00] font-extrabold text-xl sm:text-2xl md:text-3xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,124,0,0.5)]">
-            Take it, Do it, Love it
+        <div className="py-8 sm:py-12 text-center bg-gradient-to-b from-[#040d1c] to-[#0a1b38]">
+          <span className="font-slogan font-bold italic text-[#f57c00] text-3xl sm:text-4xl md:text-5xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,124,0,0.6)]">
+            take it, do it, love it !
           </span>
         </div>
 
@@ -301,11 +334,15 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
               />
               <div className="flex items-center gap-3 text-slate-900">
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  href="https://www.tiktok.com/@grasindopro.advertising"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm cursor-pointer"
                   aria-label="TikTok"
                 >
-                  Tk
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.instagram.com/grasindo.pro/"
@@ -315,13 +352,6 @@ export const EOHome: React.FC<EOHomeProps> = ({ onNavigate }) => {
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
-                </a>
-                <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
-                  aria-label="LinkedIn"
-                >
-                  in
                 </a>
               </div>
             </div>

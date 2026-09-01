@@ -15,61 +15,73 @@ interface ContactProps {
 
 export const Contact: React.FC<ContactProps> = () => {
   return (
-    <div className="bg-white min-h-screen font-sans text-zinc-900 pt-12 pb-24">
+    <div className="relative min-h-screen font-sans text-white pt-12 pb-24 overflow-hidden">
       
+      {/* Background Video with AutoPlay */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/images/contact-main.png?v=20260901"
+        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+      >
+        <source src="/images/contact-main.mp4?v=20260901" type="video/mp4" />
+      </video>
+
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
-        <p className="text-xs font-mono uppercase tracking-widest text-amber-600 mb-3">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+        <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-amber-400 font-bold mb-3 drop-shadow-md">
           PT INTEGRA ANEKSA KREASINDO
         </p>
-        <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-zinc-900">
-          Hubungi Kami<span className="text-amber-500 font-normal">.</span>
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+          Hubungi Kami<span className="text-amber-400 font-normal">.</span>
         </h1>
-        <p className="mt-4 text-base text-zinc-500 max-w-xl font-light leading-relaxed">
+        <p className="mt-4 text-base sm:text-lg text-neutral-100 max-w-xl font-medium leading-relaxed drop-shadow-md">
           Silakan hubungi tim kami untuk konsultasi layanan IT Support, Mechanical Electrical, Media Advertising, maupun Event Management.
         </p>
       </div>
 
       {/* Main Split Layout */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Contact Details */}
-          <div className="lg:col-span-6 space-y-10 divide-y divide-zinc-100">
+          <div className="lg:col-span-6 space-y-10 divide-y divide-white/20">
             
             {/* Office Location */}
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                <MapPin className="w-4 h-4 text-zinc-700" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-amber-400 font-bold drop-shadow-sm">
+                <MapPin className="w-4 h-4 text-amber-400" />
                 <span>Head Office</span>
               </div>
-              <p className="text-lg font-normal text-zinc-800 leading-relaxed max-w-lg">
+              <p className="text-lg font-semibold text-white leading-relaxed max-w-lg drop-shadow-md">
                 {footerData.address}
               </p>
               <a
                 href="https://maps.app.goo.gl/TnmLe8SBs5ngg82S8"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600 hover:text-amber-700 transition-colors pt-1"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors pt-1 drop-shadow-sm"
               >
                 <span>Buka Petunjuk Arah</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-4 h-4" />
               </a>
             </div>
 
             {/* Direct Channels */}
             <div className="pt-8 space-y-6">
-              <div className="text-xs font-mono uppercase tracking-wider text-zinc-400">
+              <div className="text-xs sm:text-sm font-mono uppercase tracking-wider text-amber-400 font-bold drop-shadow-sm">
                 Kontak Langsung
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Telepon */}
                 <div className="space-y-1">
-                  <span className="text-xs text-zinc-400 block">Telepon Kantor</span>
+                  <span className="text-xs sm:text-sm text-neutral-300 block font-semibold drop-shadow-sm">Telepon Kantor</span>
                   <a
                     href={`tel:${footerData.phone.replace(/\D/g, '')}`}
-                    className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block"
+                    className="text-base sm:text-lg font-bold text-white hover:text-amber-400 transition-colors block drop-shadow-md"
                   >
                     {footerData.phone}
                   </a>
@@ -77,17 +89,17 @@ export const Contact: React.FC<ContactProps> = () => {
 
                 {/* Email */}
                 <div className="space-y-1">
-                  <span className="text-xs text-zinc-400 block">Email Official</span>
+                  <span className="text-xs sm:text-sm text-neutral-300 block font-semibold drop-shadow-sm">Email Official</span>
                   <div className="space-y-1">
                     <a
                       href="mailto:marketing@grasindopro.com"
-                      className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
+                      className="text-base font-bold text-white hover:text-amber-400 transition-colors block break-all drop-shadow-md"
                     >
                       marketing@grasindopro.com
                     </a>
                     <a
                       href="mailto:marketing_it@grasindopro.com"
-                      className="text-base font-medium text-zinc-900 hover:text-amber-600 transition-colors block break-all"
+                      className="text-base font-bold text-white hover:text-amber-400 transition-colors block break-all drop-shadow-md"
                     >
                       marketing_it@grasindopro.com
                     </a>

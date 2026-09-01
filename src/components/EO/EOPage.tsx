@@ -30,25 +30,53 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
       {/* =========================================================================
           SLIDE 1: EVENT ORGANIZER OVERVIEW & SERVICES LIST
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#030917] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
         
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(14,165,233,0.15)_0%,transparent_70%)] pointer-events-none" />
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Row 1: Headers */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-end mb-6 sm:mb-8">
             
-            {/* Left Column: Heading + Paragraph + Panorama Image */}
-            <div className="lg:col-span-6 space-y-6">
+            {/* Top Left: Heading + Paragraph */}
+            <div className="lg:col-span-6 space-y-3">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide">
                 Event Organizer
               </h1>
 
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Dari perencanaan hingga eksekusi, kami memastikan setiap momen berjalan tanpa hambatan dan memberikan pengalaman yang tidak terlupakan.
               </p>
+            </div>
 
-              {/* Panorama event banner photo */}
+            {/* Top Right: Layanan Kami Meliputi */}
+            <div className="lg:col-span-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide">
+                Layanan Kami Meliputi :
+              </h2>
+            </div>
+
+          </div>
+
+          {/* Row 2: Content (Image on Left & Bullets on Right - 100% Parallel Alignment) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            
+            {/* Bottom Left: Panorama Image */}
+            <div className="lg:col-span-6">
               <div className="w-full aspect-[21/9] bg-neutral-900 border-2 border-amber-500/80 rounded-xl overflow-hidden shadow-xl relative group">
                 <img
                   src="/EO/Event organizer/CorporateEvent1.png"
@@ -59,13 +87,9 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               </div>
             </div>
 
-            {/* Right Column: Layanan Kami Meliputi */}
-            <div className="lg:col-span-6 space-y-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-wide">
-                Layanan Kami Meliputi :
-              </h2>
-
-              <ul className="space-y-3 text-xs sm:text-sm text-neutral-200">
+            {/* Bottom Right: 5 Bullet Points */}
+            <div className="lg:col-span-6 space-y-3">
+              <ul className="space-y-2.5 text-sm sm:text-base text-neutral-100">
                 <li className="flex items-start gap-2.5">
                   <span className="text-amber-400 font-bold">•</span>
                   <span><strong className="text-white">Corporate Events</strong> (Rapat Umum Pemegang Saham, Seminar Nasional, Conference, Gala Dinner).</span>
@@ -87,22 +111,22 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   <span><strong className="text-white">Exhibition Production &amp; Merchandise</strong> (Pembuatan Booth Pameran dan Souvenir)</span>
                 </li>
               </ul>
-
-              {/* Tagline bottom right */}
-              <div className="text-right pt-6">
-                <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-                  Take it, Do it, Love it
-                </span>
-              </div>
             </div>
 
           </div>
 
         </div>
 
+        {/* Slogan right above Bottom Banner */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+          <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+            take it, do it, love it !
+          </span>
+        </div>
+
         {/* Bottom Gradient Quote Banner */}
-        <div className="w-full bg-gradient-to-r from-sky-900/80 via-blue-950/90 to-sky-900/80 py-3.5 px-4 text-center mt-12 border-t border-blue-800/40">
-          <p className="text-xs sm:text-sm font-semibold text-neutral-200 max-w-4xl mx-auto leading-relaxed">
+        <div className="relative z-10 w-full bg-gradient-to-r from-sky-900/80 via-blue-950/90 to-sky-900/80 py-3.5 px-4 text-center border-t border-blue-800/40">
+          <p className="text-sm sm:text-base font-semibold text-neutral-100 max-w-4xl mx-auto leading-relaxed">
             &ldquo;Komitmen kami menyelenggarakan acara (event) berkualitas tinggi dengan manajemen yang presisi dan konsep kreatif yang berkesan.&rdquo;
           </p>
         </div>
@@ -112,12 +136,27 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
       {/* =========================================================================
           SLIDE 2: CORPORATE EVENTS & BRAND ACTIVATION & PRODUCT LAUNCH
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
-          <div className="mb-8">
-            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+          <div className="mb-6">
+            <span className="text-base sm:text-lg md:text-xl font-black text-amber-400 uppercase tracking-wider block drop-shadow-sm">
               OUR EXPERIENCE
             </span>
           </div>
@@ -141,7 +180,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium block">
+                  <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                     Rapat Umum Pemegang Saham
                   </span>
                 </div>
@@ -155,7 +194,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium block">
+                  <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                     Gala Dinner
                   </span>
                 </div>
@@ -169,7 +208,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium block">
+                  <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                     Seminar Nasional
                   </span>
                 </div>
@@ -195,7 +234,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <span className="text-xs text-neutral-300 font-medium block">
+                    <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                       Pembukaan Cabang Baru
                     </span>
                   </div>
@@ -209,7 +248,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
-                    <span className="text-xs text-neutral-300 font-medium block">
+                    <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                       Peluncuran Produk Baru
                     </span>
                   </div>
@@ -224,7 +263,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <span className="text-xs text-neutral-300 font-medium block">
+                  <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                     Pameran Dagang
                   </span>
                 </div>
@@ -234,17 +273,17 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
-        {/* Client Strip 2: PEFINDO, LIXIL, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        {/* Client Strip */}
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
             <img src="/EO/logo-client/pefindo-logo.svg" alt="PEFINDO" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -257,12 +296,27 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
       {/* =========================================================================
           SLIDE 3: ENTERTAINMENT & FESTIVALS, VIRTUAL & HYBRID, BIMTEK
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
-          <div className="mb-8">
-            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+          <div className="mb-6">
+            <span className="text-base sm:text-lg md:text-xl font-black text-amber-400 uppercase tracking-wider block drop-shadow-sm">
               OUR EXPERIENCE
             </span>
           </div>
@@ -301,7 +355,7 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                   />
                 </div>
 
-                <span className="text-xs text-neutral-300 font-medium block">
+                <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                   Festival Kerukunan Desa Pabuaran, Gn. Sindur
                 </span>
               </div>
@@ -333,39 +387,45 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               </div>
             </div>
 
-            {/* 3. Bimtek */}
+            {/* 3. Multimedia & Zoom Streaming Support */}
             <div className="md:col-span-3 space-y-4">
               <h2 className="text-lg sm:text-xl font-extrabold text-white tracking-wide">
-                Bimtek
+                Multimedia &amp; Zoom Streaming Support
               </h2>
 
               <div className="space-y-3">
-                <div className="aspect-[3/4] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
-                  <img
-                    src="/EO/Event organizer/bimtek.png"
-                    alt="Bimbingan Teknis dan Pelatihan"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+                  <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/Multimedia & Zoom Streaming Support1.jpeg"
+                      alt="Multimedia & Zoom Streaming Support Setup 1"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                    <img
+                      src="/EO/Event organizer/Multimedia & Zoom Streaming Support2.jpeg"
+                      alt="Multimedia & Zoom Streaming Support Setup 2"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
-                <span className="text-xs text-neutral-300 font-medium block">
-                  Bimbingan Teknis Profesional
-                </span>
               </div>
             </div>
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 3 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 3: LIXIL, KEMENAG RI, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
             <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/kementrian-agama-logo.svg" alt="Kementerian Agama RI" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -378,12 +438,27 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
       {/* =========================================================================
           SLIDE 4: EXHIBITION PRODUCTION & BACKDROP
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
-          <div className="mb-8">
-            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+          <div className="mb-6">
+            <span className="text-base sm:text-lg md:text-xl font-black text-amber-400 uppercase tracking-wider block drop-shadow-sm">
               OUR EXPERIENCE
             </span>
           </div>
@@ -449,40 +524,47 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 </div>
               </div>
 
-              <span className="text-xs text-neutral-300 font-medium block">
+              <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
                 Booth Exhibition
               </span>
             </div>
 
-            {/* Right: Backdrop Image */}
+            {/* Right: Backdrop Images (ExhibitionProduction7 & ExhibitionProduction8) */}
             <div className="lg:col-span-4 space-y-4 pt-0 sm:pt-11">
-              <div className="space-y-3">
-                <div className="aspect-[16/10] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+              <div className="space-y-2 sm:space-y-3">
+                <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
                   <img
-                    src="/EO/Event organizer/ExhibitionProduction2.png"
-                    alt="Backdrop Panggung UNS Home Coming"
+                    src="/EO/Event organizer/ExhibitionProduction7.jpeg"
+                    alt="Stage & Photobooth Backdrop 1"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <span className="text-xs text-neutral-300 font-medium block">
-                  Stage &amp; Photobooth Backdrop
-                </span>
+                <div className="aspect-[4/3] bg-neutral-900 border sm:border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
+                  <img
+                    src="/EO/Event organizer/ExhibitionProduction8.jpeg"
+                    alt="Stage & Photobooth Backdrop 2"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
               </div>
+              <span className="text-sm sm:text-base font-semibold text-neutral-100 block">
+                Stage &amp; Photobooth Backdrop
+              </span>
             </div>
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 4 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 4: LIXIL, PT DOVER CHEMICAL, asianpaints */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
             <img src="/EO/logo-client/Lixil-logo.svg" alt="LIXIL" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/dover-chemical-logo.svg" alt="PT Dover Chemical" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -495,12 +577,27 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
       {/* =========================================================================
           SLIDE 5: MERCHANDISE + BOTTOM CONTACT FOOTER STRIP
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#030814] overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
           <div className="mb-2">
-            <span className="text-xs sm:text-sm font-mono font-extrabold text-amber-500 uppercase tracking-widest block">
+            <span className="text-base sm:text-lg md:text-xl font-black text-amber-400 uppercase tracking-wider block drop-shadow-sm">
               OUR EXPERIENCE
             </span>
             <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide mt-1">
@@ -524,17 +621,17 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
             ))}
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-4">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Bottom Golden Contact Strip */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Bottom Golden-Amber Contact Strip with Advertising Button */}
-        <div className="w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-2xl border-t border-amber-300/30 mt-10">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-2xl border-t border-amber-300/30">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             
             {/* Left: Logo & Circular Socials */}
@@ -546,11 +643,15 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
               />
               <div className="flex items-center gap-3 text-slate-900">
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  href="https://www.tiktok.com/@grasindopro.advertising"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm cursor-pointer"
                   aria-label="TikTok"
                 >
-                  Tk
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.instagram.com/grasindo.pro/"
@@ -561,19 +662,12 @@ export const EOPage: React.FC<EOPageProps> = ({ onNavigate, onContactClick }) =>
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
-                  aria-label="LinkedIn"
-                >
-                  in
-                </a>
               </div>
             </div>
 
             {/* Center: Advertising Switcher Button */}
             <div className="flex flex-col items-center">
-              <span className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1">
+              <span className="text-sm sm:text-base font-extrabold text-slate-950 uppercase tracking-wider mb-1.5">
                 Advertising
               </span>
               <button

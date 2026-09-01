@@ -47,6 +47,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       ? 'it'
       : currentPage === 'eo-home' ||
         currentPage === 'eo-about' ||
+        currentPage === 'eo-services' ||
+        currentPage === 'eo-gallery' ||
         currentPage === 'eo-main' ||
         currentPage === 'eo' ||
         currentPage === 'media-advertising' ||
@@ -178,6 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               const isPageActive =
                 (currentPage.includes('about') && (item.id === 'about' || item.id === 'eo-about' || item.id === 'it-about' || item.label.includes('About'))) ||
                 ((currentPage === 'it-project' || currentPage === 'it-product') && (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product'))) ||
+                (currentPage === 'eo-gallery' && (item.id === 'eo-gallery' || item.label.toLowerCase() === 'gallery')) ||
                 (currentPage.includes('service') && item.label.includes('Service')) ||
                 ((currentPage === 'home' || currentPage === 'it-home' || currentPage === 'eo-home') && item.label.includes('Home'));
 
@@ -210,6 +213,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                       } else if (item.id === 'it-project' || item.id === 'it-product' || item.label.toLowerCase().includes('project') || item.label.toLowerCase().includes('product')) {
                         if (onNavigate) onNavigate('it-project');
                         setActiveDropdown(null);
+                      } else if (item.id === 'eo-gallery' || item.label.toLowerCase() === 'gallery') {
+                        if (onNavigate) onNavigate('eo-gallery');
+                        setActiveDropdown(null);
                       } else if (item.id === 'product-service' || item.id === 'divisions' || item.label.includes('Service') || item.label.includes('Division')) {
                         if (activePortal === 'it') {
                           const scrollToServices = () => {
@@ -233,12 +239,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                           }
                           setActiveDropdown(null);
                           return;
+                        } else if (activePortal === 'eo') {
+                          if (onNavigate) onNavigate('eo-services');
+                          setActiveDropdown(null);
+                          return;
                         }
-                        if (activePortal === 'eo') {
-                          if (item.hasDropdown) {
-                            setActiveDropdown(isDropdownActive ? null : item.id);
-                            return;
-                          }
+                        if (item.hasDropdown) {
+                          setActiveDropdown(isDropdownActive ? null : item.id);
+                          return;
                         }
                         const target = 'service';
                         if (onNavigate) onNavigate(target);
@@ -287,28 +295,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Right Action: Get in Touch & Mobile Hamburger */}
           <div className="flex items-center space-x-3 sm:space-x-4">
             
-            {/* Get in Touch Button (Desktop only) */}
-            <button
-              onClick={() => {
-                if (activePortal === 'eo') {
-                  if (onNavigate) onNavigate('eo-contact');
-                  onMenuItemClick('Contact');
-                } else if (activePortal === 'it') {
-                  if (onNavigate) onNavigate('it-contact');
-                  onMenuItemClick('Contact');
-                } else {
-                  if (onNavigate) onNavigate('contact');
-                  onMenuItemClick('Contact');
-                }
-              }}
-              className={`hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-colors shadow-xs rounded-lg cursor-pointer ${
-                isDarkEO
-                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold'
-                  : 'text-white bg-black hover:bg-neutral-800'
-              }`}
-            >
-              Get in Touch
-            </button>
+            {/* Get in Touch Button (Desktop only, hidden on main navbar) */}
+            {(activePortal === 'eo' || activePortal === 'it') && (
+              <button
+                onClick={() => {
+                  if (activePortal === 'eo') {
+                    if (onNavigate) onNavigate('eo-contact');
+                    onMenuItemClick('Contact');
+                  } else if (activePortal === 'it') {
+                    if (onNavigate) onNavigate('it-contact');
+                    onMenuItemClick('Contact');
+                  }
+                }}
+                className={`hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold tracking-wider uppercase transition-colors shadow-xs rounded-lg cursor-pointer ${
+                  isDarkEO
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold'
+                    : 'text-white bg-black hover:bg-neutral-800'
+                }`}
+              >
+                Get in Touch
+              </button>
+            )}
 
             {/* Mobile Hamburger Toggle */}
             <button
@@ -344,7 +351,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             navItem={currentActiveNav}
             isOpen={!!currentActiveNav}
             onItemClick={(item) => {
-              onMenuItemClick(item);
+              const itemObj = typeof item === 'object' ? item : { id: item, title: item };
+              const id = (itemObj.id || '').toLowerCase();
+              const title = (itemObj.title || '').toLowerCase();
+
+              if (id === 'it-home') {
+                if (onNavigate) onNavigate('it-home');
+              } else if (id === 'eo-home') {
+                if (onNavigate) onNavigate('eo-home');
+              } else if (id === 'media-advertising' || title.includes('advertising') || title.includes('billboard') || title.includes('signage')) {
+                if (onNavigate) onNavigate('media-advertising');
+              } else if (id === 'eo' || id === 'eo-main' || title.includes('event organizer') || title.includes('mice') || title.includes('gathering')) {
+                if (onNavigate) onNavigate('eo');
+              } else {
+                onMenuItemClick(item);
+              }
               setActiveDropdown(null);
             }}
             lang={currentLang}
@@ -408,7 +429,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                       if (onNavigate) onNavigate('it-project');
                       setActiveDropdown(null);
                       setMobileMenuOpen(false);
-                    } else if (item.id === 'divisions' || item.id === 'product-service' || (!item.hasDropdown && (item.id === 'service' || item.label.toLowerCase().includes('service')))) {
+                    } else if (item.id === 'eo-gallery' || item.label.toLowerCase() === 'gallery') {
+                      if (onNavigate) onNavigate('eo-gallery');
+                      setActiveDropdown(null);
+                      setMobileMenuOpen(false);
+                    } else if (item.id === 'divisions' || item.id === 'product-service' || item.label.toLowerCase().includes('service')) {
                       if (activePortal === 'it') {
                         const scrollToServices = () => {
                           const el = document.getElementById('services');
@@ -428,11 +453,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                           if (onNavigate) onNavigate('it-home');
                           setTimeout(scrollToServices, 150);
                         }
+                        setActiveDropdown(null);
+                        setMobileMenuOpen(false);
+                      } else if (activePortal === 'eo') {
+                        if (onNavigate) onNavigate('eo-services');
+                        setActiveDropdown(null);
+                        setMobileMenuOpen(false);
+                      } else if (item.hasDropdown) {
+                        setActiveDropdown(activeDropdown === item.id ? null : item.id);
+                        return;
                       } else {
                         if (onNavigate) onNavigate('service');
+                        setActiveDropdown(null);
+                        setMobileMenuOpen(false);
                       }
-                      setActiveDropdown(null);
-                      setMobileMenuOpen(false);
                     } else if (item.id === 'information' || item.id === 'it-contact' || item.id === 'eo-contact' || item.label === 'Contact') {
                       if (activePortal === 'eo') {
                         if (onNavigate) onNavigate('eo-contact');
@@ -487,7 +521,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                               <li key={sub.id}>
                                 <button
                                   onClick={() => {
-                                    onMenuItemClick(sub);
+                                    if (sub.id === 'it-home' || sub.title.toLowerCase().includes('it')) {
+                                      if (onNavigate) onNavigate('it-home');
+                                    } else if (sub.id === 'eo-home' || sub.id === 'media-advertising' || sub.title.toLowerCase().includes('advertising') || sub.title.toLowerCase().includes('event') || sub.title.toLowerCase().includes('eo')) {
+                                      if (onNavigate) onNavigate('eo-home');
+                                    } else {
+                                      onMenuItemClick(sub);
+                                    }
                                     setMobileMenuOpen(false);
                                     setActiveDropdown(null);
                                   }}
@@ -508,26 +548,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
 
-          {/* Mobile Get in Touch */}
-          <div className="pt-2">
-            <button
-              onClick={() => {
-                if (activePortal === 'eo') {
-                  if (onNavigate) onNavigate('eo-contact');
-                } else if (activePortal === 'it') {
-                  if (onNavigate) onNavigate('it-contact');
-                } else {
-                  if (onNavigate) onNavigate('contact');
-                }
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center cursor-pointer transition-all duration-200 active:scale-[0.98] ${
-                isDarkEO ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold shadow-sm' : 'bg-neutral-900 hover:bg-black text-white shadow-sm'
-              }`}
-            >
-              Get in Touch
-            </button>
-          </div>
+          {/* Mobile Get in Touch (Only on EO/IT portals) */}
+          {(activePortal === 'eo' || activePortal === 'it') && (
+            <div className="pt-2">
+              <button
+                onClick={() => {
+                  if (activePortal === 'eo') {
+                    if (onNavigate) onNavigate('eo-contact');
+                  } else if (activePortal === 'it') {
+                    if (onNavigate) onNavigate('it-contact');
+                  }
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-center cursor-pointer transition-all duration-200 active:scale-[0.98] ${
+                  isDarkEO ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold shadow-sm' : 'bg-neutral-900 hover:bg-black text-white shadow-sm'
+                }`}
+              >
+                Get in Touch
+              </button>
+            </div>
+          )}
 
         </div>
       )}

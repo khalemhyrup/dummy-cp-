@@ -13,10 +13,22 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
       {/* =========================================================================
           SLIDE 1: ADVERTISING - BILLBOARD
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#030917] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
         
-        {/* Background wave texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(14,165,233,0.15)_0%,transparent_70%)] pointer-events-none" />
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
@@ -32,20 +44,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
-            {/* Left Description Column */}
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+            {/* Left Description Column - Aligned with Photo Cards */}
+            <div className="lg:col-span-5 space-y-4 lg:pt-8">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Membangun <strong>top-of-mind awareness</strong> produk secara massal dan kontinu yang memanfaatkan ukuran raksasa untuk mendominasi ruang pandang pengendara di jalan protokol. Sangat efektif untuk kampanye nasional, peluncuran produk baru, dan penguatan citra perusahaan skala besar.
               </p>
             </div>
 
             {/* Right: OUR EXPERIENCE Photo Cards */}
             <div className="lg:col-span-7 space-y-3">
-              <div className="flex justify-end">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider">
+              <div className="flex justify-end mb-1">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
               </div>
@@ -85,17 +94,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 1 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 1: Grab, Herbalife, Chevrolet */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
             <img src="/EO/logo-client/Grab-logo.svg" alt="Grab" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/herbalife-logo.svg" alt="Herbalife" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -108,7 +117,22 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
       {/* =========================================================================
           SLIDE 2: NEON BOX & SHOP SIGN
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
@@ -119,16 +143,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Neon Box
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Menjaga visibilitas dan operasional bisnis tetap terlihat 24 jam penuh. Menjadi panduan visual di area padat pertokoan.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="w-full aspect-[16/9] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
@@ -146,16 +166,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Shop Sign
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Memberikan informasi nama toko, jenis usaha, dan sponsor secara lugas di garis depan.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="grid grid-cols-2 gap-3">
@@ -179,21 +195,33 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 2 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 2: Ajaib, Asian Paints, Cushman & Wakefield */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-10 sm:gap-16 md:gap-20">
-            <img src="/EO/logo-client/ajaib-logo.svg" alt="Ajaib" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
-            <img src="/EO/logo-client/asian-paint-logo.svg" alt="Asian Paints" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
-            <img src="/EO/logo-client/Chusman-wakefield-logo.svg" alt="Cushman & Wakefield" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-3.5 sm:py-4 px-6 shadow-md">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-8 sm:gap-14 md:gap-20">
+            <img 
+              src="/EO/logo-client/ajaib-logo.svg?v=3" 
+              alt="Ajaib" 
+              className="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" 
+            />
+            <img 
+              src="/EO/logo-client/asian-paint-logo.svg?v=3" 
+              alt="Asian Paints" 
+              className="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" 
+            />
+            <img 
+              src="/EO/logo-client/Chusman-wakefield-logo.svg?v=3" 
+              alt="Cushman & Wakefield" 
+              className="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" 
+            />
           </div>
         </div>
 
@@ -202,7 +230,22 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
       {/* =========================================================================
           SLIDE 3: PYLON SIGN & T-BANNER
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#040c1a] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
@@ -213,16 +256,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Pylon Sign
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Menjadi bangunan penanda resmi (landmark) kawasan bisnis terpadu atau ritel besar yang Menampilkan daftar penyewa (tenant) atau logo utama pada struktur vertikal yang sangat tinggi.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="grid grid-cols-3 gap-2">
@@ -256,16 +295,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 T-Banner
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 T-Banner efektif untuk promosi dinamis, event, dan penanda lokasi dengan jangkauan luas.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="grid grid-cols-2 gap-3">
@@ -289,17 +324,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 3 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 3: PEFINDO, IQOS */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20 md:gap-24">
             <img src="/EO/logo-client/pefindo-logo.svg" alt="PEFINDO" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/iqos-logo.svg" alt="IQOS" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -311,7 +346,22 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
       {/* =========================================================================
           SLIDE 4: SIGNAGE & LETTER SIGNAGE
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040c1a] via-[#081a3d] to-[#040b18] border-b border-blue-900/40 overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 border-b border-blue-900/40 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
@@ -322,16 +372,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Signage
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Media ini menggunakan simbol, teks, gambar, atau kombinasi keduanya untuk menyampaikan informasi, petunjuk arah, identitas, maupun pesan pemasaran kepada publik.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="grid grid-cols-2 gap-3">
@@ -358,16 +404,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Letter Signage
               </h2>
-              
-              <span className="text-sm font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed text-justify">
+              <p className="text-sm sm:text-base md:text-[17px] text-neutral-100 leading-relaxed text-justify">
                 Menanamkan persepsi premium, bonafide, dan kredibilitas tinggi pada identitas toko.
               </p>
 
               <div className="pt-2">
-                <span className="text-xs font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-2 text-right">
+                <span className="text-sm sm:text-base md:text-lg font-black text-amber-400 uppercase tracking-wider block mb-2 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="grid grid-cols-2 gap-3">
@@ -391,17 +433,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Client Strip 4 */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
         {/* Client Strip 4: LPS, FKNK */}
-        <div className="w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 mt-6 shadow-md">
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#c68e34] via-[#dba244] to-[#e6b156] py-4 sm:py-5 px-6 shadow-md">
           <div className="max-w-4xl mx-auto flex items-center justify-center gap-12 sm:gap-20 md:gap-24">
             <img src="/EO/logo-client/LPS-logo.svg" alt="LPS" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
             <img src="/EO/logo-client/fknk-logo.svg" alt="FKNK Law Firm" className="h-8 sm:h-10 md:h-11 w-auto object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] hover:scale-105 transition-transform" />
@@ -413,7 +455,22 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
       {/* =========================================================================
           SLIDE 5: BRANDING CAR, WALL PAINTING, TAX & PERMIT + CONTACT FOOTER
       ========================================================================== */}
-      <section className="relative w-full py-16 sm:py-20 bg-gradient-to-b from-[#040b18] via-[#081a3d] to-[#030814] overflow-hidden">
+      <section className="relative w-full pt-12 sm:pt-16 pb-0 overflow-hidden bg-[#030917]">
+        
+        {/* Background Video with AutoPlay - Full Brightness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/EO/EO&Avertising.png"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src="/EO/EO&Advertising.mp4" type="video/mp4" />
+        </video>
+
+        {/* Subtle Darkening Overlay */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           
@@ -424,16 +481,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Branding Car
               </h3>
-              
-              <span className="text-xs font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs text-neutral-200 leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm md:text-base text-neutral-100 leading-relaxed text-justify">
                 Menjemput bola dengan membawa pesan iklan langsung ke wilayah pemukiman dan pusat kota. Mengubah aset transportasi statis menjadi papan reklame bergerak bebas hambatan geografis.
               </p>
 
               <div className="pt-2">
-                <span className="text-[11px] font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-1 text-right">
+                <span className="text-xs sm:text-sm md:text-base font-black text-amber-400 uppercase tracking-wider block mb-1.5 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
@@ -451,16 +504,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-wide text-center sm:text-left">
                 Wall Painting
               </h3>
-              
-              <span className="text-xs font-extrabold text-amber-500 uppercase tracking-wide block">
-                Fungsi Utama
-              </span>
-              <p className="text-xs text-neutral-200 leading-relaxed text-justify">
+              <p className="text-xs sm:text-sm md:text-base text-neutral-100 leading-relaxed text-justify">
                 Melakukan pendekatan iklan secara organik, artistik, dan membaur dengan lingkungan lokal.
               </p>
 
               <div className="pt-2">
-                <span className="text-[11px] font-mono font-extrabold text-amber-500 uppercase tracking-wider block mb-1 text-right">
+                <span className="text-xs sm:text-sm md:text-base font-black text-amber-400 uppercase tracking-wider block mb-1.5 text-right drop-shadow-sm">
                   OUR EXPERIENCE
                 </span>
                 <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group">
@@ -480,17 +529,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               </h3>
               
               <span className="text-xs font-extrabold text-amber-500 uppercase tracking-wide block">
-                Kami Siap Membantu Anda
+                KAMI SIAP MEMBANTU ANDA
               </span>
-              
-              <div className="space-y-1.5 text-xs text-neutral-200 bg-blue-950/40 p-3 rounded-lg border border-blue-500/20">
-                <div className="font-semibold text-amber-300"># Izin Penyelenggaraan Reklame (IPR)</div>
-                <div className="font-semibold text-amber-300"># Perizinan PBG/IMB Gedung, Rumah Dan Bangunan Lainnya</div>
-                <div className="font-semibold text-amber-300"># Pengurusan Pajak Reklame/SKPD</div>
+
+              <div className="space-y-2 text-xs sm:text-sm text-amber-300 font-bold bg-blue-950/40 p-4 rounded-xl border border-blue-500/30">
+                <div># Izin Penyelenggaraan Reklame (IPR)</div>
+                <div># Perizinan PBG/IMB Gedung, Rumah Dan Bangunan Lainnya</div>
+                <div># Pengurusan Pajak Reklame/SKPD</div>
               </div>
 
               <div className="pt-2">
-                <div className="w-full aspect-[4/3] bg-neutral-900 border-2 border-amber-500 rounded-lg overflow-hidden shadow-lg group flex items-center justify-center p-2 bg-white/5">
+                <div className="w-full aspect-[4/3] rounded-lg overflow-hidden group flex items-center justify-center">
                   <img
                     src="/EO/Advertising/taxpermit1.png"
                     alt="Dokumen Perizinan Pajak Reklame SKPD & IPR"
@@ -502,17 +551,17 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
 
           </div>
 
-          {/* Tagline right */}
-          <div className="text-right pt-8">
-            <span className="text-amber-500 font-extrabold text-lg sm:text-xl md:text-2xl tracking-wide drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
-              Take it, Do it, Love it
+          {/* Tagline right - Directly above Bottom Golden Contact Strip */}
+          <div className="text-right pt-6 sm:pt-10 pb-2 sm:pb-3">
+            <span className="font-slogan font-bold italic text-amber-500 text-2xl sm:text-3xl md:text-4xl tracking-wider drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]">
+              take it, do it, love it !
             </span>
           </div>
 
         </div>
 
-        {/* Bottom Golden-Amber Contact Strip with Event Organizer Button */}
-        <div className="w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-2xl border-t border-amber-300/30 mt-10">
+        {/* Bottom Golden-Amber Contact Strip with EO Button */}
+        <div className="relative z-10 w-full bg-gradient-to-r from-[#ca9035] via-[#dfa545] to-[#ebb65b] py-6 sm:py-8 px-6 sm:px-10 lg:px-12 text-white shadow-2xl border-t border-amber-300/30">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             
             {/* Left: Logo & Circular Socials */}
@@ -524,11 +573,15 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
               />
               <div className="flex items-center gap-3 text-slate-900">
                 <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
+                  href="https://www.tiktok.com/@grasindopro.advertising"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm cursor-pointer"
                   aria-label="TikTok"
                 >
-                  Tk
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
                 </a>
                 <a
                   href="https://www.instagram.com/grasindo.pro/"
@@ -539,19 +592,12 @@ export const EOAdversting: React.FC<EOAdverstingProps> = ({ onNavigate, onContac
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white hover:bg-slate-900 text-slate-900 hover:text-white flex items-center justify-center transition-all shadow-sm text-xs font-extrabold cursor-pointer"
-                  aria-label="LinkedIn"
-                >
-                  in
-                </a>
               </div>
             </div>
 
             {/* Center: Event Organizer Switcher Button */}
             <div className="flex flex-col items-center">
-              <span className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-1">
+              <span className="text-sm sm:text-base font-extrabold text-slate-950 uppercase tracking-wider mb-1.5">
                 Event Organizer
               </span>
               <button

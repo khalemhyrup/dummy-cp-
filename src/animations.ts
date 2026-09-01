@@ -296,7 +296,7 @@ export const pageEnter = (
   gsap.fromTo(
     container,
     { opacity: 0, y: 30 },
-    { opacity: 1, y: 0, duration, ease: EASE_EXPO }
+    { opacity: 1, y: 0, duration, ease: EASE_EXPO, clearProps: 'transform' }
   );
 
 /**

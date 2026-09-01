@@ -14,6 +14,8 @@ import { EOPage } from './components/EO/EOPage';
 import { EOmain } from './components/EO/EOmain';
 import { EOAdversting } from './components/EO/EOAdversting';
 import { EOContact } from './components/EO/EOContact';
+import { EOGallery } from './components/EO/EOGallery';
+import { EOServicePage } from './components/EO/EOServicePage';
 import { Contact } from './components/Contact/Contact';
 import { ProductPage } from './components/IT/product';
 import { ITProject } from './components/IT/ITProject';
@@ -47,7 +49,9 @@ type PageType =
   | 'it-project'
   | 'contact'
   | 'it-contact'
-  | 'eo-contact';
+  | 'eo-contact'
+  | 'eo-services'
+  | 'eo-gallery';
 
 const getHashPath = (hashStr: string): string => {
   return hashStr.replace(/^#\/?/, '').replace(/\/+$/, '').toLowerCase();
@@ -64,6 +68,8 @@ const getInitialPage = (): PageType => {
     if (raw === 'it/project' || raw === 'it-project' || raw === 'project' || raw === 'our-project' || (raw.includes('it') && raw.includes('project'))) return 'it-project';
     if (raw === 'it/product' || raw === 'it-product' || (raw.includes('it') && raw.includes('product'))) return 'it-project';
     if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) return 'eo-contact';
+    if (raw === 'eo/services' || raw === 'eo/service' || raw === 'eo-services' || raw === 'eo-service' || (raw.includes('eo') && raw.includes('service'))) return 'eo-services';
+    if (raw === 'eo/gallery' || raw === 'eo-gallery' || raw === 'gallery' || (raw.includes('eo') && raw.includes('gallery'))) return 'eo-gallery';
     if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) return 'eo-about';
     if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') return 'it-home';
     if (raw === 'eo' || raw === 'eo-home' || raw === 'portal-eo') return 'eo-home';
@@ -96,9 +102,11 @@ export const App: React.FC = () => {
   const isEOPortal =
     currentPage === 'eo-home' ||
     currentPage === 'eo-about' ||
+    currentPage === 'eo-services' ||
     currentPage === 'eo-main' ||
     currentPage === 'eo' ||
     currentPage === 'media-advertising' ||
+    currentPage === 'eo-gallery' ||
     currentPage === 'eo-contact';
 
   const isITPortal =
@@ -148,9 +156,15 @@ export const App: React.FC = () => {
     } else if (page === 'eo-about' || page === 'eo/about') {
       target = 'eo-about';
       hashRoute = '/eo/about';
+    } else if (page === 'eo-services' || page === 'eo/services' || page === 'eo/service') {
+      target = 'eo-services';
+      hashRoute = '/eo/services';
     } else if (page === 'eo-contact' || page === 'eo/contact') {
       target = 'eo-contact';
       hashRoute = '/eo/contact';
+    } else if (page === 'eo-gallery' || page === 'eo/gallery' || page === 'gallery') {
+      target = 'eo-gallery';
+      hashRoute = '/eo/gallery';
     } else if (page === 'org-structure' || page === 'organization-structure' || page === 'struktur-organisasi') {
       target = 'org-structure';
       hashRoute = '/about/organization-structure';
@@ -203,8 +217,16 @@ export const App: React.FC = () => {
       hashRoute = '/service/it-solutions';
       if (subCategory) setItCategory(subCategory);
     } else if (page === 'service' || page === 'services' || page === 'product-service' || page === 'solution') {
-      target = 'service';
-      hashRoute = '/service';
+      if (isEOPortal || currentPage.startsWith('eo')) {
+        target = 'eo-services';
+        hashRoute = '/eo/services';
+      } else if (isITPortal || currentPage.startsWith('it')) {
+        target = 'it-solutions';
+        hashRoute = '/service/it-solutions';
+      } else {
+        target = 'service';
+        hashRoute = '/service';
+      }
     } else if (page === 'contact' || page === 'information') {
       if (isEOPortal || currentPage.startsWith('eo')) {
         target = 'eo-contact';
@@ -245,6 +267,10 @@ export const App: React.FC = () => {
         target = 'it-project';
       } else if (raw === 'eo/contact' || raw === 'eo-contact' || (raw.includes('eo') && raw.includes('contact'))) {
         target = 'eo-contact';
+      } else if (raw === 'eo/services' || raw === 'eo/service' || raw === 'eo-services' || raw === 'eo-service' || (raw.includes('eo') && raw.includes('service'))) {
+        target = 'eo-services';
+      } else if (raw === 'eo/gallery' || raw === 'eo-gallery' || raw === 'gallery' || (raw.includes('eo') && raw.includes('gallery'))) {
+        target = 'eo-gallery';
       } else if (raw === 'eo/about' || raw === 'eo-about' || (raw.includes('eo') && raw.includes('about'))) {
         target = 'eo-about';
       } else if (raw === 'it' || raw === 'it-home' || raw === 'portal-it') {
@@ -436,14 +462,15 @@ export const App: React.FC = () => {
       titleLower === 'product & service' ||
       titleLower === 'services & solutions' ||
       titleLower === 'divisions & services' ||
+      itemIdLower === 'eo-services' ||
       itemIdLower === 'product-service' ||
       itemIdLower === 'divisions' ||
       itemIdLower === 'service'
     ) {
       if (currentPage.startsWith('it')) {
         handleNavigate('it-solutions');
-      } else if (currentPage.startsWith('eo')) {
-        handleNavigate('eo');
+      } else if (isEOPortal || currentPage.startsWith('eo')) {
+        handleNavigate('eo-services');
       } else {
         handleNavigate('service');
       }
@@ -467,6 +494,17 @@ export const App: React.FC = () => {
       itemIdLower === 'eo-main'
     ) {
       handleNavigate('eo');
+      return;
+    }
+
+    // Navigate to EO Gallery Page
+    if (
+      titleLower.includes('gallery') ||
+      titleLower.includes('galeri') ||
+      itemIdLower === 'eo-gallery' ||
+      itemIdLower === 'gallery'
+    ) {
+      handleNavigate('eo-gallery');
       return;
     }
 
@@ -604,6 +642,10 @@ export const App: React.FC = () => {
           <ServicesPage onNavigate={handleNavigate} onContactClick={() => handleNavigate('contact')} />
         ) : currentPage === 'eo-contact' ? (
           <EOContact onNavigate={handleNavigate} onContactClick={() => handleNavigate('eo-contact')} />
+        ) : currentPage === 'eo-services' ? (
+          <EOServicePage onNavigate={handleNavigate} onContactClick={() => handleNavigate('eo-contact')} />
+        ) : currentPage === 'eo-gallery' ? (
+          <EOGallery onNavigate={handleNavigate} onContactClick={() => handleNavigate('eo-contact')} />
         ) : currentPage === 'contact' ? (
           <Contact onNavigate={handleNavigate} />
         ) : (

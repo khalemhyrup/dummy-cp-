@@ -83,31 +83,20 @@ export const eoNavigationData: NavItem[] = [
     hasDropdown: false,
   },
   {
-    id: 'product-service',
+    id: 'eo-services',
     label: 'Services',
-    href: '#eo',
-    hasDropdown: true,
-    megaMenuType: 'columns',
-    columns: [
-      {
-        title: 'ADVERTISING',
-        id: 'media-advertising',
-        items: [
-          { id: 'media-advertising', title: 'Billboard, Signage, Neon Box & Fleet Branding', href: '#media-advertising' },
-        ],
-      },
-      {
-        title: 'EVENT ORGANIZER',
-        id: 'eo',
-        items: [
-          { id: 'eo', title: 'MICE, Corporate Gathering, Expo & Brand Activation', href: '#eo' },
-        ],
-      },
-    ],
+    href: '#eo/services',
+    hasDropdown: false,
+  },
+  {
+    id: 'eo-gallery',
+    label: 'Gallery',
+    href: '#eo/gallery',
+    hasDropdown: false,
   },
   {
     id: 'eo-contact',
-    label: 'Contact',
+    label: 'Contact Us',
     href: '#eo/contact',
     hasDropdown: false,
   },

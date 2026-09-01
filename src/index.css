@@ -153,3 +153,10 @@
   }
 }
 
+/* Calligraphy / Cursive Slogan Font Style */
+.font-slogan {
+  font-family: 'Dancing Script', 'Satisfy', 'Caveat', 'Alex Brush', cursive;
+  letter-spacing: 0.02em;
+}
+
+

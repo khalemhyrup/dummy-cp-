@@ -29,16 +29,16 @@ export const GeneralHome: React.FC<GeneralHomeProps> = ({ onNavigate }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/75 pointer-events-none" />
 
         {/* Top Minimal Bar */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 w-full flex items-center justify-between">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-6 sm:pt-8 w-full flex items-center justify-between">
           <div className="flex items-center">
             <img
               src="/images/logo.png"
               alt="PT Integra Aneksa Kreasindo - Grasindopro"
-              className="h-9 sm:h-11 w-auto object-contain brightness-0 invert drop-shadow-md cursor-pointer hover:opacity-90 transition-opacity"
+              className="h-8 sm:h-11 w-auto object-contain drop-shadow-md cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => onNavigate('home')}
             />
           </div>
-          <div className="hidden sm:flex items-center gap-8 text-xs sm:text-sm text-white/85 font-medium">
+          <div className="flex items-center gap-3.5 sm:gap-8 text-xs sm:text-sm text-white/90 font-medium">
             <button onClick={() => onNavigate('service')} className="hover:text-white transition-colors cursor-pointer drop-shadow-xs">
               Services
             </button>
